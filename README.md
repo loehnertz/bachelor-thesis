@@ -1,4 +1,6 @@
 # Bachelor Thesis
 ```
-„The system and software architecture of applications for the short-term rental of electric scooters – Analysis of an existing solution and evaluation of an exemplarily implemented backend application“
+The System and Software Architecture of Applications for the short-term Rental of Electric Scooters
+–
+Analysis of an existing Solution and Evaluation of an exemplarily implemented Back-end Application
 ```
