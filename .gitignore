@@ -1,0 +1,10 @@
+# Auxiliary files
+*.aux
+*.fls
+*.bbl
+*.fdb_latexmk
+*.synctex.gz
+
+# Logs
+*.log
+*.blg
