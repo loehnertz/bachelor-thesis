@@ -1,0 +1,63 @@
+% English
+\usepackage[english]{babel} % English language setting
+\usepackage[utf8]{inputenc} % Unicode text 
+\usepackage[T1]{fontenc} % German 'Umlaute'
+\usepackage{textcomp} % Euro
+\usepackage[hyphens]{url}
+\input{hyphenations} % Custom hyphenations
+\usepackage{amssymb} % Symbols
+\usepackage{emptypage} % Empty pages are now actually empty
+
+%% Fonts, with all the options
+
+% New Century Schoolbook (also used for TT and sans-serif)
+\usepackage{newcent}
+
+\usepackage{microtype}
+
+% Images and listings
+\usepackage{graphicx} % images
+\usepackage{subfig} % sub-figures
+\usepackage{wrapfig} % wrapping figures
+\usepackage{listings} % better source code listings
+% some settings for better listing styles
+\lstset{basicstyle=\ttfamily, columns=[l]flexible, mathescape=true, showstringspaces=false, numbers=left, numberstyle=\tiny}
+\lstset{language=python} % setting for Python
+% environment for the listings
+\usepackage{float}
+\newfloat{listing}{htbp}{scl}[chapter]
+\floatname{listing}{Listing}
+
+% Page layout
+\usepackage[paper=a4paper,width=14cm,left=35mm,height=22cm]{geometry}
+\usepackage{setspace}
+\linespread{1.5}
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0em} % no automatic indentation
+
+% Page markers 
+\newcommand{\phv}{\fontfamily{phv}\fontseries{m}\fontsize{9}{11}\selectfont}
+\usepackage{fancyhdr} % nicer header and footer
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%\fancyhead[L]{\phv \leftmark}
+\fancyhead[RE,LO]{\phv \nouppercase{\leftmark}}
+\fancyhead[LE,RO]{\phv \thepage}
+% rather not use anything for the footer
+%\fancyfoot[L]{\textsf{\small \kurztitel}}
+\fancyfoot[C]{\ } % no page count in the bottom
+%\fancyfoot[R]{\textsf{\small Media Management}}
+
+% Share the sources
+\usepackage{bibtopic} 
+
+% Logo of the university
+\usepackage{hsrmlogo}
+
+% Special packages
+\usepackage{epigraph}
+\setlength{\epigraphrule}{0pt} % no divider
+
+% Some extra styles
+\usepackage{soul}
+\newcommand*\strikethrough{\st}
