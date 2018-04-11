@@ -1,0 +1,50 @@
+\documentclass[12pt,a4paper]{report}
+
+\include{settings}
+
+\newcommand{\studyprogramme}{Media Management}
+\newcommand{\degreetype}{Bachelor of Arts}
+\newcommand{\thesistitle}{
+The System and Software Architecture of Applications for the short-term Rental of Electric Scooters
+}
+\newcommand{\thesissubtitle}{
+Analysis of an existing Solution and Evaluation of an exemplarily implemented Back-end Application
+}
+\newcommand{\thesisauthor}{Jakob Löhnertz}
+\newcommand{\thesisdate}{23. Juli 2018}
+\newcommand{\thesislocation}{Wiesbaden}
+\newcommand{\firstmarker}{Prof.\ Dr.\ Johannes Luderschmidt}
+\newcommand{\secondmarker}{Merle Hiort}
+
+\begin{document}
+\include{preamble}
+
+\begin{abstract}
+This is where the abstract goes
+\end{abstract}
+
+\tableofcontents
+
+\chapter{Introduction} \label{chap:intro}
+\epigraphhead[70]{\epigraph{A quote might go here!}{\textit{Author}}}
+
+This is where the first chapter goes!
+
+\newpage
+
+% In case the source lists are needed:
+%\listoffigures
+%\listoftables
+% \newpage
+
+\bibliographystyle{plain} % References
+\begin{btSect}{thesis} % separate the sources with 'bibtopic'
+\section*{References}
+\btPrintCited
+\end{btSect}
+\begin{btSect}{online}
+\section*{Online Sources}
+\btPrintCited
+\end{btSect}
+
+\end{document}
