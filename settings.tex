@@ -1,6 +1,6 @@
 % English
 \usepackage[english]{babel} % English language setting
-\usepackage[utf8]{inputenc} % Unicode text 
+\usepackage[utf8]{inputenc} % Unicode text
 \usepackage[T1]{fontenc} % German 'Umlaute'
 \usepackage{textcomp} % Euro
 \usepackage[hyphens]{url}
@@ -35,21 +35,21 @@
 \setlength{\parskip}{0.5em}
 \setlength{\parindent}{0em} % no automatic indentation
 
-% Page markers 
+% Page markers
 \newcommand{\phv}{\fontfamily{phv}\fontseries{m}\fontsize{9}{11}\selectfont}
 \usepackage{fancyhdr} % nicer header and footer
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 %\fancyhead[L]{\phv \leftmark}
-\fancyhead[RE,LO]{\phv \nouppercase{\leftmark}}
-\fancyhead[LE,RO]{\phv \thepage}
+\fancyhead[R,LO]{\phv \nouppercase{\leftmark}}
+\fancyhead[L,RO]{\phv \thepage}
 % rather not use anything for the footer
 %\fancyfoot[L]{\textsf{\small \kurztitel}}
 \fancyfoot[C]{\ } % no page count in the bottom
 %\fancyfoot[R]{\textsf{\small Media Management}}
 
 % Share the sources
-\usepackage{bibtopic} 
+\usepackage{bibtopic}
 
 % Logo of the university
 \usepackage{hsrmlogo}
