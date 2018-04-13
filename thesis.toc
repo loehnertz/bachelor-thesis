@@ -3,3 +3,6 @@
 \contentsline {section}{\numberline {1.1}Introduction}{2}
 \contentsline {section}{\numberline {1.2}The market for electric scooters}{3}
 \contentsline {section}{\numberline {1.3}German electric scooter manufacturer \emph {Kumpan}}{3}
+\contentsline {section}{\numberline {1.4}Components of a modern software product}{4}
+\contentsline {section}{\numberline {1.5}Presentation of the problem}{5}
+\contentsline {section}{\numberline {1.6}Necessity of a back-end application}{5}
