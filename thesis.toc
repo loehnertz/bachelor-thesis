@@ -8,3 +8,4 @@
 \contentsline {chapter}{\numberline {2}Fundamentals}{7}
 \contentsline {section}{\numberline {2.1}Components of a modern software product}{7}
 \contentsline {section}{\numberline {2.2}Necessity of a thorough back-end application}{8}
+\contentsline {section}{\numberline {2.3}Approaching the development of a software}{9}
