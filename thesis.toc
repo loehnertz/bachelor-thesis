@@ -5,4 +5,4 @@
 \contentsline {section}{\numberline {2.2}German electric scooter manufacturer \textit {Kumpan}}{5}
 \contentsline {section}{\numberline {2.3}Components of a modern software product}{6}
 \contentsline {section}{\numberline {2.4}Necessity of a thorough back-end application}{7}
-\contentsline {section}{\numberline {2.5}Approaching the development of a software}{8}
+\contentsline {section}{\numberline {2.5}Approaching the development of software}{8}

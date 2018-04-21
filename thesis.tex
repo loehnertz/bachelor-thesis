@@ -59,20 +59,20 @@ Meanwhile, the upfront expenditures for the software development of
 an application are still vast but in the long run, the running expenses are less.
 The only cost driver afterwards is the maintenance of the created software.\\
 As a consequence, the question should be how to mitigate the maintenance costs
-of a software product. The main aspect here is a proper application of software engineering.
-Software engineering is defined as:
+of a software product. The main aspect here is a proper application of
+software engineering which is defined as:
 \begin{displayquote}
-"The application of a systematic, disciplined, quantifiable approach to the
-development, operation, and maintenance of software."~\cite{se-ieee}
+\emph{"The application of a systematic, disciplined, quantifiable approach to the
+development, operation, and maintenance of software."}~\cite{se-ieee}
 \end{displayquote}
 To put this definition into words, software engineering mainly targets
-the domains of software architecture, code quality and documentation.
+the domains of software architecture, code quality and documentation.\cn\\
 All of these pursue one long-term goal: to achieve a well functioning, maintainable
 software product.
 Furthermore, the fact that the scooters are always connected to the internet
 as well as the nature of current batteries desires a reactive and faultless application.\\
-Finally, the corporate partner of this thesis, which is discussed in detail in section 2.2,
-already is in possession of a solution which is not fully featured yet.
+Finally, the corporate partner of this thesis, which is discussed in detail
+in section \ref{sect:kumpan}, is already in possession of a solution which is not fully featured yet.
 Therefore, the subject of augmenting an existing back-end application with missing features is also targeted.\\
 To conclude, this leads into the research question of this bachelor thesis:\\
 \emph{Which functional modules are necessary for the implementation of a back-end application
@@ -83,13 +83,18 @@ to integrate additional functionality into an existing legacy software solution 
 
 \chapter{Fundamentals} \label{chap:fundamentals}
 
+\epigraphhead[55]{\epigraph{The danger in the sequence [waterfall approach]
+is that the project moves from being grand to being grandiose,
+and exceeds our human intellectual capabilities for management and control.}
+{\textit{Harlan D. Mills}}}
+
 
 \section{The market for the rental of electric scooters}
 
-The market for the short-term rental of motor vehicles in Germany is currently growing rapidly.
-~\cite{bundesverband-carsharing-statistics}
-The situation on the market is no different for medium and long-term rentals.
-~\cite{sparkasse-kfz-vermietung}~However, this sector is dominated by cutthroat competition.
+The market for the short-term rental of motor vehicles in Germany
+is currently growing rapidly.~\cite{bundesverband-carsharing-statistics}
+The situation on the market is no different for medium and long-term rentals.~\cite{sparkasse-kfz-vermietung}
+However, this sector is dominated by cutthroat competition.
 It has been dictated by large corporations such as \textit{Sixt}, \textit{Hertz},
 \textit{Avis} and \textit{Europcar} for years.~\cite{sparkasse-kfz-vermietung}
 Although smaller providers exist, this market has become an oligopoly and
@@ -121,11 +126,10 @@ with regard to the possibility of a successful market entry into this sector in 
 The future of the market is also promising, as more and more nations around the world
 are deciding on a ban on vehicles with internal combustion engines for the
 foreseeable future~\cite{faz-combustion-engine-ban} and companies already
-in the market are undertaking their first expansions.
-~\cite{allchinatech-electric-scooters, faz-electric-scooters}
+in the market are undertaking their first expansions.~\cite{allchinatech-electric-scooters, faz-electric-scooters}
 
 
-\section{German electric scooter manufacturer \textit{Kumpan}}
+\section{German electric scooter manufacturer \textit{Kumpan}} \label{sect:kumpan}
 
 The thesis loosely focuses on the business of German electric scooter manufacturer \textit{Kumpan}.
 The company was established in 2009. For their product, they concentrated on three main aspects:
@@ -181,7 +185,7 @@ might come together; from ideas and drafts to written source code.
 A look at existing car sharing offers depicts that automating the rental process
 is necessary. There are three main aspects that become easier to achieve for the
 provider if they choose to automate their system.\\
-Firstly, as already mentioned in the 'Problem and research question' section,
+Firstly, as already mentioned in the first chapter,
 the costs are a lot lower whenever less human resources are involved.
 Additionally, the speed of execution of a rental request by a customer gets better
 with a performant back-end application.
@@ -195,8 +199,65 @@ the information in a presentable way while not performing any serious
 business logic most of the time.
 
 
-\section{Approaching the development of a software}
+\section{Approaching the development of software}
 
+From a very fundamental standpoint, software development consists of two distinct phases.
+The planning and analysis phase which leads into the programming phase.~\cite{royce-large-systems}
+Upon further investigation, there are more steps before, in between and after these two essential ones.
+In his influential 1970 paper \textit{"Managing the Development of Large Software Systems"},
+American computer scientist Winston W. Royce discusses his idea of a satisfactory
+software development process. His paper is often mistakenly cited as the starting point
+of the waterfall model whereas Royce indeed starts his paper with such an approach but quickly
+depicts the shortcomings of that model.~\cite{royce-large-systems, larman-iid-history}
+The waterfall model describes the idea that a software development process should consist of
+the stages shown in figure \ref{fig:waterfall-model}.
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.60\textwidth]{waterfall-model}
+\caption{The essential stages of the waterfall model}
+\label{fig:waterfall-model}
+\end{figure}
+The main point of it is that the steps are conducted sequentially; no step should
+begin before the current one has been finished.~\cite{boehm-spiral}
+This idea has one big flaw: the \textit{Verification} phase being nearly at the end.
+Only after the whole software product is finished, an evaluation by internal testing personnel or
+the client can be carried out.~\cite{royce-large-systems}
+It is likely that at least some changes to the implementation will be necessary after the \textit{Verification}.
+Additionally, clients may not know the exact requirements at the very beginning
+of the software development process.~\cite{parnas-rational-design-process}
+It is also possible that a major fault is only discovered in that second last stage –
+the negative repercussions could be massive.
+\begin{displayquote}
+\emph{"Either the requirements must be modified, or a substantial change
+in the design is required. In effect the development process has returned to
+the origin and one can expect up to a 100-percent overrun
+in schedule and/or costs."}~\cite{royce-large-systems}
+\end{displayquote}
+Nevertheless, the idea Royce describes is what made his paper as influential.
+The steps that are required to get from an idea to a finished product nearly always
+stay the same. The ones from figure \ref{fig:waterfall-model} are still applicable to
+many newer concepts of a software development process.
+Nowadays, software developers and project managers are mostly utilizing any model that
+can be subsumed under the loose term \textit{agile}.
+In summary, as the term already depicts, this theory is geared towards
+the idea that the software development process should not be as rigid and constrained.
+Therefore, it stands in stark contrast to the demonstrated waterfall model.
+The term does not describe a distinct concept but rather an idea –
+there are dozens of implementations of \textit{agile software development}.~\cite{martin-agile-practices}
+Regardless of the implementation, most often \textit{agile} approaches are based around
+the idea of \textit{Iterative and Incremental Development (IID)}.~\cite{larman-iid-history}
+Instead of implementing the whole software within all the sequential steps
+of the waterfall model, the product is being developed in increments.
+Following some initial analyzing and planning, the first iteration begins.
+After the end of one iteration of all the steps shown, apart from the \textit{Maintenance},
+the next increment is getting projected and eventually executed.\\
+\begin{displayquote}
+\emph{"Software development should be done incrementally, in stages with
+continuous user participation and replanning and
+with design-to-cost programming within each stage."}~\cite{mills-iid}
+\end{displayquote}
+To conclude, the steps Royce exhibited in 1970 are still applicable today.
+In some form or another, these steps are mandatory for implementing any software product.
 
 
 
