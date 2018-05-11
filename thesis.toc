@@ -1,20 +1,20 @@
 \select@language {english}
-\contentsline {chapter}{\numberline {1}Problems and research question}{3}
-\contentsline {chapter}{\numberline {2}Fundamentals}{5}
-\contentsline {section}{\numberline {2.1}The market for the rental of electric scooters}{5}
-\contentsline {subsection}{\numberline {2.1.1}German electric scooter manufacturer \textit {Kumpan}}{6}
-\contentsline {section}{\numberline {2.2}Components of a modern software product}{7}
-\contentsline {subsection}{\numberline {2.2.1}Necessity of a thorough back-end application}{8}
-\contentsline {section}{\numberline {2.3}Approaching the development of software}{9}
-\contentsline {subsection}{\numberline {2.3.1}Requirements}{12}
-\contentsline {subsection}{\numberline {2.3.2}Design}{12}
-\contentsline {subsection}{\numberline {2.3.3}Implementation}{12}
-\contentsline {subsection}{\numberline {2.3.4}Verification}{12}
-\contentsline {subsection}{\numberline {2.3.5}Maintenance}{12}
-\contentsline {section}{\numberline {2.4}Legacy software}{12}
-\contentsline {subsection}{\numberline {2.4.1}Problems with legacy software}{13}
-\contentsline {subsection}{\numberline {2.4.2}Reasons to continue legacy software}{13}
-\contentsline {subsection}{\numberline {2.4.3}Techniques to augment legacy software}{13}
-\contentsline {chapter}{\numberline {3}Analysis}{14}
-\contentsline {chapter}{\numberline {4}Implementation}{15}
-\contentsline {chapter}{\numberline {5}Conclusion}{16}
+\contentsline {chapter}{\numberline {1}Problems and research question}{3}{chapter.1}
+\contentsline {chapter}{\numberline {2}Fundamentals}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}The market for the rental of electric scooters}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}German electric scooter manufacturer \textit {Kumpan}}{6}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Components of a modern software product}{7}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Necessity of a thorough back-end application}{8}{subsection.2.2.1}
+\contentsline {section}{\numberline {2.3}Approaching the development of software}{9}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Requirements}{12}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Design}{12}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Implementation}{12}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Verification}{12}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}Maintenance}{12}{subsection.2.3.5}
+\contentsline {section}{\numberline {2.4}Legacy software}{12}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Reasons to continue legacy software}{12}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Issues with legacy software}{14}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Solutions to legacy software issues}{14}{subsection.2.4.3}
+\contentsline {chapter}{\numberline {3}Analysis}{15}{chapter.3}
+\contentsline {chapter}{\numberline {4}Implementation}{16}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{17}{chapter.5}

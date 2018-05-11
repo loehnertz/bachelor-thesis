@@ -63,5 +63,17 @@
 \usepackage{soul}
 \newcommand*\strikethrough{\st}
 
+% Hyperlink everything
+\usepackage{hyperref}
+\hypersetup{
+    bookmarks=true,
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=black,
+}
+\urlstyle{same}
+
 % Wikipedia-style "citation needed" macro
 \newcommand{\cn}[1][]{\textsuperscript{\color{red} ~[citation needed]~}}
