@@ -5,10 +5,10 @@
 \newcommand{\studyprogramme}{Media Management}
 \newcommand{\degreetype}{Bachelor of Arts}
 \newcommand{\thesistitle}{
-The System and Software Architecture of Applications for the short-term Rental of Electric Scooters
+The system and software architecture of back-end applications for the short-term rental of electric scooters
 }
 \newcommand{\thesissubtitle}{
-Analysis of an existing Solution and Evaluation of an exemplarily implemented Back-end Application
+Analysis of an existing solution and evaluation on the potential of its augmentation
 }
 \newcommand{\thesisauthor}{Jakob Löhnertz}
 \newcommand{\thesisdate}{23. Juli 2018}
@@ -34,11 +34,15 @@ The abstract will be added at this place towards the end of the thesis.
 
 \chapter{Problems and research question} \label{chap:intro}
 
+\epigraphhead[55]{\epigraph{Beauty is more important in computing than anywhere else
+in technology because software is so complicated. Beauty is the ultimate defense against complexity.}
+{\textit{David Gelernter}}}
+
 
 The definition of the word \emph{scooter} is fairly vague.
 Some describe it as a small vehicle with a handlebar and a platform to stand on,
 the kind traditionally children were riding.
-This paper looks at the \emph{motorcycle-esque type} of a scooter though, and in
+However, this paper looks at the \emph{motorcycle-esque type} of a scooter, and in
 particular the electric version of it.\\
 Many pain points of internal combustion engines vanish with the switch to their electric
 counterparts. The maintenance of the mechanical system of the whole vehicle becomes easier.
@@ -48,7 +52,7 @@ Of course they utilize batteries instead of fossil fuels as their impetus.
 Although the invention of the battery is older than that of the
 internal combustion engine\cn, the technology is still not perfected and sees new
 advancements every year. Alas, it also combats many challenges in terms of
-safety, cost, capacity, speed of recharging and longevity.\\
+safety, cost, capacity, weight, recycling, speed of recharging and longevity.\\
 For the provider, the handling of a short-term rental service
 only becomes feasible with the automation of as many processes as possible.
 This requires a back-end application ideally paired with a front-end.
@@ -57,9 +61,9 @@ in the expenses of any business.\cn Thus, this demands for less human workforce
 as part of the processes of a rental service.
 Meanwhile, the upfront expenditures for the software development of
 an application are still vast but in the long run, the running expenses are less.
-The only cost driver afterwards is the maintenance of the created software.\\
+The only cost driver afterwards is the maintenance of the created software.
 As a consequence, the question should be how to mitigate the maintenance costs
-of a software product. The main aspect here is a proper application of
+of a software product. The main aspect is a proper application of
 software engineering which is defined as:
 \begin{displayquote}
 \emph{"The application of a systematic, disciplined, quantifiable approach to the
@@ -70,7 +74,7 @@ the domains of software architecture, code quality and documentation.\cn\\
 All of these pursue one long-term goal: to achieve a well functioning, maintainable
 software product.
 Furthermore, the fact that the scooters are always connected to the internet
-as well as the nature of current batteries desires a reactive and faultless application.\\
+as well as the nature of current batteries desire a reactive and faultless application.\\
 Finally, the corporate partner of this thesis, which is discussed in detail
 in section \ref{sect:kumpan}, is already in possession of a solution which is not fully featured yet.
 Therefore, the subject of augmenting an existing back-end application with missing features is also targeted.\\
@@ -92,7 +96,7 @@ and exceeds our human intellectual capabilities for management and control.}
 \section{The market for the rental of electric scooters}
 
 The market for the short-term rental of motor vehicles in Germany
-is currently growing rapidly.~\cite{bundesverband-carsharing-statistics}
+is currently growing rapidly~\cite{bundesverband-carsharing-statistics}.
 The situation on the market is no different for medium and long-term rentals.~\cite{sparkasse-kfz-vermietung}
 However, this sector is dominated by cutthroat competition.
 It has been dictated by large corporations such as \textit{Sixt}, \textit{Hertz},
@@ -105,17 +109,17 @@ since the late 1980s~\cite{history-of-carsharing} and in its current form
 only since the advent of the smartphone, since many offers require the use of a mobile app.
 For this reason the market for short-term rentals and thus its saturation is significantly lower.
 According to the \textit{Bundesverband CarSharing e.V.}, the current total number of cars
-in the car sharing sector is about 17,200. In contrast, almost 10\% of all
+in the car sharing sector in Germany is about 17,200. In contrast, almost 10\% of all
 new vehicle registrations in Germany in 2015 were attributable to traditional
 car rental companies such as the above.~\cite{sparkasse-kfz-vermietung}
-This represents an increase of 339,000 vehicles - in similar fashion --- every year.
+This represents an increase of 339,000 vehicles, in similar fashion every year.
 By contrast, the share of vehicles with electric drive is again lower at
 just under 10\% of the total number of car sharing vehicles.
 Electric scooters do not even appear in the statistics of the
 \textit{Bundesverband CarSharing e.V.}~\cite{bundesverband-carsharing-statistics}\\
-By contrast, the market in other nations has already experienced strong growth.
-One example is the Chinese market. Around 20 million electric scooters were sold
-here in 2016 alone.~\cite{heise-electric-scooters}
+However, the market in other nations has already experienced strong growth;
+one example is the Chinese market. Around 20 million electric scooters were sold
+there in 2016 alone.~\cite{heise-electric-scooters}
 Additionally, the short-term rental of these is already a working business model
 in China.~\cite{allchinatech-electric-scooters} Market value forecasts are also promising.
 Last year, the US company \textit{P\&S Market Research} predicted an annual growth of
@@ -129,7 +133,7 @@ foreseeable future~\cite{faz-combustion-engine-ban} and companies already
 in the market are undertaking their first expansions.~\cite{allchinatech-electric-scooters, faz-electric-scooters}
 
 
-\section{German electric scooter manufacturer \textit{Kumpan}} \label{sect:kumpan}
+\subsection{German electric scooter manufacturer \textit{Kumpan}} \label{sect:kumpan}
 
 The thesis loosely focuses on the business of German electric scooter manufacturer \textit{Kumpan}.
 The company was established in 2009. For their product, they concentrated on three main aspects:
@@ -142,10 +146,10 @@ short-term rental service for their scooters. And from many angles it makes sens
 As seen in the last section, the market for the short-term rental of electric scooters
 especially in Germany is still minuscule compared to e.g. car or bike sharing.
 Meanwhile, the costs for buying an electric scooter are still relatively high.
-Lastly, many people will not need such a vehicle for the whole day and would benefit
-from more flexibility and parking spots are also a scarcity in our inner cities.
+Additionally, many people will not need such a vehicle for the whole day and would benefit
+from more flexibility. Lastly, parking spots are also a scarcity in inner cities.
 Therefore, \textit{Kumpan} plans to enter the market of short-term electric scooter rentals
-in the near future in some form or the other.\\
+in the near future.\\
 There are still many aspects to be discussed and determined but one of them
 is already set and can be seen as a necessity regardless of the final implementation:
 A server back-end application as well as its infrastructure.
@@ -163,7 +167,7 @@ want to be able to ride one on demand by just pushing a button.
 The ease of use for the customers and their satisfaction are the main facets
 to be considered by the provider of such a service.\\
 This, as nearly every modern software product geared towards a general audience,
-involves two foundational components --- a front-end and a back-end.
+involves two foundational components --- a front-end and a back-end.~\cite{fischer-lexikon}
 On the one hand, the front-end provides the user interface of the product, the façade of the whole.
 It is the component the customer interacts with but more importantly it will be
 what the users identify the product with.
@@ -180,7 +184,7 @@ This includes the functionalities that are mandatory and the question on how the
 might come together; from ideas and drafts to written source code.
 
 
-\section{Necessity of a thorough back-end application}
+\subsection{Necessity of a thorough back-end application}
 
 A look at existing car sharing offers depicts that automating the rental process
 is necessary. There are three main aspects that become easier to achieve for the
@@ -207,7 +211,7 @@ Upon further investigation, there are more steps before, in between and after th
 In his influential 1970 paper \textit{"Managing the Development of Large Software Systems"},
 American computer scientist Winston W. Royce discusses his idea of a satisfactory
 software development process. His paper is often mistakenly cited as the starting point
-of the waterfall model whereas Royce indeed starts his paper with such an approach but quickly
+of the \textit{waterfall model} whereas Royce indeed starts his paper with such an approach but quickly
 depicts the shortcomings of that model.~\cite{royce-large-systems, larman-iid-history}
 The waterfall model describes the idea that a software development process should consist of
 the stages shown in figure \ref{fig:waterfall-model}.
@@ -243,8 +247,8 @@ In summary, as the term already depicts, this theory is geared towards
 the idea that the software development process should not be as rigid and constrained.
 Therefore, it stands in stark contrast to the demonstrated waterfall model.
 The term does not describe a distinct concept but rather an idea ---
-there are dozens of implementations of \textit{agile software development}.~\cite{martin-agile-practices}
-Regardless of the implementation, most often \textit{agile} approaches are based around
+there are dozens of implementations of agile software development.~\cite{martin-agile-practices}
+Regardless of the implementation, most often agile approaches are based around
 the idea of \textit{Iterative and Incremental Development (IID)}.~\cite{larman-iid-history}
 \begin{displayquote}
 \emph{"Software development should be done incrementally, in stages with
@@ -264,7 +268,18 @@ the next increment is getting projected and eventually executed as shown in figu
 \label{fig:idd-model}
 \end{figure}\\
 To conclude, the stages Royce exhibited in 1970 are still applicable today.
-In some form or another, those are mandatory for implementing any software product.
+In some form or another, those are mandatory for implementing any software.
+
+
+\subsection{Requirements}
+
+\subsection{Design}
+
+\subsection{Implementation}
+
+\subsection{Verification}
+
+\subsection{Maintenance}
 
 
 

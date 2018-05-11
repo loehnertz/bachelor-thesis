@@ -2,7 +2,12 @@
 \contentsline {chapter}{\numberline {1}Problems and research question}{2}
 \contentsline {chapter}{\numberline {2}Fundamentals}{4}
 \contentsline {section}{\numberline {2.1}The market for the rental of electric scooters}{4}
-\contentsline {section}{\numberline {2.2}German electric scooter manufacturer \textit {Kumpan}}{5}
-\contentsline {section}{\numberline {2.3}Components of a modern software product}{6}
-\contentsline {section}{\numberline {2.4}Necessity of a thorough back-end application}{7}
-\contentsline {section}{\numberline {2.5}Approaching the development of software}{8}
+\contentsline {subsection}{\numberline {2.1.1}German electric scooter manufacturer \textit {Kumpan}}{5}
+\contentsline {section}{\numberline {2.2}Components of a modern software product}{6}
+\contentsline {subsection}{\numberline {2.2.1}Necessity of a thorough back-end application}{7}
+\contentsline {section}{\numberline {2.3}Approaching the development of software}{8}
+\contentsline {subsection}{\numberline {2.3.1}Requirements}{10}
+\contentsline {subsection}{\numberline {2.3.2}Design}{10}
+\contentsline {subsection}{\numberline {2.3.3}Implementation}{10}
+\contentsline {subsection}{\numberline {2.3.4}Verification}{10}
+\contentsline {subsection}{\numberline {2.3.5}Maintenance}{10}
