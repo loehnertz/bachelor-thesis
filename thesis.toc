@@ -9,8 +9,6 @@
 \contentsline {subsection}{\numberline {2.3.1}Requirements}{11}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Design}{11}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}Implementation}{11}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Verification}{11}{subsection.2.3.4}
-\contentsline {subsection}{\numberline {2.3.5}Maintenance}{11}{subsection.2.3.5}
 \contentsline {section}{\numberline {2.4}Legacy software}{11}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Reasons to continue legacy software}{11}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Issues with legacy software}{13}{subsection.2.4.2}

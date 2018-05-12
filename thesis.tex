@@ -43,7 +43,8 @@ The definition of the word \emph{scooter} is fairly vague.
 Some describe it as a small vehicle with a handlebar and a platform to stand on,
 the kind traditionally children were riding.
 However, this paper looks at the \emph{motorcycle-esque type} of a scooter, and in
-particular the electric version of it.\\
+particular the electric version of it.
+
 Many pain points of internal combustion engines vanish with the switch to their electric
 counterparts. The maintenance of the mechanical system of the whole vehicle becomes easier.
 There are less moving parts which makes for less errors.
@@ -52,7 +53,8 @@ Of course they utilize batteries instead of fossil fuels as their impetus.
 Although the invention of the battery is older than that of the
 internal combustion engine\cn, the technology is still not perfected and sees new
 advancements every year. Alas, it also combats many challenges in terms of
-safety, cost, capacity, weight, recycling, speed of recharging and longevity.\\
+safety, cost, capacity, weight, recycling, speed of recharging and longevity.
+
 For the provider, the handling of a short-term rental service
 only becomes feasible with the automation of as many processes as possible.
 This requires a back-end application ideally paired with a front-end.
@@ -73,11 +75,14 @@ To put this definition into words, software engineering mainly targets
 the domains of software architecture, code quality and documentation.\cn\\
 All of these pursue one long-term goal: to achieve a well functioning, maintainable
 software product.
+
 Furthermore, the fact that the scooters are always connected to the internet
-as well as the nature of current batteries desire a reactive and faultless application.\\
+as well as the nature of current batteries desire a reactive and faultless application.
+
 Finally, the corporate partner of this thesis, which is discussed in detail
 in section \ref{sect:kumpan}, is already in possession of a solution which is not fully featured yet.
-Therefore, the subject of extending an existing back-end application with missing features is also targeted.\\
+Therefore, the subject of extending an existing back-end application with missing features is also targeted.
+
 To conclude, this leads into the research question of this bachelor thesis:\\
 \emph{Which functional modules are necessary for the implementation of a back-end application
 for the short-term rental of electric scooters and which considerations need to be made
@@ -103,6 +108,7 @@ It has been dictated by large corporations such as \textit{Sixt}, \textit{Hertz}
 \textit{Avis} and \textit{Europcar} for years~\cite{sparkasse-kfz-vermietung}.
 Although smaller providers exist, this market has become an oligopoly and
 the barriers for a market entry are high for new types of providers.
+
 In contrast, the market for short-term rental, also known as car sharing for cars,
 is a comparatively young market. It has only existed in Europe in its breadth
 since the late 1980s~\cite{history-of-carsharing} and in its current form
@@ -116,7 +122,8 @@ This represents an increase of 339,000 vehicles, in similar fashion every year.
 By contrast, the share of vehicles with electric drive is again lower at
 just under 10\% of the total number of car sharing vehicles.
 Electric scooters do not even appear in the statistics of the
-\textit{Bundesverband CarSharing e.V.}~\cite{bundesverband-carsharing-statistics}.\\
+\textit{Bundesverband CarSharing e.V.}~\cite{bundesverband-carsharing-statistics}.
+
 However, the market in other nations has already experienced strong growth;
 one example is the Chinese market. Around 20 million electric scooters were sold
 there in 2016 alone~\cite{heise-electric-scooters}.
@@ -140,7 +147,8 @@ The company was established in 2009. For their product, they concentrated on thr
 an exterior design ready for the European market, build quality and sufficient cruising radius.
 They finished building their first electric scooter in 2010 and are thriving for good products ever since.
 The price of their electric scooters is still rather high. Owing to that circumstance,
-they came up with smaller, cheaper models as well as a completely different approach.\\
+they came up with smaller, cheaper models as well as a completely different approach.
+
 Instead of traditional retail sales they started developing the idea of a
 short-term rental service for their scooters. And from many angles it makes sense:
 As seen in the last section, the market for the short-term rental of electric scooters
@@ -149,7 +157,8 @@ Meanwhile, the costs for buying an electric scooter are still relatively high.
 Additionally, many people will not need such a vehicle for the whole day and would benefit
 from more flexibility. Lastly, parking spots are also a scarcity in inner cities.
 Therefore, \textit{Kumpan} plans to enter the market of short-term electric scooter rentals
-in the near future.\\
+in the near future.
+
 There are still many aspects to be discussed and determined but one of them
 is already set and can be seen as a necessity regardless of the final implementation:
 A server back-end application as well as its infrastructure.
@@ -165,7 +174,8 @@ The main aspect of success for such a system is indeed the \emph{magic} behind t
 that no customer sees. People just see the electric scooter as the product and
 want to be able to ride one on demand by just pushing a button.
 The ease of use for the customers and their satisfaction are the main facets
-to be considered by the provider of such a service.\\
+to be considered by the provider of such a service.
+
 This, as nearly every modern software product geared towards a general audience,
 involves two foundational components --- a front-end and a back-end~\cite{fischer-lexikon}.
 On the one hand, the front-end provides the user interface of the product, the façade of the whole.
@@ -177,7 +187,8 @@ what the front-end will do. Meanwhile, it does not determine what it will look l
 If the front-end is unusable the back-end will never be able to fix that as the
 front-end becomes the mental representation of the whole product for the customers.
 If the back-end behaves sluggish or is prone to errors, the front-end will not be able to save much
-by the same token. In the end, both form a synergy with each other.\\
+by the same token. In the end, both form a synergy with each other.
+
 This thesis will shed light on the back-end of such an application.
 It will focus on the software architecture of it.
 This includes the functionalities that are mandatory and the question on how the product
@@ -241,6 +252,7 @@ Nevertheless, the idea Royce describes is what made his paper as influential.
 The steps that are required to get from an idea to a finished product nearly always
 stay the same. The ones from figure \ref{fig:waterfall-model} are still applicable to
 many newer concepts of a software development process.
+
 Nowadays, software developers and project managers are mostly utilizing any model that
 can be subsumed under the loose term \textit{agile}.
 In summary, as the term already depicts, this theory is geared towards
@@ -267,8 +279,10 @@ the next increment is getting projected and eventually executed as shown in figu
 \caption{A revised, iterative version of the waterfall model e.g. IID}
 \label{fig:idd-model}
 \end{figure}\newline
-To conclude, the stages Royce exhibited in 1970 are still applicable today.
+To conclude, the stages Royce exhibited in 1970 are still applicable nowadays.
 In some form or another, those are mandatory for implementing any software.
+In the following subsections, the portrayed stages are discussed in greater detail,
+while excluding the last two ones as they will not be part of the \textit{Analysis}-chapter \ref{chap:analysis}.
 
 
 \subsection{Requirements}
@@ -276,10 +290,6 @@ In some form or another, those are mandatory for implementing any software.
 \subsection{Design}
 
 \subsection{Implementation}
-
-\subsection{Verification}
-
-\subsection{Maintenance}
 
 
 \section{Legacy software} \label{sect:legacy-software}
@@ -305,7 +315,8 @@ hardware requirements. Legacy software that is many decades old might still
 run on mainframe computers opposed to contemporary server systems~\cite{schneidewind-preserve-or-redesign}
 or even cloud computing. However, these considerations are not part of this thesis
 since the analyzed software solution was built as a common client-server application
-meant to run on prevailing server infrastructure.\\
+meant to run on prevailing server infrastructure.
+
 Apart from this initial reason, the most common one is of economic nature~\cite{schneidewind-preserve-or-redesign}.
 Often times, the expected benefits of redeveloping a software cannot justify the expenditures.
 Additionally, it is difficult to measure the advantages beforehand. The management
@@ -317,7 +328,8 @@ security, maintainability and eventually the development time can just be roughl
 are bound to the experience of the developers and engineers in charge.
 Moreover, even if the analysis does sound promising there is no guarantee that the new system
 will meet the expectations. Nevertheless, the tipping point can occur when the human costs for the maintenance
-of the legacy software are tremendous when compared to development teams of similar size and complexity.\\
+of the legacy software are tremendous when compared to development teams of similar size and complexity.
+
 Furthermore, required constant availability or faultlessness of a system might make it
 difficult or impossible to implement a new software solution for its purpose~\cn ---
 software that controls a nuclear power plant comes to mind, for instance.
@@ -330,16 +342,19 @@ Especially the testing of a critical application might increase the costs
 and/or risks significantly. These aspects might make it improbable to replace
 the legacy software. Owing to the fact that the legacy software still fulfills
 its purpose, much effort is needed to ensure that the replacement software works
-in the same expected and quantifiable manner as its legacy counterpart.\\
+in the same expected and quantifiable manner as its legacy counterpart.
+
 In addition, it is also possible that the users of the legacy software do not want
 to switch to a new solution due to third-party vendor lock-in or the fact that
 they are familiar with the legacy system~\cite{bennett-coping-legacy} which would make
-retraining a new one a vast cost driver.\\
+retraining a new one a vast cost driver.
+
 Lastly, a big concern that the company's management cannot even control is
 a poor or missing documentation.~\cn This circumstance is the most difficult one
 as it makes the redevelopment or the extension of the legacy software very intricate.
 Consequently, this can go as far to leave the organization unable to completely apprehend
-every detail of its legacy software.\\
+every detail of its legacy software.
+
 In summary, these four aspects are mostly accountable for the continuation of legacy software
 within an organization. Albeit, the assessment of costs versus benefits
 can be seen as the most important one by far~\cite{schneidewind-preserve-or-redesign}.
@@ -354,7 +369,8 @@ fixing a bug or refactoring some source code becomes a tedious task.
 In consequence, human expenditures escalate compared to a well-known and well-documented
 solution owing to the fact that any activity on the legacy system takes more time.
 After all, the maintenance of poorly documented legacy software
-is more time-consuming and thus more costly.\\
+is more time-consuming and thus more costly.
+
 The second issue is about the absence of proper interfaces
 in legacy systems~\cite{bisbal-legacy-issues}. This problem manifests itself twofold.
 Firstly, integrating a legacy system into another system is onerous.
@@ -392,12 +408,17 @@ The axis depicts the amount of changes each approach entails.
 \includegraphics[width=.80\textwidth]{coping-with-legacy-systems}
 \caption{Four approaches to cope with legacy software systems~\cite{bisbal-legacy-issues}}
 \label{fig:coping-legacy}
-\end{figure}\newline
+\end{figure}
+
 To start from the far left, \textit{Wrapping} is the least revolutionary process.
 In fact, it actively endorses the continuation of a legacy software solution as
 portrayed in subsection \ref{sub-sect:continue-legacy}.
 This concept involves wrapping the existing codebase into an isolated package
-which is then just accessed via a newly created interface i.e. an API.\\
+which is then just accessed via a newly created interface i.e. an API.
+
+
+
+
 Finally, it is important to discern that it is likely that a combination of
 the explained concepts is utilized~\cite{bisbal-legacy-issues}.
 Some parts of a legacy system might be wrapped while others need to be redeveloped.
