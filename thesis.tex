@@ -8,7 +8,7 @@
 The system and software architecture of back-end applications for the short-term rental of electric scooters
 }
 \newcommand{\thesissubtitle}{
-Analysis of an existing solution and evaluation on the potential of its augmentation
+Analysis of an existing solution and evaluation of its extensibility
 }
 \newcommand{\thesisauthor}{Jakob Löhnertz}
 \newcommand{\thesisdate}{23. Juli 2018}
@@ -77,7 +77,7 @@ Furthermore, the fact that the scooters are always connected to the internet
 as well as the nature of current batteries desire a reactive and faultless application.\\
 Finally, the corporate partner of this thesis, which is discussed in detail
 in section \ref{sect:kumpan}, is already in possession of a solution which is not fully featured yet.
-Therefore, the subject of augmenting an existing back-end application with missing features is also targeted.\\
+Therefore, the subject of extending an existing back-end application with missing features is also targeted.\\
 To conclude, this leads into the research question of this bachelor thesis:\\
 \emph{Which functional modules are necessary for the implementation of a back-end application
 for the short-term rental of electric scooters and which considerations need to be made
@@ -155,7 +155,7 @@ is already set and can be seen as a necessity regardless of the final implementa
 A server back-end application as well as its infrastructure.
 \textit{Kumpan} purchased an existing software solution to achieve this.
 Beforehand, it was already known though that the software is not feature-complete
-for their usage. Thence, it is already planned to augment the software with the missing
+for their usage. Thence, it is already planned to extend the software with the missing
 features.
 
 
@@ -294,8 +294,8 @@ still fulfills the needs of its users and is therefore still profitable~\cite{be
 On the one hand, many problems arise with the operation of legacy systems but,
 on the other hand, there are also compelling reasons for an organization
 to keep a legacy system running. Both of these facets are discussed in the following sections.
-In the end, there are two options: a complete replacement of the legacy solution
-or a partial augmentation of it~\cite{bisbal-legacy-issues}.
+In the end, there are three options: a complete replacement of the legacy solution,
+a partial extension of it or migration to a new environment~\cite{bisbal-legacy-issues}.
 
 
 \subsection{Reasons to continue legacy software}
@@ -337,7 +337,7 @@ they are familiar with the legacy system~\cite{bennett-coping-legacy} which woul
 retraining a new one a vast cost driver.\\
 Lastly, a big concern that the company's management cannot even control is
 a poor or missing documentation.~\cn This circumstance is the most difficult one
-as it makes the redevelopment or the augmentation of the legacy software very intricate.
+as it makes the redevelopment or the extension of the legacy software very intricate.
 Consequently, this can go as far to leave the organization unable to completely apprehend
 every detail of its legacy software.\\
 In summary, these four aspects are mostly accountable for the continuation of legacy software
@@ -347,11 +347,37 @@ can be seen as the most important one by far~\cite{schneidewind-preserve-or-rede
 
 \subsection{Issues with legacy software}
 
-
+The last-named reason of a poor documentation in favor of continuing a
+legacy system is likewise a major issue~\cite{bisbal-legacy-issues}.
+The developers know far less about potential side-effects and thus
+fixing a bug or refactoring some source code becomes a tedious task.
+In consequence, human expenditures escalate compared to a well-known and well-documented
+solution owing to the fact that any activity on the legacy system takes more time.
+After all, the maintenance of poorly documented legacy software
+is more time-consuming and thus more costly.\\
+The second issue is about the absence of proper interfaces
+in legacy systems~\cite{bisbal-legacy-issues}. This problem manifests itself twofold.
+Firstly, integrating a legacy system into another system is onerous.
+Legacy software often completely lacks an externally accessible API.
+Therefore, connecting an aged technology stack of a legacy system to a completely
+different type of architectural design, most often running on a different programming language,
+might be virtually impossible or only achievable with severe wrapping
+of the interfaces of the legacy system. However, that intensifies the aforementioned
+issue of high human costs all the more.
+Secondly, the extensibility of a legacy system is worse.
+The developers that once created the legacy software might not be part of the
+organization anymore. If this fact is paired with poor documentation and/or
+an inferior software architecture, extending such a legacy solution is once again
+very time-consuming. For example, if a legacy software features
+low cohesion but high coupling, the converse way of how it should be~\cn,
+extending it might introduce unwanted side-effects which increase debugging
+time by a large margin.
 
 
 \subsection{Solutions to legacy software issues}
 
+Although, as just mentioned, the extensibility of legacy software might be mediocre,
+a couple of concepts do exist to add new features to an existing legacy software solution.
 
 
 
@@ -365,7 +391,7 @@ can be seen as the most important one by far~\cite{schneidewind-preserve-or-rede
 
 \newpage
 
-% In case the source lists are needed:
+% Source lists
 \listoffigures
 % \listoftables
 \newpage
