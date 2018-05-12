@@ -203,7 +203,7 @@ the information in a presentable way while not performing any serious
 business logic most of the time.
 
 
-\section{Approaching the development of software}
+\section{Approaching the development of software} \label{sect:software-development-process}
 
 From a very fundamental standpoint, software development consists of two distinct phases.
 The planning and analysis phase which leads into the programming phase~\cite{royce-large-systems}.
@@ -266,7 +266,7 @@ the next increment is getting projected and eventually executed as shown in figu
 \includegraphics[width=.60\textwidth]{iterative-and-incremental-model}
 \caption{A revised, iterative version of the waterfall model e.g. IID}
 \label{fig:idd-model}
-\end{figure}\\
+\end{figure}\newline
 To conclude, the stages Royce exhibited in 1970 are still applicable today.
 In some form or another, those are mandatory for implementing any software.
 
@@ -282,7 +282,7 @@ In some form or another, those are mandatory for implementing any software.
 \subsection{Maintenance}
 
 
-\section{Legacy software}
+\section{Legacy software} \label{sect:legacy-software}
 
 The term \textit{legacy software} describes a software product that was created
 some time in the past and thus became outdated in terms of the utilized technology
@@ -298,7 +298,7 @@ In the end, there are three options: a complete replacement of the legacy soluti
 a partial extension of it or migration to a new environment~\cite{bisbal-legacy-issues}.
 
 
-\subsection{Reasons to continue legacy software}
+\subsection{Reasons to continue legacy software} \label{sub-sect:continue-legacy}
 
 Formerly, a main reason to keep a software solution running was tied to its
 hardware requirements. Legacy software that is many decades old might still
@@ -378,7 +378,29 @@ time by a large margin.
 
 Although, as just mentioned, the extensibility of legacy software might be mediocre,
 a couple of concepts do exist to add new features to an existing legacy software solution.
-
+Generally speaking, they range from an evolution to a revolution~\cite{bisbal-legacy-issues}.
+Apart from just performing \textit{Maintenance} on the existing codebase,
+all other general approaches were already mentioned in section \ref{sect:legacy-software}.
+The approach of \textit{Maintenance} is excluded from this subsection as it
+has be applied to every software product as shown in section \ref{sect:software-development-process}.
+Nevertheless, it is a legitimate approach to cope with legacy software.
+In consequence, four main concepts can be defined as solutions to legacy software issues ---
+they are displayed in the following figure \ref{fig:coping-legacy}.
+The axis depicts the amount of changes each approach entails.
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.80\textwidth]{coping-with-legacy-systems}
+\caption{Four approaches to cope with legacy software systems~\cite{bisbal-legacy-issues}}
+\label{fig:coping-legacy}
+\end{figure}\newline
+To start from the far left, \textit{Wrapping} is the least revolutionary process.
+In fact, it actively endorses the continuation of a legacy software solution as
+portrayed in subsection \ref{sub-sect:continue-legacy}.
+This concept involves wrapping the existing codebase into an isolated package
+which is then just accessed via a newly created interface i.e. an API.\\
+Finally, it is important to discern that it is likely that a combination of
+the explained concepts is utilized~\cite{bisbal-legacy-issues}.
+Some parts of a legacy system might be wrapped while others need to be redeveloped.
 
 
 \chapter{Analysis} \label{chap:analysis}
