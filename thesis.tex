@@ -8,7 +8,7 @@
 The system and software architecture of back-end applications for the short-term rental of electric scooters
 }
 \newcommand{\thesissubtitle}{
-Analysis of an existing solution and evaluation of its extensibility
+Analysis of an existing legacy solution and evaluation of its extensibility
 }
 \newcommand{\thesisauthor}{Jakob Löhnertz}
 \newcommand{\thesisdate}{23. Juli 2018}
@@ -83,7 +83,7 @@ Finally, the corporate partner of this thesis, which is discussed in detail
 in section \ref{sect:kumpan}, is already in possession of a solution which is not fully featured yet.
 Therefore, the subject of extending an existing back-end application with missing features is also targeted.
 
-To conclude, this leads into the research question of this bachelor thesis:\\
+In conclusion, this leads into the research question of this bachelor thesis:\\
 \emph{Which functional modules are necessary for the implementation of a back-end application
 for the short-term rental of electric scooters and which considerations need to be made
 to integrate additional functionality into an existing legacy software solution for that purpose?}
@@ -297,15 +297,17 @@ while excluding the last two ones as they will not be part of the \textit{Analys
 The term \textit{legacy software} describes a software product that was created
 some time in the past and thus became outdated in terms of the utilized technology
 stack, its performance and security or its software architecture~\cite{seacord-modernizing-legacy}.
-All of the above can occur at once or only emerge partially.\\
+All of the above can occur at once or emerge partially.\\
 The term often bears a pejorative association with it although legacy software
 is still indispensable for the organization that makes use of it. Most of the time, it
 still fulfills the needs of its users and is therefore still profitable~\cite{bennett-coping-legacy}.
-On the one hand, many problems arise with the operation of legacy systems but,
+Moreover, the source code sometimes comprises the knowledge of the organization while
+the software itself is archaic. Owing to that fact, discontinuing legacy software can be difficult.
+Additionally, on the one hand, many problems arise with the operation of legacy systems but,
 on the other hand, there are also compelling reasons for an organization
 to keep a legacy system running. Both of these facets are discussed in the following sections.
-In the end, there are three options: a complete replacement of the legacy solution,
-a partial extension of it or migration to a new environment~\cite{bisbal-legacy-issues}.
+In the end, there are two general options: a complete replacement of the legacy system or
+a partial extension of it.
 
 
 \subsection{Reasons to continue legacy software} \label{sub-sect:continue-legacy}
@@ -347,10 +349,10 @@ in the same expected and quantifiable manner as its legacy counterpart.
 In addition, it is also possible that the users of the legacy software do not want
 to switch to a new solution due to third-party vendor lock-in or the fact that
 they are familiar with the legacy system~\cite{bennett-coping-legacy} which would make
-retraining a new one a vast cost driver.
+retraining a vast cost driver.
 
 Lastly, a big concern that the company's management cannot even control is
-a poor or missing documentation.~\cn This circumstance is the most difficult one
+poor or missing documentation.~\cn This circumstance is the most difficult one
 as it makes the redevelopment or the extension of the legacy software very intricate.
 Consequently, this can go as far to leave the organization unable to completely apprehend
 every detail of its legacy software.
@@ -360,7 +362,7 @@ within an organization. Albeit, the assessment of costs versus benefits
 can be seen as the most important one by far~\cite{schneidewind-preserve-or-redesign}.
 
 
-\subsection{Issues with legacy software}
+\subsection{Issues with legacy software} \label{issues-legacy-software}
 
 The last-named reason of a poor documentation in favor of continuing a
 legacy system is likewise a major issue~\cite{bisbal-legacy-issues}.
@@ -371,7 +373,14 @@ solution owing to the fact that any activity on the legacy system takes more tim
 After all, the maintenance of poorly documented legacy software
 is more time-consuming and thus more costly.
 
-The second issue is about the absence of proper interfaces
+The second issue emerges when a legacy software solution receives many
+patches and general improvements over time; its maintenance
+turns into a problem. The system becomes overly brittle due to its
+increasing complexity~\cite{seacord-modernizing-legacy, tilley-perspectives-reengineering}.
+This brittleness engenders a growing number of side-effects and bugs
+to the point where further extending the software becomes an ordeal.
+
+The final issue is about the absence of proper interfaces
 in legacy systems~\cite{bisbal-legacy-issues}. This problem manifests itself twofold.
 Firstly, integrating a legacy system into another system is onerous.
 Legacy software often completely lacks an externally accessible API.
@@ -393,16 +402,17 @@ time by a large margin.
 \subsection{Solutions to legacy software issues}
 
 Although, as just mentioned, the extensibility of legacy software might be mediocre,
-a couple of concepts do exist to add new features to an existing legacy software solution.
+a couple of concepts do exist to overhaul an existing legacy software solution.
 Generally speaking, they range from an evolution to a revolution~\cite{bisbal-legacy-issues}.
-Apart from just performing \textit{Maintenance} on the existing codebase,
-all other general approaches were already mentioned in section \ref{sect:legacy-software}.
 The approach of \textit{Maintenance} is excluded from this subsection as it
-has be applied to every software product as shown in section \ref{sect:software-development-process}.
+has to be applied to every software product as shown in section \ref{sect:software-development-process}.
 Nevertheless, it is a legitimate approach to cope with legacy software.
 In consequence, four main concepts can be defined as solutions to legacy software issues ---
 they are displayed in the following figure \ref{fig:coping-legacy}.
 The axis depicts the amount of changes each approach entails.
+However, it is important to discern that it is likely that a combination of
+the explained concepts is utilized~\cite{bisbal-legacy-issues}.
+Some parts of a legacy system might be wrapped while others need to be redeveloped.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=.80\textwidth]{coping-with-legacy-systems}
@@ -410,18 +420,73 @@ The axis depicts the amount of changes each approach entails.
 \label{fig:coping-legacy}
 \end{figure}
 
-To start from the far left, \textit{Wrapping} is the least revolutionary process.
-In fact, it actively endorses the continuation of a legacy software solution as
-portrayed in subsection \ref{sub-sect:continue-legacy}.
-This concept involves wrapping the existing codebase into an isolated package
-which is then just accessed via a newly created interface i.e. an API.
+
+\subsubsection{Redevelopment}
+
+To start from the far right, \textit{Redevelopment} is the most disruptive approach;
+it implicates the discontinuation of the currently used software.
+While having the huge disadvantage of being immensely cost-intensive, it indisputably
+yields the best results opposed to the issues with legacy software presented in
+subsection \ref{issues-legacy-software}.
+Nevertheless, the second big risk apart from economic concerns is
+the risk of failure.
+Finally, depending on the size of the project, it is possible that at the end
+of a long development cycle for the new software solution, it becomes outdated
+yet again by not fully meeting the ever-changing
+business needs anymore~\cite{stevens-software-reengineering-patterns}.
 
 
+\subsubsection{Migration}
 
+A median concept on the scale of figure \ref{fig:coping-legacy} is \textit{Migration}
+which is also known as \textit{Reengineering}~\cite{tilley-perspectives-reengineering}.
+These hypernyms actually describe two different solutions in terms of their goals;
+they are, however, often used interchangeably~\cite{bisbal-legacy-issues}.
+While both terms imply the extension of a legacy system, \textit{Reengineering}
+has the goal to phase out the existing system eventually.
+On the other hand, \textit{Migration} is just about augmenting the currently used
+solution with new functional components while replacing some others that cannot be used anymore
+for any reason. To put it into the words of Jesús Bisbal et al.:
+\begin{displayquote}
+\emph{"Migration seeks to reuse as much of the legacy information system as possible,
+including implementation, design, specification, and requirements."}~\cite{bisbal-legacy-issues}
+\end{displayquote}
+Meanwhile, Scott R. Tilley and Dennis Smith define \textit{Reengineering} as:
+\begin{displayquote}
+\emph{"Reengineering is the systematic transformation of an existing system
+into a new form […]"}~\cite{tilley-perspectives-reengineering}
+\end{displayquote}
+Consequently, these definitions put \textit{Reengineering} closer to \textit{Redevelopment},
+due to the fact that both pursue the same long-term goal.
+Nevertheless, in their execution, \textit{Migration} and \textit{Reengineering}
+are conducted similarly.\\
+Concretely, there are four major approaches to a \textit{Migration}
+process~\cite{malinova-legacy-techniques}, ranging from a moderate one
+to the just mentioned \textit{Reengineering} which is oftentimes a larger proposition.
 
-Finally, it is important to discern that it is likely that a combination of
-the explained concepts is utilized~\cite{bisbal-legacy-issues}.
-Some parts of a legacy system might be wrapped while others need to be redeveloped.
+\paragraph{Retargeting}
+If for any reason the hardware or utilized third-party software got outdated,
+the legacy software can be migrated to more performant hardware or
+up-to-date versions of the leveraged third-party software.\\
+\textit{Example}: Migrating the existing legacy software from traditional server
+hardware to cloud-computing.
+
+\paragraph{Conversion}
+However, the changes in hardware or third-party software might be too disruptive
+to perform them directly. In that case, a \textit{Conversion} of utilized
+programming languages or technology stacks can be conducted.
+Of course, this process is accompanied by much more work.\\
+\textit{Example}: Converting the existing non-relational database to a
+new database management system (DBMS) which is based on the relational SQL.
+
+\paragraph{COTS components}
+Furthermore, \textit{commercial-off-the-shelf (COTS) components} can be
+leveraged to replace certain parts of a legacy software solution which oftentimes also
+augments it, owing to the fact that such products are usually offering a wide
+variety of features.\\
+\textit{Example}: Replacing the customer management component of an existing
+legacy software with a current COTS customer \textit{customer relationship management (CRM)} solution.
+
 
 
 \chapter{Analysis} \label{chap:analysis}
