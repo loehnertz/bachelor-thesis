@@ -488,6 +488,60 @@ variety of features.\\
 legacy software with a current COTS customer \textit{customer relationship management (CRM)} solution.
 
 
+\subsubsection{Wrapping}
+
+To conclude, \textit{Wrapping} is the least revolutionary process.
+In fact, it actively endorses the continuation of a legacy software solution as
+portrayed in subsection \ref{sub-sect:continue-legacy}.
+This concept involves wrapping the existing codebase into an isolated package
+which is then just accessed via a newly created interface e.g. an API.
+The existing legacy software receives input parameters and returns an output.
+The substantial problem with this whole concept is that the legacy software does get
+extended only unidirectionally. It cannot invoke calls towards the newly added components.
+Therefore, this solution is rather short-term in nature.
+This concept can be divided into four distinct levels~\cite{sneed-encapsulating-legacy}.
+
+\paragraph{Database}
+A \textit{database wrapper} is the least interfering approach due to the fact that
+the existing source code can stay as it is; it just exposes the database of the current system
+to the outside.\\
+\textit{Example}: The database table persisting the print jobs of an existing legacy software
+is available for external programs.
+
+\paragraph{Service}
+The \textit{service wrapper} encapsulates distinct services from the legacy software
+into callable entities which can thus be invoked from an external system.\\
+\textit{Example}: The entire reservation system of an existing legacy software
+can be called via an API by an external system.
+
+\paragraph{Application}
+An \textit{application wrapper} provides single classes or whole components for external usage.
+It is similar to a \textit{service wrapper}, however, the wrapping is applied on a more
+compartmentalized level.\\
+\textit{Example}: The object of a class to create print jobs in a certain format
+gets exposed to the outside, allowing it to be used by external programs.
+
+\paragraph{Function}
+Finally, \textit{function wrappers} attach to the most microscopic portions of a software ---
+its functions. This approach can be useful if both low cohesion and low coupling are prevalent
+in the present legacy software.\\
+\textit{Example}: A single function that calculates a specific taxation value
+can be invoked by an external process.
+\newline
+
+To sum up, Robert C. Seacord also mentions \textit{Black-Box Modernization} as well as
+\textit{White-Box Modernization}~\cite{seacord-modernizing-legacy} which are
+effectively \textit{Wrapping} and \textit{Migration}. To put this into words,
+if an organization conducts the \textit{Wrapping} approach, the main goal is not
+to handle the internals of the legacy software.
+Meanwhile, a \textit{Migration} process embraces subtle changes to the codebase of the software.\\
+In consequence, owing to the fact that most of the time \textit{Wrapping} still
+involves some changes to the codebase, \textit{Migration} can be a better
+approach since it results in a longer-term solution.\\
+Nevertheless, the primary focus of both approaches is to achieve a greater
+return on investment (ROI) compared to a \textit{Redevelopment}~\cite{tilley-perspectives-reengineering}.
+
+
 
 \chapter{Analysis} \label{chap:analysis}
 
