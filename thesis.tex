@@ -461,8 +461,9 @@ due to the fact that both pursue the same long-term goal.
 Nevertheless, in their execution, \textit{Migration} and \textit{Reengineering}
 are conducted similarly.\\
 Concretely, there are four major approaches to a \textit{Migration}
-process~\cite{malinova-legacy-techniques}, ranging from a moderate one
-to the just mentioned \textit{Reengineering} which is oftentimes a larger proposition.
+process~\cite{malinova-legacy-techniques, seacord-modernizing-legacy},
+ranging from a moderate one to the just mentioned \textit{Reengineering}
+which is oftentimes a larger proposition.
 
 \paragraph{Retargeting}
 If for any reason the hardware or utilized third-party software got outdated,
@@ -481,11 +482,19 @@ new database management system (DBMS) which is based on the relational SQL.
 
 \paragraph{COTS components}
 Furthermore, \textit{commercial-off-the-shelf (COTS) components} can be
-leveraged to replace certain parts of a legacy software solution which oftentimes also
+leveraged to replace certain parts of a legacy software which oftentimes also
 augments it, owing to the fact that such products are usually offering a wide
 variety of features.\\
 \textit{Example}: Replacing the customer management component of an existing
-legacy software with a current COTS customer \textit{customer relationship management (CRM)} solution.
+legacy software with a current COTS \textit{customer relationship management (CRM)} solution.
+
+\paragraph{Reengineering}
+As already mentioned, this last approach is the most labor-intensive yet most promising one.
+During this procedure, the codebase gets refactored or reengineered
+into completely new components which then replace outdated ones.
+However, this process happens over time opposed to a \textit{Redevelopment} approach.\\
+\textit{Example}: Transfer an increasing amount of distinct components
+of the legacy application into web services.
 
 
 \subsubsection{Wrapping}
