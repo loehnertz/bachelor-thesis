@@ -170,7 +170,7 @@ features.
 
 \section{Components of a modern software product}
 
-The main aspect of success for such a system is indeed the \emph{magic} behind the scenes
+The main aspect of success for such a system is indeed the \textit{magic} behind the scenes
 that no customer sees. People just see the electric scooter as the product and
 want to be able to ride one on demand by just pushing a button.
 The ease of use for the customers and their satisfaction are the main facets
@@ -280,16 +280,126 @@ the next increment is getting projected and eventually executed as shown in figu
 \label{fig:idd-model}
 \end{figure}\newline
 To conclude, the stages Royce exhibited in 1970 are still applicable nowadays.
-In some form or another, those are mandatory for implementing any software.
-In the following subsections, the portrayed stages are discussed in greater detail,
-while excluding the last two ones as they will not be part of the \textit{Analysis}-chapter \ref{chap:analysis}.
+In some form or another, those are mandatory for implementing any software
+and became therefore known as the \textit{software development life cycle}.~\cite{se-ieee}
+This fact is corroborated by the IEEE's
+\textit{Guide to the Software Engineering Body of Knowledge (SWEBOK)}
+which is also recognized by the ISO~\cite{swebok}.
+This document defines \textit{"knowledge areas"} which match the depicted stages.\\
+Consequently, the portrayed stages are discussed in greater detail in the following subsections,
+while excluding the last two ones as they will not be part of chapter \ref{chap:analysis}.
+\newpage
 
 
 \subsection{Requirements}
 
+The \textit{SWEBOK} by IEEE defines \textit{Software Requirements} as:
+\begin{displayquote}
+\emph{"The Software Requirements knowledge area (KA) is concerned with
+the elicitation, analysis, specification, and validation of software requirements
+as well as the management of requirements during the whole
+life cycle of the software product."}~\cite{swebok}
+\end{displayquote}
+Generally speaking, two types of requirements do exist --- functional and non-functional ones.
+Functional requirements are definitive features of the software while non-functional
+requirements are describing aspects of the software like performance, security,
+user-friendliness and so forth~\cite{swebok}.
+Furthermore, requirements should be quantifiable; specific key figures should be established
+rather than broad statements like \textit{"overall great performance"}.
+Finally, after specifying the gathered requirements a validation of them should be conducted.
+This validation process is not part of this subsection though.
+
+
+\subsubsection{Elicitation}
+Requirements elicitation describes the process of gathering the requirements.
+Many stakeholders are part of this process e.g. the customer, software engineers,
+available users or a market analysis and the management of the organization conducting
+the development.
+During the elicitation, proper communication between these parties is the most important
+concern. Additionally, the stakeholders should always seek for a set of
+requirements that is still extensible later on~\cite{swebok}.
+
+\paragraph{Sources}
+The goal or objective of the software should be known and can be used to
+shape the overall requirements of the finished product.
+Moreover, the engineers and developers should utilize their knowledge especially
+toward the customer who usually does not know much about software development.
+Doing this, many early requirements by the customer can be rationalized to allow
+them to still be included albeit in a reasonable form.
+Additionally, all the stakeholders should seek for a balance between them in
+terms of their standpoints and requests.\\
+Finally, three sources remain that are derived from the organization and its sector.
+Namely, these are the organizational, operational, and business environments~\cite{swebok}.
+
+\subparagraph{Organizational environment}
+The employees of the organization are oftentimes the ones who use the software
+directly or indirectly. Thus, the developed software should fit into the existing
+organizational businesses processes. In case a disruption of any business process
+is expected due to the new software, this affair should be discussed with the
+employees of the organization.
+
+\subparagraph{Operational environment}
+The environment where the software will later be run is also important for the
+aggregation of requirements. If a certain performance is mandatory for the use case
+of the software, this should be formed into a concrete requirement.
+
+\subparagraph{Business environment}
+Commonly, the business of the organization dictates certain requirements like
+payments. For example, for paid services a preeminent requirement is that
+no customer should be able to circumvent the payment.
+
+
+\paragraph{Techniques}
+After the sources of the requirements are clarified, certain techniques can be
+applied to actually gather them.\\
+Interviews are seen as the most basic form of requirements elicitation;
+during these the stakeholders are getting interviewed to garner possible requirements.
+Similarly, meetings with all the stakeholders can be conducted to discuss the requirements.
+The advantage of this approach is that every stakeholder brings other considerations and
+different knowledge into the meeting which allows for better discussions.
+Furthermore, prototypes can be created to collect requirements early on while already
+receiving feedback for existing ones. Moreover, scenarios and observations can be
+conducted. A scenario looks at the use case of the software from the standpoint
+of the software engineers while an observation focuses on the perspective of the
+users. With the latter technique, it is often possible to discover requirements
+that were to minuscule to be mentioned by the other stakeholders or even by the users themselves.
+
+
+\subsubsection{Analysis}
+
+The analysis and later specification of the requirements begins with the classification
+of them and leads into some form of modeling.
+
+\paragraph{Classification}
+As already mentioned, the most basic form of classifying requirements is to group
+them into functional and non-functional ones. Moreover, it should be discerned
+wether a requirement is high-level or low-level in terms of its implementation.
+Additionally, the scope of the requirement can be a deciding factor.
+If a requirement has major implications on the whole software, it should be classified
+differently than a distinct but small feature. Similarly, the stakeholders should
+estimate how stable a requirement is; if it is likely to change, it should not
+play an integral role in the whole system.
+Finally, it should be determined how high or low the priority of each requirement is.
+This can lead to a more focused design and implementation with regard to achieving
+a minimal viable product (MVP) sooner than later during the development process.
+
+\paragraph{Modeling}
+After the requirements are classified, they can be modeled into e.g. a diagram.
+The \textit{SWEBOK} by IEEE mentions \textit{"use case diagrams, data flow models,
+state models, goal-based models, user interactions,
+object models, data models, and many others."}~\cite{swebok}
+The \textit{Unified Modeling Language (UML)} offers good, standardized diagrams
+to create these conceptual requirements models.
+
+
 \subsection{Design}
 
+Here goes the design description.
+
+
 \subsection{Implementation}
+
+Here goes the implementation description.
 
 
 \section{Legacy software} \label{sect:legacy-software}
@@ -299,7 +409,7 @@ some time in the past and thus became outdated in terms of the utilized technolo
 stack, its performance and security or its software architecture~\cite{seacord-modernizing-legacy}.
 All of the above can occur at once or emerge partially.\\
 The term often bears a pejorative association with it although legacy software
-is still indispensable for the organization that makes use of it. Most of the time, it
+is indispensable for the organization that makes use of it. Most of the time, it
 still fulfills the needs of its users and is therefore still profitable~\cite{bennett-coping-legacy}.
 Moreover, the source code sometimes comprises the knowledge of the organization while
 the software itself is archaic. Owing to that fact, discontinuing legacy software can be difficult.
