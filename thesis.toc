@@ -15,24 +15,24 @@
 \contentsline {paragraph}{Techniques}{12}{section*.10}
 \contentsline {subsubsection}{Analysis}{13}{section*.11}
 \contentsline {paragraph}{Classification}{13}{section*.12}
-\contentsline {paragraph}{Modeling}{14}{section*.13}
+\contentsline {paragraph}{Specification}{14}{section*.13}
 \contentsline {subsection}{\numberline {2.3.2}Design}{14}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}Implementation}{14}{subsection.2.3.3}
 \contentsline {section}{\numberline {2.4}Legacy software}{14}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Reasons to continue legacy software}{15}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Issues with legacy software}{16}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.2}Issues with legacy software}{17}{subsection.2.4.2}
 \contentsline {subsection}{\numberline {2.4.3}Solutions to legacy software issues}{18}{subsection.2.4.3}
 \contentsline {subsubsection}{Redevelopment}{18}{section*.15}
 \contentsline {subsubsection}{Migration}{19}{section*.16}
-\contentsline {paragraph}{Retargeting}{19}{section*.17}
+\contentsline {paragraph}{Retargeting}{20}{section*.17}
 \contentsline {paragraph}{Conversion}{20}{section*.18}
 \contentsline {paragraph}{COTS components}{20}{section*.19}
 \contentsline {paragraph}{Reengineering}{20}{section*.20}
-\contentsline {subsubsection}{Wrapping}{20}{section*.21}
+\contentsline {subsubsection}{Wrapping}{21}{section*.21}
 \contentsline {paragraph}{Database}{21}{section*.22}
 \contentsline {paragraph}{Service}{21}{section*.23}
 \contentsline {paragraph}{Application}{21}{section*.24}
-\contentsline {paragraph}{Function}{21}{section*.25}
+\contentsline {paragraph}{Function}{22}{section*.25}
 \contentsline {chapter}{\numberline {3}Analysis}{23}{chapter.3}
 \contentsline {chapter}{\numberline {4}Implementation}{24}{chapter.4}
 \contentsline {chapter}{\numberline {5}Conclusion}{25}{chapter.5}

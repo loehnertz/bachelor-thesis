@@ -303,9 +303,9 @@ life cycle of the software product."}~\cite{swebok}
 Generally speaking, two types of requirements do exist --- functional and non-functional ones.
 Functional requirements are definitive features of the software while non-functional
 requirements are describing aspects of the software like performance, security,
-user-friendliness and so forth~\cite{swebok}.
+user-friendliness and so forth~\cite{sommerville-se}.\\
 Furthermore, requirements should be quantifiable; specific key figures should be established
-rather than broad statements like \textit{"overall great performance"}.
+rather than broad statements like \textit{"overall great performance"}.\\
 Finally, after specifying the gathered requirements a validation of them should be conducted.
 This validation process is not part of this subsection though.
 
@@ -351,7 +351,7 @@ no customer should be able to circumvent the payment.
 
 \paragraph{Techniques}
 After the sources of the requirements are clarified, certain techniques can be
-applied to actually gather them.\\
+applied to actually gather them~\cite{sommerville-se, swebok}.\\
 Interviews are seen as the most basic form of requirements elicitation;
 during these the stakeholders are getting interviewed to garner possible requirements.
 Similarly, meetings with all the stakeholders can be conducted to discuss the requirements.
@@ -381,15 +381,20 @@ estimate how stable a requirement is; if it is likely to change, it should not
 play an integral role in the whole system.
 Finally, it should be determined how high or low the priority of each requirement is.
 This can lead to a more focused design and implementation with regard to achieving
-a minimal viable product (MVP) sooner than later during the development process.
+a minimal viable product (MVP) sooner than later during
+the development process~\cite{swebok, sommerville-se}.
 
-\paragraph{Modeling}
-After the requirements are classified, they can be modeled into e.g. a diagram.
+\paragraph{Specification}
+After the requirements are classified, they can be modeled into e.g.
+a natural language specification or a diagram.
 The \textit{SWEBOK} by IEEE mentions \textit{"use case diagrams, data flow models,
 state models, goal-based models, user interactions,
 object models, data models, and many others."}~\cite{swebok}
 The \textit{Unified Modeling Language (UML)} offers good, standardized diagrams
 to create these conceptual requirements models.
+Moreover, Ian Sommerville states that natural language documents
+are still the most widely used form of requirements specification as they are
+\textit{expressive, intuitive, and universal}~\cite{sommerville-se}.
 
 
 \subsection{Design}
