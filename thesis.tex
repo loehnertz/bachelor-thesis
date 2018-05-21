@@ -71,10 +71,8 @@ software engineering which is defined as:
 \emph{"The application of a systematic, disciplined, quantifiable approach to the
 development, operation, and maintenance of software."}~\cite{se-ieee}
 \end{displayquote}
-To put this definition into words, software engineering mainly targets
-the domains of software architecture, code quality and documentation.\cn\\
-All of these pursue one long-term goal: to achieve a well functioning, maintainable
-software product.
+As a consequence, section \ref{sect:software-development-process} exhibits
+said approach in great detail.
 
 Furthermore, the fact that the scooters are always connected to the internet
 as well as the nature of current batteries desire a reactive and faultless application.
@@ -177,7 +175,7 @@ The ease of use for the customers and their satisfaction are the main facets
 to be considered by the provider of such a service.
 
 This, as nearly every modern software product geared towards a general audience,
-involves two foundational components --- a front-end and a back-end~\cite{fischer-lexikon}.
+involves two foundational components --- a front-end and a back-end.
 On the one hand, the front-end provides the user interface of the product, the façade of the whole.
 It is the component the customer interacts with but more importantly it will be
 what the users identify the product with.
@@ -399,12 +397,103 @@ are still the most widely used form of requirements specification as they are
 
 \subsection{Design}
 
-Here goes the design description.
+Software design is defined as: \textit{"the process of defining
+the architecture, components, interfaces, and other characteristics
+of a system or component"}~\cite{iso-se}.
+The result of said process is the software architecture which describes the
+components of the software as well as their interfaces~\cite{swebok}.
+However, software architecture has two layers: the high-level design as well as
+the low-level design which is about the more detailed
+construction of single components~\cite{iso-sdlc}.
 
 
 \subsection{Implementation}
 
-Here goes the implementation description.
+Some important concepts are at the core of implementing software.
+The engineers and developers should try to minimize the complexity of the whole system
+to make it more maintainable in the future.
+Additionally, source code reuse should be administered either with own source code,
+external libraries or even COTS~\cite{swebok}.
+Furthermore, the development team should agree upon a set of standards.
+This starts with obvious choices like the programming languages of the software
+and continues with coding standards and tooling~\cite{mcconnell-code-complete}.
+Finally, testing and integration are another set of considerations.
+Unit testing is an important tool to continuously test the developed components;
+it describes the procedure of testing single \textit{units} respectively components
+of the codebase with comparing a known set of correctly corresponding input and output
+with the actual output with the given input~\cn.
+Moreover, after finishing the construction of the software or even during that stage,
+an integration strategy has to be deployed. Namely, these are either a
+\textit{phased} or an \textit{incremental} approach. A \textit{phased} integration
+process waits for all the necessary components to finish and assembles them into a
+holistic solution in one step. In contrast, an \textit{incremental} approach
+integrates components once they are finished. These two general approaches
+were already reflected in section \ref{sect:software-development-process}.
+
+\subsubsection{Considerations}
+The actual construction can be conducted in many different ways.
+The \textit{SWEBOK} by IEEE mentions sixteen distinct considerations~\cite{swebok}.
+The most important ones for this thesis are discussed in the following paragraphs.
+
+\paragraph{Assertions and \textit{Defensive Programming}}
+The input parameters of a function can be checked to ensure that their types
+or general form are correct. This can eliminate many runtime issues while not
+being overly difficult to employ. Similarly, the term \textit{Defensive Programming}
+refers to the procedure of meticulously checking every input value of a function
+to prevent its breakup. Additionally, a strategy needs to be deployed on how to
+handle corrupted inputs~\cite{swebok}.
+
+\paragraph{Error handling}
+It is customary that software spawns errors. Consequently, a strategy on how
+to handle errors should be deployed. This can include returning the error code
+and/or error message to the calling routine, logging the error message, or
+eventually to halt the execution of the software~\cite{swebok}.\\
+The most well-known and most common approach however is \textit{exception handling}.
+This concept uses \textit{try/catch-blocks} to execute code inside of
+the \textit{try-segment}. In case of an exceptional error event,
+an \textit{exception} is thrown. Further on, the \textit{catch-segment}
+implements a strategy on how to handle the occurred \textit{exception};
+this can be one of the aforementioned ones, for example.
+
+\paragraph{API design}
+If a software is comprised of externally available interfaces,
+one or multiple Application Programming Interfaces (APIs) should be developed
+on top of the actual components. An API exposes the software to external programs
+and functions like an interface. Its distinctiveness stems from the fact that
+an API should be hard to misuse, easy to extend, stable, and backwards compatible~\cite{swebok}.
+
+\paragraph{Runtime configuration}
+Oftentimes, the corporate users of a finished software solution want to be able
+to change the behavior of the software by supplying different configurations.
+Traditionally, this is accomplished by using configuration files which allow
+the users to change certain characteristics by choosing from a set of options.
+With proper \textit{Assertions} of the input configuration, this feature of a
+software is a good approach to allow non-developers to change the deployed software
+in a fenced manner.
+
+\paragraph{Concurrency}
+Nowadays, software processes can be executed concurrently to maximize the performance
+of said process. In case the engineers and developers of a software solution
+are utilizing concurrency models, it is important to agree on a strategy to
+mitigate runtime problems arising from running a process concurrently.
+
+\paragraph{Middleware}
+The term \textit{middleware} is really broad. In essence, it describes a piece
+of software that is not part of an operating system whose purpose is to
+offer easier communication between other software solutions e.g. by handling
+their input and output in a standardized way.
+Middleware is often utilized in a distributed or service-oriented system architecture,
+owing to the fact that connecting the services is a task that every developer
+of such software has to undergo which brings forth standardizations.
+
+\paragraph{\textit{Test-Driven Development (TDD)}}
+\textit{Test-Driven Development (TDD)} is a procedure in which the developer
+writes tests for a component prior to actual source code.
+This allows for easier error detection early on and forces the developer to think
+more about the stages prior to the \textit{Implementation} ---
+\textit{Requirements} and \textit{Design}~\cite{swebok}.
+
+\newpage
 
 
 \section{Legacy software} \label{sect:legacy-software}
