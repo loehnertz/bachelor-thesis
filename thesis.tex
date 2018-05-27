@@ -166,16 +166,16 @@ for their usage. Thence, it is already planned to extend the software with the m
 features.
 
 
-\section{Components of a modern software product}
+\section{Components of a modern software product} \label{sect:frontend/backend}
 
-The main aspect of success for such a system is indeed the \textit{magic} behind the scenes
+The main aspect of success for such a system is the \textit{magic} behind the scenes
 that no customer sees. People just see the electric scooter as the product and
 want to be able to ride one on demand by just pushing a button.
 The ease of use for the customers and their satisfaction are the main facets
 to be considered by the provider of such a service.
 
-This, as nearly every modern software product geared towards a general audience,
-involves two foundational components --- a front-end and a back-end.
+Oftentimes this, as virtually all the short-rental services on the market~\cn,
+involves two foundational web-based components --- a front-end and a back-end\cn.
 On the one hand, the front-end provides the user interface of the product, the façade of the whole.
 It is the component the customer interacts with but more importantly it will be
 what the users identify the product with.
@@ -188,9 +188,9 @@ If the back-end behaves sluggish or is prone to errors, the front-end will not b
 by the same token. In the end, both form a synergy with each other.
 
 This thesis will shed light on the back-end of such an application.
-It will focus on the software architecture of it.
-This includes the functionalities that are mandatory and the question on how the product
-might come together; from ideas and drafts to written source code.
+It will focus on the system and software architecture of it.
+This includes the functionalities that are mandatory and the question on
+how the product might come together; from ideas and drafts to written source code.
 
 
 \subsection{Necessity of a thorough back-end application}
@@ -230,8 +230,8 @@ the stages shown in figure \ref{fig:waterfall-model}.
 \caption{The essential stages of the waterfall model}
 \label{fig:waterfall-model}
 \end{figure}
-The main point of it is that the steps are conducted sequentially; no step should
-begin before the current one has been finished~\cite{boehm-spiral}.
+The main point of it is that the steps are conducted sequentially;
+no step should begin before the current one has been finished~\cite{boehm-spiral}.
 This idea has one big flaw: the \textit{Verification} phase being nearly at the end.
 Only after the whole software product is finished, an evaluation by internal testing personnel or
 the client can be carried out~\cite{royce-large-systems}.
@@ -256,7 +256,7 @@ can be subsumed under the loose term \textit{agile}.
 In summary, as the term already depicts, this theory is geared towards
 the idea that the software development process should not be as rigid and constrained.
 Therefore, it stands in stark contrast to the demonstrated waterfall model.
-The term does not describe a distinct concept but rather an idea ---
+The term does not describe an explicit concept but rather an idea ---
 there are dozens of implementations of agile software development~\cite{martin-agile-practices}.
 Regardless of the implementation, most often agile approaches are based around
 the idea of \textit{Iterative and Incremental Development (IID)}~\cite{larman-iid-history}.
@@ -286,8 +286,8 @@ which is also recognized by the ISO~\cite{swebok}.
 This document defines \textit{"knowledge areas"} which match the depicted stages.\\
 Consequently, the portrayed stages are discussed in greater detail in the following subsections,
 while excluding the last two ones as they will not be part of chapter \ref{chap:analysis}.
-Moreover, these explanations do not consider the difference in development utilizing
-an incremental approach opposed to a sequential one; the point of view is generalized.
+Moreover, these explanations do not follow an incremental approach
+or a sequential one --- the point of view is generalized.
 \newpage
 
 
@@ -376,12 +376,12 @@ them into functional and non-functional ones. Moreover, it should be discerned
 wether a requirement is high-level or low-level in terms of its implementation.
 Additionally, the scope of the requirement can be a deciding factor.
 If a requirement has major implications on the whole software, it should be classified
-differently than a distinct but small feature. Similarly, the stakeholders should
+differently than a specific but small feature. Similarly, the stakeholders should
 estimate how stable a requirement is; if it is likely to change, it should not
 play an integral role in the whole system.
 Finally, it should be determined how high or low the priority of each requirement is.
 This can lead to a more focused design and implementation with regard to achieving
-a minimal viable product (MVP) sooner than later during
+a \textit{minimal viable product (MVP)} sooner than later during
 the development process~\cite{swebok, sommerville-se}.
 
 \paragraph{Specification}
@@ -416,9 +416,10 @@ requirements determine the high-level architectural design of an application~\ci
 
 Regardless of the final software architecture, software design principles exist
 that are shared and applied in some way by every software; the \textit{SWEBOK} by IEEE
-mentions seven of them~\cite{swebok}: abstraction, coupling and cohesion,
-decomposition and modularization, information hiding, separation of interface
-and implementation, sufficiency and completeness, and separation of concerns.
+mentions seven of them~\cite{swebok}: \textit{Abstraction}, \textit{Coupling and Cohesion},
+\textit{Decomposition and Modularization}, \textit{Information Hiding},
+\textit{Separation of Interface and Implementation},
+\textit{Sufficiency and Completeness}, and \textit{Separation of Concerns}.
 Ideally, if applied correctly, these principles greatly improve the structure
 of any software which in return enhance other areas of the
 software development process like maintenance. All of the mentioned
@@ -437,11 +438,11 @@ These two terms are describing how a component behaves in regard to the whole ap
 \textit{Coupling} is a measure of the interdependence of a component whereas
 \textit{Cohesion} depicts how associated the elements of the components are~\cite{swebok}.
 Consequently, this concept is therefore close to the aforementioned \textit{Abstraction}
-since high coupling lowers the abstraction of a system and vice versa.
+since high \textit{Coupling} lowers the abstraction of a system and vice versa.
 
 \paragraph{Decomposition and Modularization}
 Software should be divided into components and even sub-components that each fulfill
-a distinct task while having concrete interfaces to interact with each other.
+an unique task while having concrete interfaces to interact with each other.
 Oftentimes, the resulted components are called modules hence the term \textit{Modularization}.
 
 \paragraph{Information Hiding}
@@ -471,18 +472,131 @@ of \textit{Separation of Concerns} to some extent~\cite{mitchell-managing-se}.
 
 \subsubsection{Design decisions}
 
+As the word \textit{decision} depicts, \textit{Design decisions} are all about
+answering questions regarding the software design. While contemplating about
+the answer to each question, the software architecture increasingly emerges.
+Additionally, if every decision is made, the architecture automatically gains
+sophistication. Ian Sommerville states nine \textit{Design decisions} in his
+standard work \textit{Software Engineering}~\cite{sommerville-se}.
+For this thesis, exactly five of them were picked to be answered later on:
+\begin{enumerate}
+\item What architectural patterns or styles might be used?
+\item What will be the fundamental approach used to structure the system?
+\item How will the structural components in the system be decomposed into sub-components?
+\item What strategy will be used to control the operation of the components in the system?
+\item What architectural organization is best for delivering the non-functional requirements of the system?
+\end{enumerate}
+Furthermore, the engineers should think about the following five non-functional characteristics:
+\textit{Performance}, \textit{Security}, \textit{Safety}, \textit{Availability},
+and \textit{Maintenance}~\cite{sommerville-se}. However, how exactly these are
+regarded and achieved is not part of this subsection.
 
 
+\subsubsection{Architectural styles}
 
-\subsubsection{Architectural patterns}
+Many \textit{Architectural styles}, sometimes called \textit{Architectural patterns},
+do exist and can be utilized to model ones software architecture after them.
+More precisely, they can be defined as:
+\begin{displayquote}
+\emph{"Architectural patterns are a means of reusing knowledge about
+generic system architectures. They describe the architecture,
+explain when it may be used, and discuss its advantages and disadvantages."}~\cite{sommerville-se}
+\end{displayquote}
+Due to the large amount of such patterns, not every single one can be discussed
+in this subsection. Consequently, three patterns were chosen to be discussed
+in greater detail in the following paragraphs. Owing to the fact, that this
+thesis is focused on web-based client-server systems, as depicted in
+section \ref{sect:frontend/backend}, only solutions geared towards a back-end are exhibited.
 
+\paragraph{Layered}
+A \textit{Layered} style divides the whole software into distinct layers that
+all handle a different task. A famous example is to use a presentation,
+business logic, and database layer. However, an application can have completely different
+layers. This concept most likely demands a \textit{monolithic} deployment approach;
+that means an interwoven application running as a single program~\cn.
+In theory, this approach is fairly testable and maintainable
+as the layers can be seen and extended separately. Additionally, this approach demands
+for no middleware as described in subsection \ref{subsect:implementation} which
+makes it easy to get started with for many different types of software solutions.\\
+Nevertheless, this concept has some severe shortcomings.
+A developer typically needs to grasp all the layers to understand the whole application.
+Moreover, it a difficult task to draw a clear line where one layer ends and the
+next one begins.
+Furthermore, even if the engineers clearly stated that border,
+it is very easy to skip over certain layers by e.g. implementing some logic
+in the interfaces towards the presentational layer whereas logic should only occur
+inside of the business logic layer; this increases the \textit{Coupling} of the application.
+Finally, the application unavoidably becomes larger and slower to a point
+where it starts not to perform ideally anymore.
+Additionally, at this point, it can become difficult to maintain the application due
+to its size and/or possibly higher \textit{Coupling}~\cite{richards-sa-patterns}.
+The result is what many engineers contemptuously denominate
+as a \textit{big ball of mud}~\cite{fairbanks-sa}.
 
+\paragraph{Event-driven}
+This architectural style is often called \textit{publish-subscribe style} as well~\cite{fairbanks-sa}.
+This concept works by having separated components that each fulfill certain tasks.
+In between all of the components is an \textit{event bus} that accepts events from
+the components and makes them available to all the other ones. Thus, this approach
+demands for some middleware, the \textit{event bus} at least.
+Components can subscribe to an event type while they and the others publish events
+that occurred during their execution. If an event gets published that another component
+is subscribed to, it can pick that event up via the \textit{event bus} and invoke
+a pre-defined action. That way, the whole application becomes implicitly invoked;
+no component directly calls functions of another one~\cite{garlan-shaw-sa}.
+In consequence, this concept has some very unique advantages as well as disadvantages.
+The \textit{Coupling} of an application following the \textit{Event-driven} approach
+is lower since the subscribing components do not even know which other component
+published the event. Additionally, proper \textit{Modularization} and \textit{Information Hiding}
+can be achieved more easily. Therefore, the maintainability as well as the extensibility
+of the application are significantly better; publishing components can easily be replaced
+as long as the published events stay the same.\\
+A downside is the fact that opposed to traditional call-based architectures,
+the components of an \textit{Event-driven} architecture receive no feedback regarding
+their published events. Especially if a subscribing component publishes a new event
+in response to the received one; the component of the originally published
+event never comes to know if its event was successfully consumed or not ---
+it becomes oblivious.
+Additionally, the visualization of such an \textit{Event-driven} approach
+is drastically more difficult. Due to the fact that every component can
+\textit{"talk"} to every other one and that the \textit{event bus} is just in between
+all of them, the resulting diagram can become noticeably ambiguous~\cite{fairbanks-sa}.
+Finally, error handling can become a tedious task since an error in one component
+often means that another component has to rollback their preceding execution which
+triggered the published event. A rollback strategy has to be conceptualized to
+achieve appropriate error handling~\cite{richards-sa-patterns}.
+
+\paragraph{Service-oriented}
+A \textit{Service-oriented} approach divides the whole application into distinct
+services that all run as separate programs. Thus, this style is the polar opposite
+of the aforementioned \textit{monolith}. The single services call each other via
+\textit{remote procedure calls (RPC)} or even over the internet utilizing HTTP
+and a data exchange format such as JSON~\cn.
+The advantages are clear compared to a \textit{monolithic} approach.
+The services can be fully replaced if their interfaces stay the same and the
+scaling of single services becomes easier since every one of them runs as a single program.
+Moreover, the reusability of services can be better if each service is properly \textit{abstracted}.
+Furthermore, a \textit{Service-oriented} approach even allows for multiple programming languages
+across different services. Albeit the complexity increases, is becomes possible
+to choose \textit{the best tool for the task}.\\
+The main difficulty arises from the fact that it is oftentimes problematic to cleanly
+divide a business logic into distinct services~\cite{fowler-monolith-first}.
+Additionally, the performance of the application is oftentimes worse compared to
+a \textit{monolith} one since the interface interactions are conducted across multiple
+executed programs~\cite{richards-sa-patterns}.
+However, this architectural style is a topic on its own hence further exhibition
+of it would unfortunately bloat this subsection.\\
+
+In summary, all of the portrayed styles dramatically change the way the final product
+is structured. Thus, the step of choosing an architectural style is an, if not the
+most important part of the software design process. After choosing a style,
+it is only useful to visualize the components of the software utilizing the chosen style.
 
 
 \subsubsection{Visualization}
 
-There are two general types of notations regarding software architectures.
-The simpler one are the \textit{block diagrams}; they portray the components of
+There are two general types of notations regarding software architectures~\cite{sommerville-se}.
+The simpler one is the \textit{block diagram}; it portrays the components of
 a software as well as their sub-components. Additionally, directed arrows depict
 the data flow between them. However, \textit{block diagrams} are neither a
 standardized notation nor do they illustrate much detail.
@@ -498,7 +612,7 @@ approach to get started with~\cite{sommerville-se}. A more detailed and standard
 visualization is however useful for a thorough documentation.
 
 
-\subsection{Implementation}
+\subsection{Implementation} \label{subsect:implementation}
 
 Some important concepts are at the core of implementing software.
 The engineers and developers should try to minimize the complexity of the whole system
@@ -803,7 +917,7 @@ The existing legacy software receives input parameters and returns an output.
 The substantial problem with this whole concept is that the legacy software does get
 extended only unidirectionally. It cannot invoke calls towards the newly added components.
 Therefore, this solution is rather short-term in nature.
-This concept can be divided into four distinct levels~\cite{sneed-encapsulating-legacy}.
+This concept can be divided into four disparate levels~\cite{sneed-encapsulating-legacy}.
 
 \paragraph{Database}
 A \textit{database wrapper} is the least interfering approach due to the fact that
@@ -849,9 +963,22 @@ return on investment (ROI) compared to a \textit{Redevelopment}~\cite{tilley-per
 
 \chapter{Analysis} \label{chap:analysis}
 
+
+
+
 \chapter{Implementation} \label{chap:implementation}
 
+\epigraphhead[55]{\epigraph{Once a system becomes a ball of mud,
+some developers find security and prestige in being the select few who
+can understand and evolve it, while those who detest the mud […] run away.
+The result is that the ball of mud is rarely cleaned up.}
+{\textit{George H. Fairbanks}}}
+
+
+
+
 \chapter{Conclusion} \label{chap:conclusion}
+
 
 
 
