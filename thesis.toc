@@ -17,30 +17,41 @@
 \contentsline {paragraph}{Classification}{13}{section*.12}
 \contentsline {paragraph}{Specification}{14}{section*.13}
 \contentsline {subsection}{\numberline {2.3.2}Design}{14}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Implementation}{14}{subsection.2.3.3}
-\contentsline {subsubsection}{Considerations}{15}{section*.14}
-\contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{15}{section*.15}
-\contentsline {paragraph}{Error handling}{15}{section*.16}
-\contentsline {paragraph}{API design}{16}{section*.17}
-\contentsline {paragraph}{Runtime configuration}{16}{section*.18}
-\contentsline {paragraph}{Concurrency}{16}{section*.19}
-\contentsline {paragraph}{Middleware}{16}{section*.20}
-\contentsline {paragraph}{\textit {Test-Driven Development (TDD)}}{17}{section*.21}
-\contentsline {section}{\numberline {2.4}Legacy software}{18}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Reasons to continue legacy software}{18}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Issues with legacy software}{20}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Solutions to legacy software issues}{21}{subsection.2.4.3}
-\contentsline {subsubsection}{Redevelopment}{22}{section*.23}
-\contentsline {subsubsection}{Migration}{22}{section*.24}
-\contentsline {paragraph}{Retargeting}{23}{section*.25}
-\contentsline {paragraph}{Conversion}{23}{section*.26}
-\contentsline {paragraph}{COTS components}{23}{section*.27}
-\contentsline {paragraph}{Reengineering}{24}{section*.28}
-\contentsline {subsubsection}{Wrapping}{24}{section*.29}
-\contentsline {paragraph}{Database}{24}{section*.30}
-\contentsline {paragraph}{Service}{25}{section*.31}
-\contentsline {paragraph}{Application}{25}{section*.32}
-\contentsline {paragraph}{Function}{25}{section*.33}
-\contentsline {chapter}{\numberline {3}Analysis}{26}{chapter.3}
-\contentsline {chapter}{\numberline {4}Implementation}{27}{chapter.4}
-\contentsline {chapter}{\numberline {5}Conclusion}{28}{chapter.5}
+\contentsline {subsubsection}{Principles}{14}{section*.14}
+\contentsline {paragraph}{Abstraction}{15}{section*.15}
+\contentsline {paragraph}{Coupling and Cohesion}{15}{section*.16}
+\contentsline {paragraph}{Decomposition and Modularization}{15}{section*.17}
+\contentsline {paragraph}{Information Hiding}{15}{section*.18}
+\contentsline {paragraph}{Separation of Interface and Implementation}{15}{section*.19}
+\contentsline {paragraph}{Sufficiency and Completeness}{16}{section*.20}
+\contentsline {paragraph}{Separation of Concerns}{16}{section*.21}
+\contentsline {subsubsection}{Design decisions}{16}{section*.22}
+\contentsline {subsubsection}{Architectural patterns}{16}{section*.23}
+\contentsline {subsubsection}{Visualization}{16}{section*.24}
+\contentsline {subsection}{\numberline {2.3.3}Implementation}{17}{subsection.2.3.3}
+\contentsline {subsubsection}{Considerations}{18}{section*.25}
+\contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{18}{section*.26}
+\contentsline {paragraph}{Error handling}{18}{section*.27}
+\contentsline {paragraph}{API design}{18}{section*.28}
+\contentsline {paragraph}{Runtime configuration}{19}{section*.29}
+\contentsline {paragraph}{Concurrency}{19}{section*.30}
+\contentsline {paragraph}{Middleware}{19}{section*.31}
+\contentsline {paragraph}{Test-Driven Development (TDD)}{19}{section*.32}
+\contentsline {section}{\numberline {2.4}Legacy software}{20}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Reasons to continue legacy software}{20}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Issues with legacy software}{22}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Solutions to legacy software issues}{23}{subsection.2.4.3}
+\contentsline {subsubsection}{Redevelopment}{24}{section*.34}
+\contentsline {subsubsection}{Migration}{24}{section*.35}
+\contentsline {paragraph}{Retargeting}{25}{section*.36}
+\contentsline {paragraph}{Conversion}{25}{section*.37}
+\contentsline {paragraph}{COTS components}{25}{section*.38}
+\contentsline {paragraph}{Reengineering}{26}{section*.39}
+\contentsline {subsubsection}{Wrapping}{26}{section*.40}
+\contentsline {paragraph}{Database}{26}{section*.41}
+\contentsline {paragraph}{Service}{27}{section*.42}
+\contentsline {paragraph}{Application}{27}{section*.43}
+\contentsline {paragraph}{Function}{27}{section*.44}
+\contentsline {chapter}{\numberline {3}Analysis}{28}{chapter.3}
+\contentsline {chapter}{\numberline {4}Implementation}{29}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{30}{chapter.5}

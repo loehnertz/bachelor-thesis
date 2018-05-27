@@ -286,6 +286,8 @@ which is also recognized by the ISO~\cite{swebok}.
 This document defines \textit{"knowledge areas"} which match the depicted stages.\\
 Consequently, the portrayed stages are discussed in greater detail in the following subsections,
 while excluding the last two ones as they will not be part of chapter \ref{chap:analysis}.
+Moreover, these explanations do not consider the difference in development utilizing
+an incremental approach opposed to a sequential one; the point of view is generalized.
 \newpage
 
 
@@ -405,6 +407,95 @@ components of the software as well as their interfaces~\cite{swebok}.
 However, software architecture has two layers: the high-level design as well as
 the low-level design which is about the more detailed
 construction of single components~\cite{iso-sdlc}.
+Usually, the functional requirements mentioned in the previous subsection dictate
+what the low-level architecture will look like. In contrast, non-functional
+requirements determine the high-level architectural design of an application~\cite{bosch-sa}.
+
+
+\subsubsection{Principles}
+
+Regardless of the final software architecture, software design principles exist
+that are shared and applied in some way by every software; the \textit{SWEBOK} by IEEE
+mentions seven of them~\cite{swebok}: abstraction, coupling and cohesion,
+decomposition and modularization, information hiding, separation of interface
+and implementation, sufficiency and completeness, and separation of concerns.
+Ideally, if applied correctly, these principles greatly improve the structure
+of any software which in return enhance other areas of the
+software development process like maintenance. All of the mentioned
+software design principles are discussed briefly in the following paragraphs.
+
+\paragraph{Abstraction}
+\textit{Abstraction} is about perspective; it tries to achieve that an object or
+function only focuses on the information that is mandatory for the execution of
+their task while not taking account of the full set of information.
+For instance, a function that is used in two locations of an application
+should be abstract enough to be used in a third one later on without
+any modifications to it.
+
+\paragraph{Coupling and Cohesion}
+These two terms are describing how a component behaves in regard to the whole application.
+\textit{Coupling} is a measure of the interdependence of a component whereas
+\textit{Cohesion} depicts how associated the elements of the components are~\cite{swebok}.
+Consequently, this concept is therefore close to the aforementioned \textit{Abstraction}
+since high coupling lowers the abstraction of a system and vice versa.
+
+\paragraph{Decomposition and Modularization}
+Software should be divided into components and even sub-components that each fulfill
+a distinct task while having concrete interfaces to interact with each other.
+Oftentimes, the resulted components are called modules hence the term \textit{Modularization}.
+
+\paragraph{Information Hiding}
+From the outside of a component, the internals of its implementation should be hidden.
+Thus, data should only be accessed via an interface which in return makes it irrelevant
+for other components to know about the processed information inside of a component.
+To conclude, this concept is the consequence of the proper application of \textit{Modularization}.
+
+\paragraph{Separation of Interface and Implementation}
+Similarly, the interface of a component should not reveal the implementation of
+that component. Moreover, this allows for easier maintenance as the implementation
+can be changed without modifying much more of the interface than the direct connection
+of it to the implementation.
+
+\paragraph{Sufficiency and Completeness}
+These terms describe the goal of achieving components that implemented their
+planned requirements in an abstract way while not implementing anything else
+which is not directly congruent with their purpose.
+
+\paragraph{Separation of Concerns}
+A \textit{Concern} is any characteristic of a software system
+e.g. the business logic, the user interface, the database, or even distinct features.
+All of these should be separated into different portions of the software.
+To sum up, all of the mentioned software design principles are the application
+of \textit{Separation of Concerns} to some extent~\cite{mitchell-managing-se}.
+
+
+\subsubsection{Design decisions}
+
+
+
+
+\subsubsection{Architectural patterns}
+
+
+
+
+\subsubsection{Visualization}
+
+There are two general types of notations regarding software architectures.
+The simpler one are the \textit{block diagrams}; they portray the components of
+a software as well as their sub-components. Additionally, directed arrows depict
+the data flow between them. However, \textit{block diagrams} are neither a
+standardized notation nor do they illustrate much detail.
+Therefore, a \textit{block diagram} can be used in the beginning of the software
+design process to have an abstract of the overall software architecture.
+Moreover, this visualization technique can be used to get everybody on the development team
+on the same level. Owing to their relative simplicity, even non-developer members
+of the team can grasp the designed architecture. The final result of
+the software design process can be a more standardized visualization
+e.g. a type of UML diagram. However, this approach is oftentimes already too close
+to the implementation which favors a \textit{block diagram} as the general
+approach to get started with~\cite{sommerville-se}. A more detailed and standardized
+visualization is however useful for a thorough documentation.
 
 
 \subsection{Implementation}
@@ -486,7 +577,7 @@ Middleware is often utilized in a distributed or service-oriented system archite
 owing to the fact that connecting the services is a task that every developer
 of such software has to undergo which brings forth standardizations.
 
-\paragraph{\textit{Test-Driven Development (TDD)}}
+\paragraph{Test-Driven Development (TDD)}
 \textit{Test-Driven Development (TDD)} is a procedure in which the developer
 writes tests for a component prior to actual source code.
 This allows for easier error detection early on and forces the developer to think
