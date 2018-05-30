@@ -31,7 +31,7 @@
 \contentsline {paragraph}{Event-driven}{18}{section*.25}
 \contentsline {paragraph}{Service-oriented}{19}{section*.26}
 \contentsline {subsubsection}{Visualization}{20}{section*.27}
-\contentsline {subsection}{\numberline {2.3.3}Implementation}{21}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.3}Construction}{21}{subsection.2.3.3}
 \contentsline {subsubsection}{Considerations}{22}{section*.28}
 \contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{22}{section*.29}
 \contentsline {paragraph}{Error handling}{22}{section*.30}
