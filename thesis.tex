@@ -96,7 +96,7 @@ and exceeds our human intellectual capabilities for management and control.}
 {\textit{Harlan D. Mills}}}
 
 
-\section{The market for the rental of electric scooters}
+\section{The market for the rental of electric scooters} \label{sect:electric-scooter-market}
 
 The market for the short-term rental of motor vehicles in Germany
 is currently growing rapidly~\cite{bundesverband-carsharing-statistics}.
@@ -107,7 +107,7 @@ It has been dictated by large corporations such as \textit{Sixt}, \textit{Hertz}
 Although smaller providers exist, this market has become an oligopoly and
 the barriers for a market entry are high for new types of providers.
 
-In contrast, the market for short-term rental, also known as car sharing for cars,
+In contrast, the market for short-term rental, also known as \textit{car sharing} for cars,
 is a comparatively young market. It has only existed in Europe in its breadth
 since the late 1980s~\cite{history-of-carsharing} and in its current form
 only since the advent of the smartphone, since many offers require the use of a mobile app.
@@ -124,18 +124,24 @@ Electric scooters do not even appear in the statistics of the
 
 However, the market in other nations has already experienced strong growth;
 one example is the Chinese market. Around 20 million electric scooters were sold
-there in 2016 alone~\cite{heise-electric-scooters}.
-Additionally, the short-term rental of these is already a working business model
-in China~\cite{allchinatech-electric-scooters}. Market value forecasts are also promising.
+there in 2016 alone~\cite{heise-electric-scooters}. Market value forecasts are also promising.
 Last year, the US company \textit{P\&S Market Research} predicted an annual growth of
 just under 7\% in the market for motorized two-wheeled vehicles with
 electric drive until 2025~\cite{pands-electric-scooters}.
-The totality of these figures and the status quo in China create a positive impression
-with regard to the possibility of a successful market entry into this sector in Germany.
-The future of the market is also promising, as more and more nations around the world
+The future of the market is promising, as more and more nations around the world
 are deciding on a ban on vehicles with internal combustion engines for the
-foreseeable future~\cite{faz-combustion-engine-ban} and companies already
-in the market are undertaking their first expansions~\cite{allchinatech-electric-scooters, faz-electric-scooters}.
+foreseeable future~\cite{faz-combustion-engine-ban}.
+
+Nevertheless, there are already working business models in European cities
+which can yield additional information.
+According to the \textit{Global Scootersharing Market Report 2017} by the
+\textit{Innovation Centre for Mobility and Societal Change (InnoZ) GmbH},
+the short-term rental of scooters in general consist 92\% of scooters with
+electric drive. Additionally, 95\% are so-called \textit{free-floating systems},
+meaning that each customer can drop off the scooters wherever they want, regardless
+of their current location as long as it is within the available area of the offering operator.
+Finally, three main models do exist for billing the customers~\cn.
+Namely, these are billing per minute, billing per kilometer, or a fixed rate for a whole ride.
 
 
 \subsection{German electric scooter manufacturer \textit{Kumpan}} \label{sect:kumpan}
@@ -285,13 +291,14 @@ This fact is corroborated by the IEEE's
 which is also recognized by the ISO~\cite{swebok}.
 This document defines \textit{"knowledge areas"} which match the depicted stages.\\
 Consequently, the portrayed stages are discussed in greater detail in the following subsections,
-while excluding the last two ones as they will not be part of chapter \ref{chap:analysis}.
+while excluding the last two ones as they will not be part of the
+\textit{\nameref{chap:analysis}} chapter.
 Moreover, these explanations do not follow an incremental approach
 or a sequential one --- the point of view is generalized.
 \newpage
 
 
-\subsection{Requirements}
+\subsection{Requirements} \label{subsect:requirements}
 
 The \textit{SWEBOK} by IEEE defines \textit{Software Requirements} as:
 \begin{displayquote}
@@ -577,7 +584,7 @@ The services can be fully replaced if their interfaces stay the same and the
 scaling of single services becomes easier since every one of them runs as a single program.
 Moreover, the reusability of services can be better if each service is properly \textit{abstracted}.
 Furthermore, a \textit{Service-oriented} approach even allows for multiple programming languages
-across different services. Albeit the complexity increases, is becomes possible
+across different services. Albeit the complexity increases, it becomes possible
 to choose \textit{the best tool for the task}.\\
 The main difficulty arises from the fact that it is oftentimes problematic to cleanly
 divide a business logic into distinct services~\cite{fowler-monolith-first}.
@@ -963,7 +970,161 @@ return on investment (ROI) compared to a \textit{Redevelopment}~\cite{tilley-per
 
 \chapter{Analysis} \label{chap:analysis}
 
+This chapter is structured similarly to the \textit{\nameref{chap:fundamentals}}
+chapter. The first part is about the system and software architecture of
+a back-end application for the short-term rental of electric scooters.
+Consequently, the stages of a software development process as depicted
+in section \ref{sect:software-development-process} are being exhibited.
+The second part discusses the legacy software solution by \textit{Kumpan}
+in terms of its components, issues and solutions to these issues.
 
+
+\section{Hypothetical software solution} \label{sect:hypothetical-solution}
+
+\subsection{Requirements}
+
+As stated in subsection \ref{subsect:requirements}, the first step of
+requirements engineering is the \textit{Elicitation}.
+For that purpose, three executive stakeholders
+at \textit{Kumpan}, the corporate partner of this thesis, were interviewed
+to obtain the requirements for an ideal back-end application for the
+short-term rental of electric scooters.\\
+The discussed hypothetical software solution is meant for being licensed to
+the actual operators of such a rental business. Therefore, an operator
+is expected to maintain the application. Additionally, according to the
+mentioned \textit{Environments}, three first requirements emerge:
+
+\paragraph{Organizational}
+The operating organization will employ service workers who
+control certain aspects of the software. They are therefore still users of the
+software albeit not being the target group. At this point it is still unclear
+how much personnel would be sufficient but a small team of service workers is
+enough to execute the business process and to serve the paying users.
+
+\paragraph{Operational}
+The service workers will use the non-public front-end of the software within a
+web browser. Therefore, the interfaces of the software should be usable by
+a web-based front-end solution.
+
+\paragraph{Business}
+The whole business model will be based around paying users. Consequently,
+a working automated billing process as well as arrears billing is absolutely
+crucial. It is expected to leverage the services of a third-party payment
+provider owing to the fact that the operating organizations do not want to
+handle private credit card information and the likes.
+
+
+\subsubsection{Use Case}
+
+The interview with the stakeholders quickly resolved around the use case
+of such an application which yielded many requirements:\\
+
+The user will have to download a mobile application or use the web app
+of the operating organization. Consequently, both types of front-end applications
+should be able to use the back-end application.\\
+
+No user should be able to do anything without being logged into their account.
+Thus, an implemented enrollment process is mandatory.\\
+
+Within that process the user will have to fill in his or her
+contact information, a valid driver's license as well as billing information.\\
+
+Finally, the customer has to accept the terms and conditions of the operating
+organization as well as the chosen billing model as described in
+section \ref{sect:electric-scooter-market}. The operator should be able to chose
+their billing model for all the customers application-wide.\\
+
+After successful enrollment, the user will be greeted with a map of the current
+location. This map should display all the currently available scooters at
+their respective locations. The user can then browse the selection
+of scooters and eventually chose one to rent.\\
+
+The rental process will begin with a reservation of the chosen scooter for
+a arbitrary time that the operator should be able to change application-wide.\\
+
+Consequently, during the reservation time and the actual rental period,
+the scooter should not appear on the map anymore for other users.\\
+
+Next, the user is granted the set timeframe to get to the chosen scooter.
+If the user arrives to late, the scooter should re-appear on the map,
+available to every customer.\\
+
+Once he or she arrived, the scooter as well as its ignition can be remotely
+unlocked by the press of a button inside of the mobile app.
+The back-end application however actually sends the signal to the scooter to
+unlock itself.\\
+
+Finally, the user can begin the ride for a previously chosen timeframe
+or even indefinitely. After being finished, the user can discard of the scooter
+anywhere within a certain range set by the operator.\\
+
+Finally, the scooter is getting locked again and will re-appear on the map for the other users.\\
+
+Moreover, during the ride, the scooter constantly sends its location as well
+as other information about the current speed and battery statistics.
+These information will be sent to a separate server which just persists them
+without processing them any further.
+Consequently, the back-end application will regularly fetch the information data
+from said external server to monitor every ongoing ride of all the customers.\\
+
+If a user drives out of the allowed operating range, a notification will be sent
+to the scooter of that user.\\
+
+If the battery gets low on charge, the user will be warned as well to finish the ride.\\
+
+Additionally, after said ride has ended the scooter should also not re-appear
+on the map of available ones.\\
+
+The threshold for the low battery condition should also be changeable
+application-wide by the operator.\\
+
+Finally, the billing process should begin after the ride.\\
+
+Furthermore, the user should be able to get statistics about his or her rides
+e.g. the driven distance, the costs, the average speed and theoretically
+many more. Therefore, the back-end application should allow those information
+to be accessed by each customer while not exposing the statistics of others.\\
+
+These are all of the functional requirements. A UML use case diagram is used
+to put them in perspective.
+
+
+DIAGRAM\\
+
+
+Additionally, there is just one non-functional requirement.
+As depicted in section \ref{sect:electric-scooter-market}, the current market
+for the short-term rental of electric scooters is still fairly small.
+Consequently, it is difficult to estimate how many users will use the system
+in future years. Thus, the non-functional requirement is that the system
+should be easily scalable.
+
+
+\subsection{Design}
+
+Design
+
+
+\subsection{Construction}
+
+Construction
+
+
+\section{Legacy software solution} \label{sect:legacy-solution}
+
+\subsection{Structure}
+
+Structure
+
+
+\subsection{Issues}
+
+Issues
+
+
+\subsection{Possible solutions}
+
+Possible solutions
 
 
 \chapter{Implementation} \label{chap:implementation}

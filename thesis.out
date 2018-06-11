@@ -13,5 +13,13 @@
 \BOOKMARK [2][-]{subsection.2.4.2}{Issues with legacy software}{section.2.4}% 13
 \BOOKMARK [2][-]{subsection.2.4.3}{Solutions to legacy software issues}{section.2.4}% 14
 \BOOKMARK [0][-]{chapter.3}{Analysis}{}% 15
-\BOOKMARK [0][-]{chapter.4}{Implementation}{}% 16
-\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 17
+\BOOKMARK [1][-]{section.3.1}{Hypothetical software solution}{chapter.3}% 16
+\BOOKMARK [2][-]{subsection.3.1.1}{Requirements}{section.3.1}% 17
+\BOOKMARK [2][-]{subsection.3.1.2}{Design}{section.3.1}% 18
+\BOOKMARK [2][-]{subsection.3.1.3}{Construction}{section.3.1}% 19
+\BOOKMARK [1][-]{section.3.2}{Legacy software solution}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.2.1}{Structure}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.2}{Issues}{section.3.2}% 22
+\BOOKMARK [2][-]{subsection.3.2.3}{Possible solutions}{section.3.2}% 23
+\BOOKMARK [0][-]{chapter.4}{Implementation}{}% 24
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 25
