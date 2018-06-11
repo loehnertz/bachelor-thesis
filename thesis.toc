@@ -2,71 +2,71 @@
 \contentsline {chapter}{\numberline {1}Problems and research question}{3}{chapter.1}
 \contentsline {chapter}{\numberline {2}Fundamentals}{5}{chapter.2}
 \contentsline {section}{\numberline {2.1}The market for the rental of electric scooters}{5}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}German electric scooter manufacturer \textit {Kumpan}}{6}{subsection.2.1.1}
-\contentsline {section}{\numberline {2.2}Components of a modern software product}{7}{section.2.2}
+\contentsline {subsection}{\numberline {2.1.1}German electric scooter manufacturer \textit {Kumpan}}{7}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Components of a modern software product}{8}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Necessity of a thorough back-end application}{8}{subsection.2.2.1}
 \contentsline {section}{\numberline {2.3}Approaching the development of software}{9}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Requirements}{12}{subsection.2.3.1}
-\contentsline {subsubsection}{Elicitation}{12}{section*.5}
-\contentsline {paragraph}{Sources}{12}{section*.6}
-\contentsline {subparagraph}{Organizational environment}{13}{section*.7}
-\contentsline {subparagraph}{Operational environment}{13}{section*.8}
-\contentsline {subparagraph}{Business environment}{13}{section*.9}
-\contentsline {paragraph}{Techniques}{13}{section*.10}
-\contentsline {subsubsection}{Analysis}{14}{section*.11}
-\contentsline {paragraph}{Classification}{14}{section*.12}
-\contentsline {paragraph}{Specification}{15}{section*.13}
-\contentsline {subsection}{\numberline {2.3.2}Design}{15}{subsection.2.3.2}
-\contentsline {subsubsection}{Principles}{15}{section*.14}
-\contentsline {paragraph}{Abstraction}{16}{section*.15}
-\contentsline {paragraph}{Coupling and Cohesion}{16}{section*.16}
-\contentsline {paragraph}{Decomposition and Modularization}{16}{section*.17}
-\contentsline {paragraph}{Information Hiding}{16}{section*.18}
-\contentsline {paragraph}{Separation of Interface and Implementation}{17}{section*.19}
-\contentsline {paragraph}{Sufficiency and Completeness}{17}{section*.20}
-\contentsline {paragraph}{Separation of Concerns}{17}{section*.21}
-\contentsline {subsubsection}{Design decisions}{17}{section*.22}
-\contentsline {subsubsection}{Architectural styles}{18}{section*.23}
-\contentsline {paragraph}{Layered}{18}{section*.24}
-\contentsline {paragraph}{Event-driven}{19}{section*.25}
-\contentsline {paragraph}{Service-oriented}{20}{section*.26}
-\contentsline {subsubsection}{Visualization}{21}{section*.27}
-\contentsline {subsection}{\numberline {2.3.3}Construction}{22}{subsection.2.3.3}
-\contentsline {subsubsection}{Considerations}{23}{section*.28}
-\contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{23}{section*.29}
-\contentsline {paragraph}{Error handling}{23}{section*.30}
-\contentsline {paragraph}{API design}{23}{section*.31}
-\contentsline {paragraph}{Runtime configuration}{24}{section*.32}
-\contentsline {paragraph}{Concurrency}{24}{section*.33}
-\contentsline {paragraph}{Middleware}{24}{section*.34}
-\contentsline {paragraph}{Test-Driven Development (TDD)}{24}{section*.35}
-\contentsline {section}{\numberline {2.4}Legacy software}{25}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Reasons to continue legacy software}{25}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Issues with legacy software}{27}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Solutions to legacy software issues}{28}{subsection.2.4.3}
-\contentsline {subsubsection}{Redevelopment}{29}{section*.37}
-\contentsline {subsubsection}{Migration}{29}{section*.38}
-\contentsline {paragraph}{Retargeting}{30}{section*.39}
-\contentsline {paragraph}{Conversion}{30}{section*.40}
-\contentsline {paragraph}{COTS components}{30}{section*.41}
-\contentsline {paragraph}{Reengineering}{31}{section*.42}
-\contentsline {subsubsection}{Wrapping}{31}{section*.43}
-\contentsline {paragraph}{Database}{31}{section*.44}
-\contentsline {paragraph}{Service}{32}{section*.45}
-\contentsline {paragraph}{Application}{32}{section*.46}
-\contentsline {paragraph}{Function}{32}{section*.47}
-\contentsline {chapter}{\numberline {3}Analysis}{33}{chapter.3}
-\contentsline {section}{\numberline {3.1}Hypothetical software solution}{33}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Requirements}{33}{subsection.3.1.1}
-\contentsline {paragraph}{Organizational}{34}{section*.48}
-\contentsline {paragraph}{Operational}{34}{section*.49}
-\contentsline {paragraph}{Business}{34}{section*.50}
-\contentsline {subsubsection}{Use Case}{34}{section*.51}
-\contentsline {subsection}{\numberline {3.1.2}Design}{37}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Construction}{37}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}Legacy software solution}{37}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Structure}{37}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Issues}{37}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Possible solutions}{37}{subsection.3.2.3}
-\contentsline {chapter}{\numberline {4}Implementation}{38}{chapter.4}
-\contentsline {chapter}{\numberline {5}Conclusion}{39}{chapter.5}
+\contentsline {subsection}{\numberline {2.3.1}Requirements}{13}{subsection.2.3.1}
+\contentsline {subsubsection}{Elicitation}{13}{section*.5}
+\contentsline {paragraph}{Sources}{13}{section*.6}
+\contentsline {subparagraph}{Organizational environment}{14}{section*.7}
+\contentsline {subparagraph}{Operational environment}{14}{section*.8}
+\contentsline {subparagraph}{Business environment}{14}{section*.9}
+\contentsline {paragraph}{Techniques}{14}{section*.10}
+\contentsline {subsubsection}{Analysis}{15}{section*.11}
+\contentsline {paragraph}{Classification}{15}{section*.12}
+\contentsline {paragraph}{Specification}{16}{section*.13}
+\contentsline {subsection}{\numberline {2.3.2}Design}{16}{subsection.2.3.2}
+\contentsline {subsubsection}{Principles}{16}{section*.14}
+\contentsline {paragraph}{Abstraction}{17}{section*.15}
+\contentsline {paragraph}{Coupling and Cohesion}{17}{section*.16}
+\contentsline {paragraph}{Decomposition and Modularization}{17}{section*.17}
+\contentsline {paragraph}{Information Hiding}{17}{section*.18}
+\contentsline {paragraph}{Separation of Interface and Implementation}{18}{section*.19}
+\contentsline {paragraph}{Sufficiency and Completeness}{18}{section*.20}
+\contentsline {paragraph}{Separation of Concerns}{18}{section*.21}
+\contentsline {subsubsection}{Design decisions}{18}{section*.22}
+\contentsline {subsubsection}{Architectural styles}{19}{section*.23}
+\contentsline {paragraph}{Layered}{19}{section*.24}
+\contentsline {paragraph}{Event-driven}{20}{section*.25}
+\contentsline {paragraph}{Service-oriented}{21}{section*.26}
+\contentsline {subsubsection}{Visualization}{22}{section*.27}
+\contentsline {subsection}{\numberline {2.3.3}Construction}{23}{subsection.2.3.3}
+\contentsline {subsubsection}{Considerations}{24}{section*.28}
+\contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{24}{section*.29}
+\contentsline {paragraph}{Error handling}{24}{section*.30}
+\contentsline {paragraph}{API design}{24}{section*.31}
+\contentsline {paragraph}{Runtime configuration}{25}{section*.32}
+\contentsline {paragraph}{Concurrency}{25}{section*.33}
+\contentsline {paragraph}{Middleware}{25}{section*.34}
+\contentsline {paragraph}{Test-Driven Development (TDD)}{25}{section*.35}
+\contentsline {section}{\numberline {2.4}Legacy software}{26}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Reasons to continue legacy software}{26}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Issues with legacy software}{28}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Solutions to legacy software issues}{29}{subsection.2.4.3}
+\contentsline {subsubsection}{Redevelopment}{30}{section*.37}
+\contentsline {subsubsection}{Migration}{30}{section*.38}
+\contentsline {paragraph}{Retargeting}{31}{section*.39}
+\contentsline {paragraph}{Conversion}{31}{section*.40}
+\contentsline {paragraph}{COTS components}{31}{section*.41}
+\contentsline {paragraph}{Reengineering}{32}{section*.42}
+\contentsline {subsubsection}{Wrapping}{32}{section*.43}
+\contentsline {paragraph}{Database}{32}{section*.44}
+\contentsline {paragraph}{Service}{33}{section*.45}
+\contentsline {paragraph}{Application}{33}{section*.46}
+\contentsline {paragraph}{Function}{33}{section*.47}
+\contentsline {chapter}{\numberline {3}Analysis}{34}{chapter.3}
+\contentsline {section}{\numberline {3.1}Hypothetical software solution}{34}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Requirements}{34}{subsection.3.1.1}
+\contentsline {paragraph}{Organizational}{35}{section*.48}
+\contentsline {paragraph}{Operational}{35}{section*.49}
+\contentsline {paragraph}{Business}{35}{section*.50}
+\contentsline {subsubsection}{Use Case}{35}{section*.51}
+\contentsline {subsection}{\numberline {3.1.2}Design}{38}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Construction}{38}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Legacy software solution}{38}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Structure}{38}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Issues}{38}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Possible solutions}{39}{subsection.3.2.3}
+\contentsline {chapter}{\numberline {4}Implementation}{41}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{42}{chapter.5}
