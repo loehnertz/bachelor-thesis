@@ -406,7 +406,7 @@ are still the most widely used form of requirements specification as they are
 \textit{expressive, intuitive, and universal}~\cite{sommerville-se}.
 
 
-\subsection{Design}
+\subsection{Design} \label{subsect:design}
 
 Software design is defined as: \textit{"the process of defining
 the architecture, components, interfaces, and other characteristics
@@ -418,7 +418,29 @@ the low-level design which is about the more detailed
 construction of single components~\cite{iso-sdlc}.
 Usually, the functional requirements mentioned in the previous subsection dictate
 what the low-level architecture will look like. In contrast, non-functional
-requirements determine the high-level architectural design of an application~\cite{bosch-sa}.
+requirements often determine the high-level architectural design of an application~\cite{bosch-sa}.
+However, oftentimes a mixture of both will determine both aspects of the final software architecture.
+
+
+\subsubsection{Design decisions}
+
+As the word \textit{decision} depicts, \textit{Design decisions} are all about
+answering questions regarding the software design. While contemplating about
+the answer to each question, the software architecture increasingly emerges.
+Additionally, if every decision is made, the architecture automatically gains
+sophistication. Ian Sommerville states nine \textit{Design decisions} in his
+standard work \textit{Software Engineering}~\cite{sommerville-se}.
+For this thesis, four of them were picked to be substantive:
+\begin{enumerate}
+\item What architectural patterns or styles might be used?
+\item What architectural organization is best for delivering the non-functional requirements of the system?
+\item What will be the fundamental approach used to structure the system?
+\item What strategy will be used to control the operation of the components in the system?
+\end{enumerate}
+Furthermore, the engineers should think about the following five non-functional characteristics:
+\textit{Performance}, \textit{Security}, \textit{Safety}, \textit{Availability},
+and \textit{Maintenance}~\cite{sommerville-se}. However, how exactly these are
+regarded and achieved is not part of this subsection.
 
 
 \subsubsection{Principles}
@@ -479,29 +501,7 @@ To sum up, all of the mentioned software design principles are the application
 of \textit{Separation of Concerns} to some extent~\cite{mitchell-managing-se}.
 
 
-\subsubsection{Design decisions}
-
-As the word \textit{decision} depicts, \textit{Design decisions} are all about
-answering questions regarding the software design. While contemplating about
-the answer to each question, the software architecture increasingly emerges.
-Additionally, if every decision is made, the architecture automatically gains
-sophistication. Ian Sommerville states nine \textit{Design decisions} in his
-standard work \textit{Software Engineering}~\cite{sommerville-se}.
-For this thesis, exactly five of them were picked to be answered later on:
-\begin{enumerate}
-\item What architectural patterns or styles might be used?
-\item What will be the fundamental approach used to structure the system?
-\item How will the structural components in the system be decomposed into sub-components?
-\item What strategy will be used to control the operation of the components in the system?
-\item What architectural organization is best for delivering the non-functional requirements of the system?
-\end{enumerate}
-Furthermore, the engineers should think about the following five non-functional characteristics:
-\textit{Performance}, \textit{Security}, \textit{Safety}, \textit{Availability},
-and \textit{Maintenance}~\cite{sommerville-se}. However, how exactly these are
-regarded and achieved is not part of this subsection.
-
-
-\subsubsection{Architectural styles}
+\subsubsection{Architectural styles} \label{subsubsect:architectural-styles}
 
 Many \textit{Architectural styles}, sometimes called \textit{Architectural patterns},
 do exist and can be utilized to model ones software architecture after them.
@@ -526,7 +526,8 @@ that means an interwoven application running as a single program~\cn.
 In theory, this approach is fairly testable and maintainable
 as the layers can be seen and extended separately. Additionally, this approach demands
 for no middleware as described in subsection \ref{subsect:construction} which
-makes it easy to get started with for many different types of software solutions.\\
+makes it easy to get started with for many different types of software solutions.
+
 Nevertheless, this concept has some severe shortcomings.
 A developer typically needs to grasp all the layers to understand the whole application.
 Moreover, it a difficult task to draw a clear line where one layer ends and the
@@ -559,7 +560,8 @@ is lower since the subscribing components do not even know which other component
 published the event. Additionally, proper \textit{Modularization} and \textit{Information Hiding}
 can be achieved more easily. Therefore, the maintainability as well as the extensibility
 of the application are significantly better; publishing components can easily be replaced
-as long as the published events stay the same.\\
+as long as the published events stay the same.
+
 A downside is the fact that opposed to traditional call-based architectures,
 the components of an \textit{Event-driven} architecture receive no feedback regarding
 their published events. Especially if a subscribing component publishes a new event
@@ -577,8 +579,13 @@ achieve appropriate error handling~\cite{richards-sa-patterns}.
 
 \paragraph{Service-oriented}
 A \textit{Service-oriented} approach divides the whole application into distinct
-services that all run as separate programs. Thus, this style is the polar opposite
-of the aforementioned \textit{monolith}. The single services call each other via
+services that all run as separate programs. Thus, this style is the
+polar opposite of the aforementioned \textit{monolith}.
+This architectural style includes the \textit{Microservice} architecture
+which is getting popular in recent years. The main distinction is that
+\textit{Microservices} are generally more fine-grained although the definition
+is rather ambiguous depending on the source.
+The single services call each other via
 \textit{remote procedure calls (RPC)} or even over the internet utilizing HTTP
 and a data exchange format such as JSON~\cn.
 The advantages are clear compared to a \textit{monolithic} approach.
@@ -587,14 +594,43 @@ scaling of single services becomes easier since every one of them runs as a sing
 Moreover, the reusability of services can be better if each service is properly \textit{abstracted}.
 Furthermore, a \textit{Service-oriented} approach even allows for multiple programming languages
 across different services. Albeit the complexity increases, it becomes possible
-to choose \textit{the best tool for the task}.\\
+to choose \textit{the best tool for the task}.
+Another advantage is that the single services can be duplicated independently
+in case some of them experience more load than others.
+
 The main difficulty arises from the fact that it is oftentimes problematic to cleanly
 divide a business logic into distinct services~\cite{fowler-monolith-first}.
 Additionally, the performance of the application is oftentimes worse compared to
 a \textit{monolith} one since the interface interactions are conducted across multiple
 executed programs~\cite{richards-sa-patterns}.
-However, this architectural style is a topic on its own hence further exhibition
-of it would unfortunately bloat this subsection.\\
+Finally, compared to e.g. a layered approach there is much more setup needed.
+The orchestration of the services requires middleware (see \ref{subsect:construction})
+to ensure the flawless execution of the application~\cn.
+
+The most important middleware is a \textit{Service Discovery} which keeps track
+of the addresses of all the available services so the integration of them into
+each other gets faster, easier and less error-prone.\\
+Additionally, a server that does the routing between the services based on the
+addresses from the \textit{service discovery} is mandatory. At some point,
+this can be paired with a load balancer in case multiple instances of some
+services do exist.\\
+Furthermore, a gateway into the service infrastructure is mandatory to guard
+them from security threats from outside. Especially an API gateway can be
+utilized to automatically route incoming requests from external users into the
+application without letting the public access the services directly.\\
+Finally, a \textit{Circuit Breaker} should be used to prevent large-scale failures.
+If one service is experiencing high load which leads to high latency on incoming
+requests from other services or even a complete breakdown of said service,
+the requesting services might themselves become sluggish owing to the fact
+that they will wait for the responses of the broken service.
+Consequently, this can lead to a cascade of breakdowns of services that wait for
+already broken ones to handle their requests. To mitigate that problem,
+the aforementioned \textit{Circuit Breaker} pattern can be utilized.
+Critical requests towards other services are getting invoked through
+a \textit{Circuit Breaker} which will prevent subsequent requests to
+a service that recently was not able to respond within a set timeout.
+In that way, the broken service can recover from the high load
+while the one where the \textit{Circuit Breaker} tripped will not break down itself~\cn.\\
 
 In summary, all of the portrayed styles dramatically change the way the final product
 is structured. Thus, the step of choosing an architectural style is an, if not the
@@ -972,6 +1008,12 @@ return on investment (ROI) compared to a \textit{Redevelopment}~\cite{tilley-per
 
 \chapter{Analysis} \label{chap:analysis}
 
+\epigraphhead[55]{\epigraph{Once a system becomes a ball of mud,
+some developers find security and prestige in being the select few who
+can understand and evolve it, while those who detest the mud […] run away.
+The result is that the ball of mud is rarely cleaned up.}
+{\textit{George H. Fairbanks}}}
+
 This chapter is structured similarly to the \textit{\nameref{chap:fundamentals}}
 chapter. The first part is about the system and software architecture of
 a back-end application for the short-term rental of electric scooters.
@@ -1091,12 +1133,12 @@ many more. Therefore, the back-end application should allow those information
 to be accessed by each customer while not exposing the statistics of others.\\
 
 These are all of the functional requirements;
-Figure \ref{fig:use-case-diagram} is used to put them in perspective.\\
+Figure \ref{fig:use-case-diagram} is used to put them into perspective.\\
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=1\textwidth]{use-case-diagram}
-\caption{UML use case diagram}
+\caption{UML use case diagram based on the requirements of the hypothetical software solution}
 \label{fig:use-case-diagram}
 \end{figure}
 
@@ -1105,12 +1147,74 @@ As depicted in section \ref{sect:electric-scooter-market}, the current market
 for the short-term rental of electric scooters is still fairly small.
 Consequently, it is difficult to estimate how many users will use the system
 in future years. Thus, the only non-functional requirement is that the system
-should be easily scalable.
+should be easily scalable in case of a significant influx of new customers.
 
 
 \subsection{Design}
 
-Design
+The fundamentals of the software design are determined by answering the five
+\textit{design decisions} posed in subsection \ref{subsect:design}.
+
+\paragraph{What architectural patterns or styles might be used?}
+A layered, monolithic approach poses the problem that it is too difficult
+to integrate into an existing solution. In the end the old and the new
+application would feasibly just communicate via API calls which would result
+in two completely separate solutions. Furthermore, it is tedious to discern
+which tasks get fulfilled by the old solution and which ones by the new one.
+As a result, a vast interface in front of them both would be needed;
+however that is an undesirable state for any application.
+
+The system could follow an event-driven approach owing to the fact that
+many of the depicted components of the use case have to run constantly without
+much user interaction. Thus, implicitly invoked actions within the application
+are feasible. Especially the \textit{Monitoring} component could benefit from
+just publishing events while other components subscribe to them.
+However, since an event-driven approach would require all the
+functional components to work with events, the changes to the legacy solution
+would be vast. For instance, while letting legacy components publish events
+is still feasible, refactoring every possible interface to be able
+to subscribe to events involves tremendous refactoring activities.
+
+In contrast, the system could be structured in a service-oriented matter with
+every larger component being a separate one. Other ones can be combined into
+one service; however such decisions have to be made much more fine-grained.
+The main advantage of the such an approach would be that it is easier to
+integrate into an existing system compared to the other two approaches.
+The modernization and extension of the legacy solution can be started with
+re-developing a small component of the existing solution as a service.
+Afterwards, the new service can be integrated into the legacy solution
+in place of the old component.
+
+In consequence, a service-oriented approach would best fit the depicted use case
+while offering the possibility to iteratively extend and replace portions of
+an existing legacy software solution with newly developed services.
+
+\paragraph{What architectural organization is best for delivering the non-functional requirements of the system?}
+Scaling is especially easy with a service-oriented approach. The single services
+can be scaled up and down individually instead of scaling the whole application.
+Some services will probably never see much load as they are not correlating with
+increasing user counts whereas other services perform computation-intensive
+actions as the monitoring of the scooter fleet; with a service-oriented approach,
+the services in high demand can be scaled and even duplicated while others
+remain as a single instance.
+
+\paragraph{What will be the fundamental approach used to structure the system?}
+A service-oriented approach already dictates the way an application is structured.
+Each distinct group of tasks should be modeled into a separate service.
+Even components that fulfill just a small task should exist as distinct services.
+In summary, the functional requirements, and especially the components of
+the use case diagram, should be separated into services based on their tasks.
+
+\paragraph{What strategy will be used to control the operation of the components in the system?}
+As stated in subsection \ref{subsect:design}, a service-oriented approach
+requires much more middleware than e.g. a layered architecture.
+The single services will be controlled and orchestrated via the middleware components
+exhibited in the subsection on \textit{\nameref{subsubsect:architectural-styles}}.
+
+
+\subsubsection{Architecture}
+
+Architecture
 
 
 \subsection{Construction}
@@ -1136,12 +1240,6 @@ Possible solutions
 
 
 \chapter{Implementation} \label{chap:implementation}
-
-\epigraphhead[55]{\epigraph{Once a system becomes a ball of mud,
-some developers find security and prestige in being the select few who
-can understand and evolve it, while those who detest the mud […] run away.
-The result is that the ball of mud is rarely cleaned up.}
-{\textit{George H. Fairbanks}}}
 
 
 
