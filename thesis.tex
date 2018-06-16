@@ -273,7 +273,6 @@ the idea of \textit{Iterative and Incremental Development (IID)}~\cite{larman-ii
 continuous user participation and replanning and
 with design-to-cost programming within each stage."}~\cite{mills-iid}
 \end{displayquote}
-\newpage
 Instead of implementing the whole software within all the sequential steps
 of the waterfall model, the product is being developed in increments.
 Following some initial analyzing and planning, the first iteration begins.
@@ -297,7 +296,6 @@ while excluding the last two ones as they will not be part of the
 \textit{\nameref{chap:analysis}} chapter.
 Moreover, these explanations do not follow an incremental approach
 or a sequential one --- the point of view is generalized.
-\newpage
 
 
 \subsection{Requirements} \label{subsect:requirements}
@@ -467,7 +465,7 @@ any modifications to it.
 \paragraph{Coupling and Cohesion}
 These two terms are describing how a component behaves in regard to the whole application.
 \textit{Coupling} is a measure of the interdependence of a component whereas
-\textit{Cohesion} depicts how associated the elements of the components are~\cite{swebok}.
+\textit{Cohesion} describes how associated the elements of the components are~\cite{swebok}.
 Consequently, this concept is therefore close to the aforementioned \textit{Abstraction}
 since high \textit{Coupling} lowers the abstraction of a system and vice versa.
 
@@ -618,19 +616,6 @@ Furthermore, a gateway into the service infrastructure is mandatory to guard
 them from security threats from outside. Especially an API gateway can be
 utilized to automatically route incoming requests from external users into the
 application without letting the public access the services directly.\\
-Finally, a \textit{Circuit Breaker} should be used to prevent large-scale failures.
-If one service is experiencing high load which leads to high latency on incoming
-requests from other services or even a complete breakdown of said service,
-the requesting services might themselves become sluggish owing to the fact
-that they will wait for the responses of the broken service.
-Consequently, this can lead to a cascade of breakdowns of services that wait for
-already broken ones to handle their requests. To mitigate that problem,
-the aforementioned \textit{Circuit Breaker} pattern can be utilized.
-Critical requests towards other services are getting invoked through
-a \textit{Circuit Breaker} which will prevent subsequent requests to
-a service that recently was not able to respond within a set timeout.
-In that way, the broken service can recover from the high load
-while the one where the \textit{Circuit Breaker} tripped will not break down itself~\cn.\\
 
 In summary, all of the portrayed styles dramatically change the way the final product
 is structured. Thus, the step of choosing an architectural style is an, if not the
@@ -687,7 +672,7 @@ The most important ones for this thesis are discussed in the following paragraph
 
 \paragraph{Assertions and \textit{Defensive Programming}}
 The input parameters of a function can be checked to ensure that their types
-or general form are correct. This can eliminate many runtime issues while not
+or general format are correct. This can eliminate many runtime issues while not
 being overly difficult to employ. Similarly, the term \textit{Defensive Programming}
 refers to the procedure of meticulously checking every input value of a function
 to prevent its breakup. Additionally, a strategy needs to be deployed on how to
@@ -742,8 +727,6 @@ writes tests for a component prior to actual source code.
 This allows for easier error detection early on and forces the developer to think
 more about the stages prior to the \textit{Construction} ---
 \textit{Requirements} and \textit{Design}~\cite{swebok}.
-
-\newpage
 
 
 \section{Legacy software} \label{sect:legacy-software}
@@ -1152,7 +1135,7 @@ should be easily scalable in case of a significant influx of new customers.
 
 \subsection{Design}
 
-The fundamentals of the software design are determined by answering the five
+The fundamentals of the software design are determined by answering the four
 \textit{design decisions} posed in subsection \ref{subsect:design}.
 
 \paragraph{What architectural patterns or styles might be used?}
@@ -1214,7 +1197,98 @@ exhibited in the subsection on \textit{\nameref{subsubsect:architectural-styles}
 
 \subsubsection{Architecture}
 
-Architecture
+To model the software architecture, all of the components are getting divided
+into distinct services based on their tasks. Consequently, many of the
+\textit{Principles} stated in subsection \ref{subsect:design} are already fulfilled
+partially or even completely. Good \textit{Decomposition and Modularization} is
+easy to achieve in a service-oriented architecture --- the single services
+are a direct application of \textit{Decomposition}.
+Moreover, \textit{Information Hiding} is also a given fact when using a
+service-oriented architecture.
+Additionally, owing to the fact that a separate front-end will utilize the API
+of the back-end, the interface and the implementation will be completely separated.
+This statement is even corroborated by the fact that there will be three front-ends,
+a mobile app as well as a web-based one for the customers additionally to the
+web-based front-end for the service workers of the operating organization.
+Finally, the shown services are modeled to feature a maximum of \textit{Abstraction}
+as well as low \textit{Coupling}. This is achieved by splitting up components
+into smaller services, should their tasks be too fine-grained without being
+bound too much to them.
+
+Based on these assumptions and the answered \textit{design decisions},
+a diagram is utilized to portray the software architecture of the
+\textit{Hypothetical software solution} as figure \ref{fig:service-architecture}.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{service-architecture}
+\caption{The hypothetical services and their intercommunication}
+\label{fig:service-architecture}
+\end{figure}
+
+The diagram depicts the single services of the designed software architecture.
+The arrows in between them denote the directions of HTTP requests as well
+as the allowed HTTP methods for each request.
+This can be an important indicator to conceive which services
+will only be hit by \textit{GET requests} which are by definition \textit{safe},
+in the way that they will never mutate any data~\cite{http-rfc}.
+For example, the \textit{Telemetry Data Retrieval} service will never modify
+its underlying data upon requests from other services.
+
+All the services in the diagram are equipped with a RESTful API.
+Each of them implements their own API that provides the functionalities that
+should be available for the other services.
+
+The \textit{API Gateway} has two tasks in this architecture.
+Firstly, it serves as a literal gateway to shield all the services from
+the outside and especially from the HTTP requests of the users.
+This is mainly a security measurement so the services do not have to
+implement authorization each on their own. Instead, the \textit{API Gateway}
+checks that every user is authenticated and authorized to access certain
+API endpoints. Thus, the services just accept API calls coming directly from
+the \textit{API Gateway} to ensure that they have been verified to be eligible
+for further handling.\\
+Secondly, it provides the API endpoints that are actually available from the
+outside as each service has their own host address and port number.
+Thus, without the \textit{API Gateway} these information would need to be
+directly exposed towards the front-end applications. Moreover, with cloud-based
+deployments they might change in the future which would make the information
+outdated on the client side.
+
+As already portrayed in the use case diagram (figure \ref{fig:use-case-diagram}),
+the users of the back-end application will consist of service workers of the
+operating organization as well as the customers of course.
+The authorization towards the \textit{API Gateway} will decide which
+API endpoints customers can access and which ones are just available to
+service workers. For instance, the locations and information of all the scooters
+of the fleet will just be available to authorized service workers via the
+\textit{Fleet Monitor} service.
+
+The \textit{Telemetry Data Retrieval} service fetches current data from the
+off-site \textit{Telemetry Server} in periodical intervals.
+Consequently, there will be a firewall in between these components.
+This data consists of information such as the locations of all the scooters
+of the fleet, their remaining battery power, as well as other information.
+These information are crucial for the whole application.
+Every scooter sends said information to the \textit{Telemetry Server}
+periodically as well.
+
+There should be two caches in the architecture to take away load from the
+adjacent services. First, the aforementioned \textit{Telemetry Data Retrieval}
+service will save new data into the cache which will automatically clear old
+data after a preset amount of time. Thereby, nearly all of the requests from
+other services apart from the \textit{Statistics Retrieval} one will hit the
+\textit{Telemetry Data Cache} as those are only working with current data due
+to their monitoring nature.\\
+Second, the \textit{Available Scooter Cache} exists which provides the locations
+of all the currently available scooters to customers that are currently looking
+for a scooter to rent. Owing to the fact that this data will be requested by
+many users very often, a cache is a good way to take away that potential load
+from the \textit{Fleet Monitor} service which is already the one with
+presumably the heaviest load.
+
+The \textit{Driver's license check-up} as well as the \textit{Billing} service
+will be closely related to third-party providers of such tasks.
 
 
 \subsection{Construction}
