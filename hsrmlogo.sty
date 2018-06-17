@@ -4,12 +4,13 @@
 \usepackage{tikz}
 \usepgflibrary{arrows}
 \usetikzlibrary{arrows}
+\definecolor{logocolor}{RGB}{192,7,23}
 \newcommand{\hsrmlogo}[1][1]{%
 {
 \begin{tikzpicture}
   % \draw (0,0) rectangle (100mm, 33mm);
   \begin{scope}[scale=0.03]
-  \path[fill=black!70,nonzero rule] (50.4025,24.1875) -- (49.0500,21.8475) ..
+  \path[fill=logocolor,nonzero rule] (50.4025,24.1875) -- (49.0500,21.8475) ..
   controls (48.7338,21.3250) and (48.1625,20.9750) .. (47.5075,20.9687) --
   (47.5075,20.9662) -- (29.1800,20.9662) -- (32.1375,15.8425) .. controls
   (32.4550,15.2775) and (32.4425,14.6125) .. (32.1525,14.0775) --
