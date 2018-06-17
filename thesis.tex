@@ -1237,6 +1237,16 @@ directly exposed towards the front-end applications. Moreover, with cloud-based
 deployments they might change in the future which would make the information
 outdated on the client side.
 
+Similarly, the \textit{Scooter Gateway} fulfills the same task towards the
+fleet of scooters. The other services can just pass the
+information they want to dispatch to a certain scooter to the
+\textit{Scooter Gateway} which then sends the actual request to the scooter.
+In this way, the services do not need to hold information on the host addresses
+and port numbers of each scooter which makes the handling of them through
+a shared gateway tremendously easier. Otherwise, the information would need
+to exist redundantly as well since currently two different services are
+dispatching requests towards scooters.
+
 As already portrayed in the use case diagram (figure \ref{fig:use-case-diagram}),
 the users of the back-end application will consist of service workers employed
 by the operating organization as well as the customers.

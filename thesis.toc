@@ -72,6 +72,6 @@
 \contentsline {section}{\numberline {3.2}Legacy software solution}{45}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Structure}{45}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Issues}{45}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Possible solutions}{45}{subsection.3.2.3}
-\contentsline {chapter}{\numberline {4}Implementation}{47}{chapter.4}
-\contentsline {chapter}{\numberline {5}Conclusion}{48}{chapter.5}
+\contentsline {subsection}{\numberline {3.2.3}Possible solutions}{47}{subsection.3.2.3}
+\contentsline {chapter}{\numberline {4}Implementation}{48}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{49}{chapter.5}
