@@ -1048,68 +1048,50 @@ of such an application which yielded many requirements:\\
 
 The user will have to download a mobile application or use the web app
 of the operating organization. Consequently, both types of front-end applications
-should be able to use the back-end application.\\
-
+should be able to use the back-end application.\\\\
 No user should be able to do anything without being logged into their account.
-Thus, an implemented enrollment process is mandatory.\\
-
+Thus, an implemented enrollment process is mandatory.\\\\
 Within that process the user will have to fill in his or her
-contact information, a valid driver's license as well as billing information.\\
-
+contact information, a valid driver's license as well as billing information.\\\\
 Finally, the customer has to accept the terms and conditions of the operating
 organization as well as the chosen billing model as described in
 section \ref{sect:electric-scooter-market}. The operator should be able to chose
-their billing model for all the customers application-wide.\\
-
+their billing model for all the customers application-wide.\\\\
 After successful enrollment, the user will be greeted with a map of the current
 location. This map should display all the currently available scooters at
 their respective locations. The user can then browse the selection
-of scooters and eventually chose one to rent.\\
-
+of scooters and eventually chose one to rent.\\\\
 The rental process will begin with a reservation of the chosen scooter for
-a arbitrary time that the operator should be able to change application-wide.\\
-
+a arbitrary time that the operator should be able to change application-wide.\\\\
 Consequently, during the reservation time and the actual rental period,
-the scooter should not appear on the map anymore for other users.\\
-
+the scooter should not appear on the map anymore for other users.\\\\
 Next, the user is granted the set timeframe to get to the chosen scooter.
 If the user arrives to late, the scooter should re-appear on the map,
-available to every customer.\\
-
+available to every customer.\\\\
 Once he or she arrived, the scooter as well as its ignition can be remotely
 unlocked by the press of a button inside of the mobile app.
 The back-end application however actually sends the signal to the scooter to
-unlock itself.\\
-
+unlock itself.\\\\
 Afterwards, the user can begin the ride for a previously chosen timeframe
 or even indefinitely. After being finished, the user can discard of the scooter
-anywhere within a certain range set by the operator.\\
-
+anywhere within a certain range set by the operator.\\\\
 The operator also needs to see a map with every scooter regardless of battery
-charge or availability, mainly to plan out the relocation of certain ones.
-
-Finally, the scooter is getting locked again and will re-appear on the map for the other users.\\
-
+charge or availability, mainly to plan out the relocation of certain ones.\\\\
+Finally, the scooter is getting locked again and will re-appear on the map for the other users.\\\\
 Moreover, during the ride, the scooter constantly sends its location as well
 as other information about the current speed and battery statistics.
 These information will be sent to a separate server which just persists them
 without processing them any further.
 Consequently, the back-end application will regularly fetch the information data
-from said external server to monitor every ongoing ride of all the customers.\\
-
+from said external server to monitor every ongoing ride of all the customers.\\\\
 If a user drives out of the allowed operating range, a notification will be sent
-to the scooter of that user.\\
-
-If the battery gets low on charge, the user will be warned as well to finish the ride.\\
-
+to the scooter of that user.\\\\
+If the battery gets low on charge, the user will be warned as well to finish the ride.\\\\
 Additionally, after said ride has ended the scooter should also not re-appear
-on the map of available ones.\\
-
+on the map of available ones.\\\\
 The threshold for the low battery condition should also be changeable
-application-wide by the operator.\\
-
-Finally, the billing process should begin after the ride.\\
-
+application-wide by the operator.\\\\
+Finally, the billing process should begin after the ride.\\\\
 Furthermore, the user should be able to get statistics about his or her rides
 e.g. the driven distance, the costs, the average speed and theoretically
 many more. Therefore, the back-end application should allow those information
@@ -1256,9 +1238,9 @@ deployments they might change in the future which would make the information
 outdated on the client side.
 
 As already portrayed in the use case diagram (figure \ref{fig:use-case-diagram}),
-the users of the back-end application will consist of service workers of the
-operating organization as well as the customers of course.
-The authorization towards the \textit{API Gateway} will decide which
+the users of the back-end application will consist of service workers employed
+by the operating organization as well as the customers.
+The authorization towards the \textit{API Gateway} will determine which
 API endpoints customers can access and which ones are just available to
 service workers. For instance, the locations and information of all the scooters
 of the fleet will just be available to authorized service workers via the
@@ -1288,11 +1270,10 @@ from the \textit{Fleet Monitor} service which is already the one with
 presumably the heaviest load.
 
 The \textit{Driver's license check-up} as well as the \textit{Billing} service
-will be closely related to third-party providers of such tasks.
+will be closely related to third-party providers of such tasks.\\
 
 
 \subsection{Construction}
-
 
 
 
