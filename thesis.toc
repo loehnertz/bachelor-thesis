@@ -33,7 +33,7 @@
 \contentsline {subsubsection}{Visualization}{22}{section*.27}
 \contentsline {subsection}{\numberline {2.3.3}Construction}{23}{subsection.2.3.3}
 \contentsline {subsubsection}{Considerations}{23}{section*.28}
-\contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{24}{section*.29}
+\contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{23}{section*.29}
 \contentsline {paragraph}{Error handling}{24}{section*.30}
 \contentsline {paragraph}{API design}{24}{section*.31}
 \contentsline {paragraph}{Runtime configuration}{24}{section*.32}
@@ -68,10 +68,22 @@
 \contentsline {paragraph}{What will be the fundamental approach used to structure the system?}{41}{section*.55}
 \contentsline {paragraph}{What strategy will be used to control the operation of the components in the system?}{41}{section*.56}
 \contentsline {subsubsection}{Architecture}{41}{section*.57}
-\contentsline {subsection}{\numberline {3.1.3}Construction}{45}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}Legacy software solution}{45}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Structure}{45}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Issues}{45}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Possible solutions}{47}{subsection.3.2.3}
-\contentsline {chapter}{\numberline {4}Implementation}{48}{chapter.4}
-\contentsline {chapter}{\numberline {5}Conclusion}{49}{chapter.5}
+\contentsline {subsection}{\numberline {3.1.3}Construction}{46}{subsection.3.1.3}
+\contentsline {paragraph}{COTS components}{46}{section*.60}
+\contentsline {paragraph}{Utilized programming languages}{46}{section*.61}
+\contentsline {paragraph}{Utilized libraries}{46}{section*.62}
+\contentsline {subsubsection}{Considerations}{47}{section*.63}
+\contentsline {paragraph}{Middleware}{47}{section*.64}
+\contentsline {subparagraph}{Service Discovery}{47}{section*.65}
+\contentsline {subparagraph}{API Gateway and Scooter Gateway}{48}{section*.66}
+\contentsline {paragraph}{API design}{49}{section*.68}
+\contentsline {paragraph}{Concurrency}{49}{section*.69}
+\contentsline {paragraph}{Runtime configuration}{49}{section*.70}
+\contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{49}{section*.71}
+\contentsline {paragraph}{Error handling}{49}{section*.72}
+\contentsline {section}{\numberline {3.2}Legacy software solution}{50}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Structure}{50}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Issues}{50}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Possible solutions}{51}{subsection.3.2.3}
+\contentsline {chapter}{\numberline {4}Implementation}{52}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{53}{chapter.5}

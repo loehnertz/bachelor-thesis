@@ -82,9 +82,10 @@ in section \ref{sect:kumpan}, is already in possession of a solution which is no
 Therefore, the subject of extending an existing back-end application with missing features is also targeted.
 
 In conclusion, this leads into the research question of this bachelor thesis:\\
-\emph{Which functional modules are necessary for the implementation of a back-end application
-for the short-term rental of electric scooters and which considerations need to be made
-to integrate additional functionality into an existing legacy software solution for that purpose?}
+\emph{What does the system and software architecture of a back-end application
+for the short-term rental of electric scooters look like and which considerations
+need to be made to integrate additional functionality into an
+existing legacy software solution for that purpose?}
 
 
 
@@ -607,11 +608,9 @@ to ensure the flawless execution of the application~\cn.
 
 The most important middleware is a \textit{Service Discovery} which keeps track
 of the addresses of all the available services so the integration of them into
-each other gets faster, easier and less error-prone.\\
-Additionally, a server that does the routing between the services based on the
-addresses from the \textit{service discovery} is mandatory. At some point,
-this can be paired with a load balancer in case multiple instances of some
-services do exist.\\
+each other becomes faster, easier and less error-prone.
+At some point, this can be paired with a load balancer in case
+multiple instances of some services do exist.
 Furthermore, a gateway into the service infrastructure is mandatory to guard
 them from security threats from outside. Especially an API gateway can be
 utilized to automatically route incoming requests from external users into the
@@ -1062,7 +1061,7 @@ location. This map should display all the currently available scooters at
 their respective locations. The user can then browse the selection
 of scooters and eventually chose one to rent.\\\\
 The rental process will begin with a reservation of the chosen scooter for
-a arbitrary time that the operator should be able to change application-wide.\\\\
+an arbitrary time that the operator should be able to change application-wide.\\\\
 Consequently, during the reservation time and the actual rental period,
 the scooter should not appear on the map anymore for other users.\\\\
 Next, the user is granted the set timeframe to get to the chosen scooter.
@@ -1198,7 +1197,7 @@ into smaller services, should their tasks be too fine-grained without being
 bound too much to them.
 
 Based on these assumptions and the answered \textit{design decisions},
-a diagram is utilized to portray the software architecture of the
+a \textit{block diagram} is utilized to portray the software architecture of the
 \textit{Hypothetical software solution} as figure \ref{fig:hypothetical-service-architecture}.\\
 
 \begin{figure}[htbp]
@@ -1221,31 +1220,8 @@ All the services in the diagram are equipped with a RESTful API.
 Each of them implements their own API that provides the functionalities that
 should be available for the other services.
 
-The \textit{API Gateway} has two tasks in this architecture.
-Firstly, it serves as a literal gateway to shield all the services from
-the outside and especially from the HTTP requests of the users.
-This is mainly a security measurement so the services do not have to
-implement authorization each on their own. Instead, the \textit{API Gateway}
-checks that every user is authenticated and authorized to access certain
-API endpoints. Thus, the services just accept API calls coming directly from
-the \textit{API Gateway} to ensure that they have been verified to be eligible
-for further handling.\\
-Secondly, it provides the API endpoints that are actually available from the
-outside as each service has their own host address and port number.
-Thus, without the \textit{API Gateway} these information would need to be
-directly exposed towards the front-end applications. Moreover, with cloud-based
-deployments they might change in the future which would make the information
-outdated on the client side.
-
-Similarly, the \textit{Scooter Gateway} fulfills the same task towards the
-fleet of scooters. The other services can just pass the
-information they want to dispatch to a certain scooter to the
-\textit{Scooter Gateway} which then sends the actual request to the scooter.
-In this way, the services do not need to hold information on the host addresses
-and port numbers of each scooter which makes the handling of them through
-a shared gateway tremendously easier. Otherwise, the information would need
-to exist redundantly as well since currently two different services are
-dispatching requests towards scooters.
+The \textit{API Gateway} as well as the \textit{Scooter Gateway} are described
+in greater detail in subsection \ref{subsect:analysis-construction}.
 
 As already portrayed in the use case diagram (figure \ref{fig:use-case-diagram}),
 the users of the back-end application will consist of service workers employed
@@ -1286,8 +1262,10 @@ Additionally to the use case diagram, a swimlane diagram
 (figure \ref{fig:swimlane-rental-process}) has been created to depict
 the flow of information between the customer, the scooter and the
 involved services during the process of successfully renting a scooter.
-This use case is by far the most important one which distinguishes oneself
+This use case is by far the most important one which distinguishes itself
 from other common use cases e.g. registering an account.
+The two gateways were purposely omitted from the diagram as their tasks would
+be the same ones over and over again.
 
 \begin{figure}[htbp]
 \centering
@@ -1303,7 +1281,147 @@ The solid horizontal line in the middle depicts the customer riding the scooter
 which can take an indeterminate amount of time while no information is flowing.
 
 
-\subsection{Construction}
+\subsection{Construction} \label{subsect:analysis-construction}
+
+\paragraph{COTS components}
+As recently mentioned, the \textit{Driver's license check-up} and \textit{Billing}
+services will leverage COTS software to verify uploaded driver's license scans
+and to handle the billing of customers that successfully rented a scooter.
+Consequently, said services will implement just the interfaces towards these
+third-party solution. Additionally, the \textit{Billing} service might have
+to implement some data persistence logic for accounting reasons.
+
+\paragraph{Utilized programming languages}
+As already stated in the subsection on \textit{\nameref{subsubsect:architectural-styles}},
+theoretically multiple programming languages across services could be utilized.
+For this architecture however, the programming language \textit{Go} has been chosen.
+The main rationales for that choice are the following.
+
+The language is among the fastest regarding its execution performance~\cn.
+Furthermore, \textit{Go} is a compiled language running directly as an executable
+without a virtual machine. Additionally, all the imports are statically linked.
+Thereby, the resulting executable is a single file with all the requirements
+included and without the need of an interpreter or any other runtime environment.
+As a consequence, the deployment of a \textit{Go} program is extremely easy as
+there are no prerequisites for the server that executes it.
+Finally, \textit{Go} offers a built-in HTTP server which can directly be used
+for the intercommunication of the services.
+
+\paragraph{Utilized libraries}
+Albeit the HTTP server of the \textit{Go} language being very powerful,
+the library \textit{Go Micro} was chosen for scaffolding the services.
+It immensely foreshortens the time it takes to setup a service.
+Thereby, the developers can focus just on implementing the business logic
+of each service while not tinkering around with the scaffold of the service.
+\textit{Go Micro} offers methods to quickly generate said scaffold on top
+of implemented business logic by mapping business logic functions to endpoints.
+It works with RPC calls and/or plain JSON over HTTP which are both discussed
+in detail in a following paragraph on \textit{\nameref{construction-api_design}}.
+
+
+\subsubsection{Considerations}
+
+\paragraph{Middleware}
+As stated in subsection \ref{subsect:design}, two main middleware components
+are mandatory for running a service-oriented architecture ---
+a \textit{Service Discovery} as well as an \textit{API Gateway}.
+A load balancer is part of such an architecture in case services are mirrored
+for scaling purposes. Owning to the fact, that currently it is not foreseeable
+how many users such an application would have, this middleware is not part of
+this subsection.
+
+\subparagraph{Service Discovery}
+For the \textit{Service Discovery} middleware, an existing solution will be
+utilized since it is generally not part of a service-oriented architecture
+to developed the \textit{Service Discovery} by oneself~\cn.
+For this purpose, the freeware tool \textit{Consul} developed by \textit{HashiCorp}
+was chosen to serve as the \textit{Service Discovery} middleware~\cite{consul-docs}.
+The core functionality of \textit{Consul} is similar to the mode of operation
+of every \textit{Service Discovery} middleware.\\
+The main functionality is that \textit{Consul} provides a DNS server which is
+made available on the network. It can even work beyond multiple data centers
+but since scaling is not directly part of this thesis, this feature is not utilized.
+Every service in the architecture can now make a DNS lookup towards the so-called
+\textit{Consul agent} which is the main server process of the tool.
+This \textit{Consul agent} then returns an IP address and a
+port number of the requested service. Additionally, it offers simple
+load balancing by randomizing which instance of the requested service
+i.e. which combination of IP address and port number is getting returned.
+An example lookup is structured like this: \textit{servicename.service.consul};
+thereby a service can just lookup this address and will receive an IP address
+and a port number for dispatching the actual HTTP request towards the service.
+Consequently, the software developers or network administrators have to
+create a configuration file for every service in the architecture to specify
+their IP address and port number next to other information which are optional.
+However, in reality the services will register themselves with their configuration
+towards \textit{Consul} if correctly implemented;
+\textit{Consul} offers endpoints to let services register themselves.
+Moreover, health checks are a native and important feature of \textit{Consul}
+as well. For each service a custom health check can be provided that
+will be run in a set interval. A basic example would be that \textit{Consul}
+sends a HTTP GET request to the service every ten seconds;
+once a request is not successful, the health check fails and \textit{Consul}
+automatically removes that service from the \textit{Service Discovery}
+until the health checks are passing again. Thereby, the broken service will
+not be hit by even more unsuccessful requests by other services which would just
+prolong the downtime. Instead, the DNS lookup returns an error and the
+requesting service can handle that case accordingly~\cite{consul-docs}.\\
+In summary, with a \textit{Service Discovery} each service just has to
+make requests towards a never changing address which will be resolved by
+\textit{Consul} automatically. Thus, the implementation inside of a service is
+are a lot more concise since no knowledge about the structure of the network
+is needed at no point during its runtime.
+
+\subparagraph{API Gateway and Scooter Gateway}
+The \textit{API Gateway} has two tasks in this architecture.
+Firstly, it serves as a literal gateway to shield all the services from
+the outside and especially from the HTTP requests of the users.
+This is mainly a security measurement so the services do not have to
+implement authorization each on their own. Instead, the \textit{API Gateway}
+checks that every user is authenticated and authorized to access certain
+API endpoints. Thus, the services just accept API calls coming directly from
+the \textit{API Gateway} to ensure that they have been verified to be eligible
+for further handling.\\
+Secondly, it provides the API endpoints that are actually available from the
+outside as each service has their own host address and port number.
+Thus, without the \textit{API Gateway} these information would need to be
+directly exposed towards the front-end applications. Moreover, with cloud-based
+deployments they might change in the future which would make the information
+outdated on the client side.
+
+Similarly, the \textit{Scooter Gateway} fulfills the same task towards the
+fleet of scooters. The other services can just pass the
+information they want to dispatch to a certain scooter to the
+\textit{Scooter Gateway} which then sends the actual request to the scooter.
+In this way, the services do not need to hold information on the host addresses
+and port numbers of each scooter which makes the handling of them through
+a shared gateway tremendously easier. Otherwise, the information would need
+to exist redundantly as well since currently two different services are
+dispatching requests towards scooters.\\
+
+In summary, figure \ref{fig:service-interaction} portrays an exemplary interaction of the
+\textit{API Gateway}, the \textit{Service Discovery} and two services themselves.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.80\textwidth]{service-interaction}
+\caption{Exemplary functional interaction of API Gateway, Service Discovery, and two services}
+\label{fig:service-interaction}
+\end{figure}
+
+\paragraph{API design} \label{construction-api_design}
+
+
+\paragraph{Concurrency}
+
+
+\paragraph{Runtime configuration}
+
+
+\paragraph{Assertions and \textit{Defensive Programming}}
+
+
+\paragraph{Error handling}
 
 
 
@@ -1325,6 +1443,12 @@ Possible solutions
 
 
 \chapter{Implementation} \label{chap:implementation}
+
+\epigraphhead[55]{\epigraph{Almost all of contemporary software engineering
+is focused on the singular goal of improving time-to-market.
+Microservices are an evolution of the service-oriented architecture pattern
+that elegantly eliminate organizational friction […]}
+{\textit{Peter Bourgon}}}
 
 
 
