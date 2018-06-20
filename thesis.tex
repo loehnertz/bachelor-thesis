@@ -1007,7 +1007,7 @@ in terms of its components, issues and solutions to these issues.
 
 \section{Hypothetical software solution} \label{sect:hypothetical-solution}
 
-\subsection{Requirements}
+\subsection{Requirements} \label{subsect:hypothetical-requirements}
 
 As stated in subsection \ref{subsect:requirements}, the first step of
 requirements engineering is the \textit{Elicitation}.
@@ -1216,7 +1216,6 @@ in the way that they will never mutate any data~\cite{http-rfc}.
 For example, the \textit{Telemetry Data Retrieval} service will never modify
 its underlying data upon requests from other services.
 
-All the services in the diagram are equipped with a RESTful API.
 Each of them implements their own API that provides the functionalities that
 should be available for the other services.
 
@@ -1315,8 +1314,14 @@ Thereby, the developers can focus just on implementing the business logic
 of each service while not tinkering around with the scaffold of the service.
 \textit{Go Micro} offers methods to quickly generate said scaffold on top
 of implemented business logic by mapping business logic functions to endpoints.
-It works with RPC calls and/or plain JSON over HTTP which are both discussed
+It works with RPC and/or \textit{JSON over HTTP} which are both discussed
 in detail in a following paragraph on \textit{\nameref{construction-api_design}}.
+Additionally, \textit{Go Micro} offers much more optional functionality;
+the most interesting one for integrating services into a legacy software solution
+is that \textit{Go Micro} can automatically expose the endpoints of a service
+as a normal HTTP API. Thus, every programming language with an HTTP client,
+which is nearly every single one, can access, utilize, and consume the services
+functionalities without other prerequisites~\cite{go-micro}.
 
 
 \subsubsection{Considerations}
@@ -1335,7 +1340,7 @@ For the \textit{Service Discovery} middleware, an existing solution will be
 utilized since it is generally not part of a service-oriented architecture
 to developed the \textit{Service Discovery} by oneself~\cn.
 For this purpose, the freeware tool \textit{Consul} developed by \textit{HashiCorp}
-was chosen to serve as the \textit{Service Discovery} middleware~\cite{consul-docs}.
+was chosen to serve as the \textit{Service Discovery} middleware~\cite{consul}.
 The core functionality of \textit{Consul} is similar to the mode of operation
 of every \textit{Service Discovery} middleware.\\
 The main functionality is that \textit{Consul} provides a DNS server which is
@@ -1350,6 +1355,8 @@ i.e. which combination of IP address and port number is getting returned.
 An example lookup is structured like this: \textit{servicename.service.consul};
 thereby a service can just lookup this address and will receive an IP address
 and a port number for dispatching the actual HTTP request towards the service.
+Optionally, DNS caching can be enabled so that the result of a lookup will be
+cached by a requesting service for a set amount of seconds.
 Consequently, the software developers or network administrators have to
 create a configuration file for every service in the architecture to specify
 their IP address and port number next to other information which are optional.
@@ -1365,7 +1372,7 @@ automatically removes that service from the \textit{Service Discovery}
 until the health checks are passing again. Thereby, the broken service will
 not be hit by even more unsuccessful requests by other services which would just
 prolong the downtime. Instead, the DNS lookup returns an error and the
-requesting service can handle that case accordingly~\cite{consul-docs}.\\
+requesting service can handle that case accordingly~\cite{consul}.\\
 In summary, with a \textit{Service Discovery} each service just has to
 make requests towards a never changing address which will be resolved by
 \textit{Consul} automatically. Thus, the implementation inside of a service is
@@ -1410,20 +1417,89 @@ In summary, figure \ref{fig:service-interaction} portrays an exemplary interacti
 \end{figure}
 
 \paragraph{API design} \label{construction-api_design}
+There are many ways to model an API to make functionality of a service accessible
+to other ones. The most basic one is indeed a normal HTTP API preferably with
+JSON as the data exchange format; this is sometimes also called \textit{JSON over HTTP}.
+\textit{JSON over HTTP} is both easy to setup as well as easy to use;
+nevertheless, the handling is not very native to any programming language as one
+has to dispatch a HTTP request for every function call towards another service.
+A developer could hide that functionality behind an API wrapper so within the
+source code the developers can access the other services API just like a normal
+function call. However, this necessitates an API wrapper for every single service.
+Moreover, the wrappers would have to be cloned onto every other service;
+the same is true for updates to the wrappers.
+As a consequence, this API design is just available as a fallback procedure
+in case another component cannot use a more advanced technique e.g. a monolithic
+legacy software solution.
 
-
-\paragraph{Concurrency}
-
+The just mentioned more advanced technology is RPC which stands for
+\textit{Remote Procedure Calls}.
+It lets the developers use the API of another service just like a procedure within
+its own but remotely. Yet, RPC always needs a codec which is essentially the
+data exchange format of the calls. The preferred one of \textit{Go Micro}
+is \textit{Protocol Buffers}, an open format developed and maintained by Google.
+It it also especially well suited for this thesis at it not only offers a
+data exchange format but also an \textit{Interface Description Language (IDL)}
+to model the API of a service. Google additionally offers \textit{protoc},
+a tool to automatically generate the API out of a \textit{Protocol Buffers}
+definition~\cite{protobuf}. The tool works with many programming languages
+which would make the integration into legacy software all the easier.
 
 \paragraph{Runtime configuration}
+As mentioned in the subsection on the \textit{\nameref{subsect:hypothetical-requirements}}
+of the hypothetical software solution, there are a couple of requirements that
+mandate an application-wide mechanism to configure certain values e.g.
+the amount of time a reservation of a scooter stays valid for.
+For that purpose, a configuration server as a central source for all the
+configuration data is contrived. That server will broadcast a configuration file
+upon a request by a service. The services should implement that they request
+the current configuration from said server upon their startup. Consequently,
+a change to the configuration will not be adopted until the affected services
+are getting restarted. Yet, this is not a big problem since changes to the proposed
+application-wide configuration tantamount to a vast change in how the
+short-term rental process works. Thus, a restart of each affected service is
+necessary anyways to avert inconsistently configured services.
 
+\paragraph{Concurrency}
+The term \textit{Concurrency} describes the way of running multiple function
+calls simultaneously opposed to a sequential approach that many programming languages
+pursue; this concept is also called \textit{asynchronous execution}.
+While the \textit{Go} programming language is also executed synchronously,
+it offers built-in concurrency support as well~\cite{golang-concurrency}.
+Each remote call from another service is handled as an asynchronous one already
+by \textit{Go Micro} or even a normal HTTP server. On top of that, within one
+of those remote calls multiple simultaneous functions can be invoked via
+the built-in \textit{goroutines} which is the name of the concurrency feature
+of the \textit{Go} programming language. However, this is optional and is only
+utilized when applicable.
 
 \paragraph{Assertions and \textit{Defensive Programming}}
+Assertions are essentially built into the \textit{Go} programming language
+since it is strictly typed. Effectively, every input parameter into any
+function is getting type-checked. Thus, a function cannot produce an error
+based on a erroneous input type. For instance, if a function expects a string
+as its input, it cannot be called with a number.
 
+Furthermore, a \textit{Circuit Breaker} should be used to prevent large-scale failures.
+If one service is experiencing high load which leads to high latency on incoming
+requests from other services or even a complete breakdown of said service,
+the requesting services might themselves become sluggish owing to the fact
+that they will wait for the responses of the broken service.
+As a consequence, this can lead to a cascade of breakdowns of services that wait for
+already broken ones to handle their requests. To mitigate that problem,
+the aforementioned \textit{Circuit Breaker} pattern can be utilized.
+Critical requests towards other services are getting invoked through
+a \textit{Circuit Breaker} which will prevent subsequent requests to
+a service that recently was not able to respond within a set timeout.
+In that way, the broken service can recover from the high load
+while the one where the \textit{Circuit Breaker} tripped will not
+break down itself~\cite{fowler-circuit-breaker}.
 
 \paragraph{Error handling}
-
-
+\textit{Go Micro} offers built-in methods to retry calls towards
+other services in case of a failure~\cite{go-micro}. If all of them still fail,
+an error is logged to investigate the malfunction later on.
+\newpage
 
 \section{Legacy software solution} \label{sect:legacy-solution}
 

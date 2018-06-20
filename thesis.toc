@@ -75,15 +75,15 @@
 \contentsline {subsubsection}{Considerations}{47}{section*.63}
 \contentsline {paragraph}{Middleware}{47}{section*.64}
 \contentsline {subparagraph}{Service Discovery}{47}{section*.65}
-\contentsline {subparagraph}{API Gateway and Scooter Gateway}{48}{section*.66}
+\contentsline {subparagraph}{API Gateway and Scooter Gateway}{49}{section*.66}
 \contentsline {paragraph}{API design}{49}{section*.68}
-\contentsline {paragraph}{Concurrency}{49}{section*.69}
-\contentsline {paragraph}{Runtime configuration}{49}{section*.70}
-\contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{49}{section*.71}
-\contentsline {paragraph}{Error handling}{49}{section*.72}
-\contentsline {section}{\numberline {3.2}Legacy software solution}{50}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Structure}{50}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Issues}{50}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Possible solutions}{51}{subsection.3.2.3}
-\contentsline {chapter}{\numberline {4}Implementation}{52}{chapter.4}
-\contentsline {chapter}{\numberline {5}Conclusion}{53}{chapter.5}
+\contentsline {paragraph}{Runtime configuration}{51}{section*.69}
+\contentsline {paragraph}{Concurrency}{52}{section*.70}
+\contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{52}{section*.71}
+\contentsline {paragraph}{Error handling}{53}{section*.72}
+\contentsline {section}{\numberline {3.2}Legacy software solution}{54}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Structure}{54}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Issues}{54}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Possible solutions}{54}{subsection.3.2.3}
+\contentsline {chapter}{\numberline {4}Implementation}{55}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{56}{chapter.5}
