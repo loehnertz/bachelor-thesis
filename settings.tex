@@ -7,7 +7,7 @@
 \usepackage{amssymb} % Symbols
 \usepackage{emptypage} % Empty pages are now actually empty
 
-%% Fonts, with all the options
+% Fonts, with all the options
 \usepackage{mathpazo}
 \usepackage[scaled=.95]{helvet}
 \usepackage{courier}
@@ -18,14 +18,31 @@
 \usepackage{subfig} % sub-figures
 \usepackage{wrapfig} % wrapping figures
 \usepackage{listings} % better source code listings
+\usepackage{enumitem}
 \graphicspath{ {figures/} }
-% some settings for better listing styles
-\lstset{basicstyle=\ttfamily, columns=[l]flexible, mathescape=true, showstringspaces=false, numbers=left, numberstyle=\tiny}
-\lstset{language=python} % setting for Python
-% environment for the listings
+
+% Source code
 \usepackage{float}
 \newfloat{listing}{htbp}{scl}[chapter]
 \floatname{listing}{Listing}
+\usepackage{packages/listings-golang} % import this package after listings
+\usepackage{packages/protobuf/lang}  % include language definition for protobuf
+\usepackage{packages/protobuf/style} % include custom style for protobuf declarations.
+\lstset{
+    basicstyle=\scriptsize\ttfamily,
+    columns=[l]flexible,
+    mathescape=true,
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny,
+    frame=none,
+    keywordstyle=\color{red},
+    stringstyle=\color{blue},
+    showstringspaces=false,
+    tabsize=4,
+    xleftmargin=\leftmargin,
+    language=Golang
+}
 
 % Page layout
 \usepackage[paper=a4paper,width=14cm,left=35mm,height=22cm]{geometry}
@@ -39,10 +56,9 @@
 \usepackage{fancyhdr} % nicer header and footer
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\fancyhead[L]{\phv \nouppercase{\leftmark}}
-\fancyhead[R]{\phv \thepage}
+\fancyhead[LO, RE]{\phv \nouppercase{\leftmark}}
+\fancyhead[LE, RO]{\phv \thepage}
 % rather not use anything for the footer
-%\fancyfoot[L]{\textsf{\small \kurztitel}}
 \fancyfoot[C]{\ } % no page count in the bottom
 %\fancyfoot[R]{\textsf{\small Media Management}}
 
@@ -50,7 +66,7 @@
 \usepackage{bibtopic}
 
 % Logo of the university
-\usepackage{hsrmlogo}
+\usepackage{packages/hsrmlogo}
 
 % Special packages
 \usepackage{epigraph}
@@ -75,3 +91,6 @@
 
 % Wikipedia-style "citation needed" macro
 \newcommand{\cn}[1][]{\textsuperscript{\color{red} ~[citation needed]~}}
+
+% Code markup
+\newcommand{\code}[1]{\texttt{#1}}
