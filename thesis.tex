@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass[12pt,a4paper,twoside]{report}
 
 \include{settings}
 
@@ -1248,7 +1248,7 @@ for scaling purposes. Owning to the fact, that currently it is not foreseeable
 how many users such an application would have, this middleware is not part of
 this subsection.
 
-\subparagraph{Service Discovery}
+\subparagraph{Service Discovery} \label{subparag:service-discovery}
 For the \textit{Service Discovery} middleware, an existing solution will be
 utilized since it is generally not part of a service-oriented architecture
 to developed the \textit{Service Discovery} by oneself~\cn.
@@ -1424,7 +1424,146 @@ Microservices are an evolution of the service-oriented architecture pattern
 that elegantly eliminate organizational friction […]}
 {\textit{Peter Bourgon}}}
 
+\subsubsection{Project structure}
 
+The source code of the project consist of four directories:
+\begin{itemize}[noitemsep]
+\item \code{api-gateway}
+\item \code{common}
+\item \code{services}
+\item \code{vehicle-gateway}
+\end{itemize}
+The \code{common} directory contains singular functions that are general
+enough to be shared by multiple services. Owning to the fact that directly in the
+\code{services} directory each service has its own directory, this structure
+to share source code is the most consistent one.
+
+\subsubsection{Service structure}
+
+The source code structure of each is service is very similar.
+Inside of its directory there is always a \code{main.go} file and a \code{proto}
+directory.
+
+Inside of \code{main.go} at least a function with the identifier
+\code{main()} has to exist. Additionally, the package of that file is always
+\code{package main} as well. These naming conventions are required by the
+\textit{Go} programming language. Only a function with that name inside of
+a package named \code{main} can act as the starting point of any program.
+
+\paragraph{Service definition}
+Furthermore, the \code{proto} directory comprises three files.
+One contains the \textit{service definition} of that service and the other
+two are \code{.go} files which are generated via the \textit{Protocol Buffers}
+definition as stated in subsection \ref{construction-api_design}.
+
+\begin{lstlisting}[title=services/fleet-monitor/proto/fleet-monitor.proto, language=protobuf3]
+syntax = "proto3";
+
+service FleetMonitor {
+    rpc AvailableVehicles (Empty) returns (AvailableVehiclesResponse) {}
+}
+
+message Empty {}
+
+message AvailableVehiclesResponse {
+    message Vehicle {
+        string VehicleId = 1;
+        string Location = 2;
+        uint32 ApproximateRadialRangeInMeters = 3;
+    }
+    repeated Vehicle vehicles = 1;
+}
+\end{lstlisting}
+
+This is an example of a \textit{Protocol Buffers service definition}.
+At the top, the version of \textit{Protocol Buffers} has to be set.
+Secondly, the service is assigned a name and its RPC endpoints are described.
+Within the first set of parentheses, the structure of the request has to be
+defined. In this case, the request has no body so its \code{Message} is just an
+empty one.
+
+However, the response of this RPC comprises the currently available vehicles,
+so the response just consists of a list of the \code{Message} of a \code{Vehicle}.
+Using the directive \code{repeated}, an existing message is defined to be
+handled as a list of indefinite length.
+Finally, each \code{Message} consists of a number of fields. Those each have
+a data type as well as an unique integer which is just used internally for
+encoding purposes.
+
+Using the command-line tool \textit{protoc}, readily available \code{.go} files
+are generated to initialize the defined \code{Messages} and to create and consume
+the \textit{Go Micro} services stated in each \code{.proto} file.
+
+\begin{lstlisting}[title=services/fleet-monitor/proto/fleet-monitor.micro.go]
+func RegisterFleetMonitorHandler(
+  s server.Server,
+  hdlr FleetMonitorHandler,
+  opts ...server.HandlerOption
+) {
+	type fleetMonitor interface {
+		AvailableVehicles(
+          ctx context.Context,
+          in *Empty,
+          out *AvailableVehiclesResponse
+        ) error
+	}
+	type FleetMonitor struct {
+		fleetMonitor
+	}
+	h := &fleetMonitorHandler{hdlr}
+	s.Handle(s.NewHandler(&FleetMonitor{h}, opts...))
+}
+\end{lstlisting}
+
+For instance, this function is generated to register the newly defined service.
+This is then done from within the \code{main()} function of each service.
+
+\begin{lstlisting}[title=services/fleet-monitor/main.go]
+func main() {
+	// Create the service
+	service = micro.NewService(
+		micro.Name(config.FleetMonitorName),
+		micro.RegisterTTL(time.Second*30),
+		micro.RegisterInterval(time.Second*10),
+	)
+	service.Init()
+
+    // Register the handler
+	fleet_monitor.RegisterFleetMonitorHandler(
+		service.Server(),
+		new(FleetMonitor),
+	)
+
+    // Run the server
+	if err := service.Run(); err != nil {
+		panic(err)
+	}
+}
+\end{lstlisting}
+
+Every \code{main()} function inside of each service looks roughly similar.
+Firstly, a new service is created via \textit{Go Micro};
+\code{micro.NewService()} expects a name as the identifier.
+This name is used to register the service toward the \textit{Service Discovery}.
+Thus, the name is taken out of a configuration which is explained later on in
+this chapter. In essence, this approach was chosen so that other services can
+faultlessly discover each created one by using the same name out of the configuration.
+
+Secondly, an automatic health check is added as described in
+\nameref{subparag:service-discovery}. These arguments register the service
+at the \textit{Service Discovery} with the setting to check if the service is
+still running every 30 seconds while re-registering it every ten seconds.
+Utilizing this setting, the \textit{Service Discovery} and other
+network components can react quickly to a sudden breakdown of a service e.g.
+by starting a new instance of that service.
+
+In the next step the handler which accepts incoming RPC is initialized with the
+aforementioned function at \code{fleet-monitor.micro.go}.
+The argument \code{new(FleetMonitor)} is explained shortly.
+
+Finally, the service is started by running its server. Upon any errors regarding
+the server component of the service that handles incoming requests,
+the program will \code{panic} which means that it crashes properly.
 
 
 
