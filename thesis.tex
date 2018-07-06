@@ -1782,7 +1782,7 @@ to the configured interval.
 For instance, as seen in the source code snippet, this is used by the
 \code{fleet-monitor} service to cancel active bookings which are expired.
 
-\subsection{Databases}
+\subsection{Databases} \label{subsect:databases}
 
 In order to achieve a minimum of \textit{Coupling} between the services,
 every service has its own database.
@@ -1812,7 +1812,7 @@ In other scenarios, a synchronization of data between databases might be useful
 to minimize the amount of RPC overhead.
 
 
-\section{API gateway}
+\section{API gateway} \label{sect:api-gateway}
 
 
 
@@ -1830,9 +1830,44 @@ to minimize the amount of RPC overhead.
 
 \chapter{Evaluation} \label{chap:evaluation}
 
-\section{Load test}
+\section{Scalability of the application}
 
 \section{Extensibility of the application}
+
+Due to the architecture of the application, extending the existing solution
+with new features is simple.
+If the desired functionality is large enough a completely new service might
+be suitable if the existing landscape facilitates its addition.
+In that case, the service first needs to be designed just as any other as well.
+In the second step, a \textit{Protocol Buffers} service definition needs to be
+created according to the resulted design.
+Afterwards, the construction of the actual business logic of the service is
+conducted just as it would be with any other software architecture.
+The main difference is that each RPC endpoint needs to be created and connected
+to the business logic.
+
+Furthermore, owing to the fact that \textit{Protocol Buffers} support many
+programming languages it would even be feasible to construct a service in a
+completely different language than the existing ones.
+Using \textit{protoc} helper functions can be created not only for the
+\textit{Go} programming language but many others like \textit{C++}, \textit{C\#},
+\textit{Java}, or \textit{Python}~\cite{protobuf}.
+Similarly, the database does not have to be SQL-based for every service;
+if a NoSQL database, a key–value store or even a completely different
+database design are more suitable for the new service, they can be easily
+used as described in subsection \ref{subsect:databases}.
+
+Finally, the service needs to be added to the configuration and its RPC endpoints
+to other services that should consume the new one.
+Alternatively, if RPC endpoints of the service should be directly usable
+by the users of the application, they have to be connected to the
+\textit{API gateway} which is exhibited in great detail in section \ref{sect:api-gateway}.
+
+On the other hand, any service can be extended of course.
+Interestingly, the procedure would be very similar to adding a completely new service.
+Presumably, a new RPC needs to be defined that can be integrated into the service
+as just described.
+
 
 \section{Extension of existing legacy software}
 

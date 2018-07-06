@@ -91,7 +91,7 @@
 \contentsline {section}{\numberline {4.5}Vehicle gateway}{61}{section.4.5}
 \contentsline {section}{\numberline {4.6}Deployment}{61}{section.4.6}
 \contentsline {chapter}{\numberline {5}Evaluation}{62}{chapter.5}
-\contentsline {section}{\numberline {5.1}Load test}{62}{section.5.1}
+\contentsline {section}{\numberline {5.1}Scalability of the application}{62}{section.5.1}
 \contentsline {section}{\numberline {5.2}Extensibility of the application}{62}{section.5.2}
-\contentsline {section}{\numberline {5.3}Extension of existing legacy software}{62}{section.5.3}
-\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{63}{chapter.6}
+\contentsline {section}{\numberline {5.3}Extension of existing legacy software}{63}{section.5.3}
+\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{64}{chapter.6}
