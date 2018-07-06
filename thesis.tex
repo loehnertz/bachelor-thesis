@@ -261,7 +261,8 @@ the next increment is getting projected and eventually executed as shown in figu
 \includegraphics[width=.60\textwidth]{iterative-and-incremental-model}
 \caption{A revised, iterative version of the waterfall model i.e. IID}
 \label{fig:idd-model}
-\end{figure}\newline
+\end{figure}
+
 To conclude, the stages Royce exhibited in 1970 are still applicable nowadays.
 In some form or another, those are mandatory for implementing any software
 and became therefore known as the \textit{software development life cycle}.~\cite{se-ieee}
@@ -1424,7 +1425,8 @@ Microservices are an evolution of the service-oriented architecture pattern
 that elegantly eliminate organizational friction […]}
 {\textit{Peter Bourgon}}}
 
-\subsubsection{Project structure}
+
+\section{Project structure}
 
 The source code of the project consist of four directories:
 \begin{itemize}[noitemsep]
@@ -1438,7 +1440,19 @@ enough to be shared by multiple services. Owning to the fact that directly in th
 \code{services} directory each service has its own directory, this structure
 to share source code is the most consistent one.
 
-\subsubsection{Service structure}
+The name of the project is \textit{Toranos} which is the name of the
+Celtic god of thunder and the wheel --- a fitting name for the purpose of the application.
+The project is licensed as \textit{Open Source} software under the
+\textit{Apache 2.0} license. The source code is freely available on GitHub at:\\
+\code{\url{https://github.com/loehnertz/Toranos}}
+
+
+\section{Runtime configuration}
+
+
+
+
+\section{Service structure}
 
 The source code structure of each is service is very similar.
 Inside of its directory there is always a \code{main.go} file and a \code{proto}
@@ -1450,7 +1464,7 @@ Inside of \code{main.go} at least a function with the identifier
 \textit{Go} programming language. Only a function with that name inside of
 a package named \code{main} can act as the starting point of any program.
 
-\paragraph{Service definition}
+\subsection{Service definition} \label{subsect:service-definition}
 Furthermore, the \code{proto} directory comprises three files.
 One contains the \textit{service definition} of that service and the other
 two are \code{.go} files which are generated via the \textit{Protocol Buffers}
@@ -1491,34 +1505,17 @@ a data type as well as an unique integer which is just used internally for
 encoding purposes.
 
 Using the command-line tool \textit{protoc}, readily available \code{.go} files
-are generated to initialize the defined \code{Messages} and to create and consume
-the \textit{Go Micro} services stated in each \code{.proto} file.
-
-\begin{lstlisting}[title=services/fleet-monitor/proto/fleet-monitor.micro.go]
-func RegisterFleetMonitorHandler(
-  s server.Server,
-  hdlr FleetMonitorHandler,
-  opts ...server.HandlerOption
-) {
-	type fleetMonitor interface {
-		AvailableVehicles(
-          ctx context.Context,
-          in *Empty,
-          out *AvailableVehiclesResponse
-        ) error
-	}
-	type FleetMonitor struct {
-		fleetMonitor
-	}
-	h := &fleetMonitorHandler{hdlr}
-	s.Handle(s.NewHandler(&FleetMonitor{h}, opts...))
-}
-\end{lstlisting}
-
-For instance, this function is generated to register the newly defined service.
+are generated which are filled with helper functions for creating
+a server and a client for the service and each of its RPC endpoints.
+For instance, the function \code{RegisterFleetMonitorHandler()} is generated
+to register the newly defined service.
 This is then done from within the \code{main()} function of each service.
 
+\subsection{Service scaffolding}
+
 \begin{lstlisting}[title=services/fleet-monitor/main.go]
+var service micro.Service
+
 func main() {
 	// Create the service
 	service = micro.NewService(
@@ -1559,17 +1556,236 @@ by starting a new instance of that service.
 
 In the next step the handler which accepts incoming RPC is initialized with the
 aforementioned function at \code{fleet-monitor.micro.go}.
-The argument \code{new(FleetMonitor)} is explained shortly.
+The argument \code{new(FleetMonitor)} is explained in subsection \ref{subsect:service-handlers}.
 
 Finally, the service is started by running its server. Upon any errors regarding
 the server component of the service that handles incoming requests,
 the program will \code{panic} which means that it crashes properly.
 
+Furthermore, the \code{main()} function of each service also sets up
+the connection towards other services that need to be called by that service.
+During the generation of the helper functions a function for that exact purpose
+is created for each distinct service.
+
+Depending on the service, sometimes other components are initialized additionally.
+A common example are connections towards a database or caching system.
+
+\begin{lstlisting}[title=services/fleet-controller/main.go]
+const DatabaseDriver = "postgres"
+const DataSource = "user=jloehnertz dbname=toranos_fleet sslmode=disable"
+
+var database *sql.DB
+
+// Connect to the database
+var databaseError error
+database, databaseError = sql.Open(DatabaseDriver, DataSource)
+if databaseError != nil {
+	panic(databaseError)
+}
+\end{lstlisting}
+
+\begin{lstlisting}[title=services/fleet-monitor/main.go]
+var redisClient *redis.Client
+
+// Initialize a Redis client for caching purposes
+redisClient = commons.InitRedisClient(
+                  config.RedisHostAddress,
+                  "",
+                  config.RedisDatabaseId,
+              )
+\end{lstlisting}
+
+\subsection{Service handlers} \label{subsect:service-handlers}
+
+As already depicted, each service leverages a helper function to initialize
+its handler that processes each RPC. Effectively, the handler routes incoming
+RPC towards the corresponding functions that are assigned to handle it.
+These functions oftentimes call another function that performs the actual work
+which is located in another distinct file according to its purpose.
+
+\begin{lstlisting}[title=services/fleet-monitor/main.go]
+type FleetMonitor struct{}
+
+func (fm *FleetMonitor) AvailableVehicles(
+  ctx context.Context,
+  req *fleet_monitor.Empty,
+  res *fleet_monitor.AvailableVehiclesResponse
+) error {
+    // Call the designated function
+	res.Vehicles = retrieveAvailableVehicles()
+
+    // Return no error
+	return nil
+}
+\end{lstlisting}
+
+This example is taken out of the \code{fleet-monitor} service which has
+exactly one RPC endpoint to retrieve all vehicles that are currently available
+to rent. This is another point where the \textit{Protocol Buffers service definitions}
+become useful. The request and response objects are input arguments to that
+handler function. It gets called by the handler that \textit{Go Micro} established via\\
+\code{RegisterFleetMonitorHandler()}.
+
+The function \code{AvailableVehicles()} is a method of the empty\\
+\code{FleetMonitor} \code{struct}. Methods in the \textit{Go} programming
+language are written by prepending the name of the \code{struct} that can
+call that method. The method can then be called with simple \textit{dot-notation}:\\
+\code{FleetMonitor.AvailableVehicles(ctx, req, res)}.
+Therefore, \\\code{RegisterFleetMonitorHandler()} receives a new instance of that\\
+\code{FleetMonitor} \code{struct} with \code{new(FleetMonitor)} which enables
+the handler to call each handler function upon an incoming RPC.
+The \code{context} argument is just used for additional meta-information about the RPC.
+
+The most important aspect to take note of are the arguments of the handler function.
+There types are taken out of the generated helper files based on the service definition.
+
+\begin{lstlisting}[title=services/fleet-monitor/proto/fleet-monitor.pb.go]
+type AvailableVehiclesResponse struct {
+	Vehicles []*AvailableVehiclesResponse_Vehicle
+}
+
+type AvailableVehiclesResponse_Vehicle struct {
+	VehicleId                      string
+	Location                       string
+	ApproximateRadialRangeInMeters uint32
+}
+\end{lstlisting}
+
+In this exact case, the \code{repeated} directive exhibited in subsection
+\ref{subsect:service-definition} can be seen in action;
+\code{AvailableVehiclesResponse} just has a reference to a \code{slice} of
+% The second code snippet actually has to be \code{AvailableVehiclesResponse_Vehicle}
+\code{AvailableVehiclesResponse} which corresponds to a list in \textit{Go}.
+
+Using these structs, the request as well as the response of each RPC
+are strictly defined which makes incorrect usage by a developer nearly impossible
+as the compiler of \textit{Go} would directly halt with an error during the
+compilation process.
+The important detail to note is that this would prevent the service from
+even being deployed and executed on a server; the error is detected during
+the development which reduces errors during runtime by a large margin.
+Thus, the types of every field of the request and the response will be checked
+during the compilation. Moreover, the names of the fields get restricted
+to the defined ones.
+However, at this point the exact implementation of the function
+\code{retrieveAvailableVehicles()} is excluded for complexity reasons.
+Nevertheless, a type check of the return value of that function which is then
+passed into the response of the RPC via \code{res.Vehicles} is conducted as well.
+
+\subsection{Service consumers}
+
+For example, the function \code{NewFleetMonitorService()} can be executed by
+other services to connect to the \code{fleet-monitor} service. After that
+connection is established, RPC endpoints can be called freely.
+
+\begin{lstlisting}[title=services/statistics/main.go]
+// The variables that will hold the references
+var service micro.Service
+var fleetControllerService fleet_monitor.FleetControllerService
+
+// Create the service
+service = micro.NewService(
+  micro.Name(config.StatisticsName),
+  micro.RegisterTTL(time.Second*30),
+  micro.RegisterInterval(time.Second*10),
+  micro.WrapClient(hystrix.NewClientWrapper()),
+)
+service.Init()
+
+// Create the service's client
+serviceClient := service.Client()
+serviceClient.Init(client.Retries(3))
+
+// Initialize the connection towards another service
+fleetMonitorService = fleet_monitor.NewFleetControllerService(
+                          config.FleetControllerName,
+                          *serviceClient,
+                      )
+\end{lstlisting}
+
+\textit{Go Micro} handles the first connection towards the
+\textit{Service Discovery} that conducts a DNS lookup which is mandatory
+for performing the actual RPC towards the obtained IP address and port number
+of the desired service.
+This is achieved by passing the name of the service into the helper function
+as well as the client component of the service that performs the calls.
+
+Moreover, during the setup of each service the client can be optionally equipped
+with certain settings. As discussed in section \ref{subsect:analysis-construction},
+a service will utilize a circuit breaker together with a retry mechanism to
+avoid large-scale failures; this is accomplished with
+the lines \textit{9} and \textit{15}.
+
+The actual RPC is performed like with a helper function again.
+
+\begin{lstlisting}[title=services/statistics/bookings.go]
+func retrieveAllBookingsOfCustomer(customer string) (
+    bookings []*statistics.RetrieveBookingsResponse_Booking,
+    err error
+  ) {
+	   resBookings, errBookings :=
+        fleetControllerService.RetrieveBilledBookingsOfCustomer(
+            context.TODO(),
+            &fleet_controller.RetrieveBilledBookingsOfCustomerRequest{
+    		        UserId: customer,
+    	    },
+        )
+
+    	if errBookings != nil {
+    		log.Log(errBookings)
+    		return
+    	}
+
+      // Function continues with returning the bookings
+}
+\end{lstlisting}
+
+Once again, the \textit{Protocol Buffers} definition is leveraged to prepare
+a request to perform the RPC towards the \code{fleet-controller} service.
+Of course, the variable \code{resBookings}, which contains the response of the RPC,
+is constructed according to the service definition.
+
+Finally, within this last source code snippet the remote procedure calls (RPC)
+can be observed. Compared to a traditional API call, no HTTP request has to be
+performed. Instead, the function \code{RetrieveBilledBookingsOfCustomer()}
+can be called like a normal function native to the package.
+Only in the background the RPC is executed as described
+in section \ref{subsubsect:architectural-styles}.
+Additionally, compared to an API call via HTTP, it is ensured that the content
+of the request is correct considering the keys and value types.
+
+\subsection{Scheduled tasks}
+
+
+
+\subsection{Database design}
+
+
+
+
+\section{API gateway}
+
+
+
+
+\section{Vehicle gateway}
+
+
+
+
+\section{Deployment}
+
+
+
 
 
 \chapter{Evaluation} \label{chap:evaluation}
 
+\section{Load test}
 
+\section{Extensibility of the application}
+
+\section{Extension of existing legacy software}
 
 
 
