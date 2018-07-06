@@ -1784,7 +1784,32 @@ For instance, as seen in the source code snippet, this is used by the
 
 \subsection{Databases}
 
+In order to achieve a minimum of \textit{Coupling} between the services,
+every service has its own database.
+Consequently, if one service needs any information that another service's
+database persists, there is no other option but an RPC.
+This pattern is strictly followed within the application to thwart any
+dependencies between services. For example, if the database of one service gets
+corrupted others might still be able to continue their work.
+Similarly, every cache is separated from others.
 
+Although it might seem counterintuitive to let a service execute RPCs towards
+other services for every piece of data that is not existent in its own database,
+this approach actively prevents conditions where two services mutate the same
+data entity and thus create a state of inconsistency.
+Instead, only legitimate data ever hits a service by leveraging the service definitions.
+
+Furthermore, database queries are decoupled from other simultaneously running tasks;
+owing to the fact, that the database management system (DBMS) prevents
+simultaneous mutations of the same data entity, it would be feasible
+to run multiple instances of a service that sees many RPCs that just
+retrieve or persist data from or to its connected database.
+Thus, the load of a large amount of RPCs towards such a service could be balanced.
+
+Finally, the use case of the application is not dependent on much
+shared data which makes such an approach all the more reasonable.
+In other scenarios, a synchronization of data between databases might be useful
+to minimize the amount of RPC overhead.
 
 
 \section{API gateway}
