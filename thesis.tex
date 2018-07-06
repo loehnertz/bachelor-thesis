@@ -443,8 +443,8 @@ any modifications to it.
 
 \paragraph{Coupling and Cohesion}
 These two terms are describing how a component behaves in regard to the whole application.
-\textit{Coupling} is a measure of the interdependence of a component whereas
-\textit{Cohesion} describes how associated the elements of the components are~\cite{swebok}.
+\textit{Cohesion} is a measure of the interdependence of a component whereas
+\textit{Coupling} describes how associated the elements of the components are~\cite{swebok}.
 Consequently, this concept is therefore close to the aforementioned \textit{Abstraction}
 since high \textit{Coupling} lowers the abstraction of a system and vice versa.
 
@@ -1542,8 +1542,8 @@ Every \code{main()} function inside of each service looks roughly similar.
 Firstly, a new service is created via \textit{Go Micro};
 \code{micro.NewService()} expects a name as the identifier.
 This name is used to register the service toward the \textit{Service Discovery}.
-Thus, the name is taken out of a configuration which is explained later on in
-this chapter. In essence, this approach was chosen so that other services can
+Thus, the name is taken out of the configuration.
+In essence, this approach was chosen so that other services can
 faultlessly discover each created one by using the same name out of the configuration.
 
 Secondly, an automatic health check is added as described in
@@ -1554,18 +1554,13 @@ Utilizing this setting, the \textit{Service Discovery} and other
 network components can react quickly to a sudden breakdown of a service e.g.
 by starting a new instance of that service.
 
-In the next step the handler which accepts incoming RPC is initialized with the
+In the next step the handler which accepts incoming RPCs is initialized with the
 aforementioned function at \code{fleet-monitor.micro.go}.
 The argument \code{new(FleetMonitor)} is explained in subsection \ref{subsect:service-handlers}.
 
 Finally, the service is started by running its server. Upon any errors regarding
 the server component of the service that handles incoming requests,
 the program will \code{panic} which means that it crashes properly.
-
-Furthermore, the \code{main()} function of each service also sets up
-the connection towards other services that need to be called by that service.
-During the generation of the helper functions a function for that exact purpose
-is created for each distinct service.
 
 Depending on the service, sometimes other components are initialized additionally.
 A common example are connections towards a database or caching system.
@@ -1599,7 +1594,7 @@ redisClient = commons.InitRedisClient(
 
 As already depicted, each service leverages a helper function to initialize
 its handler that processes each RPC. Effectively, the handler routes incoming
-RPC towards the corresponding functions that are assigned to handle it.
+RPCs towards the corresponding functions that are assigned to handle it.
 These functions oftentimes call another function that performs the actual work
 which is located in another distinct file according to its purpose.
 
@@ -1634,7 +1629,7 @@ call that method. The method can then be called with simple \textit{dot-notation
 Therefore, \\\code{RegisterFleetMonitorHandler()} receives a new instance of that\\
 \code{FleetMonitor} \code{struct} with \code{new(FleetMonitor)} which enables
 the handler to call each handler function upon an incoming RPC.
-The \code{context} argument is just used for additional meta-information about the RPC.
+The \code{context} argument is used for additional meta-information about the RPC.
 
 The most important aspect to take note of are the arguments of the handler function.
 There types are taken out of the generated helper files based on the service definition.
@@ -1674,6 +1669,10 @@ passed into the response of the RPC via \code{res.Vehicles} is conducted as well
 
 \subsection{Service consumers}
 
+Furthermore, the \code{main()} function of each service also sets up
+the connection towards other services that need to be called by that service.
+During the generation of the helper functions a function for that exact purpose
+is created for each distinct service.
 For example, the function \code{NewFleetMonitorService()} can be executed by
 other services to connect to the \code{fleet-monitor} service. After that
 connection is established, RPC endpoints can be called freely.
@@ -1716,7 +1715,7 @@ a service will utilize a circuit breaker together with a retry mechanism to
 avoid large-scale failures; this is accomplished with
 the lines \textit{9} and \textit{15}.
 
-The actual RPC is performed like with a helper function again.
+The actual RPC is performed with a helper function again.
 
 \begin{lstlisting}[title=services/statistics/bookings.go]
 func retrieveAllBookingsOfCustomer(customer string) (
@@ -1756,9 +1755,34 @@ of the request is correct considering the keys and value types.
 
 \subsection{Scheduled tasks}
 
+Apart from RPCs that are indirectly initiated by users of the application,
+some tasks are executed automatically in an asynchronous and scheduled manner.
+Consequently, a task runner is necessary to do so.
+For the application, normal \textit{cron jobs} are utilized.
+The software utility \textit{cron} is originally derived from UNIX and can be
+used to schedule and run recurring tasks~\cite{crontab}.
+An implementation written in \textit{Go} is used within the application.
 
+\begin{lstlisting}[title=services/fleet-monitor/bookings.go]
+// Initialize all the tasks
+scheduler := cron.New()
 
-\subsection{Database design}
+scheduler.AddFunc(
+    config.CheckForExpiredReservationsInterval,
+    checkForExpiredReservations,
+)
+
+// Start all the tasks
+scheduler.Start()
+\end{lstlisting}
+
+The interval for this exemplary task is retrieved from the configuration.
+During the runtime of the service, the tasks will automatically executed according
+to the configured interval.
+For instance, as seen in the source code snippet, this is used by the
+\code{fleet-monitor} service to cancel active bookings which are expired.
+
+\subsection{Databases}
 
 
 

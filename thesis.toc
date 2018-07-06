@@ -85,8 +85,8 @@
 \contentsline {subsection}{\numberline {4.3.2}Service scaffolding}{53}{subsection.4.3.2}
 \contentsline {subsection}{\numberline {4.3.3}Service handlers}{55}{subsection.4.3.3}
 \contentsline {subsection}{\numberline {4.3.4}Service consumers}{57}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Scheduled tasks}{60}{subsection.4.3.5}
-\contentsline {subsection}{\numberline {4.3.6}Database design}{60}{subsection.4.3.6}
+\contentsline {subsection}{\numberline {4.3.5}Scheduled tasks}{59}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Databases}{60}{subsection.4.3.6}
 \contentsline {section}{\numberline {4.4}API gateway}{60}{section.4.4}
 \contentsline {section}{\numberline {4.5}Vehicle gateway}{60}{section.4.5}
 \contentsline {section}{\numberline {4.6}Deployment}{60}{section.4.6}
