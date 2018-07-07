@@ -1866,7 +1866,141 @@ to minimize the amount of RPC overhead.
 
 \section{API gateway} \label{sect:api-gateway}
 
+The \textit{API gateway} accomplishes two aims:
+It shields the services from the outside so that no client on the world wide web
+can directly access any of the services; this mechanism is in place mainly for
+security reasons.
+Thus, a firewall blocks every request towards all the services and just allows
+the \textit{API gateway} to do so.
 
+Similarly, the second aim is to provide user authentication
+at a central point without the need for every service to implement it as well.
+As a consequence, the services can be sure that no request towards them is unauthorized.
+To achieve this, the \textit{API gateway} implements endpoints that are either
+accessible by the public or only by registered and authorized users.
+
+\paragraph{Scaffolding}
+Generally, the \textit{API gateway} just offers normal HTTP endpoints that accept
+JSON. Upon starting it, the endpoints are initialized.
+
+\begin{lstlisting}[title=api-gateway/main.go]
+func initRoutes(router *mux.Router) {
+	// Public route
+	router.Handle("/login", http.HandlerFunc(getAuthToken)).Methods("POST")
+
+	// Authenticated route
+	router.Handle(
+      "/available-vehicles",
+      authenticationMiddleware(http.HandlerFunc(availableVehicles)),
+    ).Methods("GET")
+}
+\end{lstlisting}
+
+For example, the endpoint at \code{/available-vehicles} calls the function
+\code{availableVehicles()} upon an incoming \code{GET-request}.
+Those handler functions perform regular RPCs towards the desired services just
+as any other service of the application. In that sense, the \textit{API gateway}
+is a service itself in a way.
+The allowed HTTP methods are set by arguments of the \code{Methods()} method.
+To control which endpoints are public and which are not, a middleware, as described
+in subsection \ref{subsect:construction}, is utilized.
+
+\paragraph{JSON Web Tokens}
+The authentication is conducted via \textit{JSON Web Tokens} (JWT) which is
+an RFC-standardized token format for enhanced authentication~\cite{jwt-rfc}.
+Thus, a JWT has a similar use case as a \textit{session ID}.
+However, the standard comprises of many more features.
+Upon issuing a new JWT, a JSON object is created that includes information
+like the username of the user, its role (e.g. customer, administrator), an
+expiration date and even completely arbitrary data.
+The resulting JSON object gets serialized and signed with an asymmetric
+private key. Consequently, the client can verify the authenticity of the token
+while any tampering of the token can be directly revealed since the signature becomes
+invalid. Furthermore, the expiration date of the token is automatically checked
+when checking its validity. Thus, no expiration dates have to be saved to
+a database anymore as it is usual with \textit{session IDs}.
+
+\paragraph{Authentication middleware}
+The \code{authenticationMiddleware()} is just another function that is executed
+before the function that implements the business logic.
+It can execute any code and either pass the request to the function that should
+handle the request or directly return a response.
+
+\begin{lstlisting}[title=api-gateway/middlewares.go]
+func authenticationMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		token := strings.Split(r.Header.Get("Authorization"), " ")
+
+		// Check if the user is authenticated
+		resAuthenticateUser, errAuthenticateUser :=
+      userManagementService.AuthenticateUser(
+          context.TODO(),
+          &user_management.AuthenticateUserRequest{Token: token[1]},
+      )
+
+		if errAuthenticateUser != nil {
+			log.Log(errAuthenticateUser)
+			w.Write([]byte(commons.UnknownError.Error()))
+		} else if resAuthenticateUser.Authenticated {
+			// Call the next handler
+			gorillacontext.Set(r, "user", resAuthenticateUser)
+			next.ServeHTTP(w, r)
+		} else {
+			w.Write([]byte(commons.NotAuthorizedError.Error()))
+		}
+	})
+}
+\end{lstlisting}
+
+Any user can login with their credentials to receive a new, valid JWT.
+With every subsequent request towards the public API, the JWT is part of the
+HTTP request as the \code{Authorization} header.
+In the case of the \code{authenticationMiddleware()}, the middleware performs
+a regular RPC towards the \code{user-management} service to check if the
+token of the requesting user is valid. The \code{user-management} service also
+implements an endpoint to issue new tokens among others which is used for logging
+a user in.
+If the service confirms the validity of the token the current request is passed
+to the handler function. If the token is invalid, the middleware directly responds
+with an error.
+The handler functions then call other RPC endpoints according to their functionality
+and return adjusted responses to the requesting users.
+
+Due to the fact, that the JWT includes the username and even the role of the
+requesting user, it is not even mandatory anymore to include the username with
+each request as all this information is an integral part of the JWT.
+Moreover, to check if a user is authorized to request certain endpoints no
+database has to be queried; the role of the user is encoded in the JWT and
+by signing the token all its information are tamper-proof.
+
+\paragraph{Resilience measures}
+Finally, the \textit{API gateway} implements certain measures to enhance
+the resilience of the whole application.
+According to the paradigm of \textit{Defensive Programming} which was introduced
+in subsection \ref{subsect:construction}, the gateway leverages a library
+developed by \textit{Netflix} called \textit{Hystrix}~\cite{hystrix}.
+It acts similar to a middleware by wrapping every RPC of the
+\textit{API gateway} towards another service.
+In fact, \textit{Go Micro} even offers a method to directly do so with
+supported wrappers by calling \code{micro.WrapClient()} during the startup
+of the \textit{API gateway}.
+
+\begin{lstlisting}[title=api-gateway/main.go]
+// Create the service
+service = micro.NewService(
+	micro.Name(config.ApiGatewayName),
+	micro.RegisterTTL(time.Second*30),
+	micro.RegisterInterval(time.Second*10),
+	micro.WrapClient(hystrix.NewClientWrapper()), // Initialize Hystrix
+)
+\end{lstlisting}
+
+\textit{Hystrix} offers three distinct features:
+a custom timeout for every RPC, a maximum pool of concurrent connections towards
+a service as well as a \textit{circuit breaker}.
+All of these measures improve the overall resilience of the application
+as well as its average response times by not overloading any service with incoming
+requests.
 
 
 \section{Vehicle gateway}

@@ -89,12 +89,16 @@
 \contentsline {subsection}{\numberline {4.3.5}Scheduled tasks}{61}{subsection.4.3.5}
 \contentsline {subsection}{\numberline {4.3.6}Databases}{62}{subsection.4.3.6}
 \contentsline {section}{\numberline {4.4}API gateway}{63}{section.4.4}
-\contentsline {section}{\numberline {4.5}Vehicle gateway}{63}{section.4.5}
-\contentsline {section}{\numberline {4.6}Deployment}{63}{section.4.6}
-\contentsline {chapter}{\numberline {5}Evaluation}{64}{chapter.5}
-\contentsline {section}{\numberline {5.1}Scalability of the application}{64}{section.5.1}
-\contentsline {section}{\numberline {5.2}Extensibility of the application}{64}{section.5.2}
-\contentsline {section}{\numberline {5.3}Extension of existing legacy software}{65}{section.5.3}
-\contentsline {paragraph}{Foundation}{65}{section*.73}
-\contentsline {paragraph}{Implementation}{66}{section*.74}
-\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{67}{chapter.6}
+\contentsline {paragraph}{Scaffolding}{63}{section*.73}
+\contentsline {paragraph}{JSON Web Tokens}{64}{section*.74}
+\contentsline {paragraph}{Authentication middleware}{64}{section*.75}
+\contentsline {paragraph}{Resilience measures}{66}{section*.76}
+\contentsline {section}{\numberline {4.5}Vehicle gateway}{67}{section.4.5}
+\contentsline {section}{\numberline {4.6}Deployment}{67}{section.4.6}
+\contentsline {chapter}{\numberline {5}Evaluation}{68}{chapter.5}
+\contentsline {section}{\numberline {5.1}Scalability of the application}{68}{section.5.1}
+\contentsline {section}{\numberline {5.2}Extensibility of the application}{68}{section.5.2}
+\contentsline {section}{\numberline {5.3}Extension of existing legacy software}{69}{section.5.3}
+\contentsline {paragraph}{Foundation}{69}{section*.77}
+\contentsline {paragraph}{Implementation}{70}{section*.78}
+\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{71}{chapter.6}
