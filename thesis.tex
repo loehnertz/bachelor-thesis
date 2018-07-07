@@ -1501,7 +1501,62 @@ The project is licensed as \textit{Open Source} software under the
 
 \section{Runtime configuration}
 
+The \code{config} module of \textit{Go Micro} offers an easy integration
+of a configuration store into the service-oriented architecture.
+A key-value store is used to persist the configuration.
+This approach was chosen to allow for easy configuration by administrators
+that does not mandate a recompilation of the source code.
+The utilized \textit{Service Discovery} tool \textit{Consul} additionally offers
+such a key-value store. Thus, the configuration is directly set within the
+web interface of \textit{Consul}. Alternatively, the API of \textit{Consul}
+can be used via HTTP or the command-line to do the same.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{consul-kv-store}
+\caption{The web interface of the key-value store of \textit{Consul}}
+\label{fig:consul-kv-store}
+\end{figure}
+Upon the startup of each service, \textit{Consul} is queried to retrieve the
+configuration. Thus, a change within the configuration only takes effect
+after the affected services are restarted. This should not be a problem however
+since many changed settings alter processes so much that a restart might
+have been necessary anyways to avoid data inconsistencies.
+Some helper functions were created to use the configuration during runtime.
 
+\begin{lstlisting}[title=services/billing/main.go]
+var conf config.Config
+
+// Initialize the configuration
+conf = common.InitConfig()
+
+// Retrieve a setting via its path
+common.GetConfigStringByPath(conf, "service-names", "billing")
+\end{lstlisting}
+
+The \code{conf} object is initialized only once during the startup of each service
+to avoid the aforementioned inconsistencies and to reduce the load
+towards \textit{Consul}. The helper function \code{InitConfig()} retrieves
+the whole configuration from \textit{Consul} in a format that allows for the
+path-based querying seen in the last source code snippet.
+
+\begin{lstlisting}[title=common/config.go]
+func InitConfig() config.Config {
+	// Initialize Consul as a source
+	consulSource := consul.NewSource(consul.WithPrefix("/"))
+
+	// Create new config
+	conf := config.NewConfig()
+
+	// Load source
+	conf.Load(consulSource)
+
+	return conf
+}
+\end{lstlisting}
+
+However, the configuration is not restricted to \textit{Consul};
+every other key-value store or even a plain JSON file could be used
+for that purpose in the same manner due to the versatile nature of \textit{Go Micro}.
 
 
 \section{Service structure}

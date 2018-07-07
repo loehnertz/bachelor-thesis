@@ -81,24 +81,24 @@
 \contentsline {chapter}{\numberline {4}Implementation}{53}{chapter.4}
 \contentsline {section}{\numberline {4.1}Project structure}{53}{section.4.1}
 \contentsline {section}{\numberline {4.2}Runtime configuration}{54}{section.4.2}
-\contentsline {section}{\numberline {4.3}Service structure}{54}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Service definition}{54}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Service scaffolding}{55}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Service handlers}{57}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Service consumers}{59}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Scheduled tasks}{61}{subsection.4.3.5}
-\contentsline {subsection}{\numberline {4.3.6}Databases}{62}{subsection.4.3.6}
-\contentsline {section}{\numberline {4.4}API gateway}{63}{section.4.4}
-\contentsline {paragraph}{Scaffolding}{63}{section*.73}
-\contentsline {paragraph}{JSON Web Tokens}{64}{section*.74}
-\contentsline {paragraph}{Authentication middleware}{64}{section*.75}
-\contentsline {paragraph}{Resilience measures}{66}{section*.76}
-\contentsline {section}{\numberline {4.5}Vehicle gateway}{67}{section.4.5}
-\contentsline {section}{\numberline {4.6}Deployment}{67}{section.4.6}
-\contentsline {chapter}{\numberline {5}Evaluation}{68}{chapter.5}
-\contentsline {section}{\numberline {5.1}Scalability of the application}{68}{section.5.1}
-\contentsline {section}{\numberline {5.2}Extensibility of the application}{68}{section.5.2}
-\contentsline {section}{\numberline {5.3}Extension of existing legacy software}{69}{section.5.3}
-\contentsline {paragraph}{Foundation}{69}{section*.77}
-\contentsline {paragraph}{Implementation}{70}{section*.78}
-\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{71}{chapter.6}
+\contentsline {section}{\numberline {4.3}Service structure}{55}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Service definition}{56}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Service scaffolding}{57}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Service handlers}{59}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Service consumers}{61}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Scheduled tasks}{63}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Databases}{64}{subsection.4.3.6}
+\contentsline {section}{\numberline {4.4}API gateway}{65}{section.4.4}
+\contentsline {paragraph}{Scaffolding}{65}{section*.74}
+\contentsline {paragraph}{JSON Web Tokens}{66}{section*.75}
+\contentsline {paragraph}{Authentication middleware}{66}{section*.76}
+\contentsline {paragraph}{Resilience measures}{67}{section*.77}
+\contentsline {section}{\numberline {4.5}Vehicle gateway}{68}{section.4.5}
+\contentsline {section}{\numberline {4.6}Deployment}{68}{section.4.6}
+\contentsline {chapter}{\numberline {5}Evaluation}{69}{chapter.5}
+\contentsline {section}{\numberline {5.1}Scalability of the application}{69}{section.5.1}
+\contentsline {section}{\numberline {5.2}Extensibility of the application}{69}{section.5.2}
+\contentsline {section}{\numberline {5.3}Extension of existing legacy software}{70}{section.5.3}
+\contentsline {paragraph}{Foundation}{70}{section*.78}
+\contentsline {paragraph}{Implementation}{71}{section*.79}
+\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{72}{chapter.6}
