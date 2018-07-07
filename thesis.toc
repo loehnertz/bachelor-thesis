@@ -95,5 +95,6 @@
 \contentsline {section}{\numberline {5.1}Scalability of the application}{64}{section.5.1}
 \contentsline {section}{\numberline {5.2}Extensibility of the application}{64}{section.5.2}
 \contentsline {section}{\numberline {5.3}Extension of existing legacy software}{65}{section.5.3}
-\contentsline {paragraph}{Implementation}{65}{section*.73}
-\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{66}{chapter.6}
+\contentsline {paragraph}{Foundation}{65}{section*.73}
+\contentsline {paragraph}{Implementation}{66}{section*.74}
+\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{67}{chapter.6}

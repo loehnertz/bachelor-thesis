@@ -1884,6 +1884,9 @@ to minimize the amount of RPC overhead.
 
 \section{Scalability of the application}
 
+
+
+
 \section{Extensibility of the application}
 
 Due to the architecture of the application, extending the existing solution
@@ -1923,7 +1926,37 @@ as just described.
 
 \section{Extension of existing legacy software}
 
+\paragraph{Foundation}
+Generally speaking, for the integration of a service-oriented architecture with
+an existing legacy software solution, two facets have to be discerned:
+letting the legacy software solution use functionalities of the services and
+letting the services use functionalities of the legacy software solution.
+The latter one is significantly more difficult since many legacy software solutions
+completely lack an externally accessible API.
 
+Nevertheless, this fact is not a problem in itself.
+As exhibited in subsection \ref{issues-legacy-software}, legacy software generally
+engenders many problems while the main reasons to continue using it are of
+economic nature as depicted in subsection \ref{sub-sect:continue-legacy}.
+
+The hypothetical integration in this section focuses on an incremental transition
+from the legacy solution to a service-oriented architecture.
+Although, the application developed during the course of this thesis is nearly
+fully-featured, oftentimes an incremental integration is more feasible due to
+the just mentioned economic difficulties of subsection \ref{sub-sect:continue-legacy}.
+
+Thus, the focus should be on implementing an increasing amount of functionalities
+within the service-oriented architecture. Consequently, only the first of the
+aforementioned facets of an integration is discussed in this section.
+It would be counterproductive to let the services use any functionality of the
+legacy software solution since this creates a dependency.
+Instead, the legacy software solution should substitute an increasing amount
+of its own implementation with newly implemented services.
+
+Thus, one of the exhibited solutions to legacy software issues from subsection
+\ref{solutions-issues-legacy-software} can be applied.
+To summarize, the discussed \textit{Migration} or to be more exact,
+a \textit{Reengineering} approach is congruent with the described procedure.
 
 \paragraph{Implementation}
 
