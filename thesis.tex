@@ -2033,7 +2033,7 @@ Finally, the \textit{API gateway} implements certain measures to enhance
 the resilience of the whole application.
 According to the paradigm of \textit{Defensive Programming} which was introduced
 in subsection \ref{subsect:construction}, the gateway leverages a library
-developed by \textit{Netflix} called \textit{Hystrix}~\cite{hystrix}.
+developed by \textit{Netflix Inc.} called \textit{Hystrix}~\cite{hystrix}.
 It acts similar to a middleware by wrapping every RPC of the
 \textit{API gateway} towards another service.
 In fact, \textit{Go Micro} even offers a method to directly do so with
@@ -2051,7 +2051,7 @@ service = micro.NewService(
 \end{lstlisting}
 
 \textit{Hystrix} offers three distinct features:
-a custom timeout for every RPC, a maximum pool of concurrent connections towards
+a custom timeout for every RPC, a capped pool of concurrent connections towards
 a service as well as a \textit{circuit breaker}.
 All of these measures improve the overall resilience of the application
 as well as its average response times by not overloading any service with incoming
@@ -2065,6 +2065,9 @@ Whenever a service needs to communicate with a vehicle of the fleet, a RPC
 is conducted towards the \textit{Vehicle gateway}. The gateway then sends a request
 to the selected vehicle by using its host address that has been saved to the
 database of the gateway beforehand.
+However, this component of the application is only implemented as a stub
+as the technical specifications of an actual fleet of vehicles is not part
+of this thesis which would make a proper implementation not feasible.
 
 
 \section{Deployment}
@@ -2156,7 +2159,14 @@ a \textit{Reengineering} approach is congruent with the described procedure.
 
 
 
-\chapter{Conclusion and Future Work} \label{chap:conclusion}
+\chapter{Future Work} \label{chap:future-work}
+
+
+
+
+
+\chapter{Conclusion} \label{chap:conclusion}
+
 
 
 
