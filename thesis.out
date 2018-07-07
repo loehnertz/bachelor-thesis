@@ -7,27 +7,28 @@
 \BOOKMARK [2][-]{subsection.2.3.2}{Design}{section.2.3}% 7
 \BOOKMARK [2][-]{subsection.2.3.3}{Construction}{section.2.3}% 8
 \BOOKMARK [1][-]{section.2.4}{Legacy software}{chapter.2}% 9
-\BOOKMARK [2][-]{subsection.2.4.1}{Issues with legacy software}{section.2.4}% 10
-\BOOKMARK [2][-]{subsection.2.4.2}{Solutions to legacy software issues}{section.2.4}% 11
-\BOOKMARK [0][-]{chapter.3}{Analysis}{}% 12
-\BOOKMARK [1][-]{section.3.1}{Requirements}{chapter.3}% 13
-\BOOKMARK [1][-]{section.3.2}{Design}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.3}{Construction}{chapter.3}% 15
-\BOOKMARK [0][-]{chapter.4}{Implementation}{}% 16
-\BOOKMARK [1][-]{section.4.1}{Project structure}{chapter.4}% 17
-\BOOKMARK [1][-]{section.4.2}{Runtime configuration}{chapter.4}% 18
-\BOOKMARK [1][-]{section.4.3}{Service structure}{chapter.4}% 19
-\BOOKMARK [2][-]{subsection.4.3.1}{Service definition}{section.4.3}% 20
-\BOOKMARK [2][-]{subsection.4.3.2}{Service scaffolding}{section.4.3}% 21
-\BOOKMARK [2][-]{subsection.4.3.3}{Service handlers}{section.4.3}% 22
-\BOOKMARK [2][-]{subsection.4.3.4}{Service consumers}{section.4.3}% 23
-\BOOKMARK [2][-]{subsection.4.3.5}{Scheduled tasks}{section.4.3}% 24
-\BOOKMARK [2][-]{subsection.4.3.6}{Databases}{section.4.3}% 25
-\BOOKMARK [1][-]{section.4.4}{API gateway}{chapter.4}% 26
-\BOOKMARK [1][-]{section.4.5}{Vehicle gateway}{chapter.4}% 27
-\BOOKMARK [1][-]{section.4.6}{Deployment}{chapter.4}% 28
-\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 29
-\BOOKMARK [1][-]{section.5.1}{Scalability of the application}{chapter.5}% 30
-\BOOKMARK [1][-]{section.5.2}{Extensibility of the application}{chapter.5}% 31
-\BOOKMARK [1][-]{section.5.3}{Extension of existing legacy software}{chapter.5}% 32
-\BOOKMARK [0][-]{chapter.6}{Conclusion and Future Work}{}% 33
+\BOOKMARK [2][-]{subsection.2.4.1}{Reasons to continue legacy software}{section.2.4}% 10
+\BOOKMARK [2][-]{subsection.2.4.2}{Issues with legacy software}{section.2.4}% 11
+\BOOKMARK [2][-]{subsection.2.4.3}{Solutions to legacy software issues}{section.2.4}% 12
+\BOOKMARK [0][-]{chapter.3}{Analysis}{}% 13
+\BOOKMARK [1][-]{section.3.1}{Requirements}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.2}{Design}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.3}{Construction}{chapter.3}% 16
+\BOOKMARK [0][-]{chapter.4}{Implementation}{}% 17
+\BOOKMARK [1][-]{section.4.1}{Project structure}{chapter.4}% 18
+\BOOKMARK [1][-]{section.4.2}{Runtime configuration}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.3}{Service structure}{chapter.4}% 20
+\BOOKMARK [2][-]{subsection.4.3.1}{Service definition}{section.4.3}% 21
+\BOOKMARK [2][-]{subsection.4.3.2}{Service scaffolding}{section.4.3}% 22
+\BOOKMARK [2][-]{subsection.4.3.3}{Service handlers}{section.4.3}% 23
+\BOOKMARK [2][-]{subsection.4.3.4}{Service consumers}{section.4.3}% 24
+\BOOKMARK [2][-]{subsection.4.3.5}{Scheduled tasks}{section.4.3}% 25
+\BOOKMARK [2][-]{subsection.4.3.6}{Databases}{section.4.3}% 26
+\BOOKMARK [1][-]{section.4.4}{API gateway}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.5}{Vehicle gateway}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.6}{Deployment}{chapter.4}% 29
+\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 30
+\BOOKMARK [1][-]{section.5.1}{Scalability of the application}{chapter.5}% 31
+\BOOKMARK [1][-]{section.5.2}{Extensibility of the application}{chapter.5}% 32
+\BOOKMARK [1][-]{section.5.3}{Extension of existing legacy software}{chapter.5}% 33
+\BOOKMARK [0][-]{chapter.6}{Conclusion and Future Work}{}% 34

@@ -714,6 +714,58 @@ In the end, there are two general options: a complete replacement of the legacy 
 a partial extension of it.
 
 
+\subsection{Reasons to continue legacy software} \label{sub-sect:continue-legacy}
+
+Formerly, a main reason to keep a software solution running was tied to its
+hardware requirements. Legacy software that is many decades old might still
+run on mainframe computers opposed to contemporary server systems~\cite{schneidewind-preserve-or-redesign}
+or even cloud computing. However, these considerations are not part of this thesis
+since the analyzed software solution was built as a common client-server application
+meant to run on prevailing server infrastructure.
+
+Apart from this initial reason, the most common one is of economic nature~\cite{schneidewind-preserve-or-redesign}.
+Often times, the expected benefits of redeveloping a software cannot justify the expenditures.
+Additionally, it is difficult to measure the advantages beforehand. The management
+of a company needs to ponder the proposal of redeveloping the current software.
+Particularly, if the legacy software still seems to be running as expected when observed
+from the outside, is becomes harder for the developers and engineers to vindicate
+their proposal towards the management --- raw characteristics such as performance,
+security, maintainability and eventually the development time can just be roughly estimated and
+are bound to the experience of the developers and engineers in charge.
+Moreover, even if the analysis does sound promising there is no guarantee that the new system
+will meet the expectations. Nevertheless, the tipping point can occur when the human costs for the maintenance
+of the legacy software are tremendous when compared to development teams of similar size and complexity.
+
+Furthermore, required constant availability or faultlessness of a system might make it
+difficult or impossible to implement a new software solution for its purpose~\cn ---
+software that controls a nuclear power plant comes to mind, for instance.
+Economic considerations offer an additional point of view:
+\begin{displayquote}
+\emph{"If a legacy system is running the key billing system, it is not sensible
+to make rash judgments, because the very future of the business may be at stake."}~\cite{bennett-coping-legacy}
+\end{displayquote}
+Especially the testing of a critical application might increase the costs
+and/or risks significantly. These aspects might make it improbable to replace
+the legacy software. Owing to the fact that the legacy software still fulfills
+its purpose, much effort is needed to ensure that the replacement software works
+in the same expected and quantifiable manner as its legacy counterpart.
+
+In addition, it is also possible that the users of the legacy software do not want
+to switch to a new solution due to third-party vendor lock-in or the fact that
+they are familiar with the legacy system~\cite{bennett-coping-legacy} which would make
+retraining a vast cost driver.
+
+Lastly, a big concern that the company's management cannot even control is
+poor or missing documentation.~\cn This circumstance is the most difficult one
+as it makes the redevelopment or the extension of the legacy software very intricate.
+Consequently, this can go as far to leave the organization unable to completely apprehend
+every detail of its legacy software.
+
+In summary, these four aspects are mostly accountable for the continuation of legacy software
+within an organization. Albeit, the assessment of costs versus benefits
+can be seen as the most important one by far~\cite{schneidewind-preserve-or-redesign}.
+
+
 \subsection{Issues with legacy software} \label{issues-legacy-software}
 
 The last-named reason of a poor documentation in favor of continuing a
@@ -751,7 +803,7 @@ extending it might introduce unwanted side-effects which increase debugging
 time by a large margin.
 
 
-\subsection{Solutions to legacy software issues}
+\subsection{Solutions to legacy software issues} \label{solutions-issues-legacy-software}
 
 Although, as just mentioned, the extensibility of legacy software might be mediocre,
 a couple of concepts do exist to overhaul an existing legacy software solution.
@@ -921,7 +973,7 @@ The second part discusses the legacy software solution by \textit{Kumpan}
 in terms of its components, issues and solutions to these issues.
 
 
-\section{Requirements} \label{subsect:hypothetical-requirements}
+\section{Requirements} \label{subsect:app-requirements}
 
 As stated in subsection \ref{subsect:requirements}, the first step of
 requirements engineering is the \textit{Elicitation}.
@@ -929,7 +981,7 @@ For that purpose, three executive stakeholders
 at \textit{Kumpan}, the corporate partner of this thesis, were interviewed
 to obtain the requirements for an ideal back-end application for the
 short-term rental of electric scooters.\\
-The discussed hypothetical software solution is meant for being licensed to
+The discussed software solution is meant for being licensed to
 the actual operators of such a rental business. Therefore, an operator
 is expected to maintain the application. Additionally, according to the
 mentioned \textit{Environments}, three first requirements emerge:
@@ -1016,7 +1068,7 @@ Figure \ref{fig:use-case-diagram} is used to put them into perspective.\\
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1\textwidth]{use-case-diagram}
-\caption{UML use case diagram based on the requirements of the hypothetical software solution}
+\caption{UML use case diagram based on the requirements}
 \label{fig:use-case-diagram}
 \end{figure}
 
@@ -1112,13 +1164,13 @@ bound too much to them.
 
 Based on these assumptions and the answered \textit{design decisions},
 a \textit{block diagram} is utilized to portray the software architecture of the
-\textit{Hypothetical software solution} as figure \ref{fig:hypothetical-service-architecture}.\\
+designed application (figure \ref{fig:service-architecture}).\\
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=1\textwidth]{hypothetical-service-architecture}
-\caption{The hypothetical services and their intercommunication}
-\label{fig:hypothetical-service-architecture}
+\includegraphics[width=1\textwidth]{service-architecture}
+\caption{The services and their intercommunication}
+\label{fig:service-architecture}
 \end{figure}
 
 The diagram depicts the single services of the designed software architecture.
@@ -1360,8 +1412,8 @@ definition~\cite{protobuf}. The tool works with many programming languages
 which would make the integration into legacy software all the easier.
 
 \paragraph{Runtime configuration}
-As mentioned in the subsection on the \textit{\nameref{subsect:hypothetical-requirements}}
-of the hypothetical software solution, there are a couple of requirements that
+As mentioned in the subsection on the \textit{\nameref{subsect:app-requirements}}
+of the designed application, there are a couple of requirements that
 mandate an application-wide mechanism to configure certain values e.g.
 the amount of time a reservation of a scooter stays valid for.
 For that purpose, a configuration server as a central source for all the
@@ -1870,6 +1922,11 @@ as just described.
 
 
 \section{Extension of existing legacy software}
+
+
+
+\paragraph{Implementation}
+
 
 
 
