@@ -2005,7 +2005,11 @@ requests.
 
 \section{Vehicle gateway}
 
-
+The \textit{Vehicle gateway} fulfills a similar task as the \textit{API gateway}.
+Whenever a service needs to communicate with a vehicle of the fleet, a RPC
+is conducted towards the \textit{Vehicle gateway}. The gateway then sends a request
+to the selected vehicle by using its host address that has been saved to the
+database of the gateway beforehand.
 
 
 \section{Deployment}
