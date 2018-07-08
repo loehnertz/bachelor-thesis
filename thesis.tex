@@ -2231,7 +2231,48 @@ to the system by the means of services.
 
 \chapter{Conclusion} \label{chap:conclusion}
 
+The market for the short-term rental of electric scooters is still relatively
+minuscule but as seen in section \ref{sect:electric-scooter-market} it is
+expected to experience growth in the near future.
+Running such a business is only feasible with as much automation as possible
+to reduce the costs. However, compared to a long-term rental business,
+a \textit{free-floating} model as described in section \ref{sect:electric-scooter-market}
+is prevalent for short-term rental offers. Thus, the entry into the market
+demands for much higher investment due to increased personnel expenses
+owing to the fact that the \textit{free-floating} model requires
+the physical relocation of the vehicles by humans.
 
+The handling of a short-term rental is suitable for much automation as well.
+Web-based front-end and back-end applications are preferred to leverage
+the power of cloud computing particularly in terms of scalability.
+Owing to the fact, that the rate of growth is currently unknown, a well-scalable
+solution for the back-end application is favorable.
+For an exemplary implementation during this thesis, a couple of possible
+architectural styles were exhibited in subsection \ref{subsubsect:architectural-styles}.
+Ultimately, a service-oriented approach was chosen due to the reasons stated
+in chapter \ref{chap:analysis}.
+
+After traversing through the whole exhibited \textit{Software Development Process},
+the designed application was implemented using the \textit{Go} programming language.
+The \textit{\nameref{chap:evaluation}} of that implementation revealed that
+the expected scalability was achievable.
+
+With regard to the existing legacy software solution by \textit{e-bility},
+the extension of legacy software in general seems to be favorable with
+the chosen approach based on \textit{Protocol Buffers} service definitions.
+Preferably, RPCs should be utilized during the modernization of a
+legacy software solution to slowly reengineer it into a new application.
+A service-oriented architecture seems to be favorable for the reasons stated
+in subsection \ref{solutions-issues-legacy-software}.
+
+To conclude, the implemented service-oriented application which was modeled
+after the exhibited \textit{Software Development Process} is working well
+according to the depicted requirements.
+To theoretically test the application in a real-world example mainly the
+deployment of it needs to be determined beforehand.
+Alternatively, a future analysis of the legacy software solution of \textit{e-bility}
+can yield results that would enable the implemented application to extend
+and modernize that legacy software solution.
 
 
 
