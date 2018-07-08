@@ -2,7 +2,7 @@
 \contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}
 \contentsline {chapter}{\numberline {2}Fundamentals}{6}{chapter.2}
 \contentsline {section}{\numberline {2.1}The market for the rental of electric scooters}{6}{section.2.1}
-\contentsline {paragraph}{German electric scooter manufacturer \textit {Kumpan}}{7}{section*.3}
+\contentsline {paragraph}{German electric scooter manufacturer \textit {e-bility}}{7}{section*.3}
 \contentsline {section}{\numberline {2.2}Components of a modern software product}{8}{section.2.2}
 \contentsline {section}{\numberline {2.3}Approaching the development of software}{9}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Requirements}{12}{subsection.2.3.1}
@@ -55,14 +55,14 @@
 \contentsline {paragraph}{Function}{32}{section*.47}
 \contentsline {chapter}{\numberline {3}Analysis}{34}{chapter.3}
 \contentsline {section}{\numberline {3.1}Requirements}{34}{section.3.1}
-\contentsline {paragraph}{Organizational}{35}{section*.48}
+\contentsline {paragraph}{Organizational}{34}{section*.48}
 \contentsline {paragraph}{Operational}{35}{section*.49}
 \contentsline {paragraph}{Business}{35}{section*.50}
 \contentsline {subsubsection}{Use Case}{35}{section*.51}
 \contentsline {section}{\numberline {3.2}Design}{38}{section.3.2}
 \contentsline {paragraph}{What architectural patterns or styles might be used?}{38}{section*.53}
 \contentsline {paragraph}{What architectural organization is best for delivering the non-functional requirements of the system?}{40}{section*.54}
-\contentsline {paragraph}{What will be the fundamental approach used to structure the system?}{41}{section*.55}
+\contentsline {paragraph}{What will be the fundamental approach used to structure the system?}{40}{section*.55}
 \contentsline {paragraph}{What strategy will be used to control the operation of the components in the system?}{41}{section*.56}
 \contentsline {subsubsection}{Architecture}{41}{section*.57}
 \contentsline {section}{\numberline {3.3}Construction}{46}{section.3.3}
@@ -103,5 +103,5 @@
 \contentsline {chapter}{\numberline {6}Future Work}{73}{chapter.6}
 \contentsline {section}{\numberline {6.1}Deployment}{73}{section.6.1}
 \contentsline {section}{\numberline {6.2}Connecting a front-end}{73}{section.6.2}
-\contentsline {section}{\numberline {6.3}Extending actual legacy software}{73}{section.6.3}
-\contentsline {chapter}{\numberline {7}Conclusion}{74}{chapter.7}
+\contentsline {section}{\numberline {6.3}Extending actual legacy software}{74}{section.6.3}
+\contentsline {chapter}{\numberline {7}Conclusion}{75}{chapter.7}

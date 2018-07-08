@@ -75,8 +75,9 @@ Furthermore, the fact that the scooters are always connected to the internet
 as well as the nature of current batteries desire a reactive and faultless application.
 
 Finally, the corporate partner of this thesis, which is discussed in detail
-in section \ref{sect:kumpan}, is already in possession of a solution which is not fully featured yet.
-Therefore, the subject of extending an existing back-end application with missing features is also targeted.
+in section \ref{sect:e-bility}, is already in possession of a solution.
+Therefore, the subject of extending an existing back-end application
+with missing features is also targeted.
 
 In conclusion, this leads into the research question of this bachelor thesis:\\
 \emph{What does the system and software architecture of a back-end application
@@ -144,14 +145,15 @@ Finally, three main models do exist for billing the customers~\cn.
 Namely, these are billing per minute, billing per kilometer, or a fixed rate for a whole ride.
 
 
-\paragraph{German electric scooter manufacturer \textit{Kumpan}} \label{sect:kumpan}
+\paragraph{German electric scooter manufacturer \textit{e-bility}} \label{sect:e-bility}
 
-The thesis loosely focuses on the business of German electric scooter manufacturer \textit{Kumpan}.
+The thesis loosely focuses on the business of German electric scooter manufacturer \textit{e-bility}.
 The company was established in 2009. For their product, they concentrated on three main aspects:
 an exterior design ready for the European market, build quality and sufficient cruising radius.
 They finished building their first electric scooter in 2010 and are thriving for good products ever since.
-The price of their electric scooters is still rather high. Owing to that circumstance,
-they came up with smaller, cheaper models as well as a completely different approach.
+The price of their electric scooters is still relatively high~\cite{e-bility}.
+Owing to that circumstance, they came up with smaller, cheaper models
+as well as a completely different approach.
 
 Instead of traditional retail sales they started developing the idea of a
 short-term rental service for their scooters. And from many angles it makes sense:
@@ -160,15 +162,16 @@ especially in Germany is still minuscule compared to e.g. car or bike sharing.
 Meanwhile, the costs for buying an electric scooter are still relatively high.
 Additionally, many people will not need such a vehicle for the whole day and would benefit
 from more flexibility. Lastly, parking spots are also a scarcity in inner cities.
-Therefore, \textit{Kumpan} plans to enter the market of short-term electric scooter rentals
+Therefore, \textit{e-bility} plans to enter the market of short-term electric scooter rentals
 in the near future. The company plans to sell the scooters as well as a license
 to operate a short-term rental service which includes front-end and back-end applications
 to interested operators such as municipal works.
 
 There are still many aspects to be discussed and determined but one of them
 is already set and can be seen as a necessity regardless of the final implementation:
-A server back-end application as well as its infrastructure.
-\textit{Kumpan} purchased an existing software solution to achieve this.
+A back-end application as well as its infrastructure.
+The manufacturer \textit{e-bility} acquired an existing software solution
+to achieve this although they currently are not in possession of it yet.
 
 
 \section{Components of a modern software product} \label{sect:frontend/backend}
@@ -969,8 +972,6 @@ chapter. The first part is about the system and software architecture of
 a back-end application for the short-term rental of electric scooters.
 Consequently, the stages of a software development process as depicted
 in section \ref{sect:software-development-process} are being exhibited.
-The second part discusses the legacy software solution by \textit{Kumpan}
-in terms of its components, issues and solutions to these issues.
 
 
 \section{Requirements} \label{subsect:app-requirements}
@@ -978,7 +979,7 @@ in terms of its components, issues and solutions to these issues.
 As stated in subsection \ref{subsect:requirements}, the first step of
 requirements engineering is the \textit{Elicitation}.
 For that purpose, three executive stakeholders
-at \textit{Kumpan}, the corporate partner of this thesis, were interviewed
+at \textit{e-bility}, the corporate partner of this thesis, were interviewed
 to obtain the requirements for an ideal back-end application for the
 short-term rental of electric scooters.\\
 The discussed software solution is meant for being licensed to
@@ -2197,17 +2198,34 @@ a certain format.
 
 \section{Deployment}
 
-
+The aspect of deploying the developed application to a remote server is
+not part of this thesis due to the complexity of the subject.
+Nevertheless, a cloud-based, containerized solution is preferred since
+each service runs completely independently. The aspect of scaling the application
+to meet the existing load is more suitable when new instances of a service
+can be created without any hassle. Furthermore, dynamic scaling of the amount
+of instances based on current load levels is a field of interest for a
+service-oriented application as well.
 
 
 \section{Connecting a front-end}
 
-
+The application as a whole is not really usable without a connected front-end.
+Owing to the fact, that the solution is geared towards regular customers
+and no enterprise personnel, the API by itself will not be used by any customer.
+Since the API works with JSON, a mobile application as well as a web-based one
+are both feasible.
 
 
 \section{Extending actual legacy software}
 
-
+As discussed earlier, the corporate partner of this thesis acquired a
+software solution for the purpose of the short-term rental of electric scooters.
+Consequently, the next step would be to evaluate which components of that
+legacy software solution are possibly outdated and would therefore benefit
+from an incremental modernization via a service-oriented architecture.
+Moreover, some functionalities might be missing entirely which could be added
+to the system by the means of services.
 
 
 
