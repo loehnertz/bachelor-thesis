@@ -2191,35 +2191,6 @@ a certain format.
 }
 \end{lstlisting}
 
-With such a format, each RPC can be easily invoked.
-Thus, an example with another programming language that is not supported by
-\textit{Protocol Buffers} is still straight forward.
-
-\begin{lstlisting}[title=\textit{Go Micro} API request in Ruby]
-require 'net/http'
-require 'uri'
-require 'json'
-
-uri = URI.parse("http://localhost:8123/rpc")
-
-headers = {'Content-Type': 'application/json'}
-body = {
-  'service': 'fleet-controller',
-	'method': 'FleetController.Book',
-	'request': {
-		'vehicleId': '2f4d0a',
-		'customerId': '458921'
-	}
-}
-
-# Create the HTTP objects
-http = Net::HTTP.new(uri.host, uri.port)
-request = Net::HTTP::Post.new(uri.request_uri, headers)
-request.body = body.to_json
-
-# Send the request
-response = http.request(request)
-\end{lstlisting}
 
 
 \chapter{Future Work} \label{chap:future-work}
