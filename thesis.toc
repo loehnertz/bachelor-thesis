@@ -94,12 +94,14 @@
 \contentsline {paragraph}{Authentication middleware}{66}{section*.76}
 \contentsline {paragraph}{Resilience measures}{67}{section*.77}
 \contentsline {section}{\numberline {4.5}Vehicle gateway}{68}{section.4.5}
-\contentsline {section}{\numberline {4.6}Deployment}{69}{section.4.6}
-\contentsline {chapter}{\numberline {5}Evaluation}{70}{chapter.5}
-\contentsline {section}{\numberline {5.1}Scalability of the application}{70}{section.5.1}
-\contentsline {section}{\numberline {5.2}Extensibility of the application}{70}{section.5.2}
-\contentsline {section}{\numberline {5.3}Extension of existing legacy software}{71}{section.5.3}
-\contentsline {paragraph}{Foundation}{71}{section*.78}
-\contentsline {paragraph}{Implementation}{72}{section*.79}
-\contentsline {chapter}{\numberline {6}Future Work}{73}{chapter.6}
-\contentsline {chapter}{\numberline {7}Conclusion}{74}{chapter.7}
+\contentsline {chapter}{\numberline {5}Evaluation}{69}{chapter.5}
+\contentsline {section}{\numberline {5.1}Scalability of the application}{69}{section.5.1}
+\contentsline {section}{\numberline {5.2}Extensibility of the application}{69}{section.5.2}
+\contentsline {section}{\numberline {5.3}Extension of existing legacy software}{70}{section.5.3}
+\contentsline {paragraph}{Foundation}{70}{section*.78}
+\contentsline {paragraph}{Implementation}{71}{section*.79}
+\contentsline {chapter}{\numberline {6}Future Work}{74}{chapter.6}
+\contentsline {section}{\numberline {6.1}Deployment}{74}{section.6.1}
+\contentsline {section}{\numberline {6.2}Connecting a front-end}{74}{section.6.2}
+\contentsline {section}{\numberline {6.3}Extending actual legacy software}{74}{section.6.3}
+\contentsline {chapter}{\numberline {7}Conclusion}{75}{chapter.7}

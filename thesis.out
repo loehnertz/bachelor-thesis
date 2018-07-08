@@ -26,10 +26,12 @@
 \BOOKMARK [2][-]{subsection.4.3.6}{Databases}{section.4.3}% 26
 \BOOKMARK [1][-]{section.4.4}{API gateway}{chapter.4}% 27
 \BOOKMARK [1][-]{section.4.5}{Vehicle gateway}{chapter.4}% 28
-\BOOKMARK [1][-]{section.4.6}{Deployment}{chapter.4}% 29
-\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 30
-\BOOKMARK [1][-]{section.5.1}{Scalability of the application}{chapter.5}% 31
-\BOOKMARK [1][-]{section.5.2}{Extensibility of the application}{chapter.5}% 32
-\BOOKMARK [1][-]{section.5.3}{Extension of existing legacy software}{chapter.5}% 33
-\BOOKMARK [0][-]{chapter.6}{Future Work}{}% 34
-\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 35
+\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 29
+\BOOKMARK [1][-]{section.5.1}{Scalability of the application}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.2}{Extensibility of the application}{chapter.5}% 31
+\BOOKMARK [1][-]{section.5.3}{Extension of existing legacy software}{chapter.5}% 32
+\BOOKMARK [0][-]{chapter.6}{Future Work}{}% 33
+\BOOKMARK [1][-]{section.6.1}{Deployment}{chapter.6}% 34
+\BOOKMARK [1][-]{section.6.2}{Connecting a front-end}{chapter.6}% 35
+\BOOKMARK [1][-]{section.6.3}{Extending actual legacy software}{chapter.6}% 36
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 37

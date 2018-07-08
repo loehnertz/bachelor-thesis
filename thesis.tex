@@ -2070,11 +2070,6 @@ as the technical specifications of an actual fleet of vehicles is not part
 of this thesis which would make a proper implementation not feasible.
 
 
-\section{Deployment}
-
-
-
-
 
 \chapter{Evaluation} \label{chap:evaluation}
 
@@ -2155,11 +2150,91 @@ To summarize, the discussed \textit{Migration} or to be more exact,
 a \textit{Reengineering} approach is congruent with the described procedure.
 
 \paragraph{Implementation}
+Two options exist to actually integrate the service-oriented architecture
+with an existing legacy software solution.
+Based on the \textit{Protocol Buffers} service definition, RPC connectors can
+be generated for many programming languages. Those can be integrated into any
+software solution, they are not limited to a service-oriented architecture.
+The legacy software solution could then utilize the RPCs just as the other
+services do as well. Although this approach is the more cleaner one of the two,
+since it will be guaranteed that the RPCs are well-formed, it can either be
+that no RPC connectors can be generated for the programming language the
+legacy solution uses or that an integration is too difficult due to its
+architecture. For example, if the \textit{Protocol Buffers} service definitions
+dictate a certain data format that is too different from the one currently
+existing within the application, an adjustment would involve too much work.
+This is especially unpreferable since the available developers should use their
+time on modernizing the architecture as exhibited in the last paragraph and
+not on adapting the legacy software solution which should be discontinued anyways.
 
+Nonetheless, a second approach exists that is suitable for nearly every
+web-based application --- ordinary HTTP requests.
+\textit{Go Micro} offers an \code{api} module to do just that without much
+setup. The \code{api} module is started via a command-line with
+\code{micro api --address localhost:8123} which binds it to a certain port number.
+Afterwards, any client with access to that port can invoke fake RPC via a regular
+HTTP request towards the \textit{Go Micro} API via the endpoint \code{/rpc}.
+Consequently, a firewall is mandatory to shield off unwanted access which
+would completely remove the protection the \textit{API gateway} introduced.
+Internally, the \textit{Go Micro} API dispatches a real RPC and returns the
+result to the requesting client. The format of such a request is JSON with
+a certain format.
 
+\begin{lstlisting}[title=\textit{Go Micro} API request]
+{
+	"service": "fleet-controller",
+	"method": "FleetController.Book",
+	"request": {
+		"vehicleId": "2f4d0a",
+		"customerId": "458921"
+	}
+}
+\end{lstlisting}
+
+With such a format, each RPC can be easily invoked.
+Thus, an example with another programming language that is not supported by
+\textit{Protocol Buffers} is still straight forward.
+
+\begin{lstlisting}[title=\textit{Go Micro} API request in Ruby]
+require 'net/http'
+require 'uri'
+require 'json'
+
+uri = URI.parse("http://localhost:8123/rpc")
+
+headers = {'Content-Type': 'application/json'}
+body = {
+  'service': 'fleet-controller',
+	'method': 'FleetController.Book',
+	'request': {
+		'vehicleId': '2f4d0a',
+		'customerId': '458921'
+	}
+}
+
+# Create the HTTP objects
+http = Net::HTTP.new(uri.host, uri.port)
+request = Net::HTTP::Post.new(uri.request_uri, headers)
+request.body = body.to_json
+
+# Send the request
+response = http.request(request)
+\end{lstlisting}
 
 
 \chapter{Future Work} \label{chap:future-work}
+
+\section{Deployment}
+
+
+
+
+\section{Connecting a front-end}
+
+
+
+
+\section{Extending actual legacy software}
 
 
 
