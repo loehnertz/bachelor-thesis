@@ -1488,7 +1488,7 @@ The implementation features all the requirements while implementing
 some requirements that involve third-party servers or real-world data
 as placeholders.
 The project is licensed as \textit{Open Source} software under the
-\textit{Apache 2.0} license. The source code is freely available on GitHub at:\\
+\textit{Apache 2.0} license. The source code is freely available on \textit{GitHub} at:
 \code{\url{https://github.com/loehnertz/Toranos}}
 
 
@@ -1687,13 +1687,25 @@ and \code{services/fleet-monitor/main.go}.
 
 \begin{lstlisting}[title=services/fleet-controller/main.go, float, floatplacement=H]
 const DatabaseDriver = "postgres"
-const DataSource = "user=jloehnertz dbname=toranos_fleet sslmode=disable"
 
 var database *sql.DB
 
 // Connect to the database
 var databaseError error
-database, databaseError = sql.Open(DatabaseDriver, DataSource)
+database, databaseError = sql.Open(
+		DatabaseDriver,
+		common.ConstructPostgresDataSourceString(
+			common.GetConfigStringByPath(
+              conf, "databases", "postgres", "fleet", "name"
+            ),
+			common.GetConfigStringByPath(
+              conf, "databases", "postgres", "fleet", "user"
+            ),
+			common.GetConfigStringByPath(
+              conf, "databases", "postgres", "fleet", "ssl"
+            ),
+		),
+)
 if databaseError != nil {
 	panic(databaseError)
 }
@@ -1703,11 +1715,11 @@ if databaseError != nil {
 var redisClient *redis.Client
 
 // Initialize a Redis client for caching purposes
-redisClient = commons.InitRedisClient(
-                  config.RedisHostAddress,
-                  "",
-                  config.RedisDatabaseId,
-              )
+redisClient = common.InitRedisClient(
+		common.GetConfigStringByPath(conf, "caching", "redis", "host"),
+		common.GetConfigStringByPath(conf, "caching", "redis", "password"),
+		common.GetConfigIntByPath(conf, "caching", "redis", "databaseId"),
+)
 \end{lstlisting}
 
 \subsection{Service handlers} \label{subsect:service-handlers}
@@ -1734,7 +1746,7 @@ func (fm *FleetMonitor) AvailableVehicles(
 }
 \end{lstlisting}
 
-Example \code{services/fleet-monitor/main.go} is taken out of the
+Example \code{services/fleet-monitor/main.go} is taken out of the\\
 \code{fleet-monitor} service which has exactly one RPC endpoint to retrieve
 all vehicles that are currently available to rent.
 This is another point where the \textit{Protocol Buffers service definitions}
@@ -1899,8 +1911,8 @@ scheduler.AddFunc(
 scheduler.Start()
 \end{lstlisting}
 
-The interval for the exemplary task of figure \code{services/fleet-monitor/bookings.go}
-is retrieved from the configuration.
+The interval for the exemplary task of figure\\
+\code{services/fleet-monitor/bookings.go} is retrieved from the configuration.
 During the runtime of the service, the tasks will automatically be executed
 according to the configured interval.
 For instance, as seen in the source code snippet, this is used by the
@@ -1968,8 +1980,9 @@ func initRoutes(router *mux.Router) {
 }
 \end{lstlisting}
 
-As seen in example \code{api-gateway/main.go}, the endpoint at \code{/available-vehicles}
-calls the function \code{availableVehicles()} upon an incoming \code{GET-request}.
+As seen in example \code{api-gateway/main.go}, the endpoint at\\
+\code{/available-vehicles} calls the function \code{availableVehicles()}
+upon an incoming \code{GET-request}.
 Those handler functions perform regular RPCs toward the desired services just
 as any other service of the application. In that sense, the \textit{API gateway}
 is a service itself in a way.
@@ -1993,8 +2006,9 @@ when checking its validity. Thus, no expiration dates have to be saved to
 a database anymore as it is usual with \textit{session IDs}.
 
 \paragraph{Authentication middleware}
-The \code{authenticationMiddleware()} is just another function that is executed
-before the function that implements the business logic.
+The \code{authenticationMiddleware()} is\\
+just another function that is executed before the function
+that implements the business logic.
 It can execute any code and either pass the request to the function that should
 handle the request or directly return a response.
 
@@ -2071,9 +2085,8 @@ service = micro.NewService(
 \textit{Hystrix} offers three distinct features:
 a custom timeout for every RPC, a capped pool of concurrent connections toward
 a service as well as a \textit{circuit breaker}.
-All of these measures improve the overall resilience of the application
-as well as its average response times by not overloading any service with incoming
-requests.
+All of these measures improve the resilience of the application
+as well as its average response times by not overloading the services with requests.
 
 
 \section{Vehicle gateway}
@@ -2090,6 +2103,13 @@ of this thesis which would make a proper implementation not feasible.
 
 
 \chapter{Evaluation} \label{chap:evaluation}
+
+\epigraphhead[55]{\epigraph{A scalable, performant microservice is one that
+is driven by efficiency, one that can not only handle a large number of
+tasks or requests at the same time, but can handle them efficiently and
+is prepared for tasks or requests to increase in the future.}
+{\textit{Susan J. Fowler}}}
+
 
 \section{Completeness of the application}
 
@@ -2210,8 +2230,8 @@ HTTP request toward the \textit{Go Micro} API via the endpoint \code{/rpc}.
 Consequently, a firewall is mandatory to shield off unwanted access which
 would completely remove the protection the \textit{API gateway} introduced.
 Internally, the \textit{Go Micro} API dispatches a real RPC and returns the
-result to the requesting client. The format of such a request is JSON with
-a certain format.
+result to the requesting client. The format of such a request is JSON,
+as highlighted in figure \textit{Go Micro API request}.
 
 \begin{lstlisting}[title=\textit{Go Micro} API request, float, floatplacement=H]
 {
@@ -2227,6 +2247,11 @@ a certain format.
 
 
 \chapter{Future Work} \label{chap:future-work}
+
+\epigraphhead[55]{\epigraph{If debugging is the process of removing bugs,
+then programming must be the process of putting them in.}
+{\textit{Edsger Dijkstra}}}
+
 
 \section{Finishing the development}
 
@@ -2269,6 +2294,11 @@ to the system by the means of services.
 
 
 \chapter{Conclusion} \label{chap:conclusion}
+
+\epigraphhead[55]{\epigraph{Software engineering is not about right and wrong
+but only better and worse.}
+{\textit{Ellen Ullman}}}
+
 
 The market for the short-term rental of electric scooters is still relatively
 minuscule but as seen in section \ref{sect:electric-scooter-market} it is

@@ -84,7 +84,7 @@
 \contentsline {section}{\numberline {4.3}Service structure}{55}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Service definition}{56}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Service scaffolding}{57}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Service handlers}{59}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.3}Service handlers}{58}{subsection.4.3.3}
 \contentsline {subsection}{\numberline {4.3.4}Service consumers}{61}{subsection.4.3.4}
 \contentsline {subsection}{\numberline {4.3.5}Scheduled tasks}{63}{subsection.4.3.5}
 \contentsline {subsection}{\numberline {4.3.6}Databases}{63}{subsection.4.3.6}
