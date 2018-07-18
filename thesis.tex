@@ -1933,6 +1933,10 @@ For instance, as seen in the source code snippet, this is used by the
 
 In order to achieve a minimum of \textit{Coupling} between the services,
 every service has its own database.
+Services that are in need of a database are connected to a SQL-based
+database management system (DBMS).
+For this implementation, \textit{PostgreSQL} was chosen as the DBMS but
+other SQL-based DBMS could be used as well.
 Consequently, if one service needs any information that another service's
 database persists, there is no other option but an RPC.
 This pattern is strictly followed within the application to thwart any
@@ -1947,7 +1951,7 @@ data entity and thus engender a state of inconsistency.
 Instead, only legitimate data ever hits a service by leveraging the service definitions.
 
 Furthermore, database queries are decoupled from other simultaneously running tasks;
-owing to the fact, that the database management system (DBMS) prevents
+owing to the fact, that the DBMS prevents
 simultaneous mutations of the same data entity, it would be feasible
 to run multiple instances of a service that sees many RPCs that just
 retrieve or persist data from or to its connected database.
