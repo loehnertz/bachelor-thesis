@@ -96,13 +96,13 @@
 \contentsline {chapter}{\numberline {5}Evaluation}{68}{chapter.5}
 \contentsline {section}{\numberline {5.1}Completeness of the application}{68}{section.5.1}
 \contentsline {section}{\numberline {5.2}Scalability of the application}{68}{section.5.2}
-\contentsline {section}{\numberline {5.3}Extensibility of the application}{68}{section.5.3}
-\contentsline {section}{\numberline {5.4}Extension of existing legacy software}{69}{section.5.4}
-\contentsline {paragraph}{Foundation}{69}{section*.92}
-\contentsline {paragraph}{Implementation}{70}{section*.93}
-\contentsline {chapter}{\numberline {6}Future Work}{72}{chapter.6}
-\contentsline {section}{\numberline {6.1}Finishing the development}{72}{section.6.1}
-\contentsline {section}{\numberline {6.2}Deployment}{72}{section.6.2}
-\contentsline {section}{\numberline {6.3}Connecting a front-end}{73}{section.6.3}
-\contentsline {section}{\numberline {6.4}Extending actual legacy software}{73}{section.6.4}
-\contentsline {chapter}{\numberline {7}Conclusion}{74}{chapter.7}
+\contentsline {section}{\numberline {5.3}Extensibility of the application}{70}{section.5.3}
+\contentsline {section}{\numberline {5.4}Extension of existing legacy software}{71}{section.5.4}
+\contentsline {paragraph}{Foundation}{71}{section*.92}
+\contentsline {paragraph}{Implementation}{72}{section*.93}
+\contentsline {chapter}{\numberline {6}Future Work}{74}{chapter.6}
+\contentsline {section}{\numberline {6.1}Finishing the development}{74}{section.6.1}
+\contentsline {section}{\numberline {6.2}Deployment}{74}{section.6.2}
+\contentsline {section}{\numberline {6.3}Connecting a front-end}{75}{section.6.3}
+\contentsline {section}{\numberline {6.4}Extending actual legacy software}{75}{section.6.4}
+\contentsline {chapter}{\numberline {7}Conclusion}{76}{chapter.7}

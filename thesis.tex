@@ -8,7 +8,7 @@
 The System and Software Architecture of Back-end Applications for the Short-term Rental of Electric Scooters
 }
 \newcommand{\thesissubtitle}{
-Exhibition of an Exemplarily Implemented Back-end Application
+Exhibition of an Exemplarily Implemented Back-End Application
 }
 \newcommand{\thesisauthor}{Jakob Löhnertz}
 \newcommand{\thesisdate}{23. Juli 2018}
@@ -107,15 +107,16 @@ as well as the nature of current batteries desire a reactive and faultless appli
 Moreover, he corporate partner of this thesis, which is discussed in detail
 in section \ref{sect:e-bility GmbH}, is already in possession of a solution.
 Therefore, the subject of extending an existing back-end application
-with missing features is also targeted.
+with missing features is also targeted in section \ref{sect:legacy-software}.
 
-Finally, chapter \ref{chap:analysis} discusses the design of such an application,
+Chapter \ref{chap:analysis} discusses the design of such an application,
 while chapter \ref{chap:implementation} elucidates the exemplary implementation of it.
+Finally, the implemented solution gets evaluated in chapter \ref{chap:evaluation}.
 
 In conclusion, this leads into the research question of this bachelor thesis:\\
 \emph{What should the system and software architecture of a back-end application
-for the short-term rental of electric scooters look like that features
-good scalability?}
+for the short-term rental of electric scooters look like and which
+technologies are appropriate for a possible implementation?}
 
 
 
@@ -563,22 +564,22 @@ often means that another component has to rollback their preceding execution whi
 triggered the published event. A rollback strategy has to be conceptualized to
 achieve appropriate error handling~\cite{richards-sa-patterns}.
 
-\paragraph{Service-oriented}
+\paragraph{Service-oriented} \label{para:service-oriented}
 A \textit{service-oriented} approach divides the whole application into distinct
 services that all run as separate programs. Thus, this style is the
 polar opposite of the aforementioned \textit{monolith}.
 This architectural style includes the \textit{Microservice} architecture
 which is getting popular in recent years. The main distinction is that
 \textit{Microservices} are generally more fine-grained although the definition
-is rather ambiguous depending on the source.
+is rather ambiguous.
 The single services call each other via
 \textit{remote procedure calls (RPC)} or even over the internet utilizing HTTP
-and a data exchange format such as JSON.
+and a data exchange format such as JSON~\cite{ms-microservices}.
 The advantages are clear compared to a \textit{monolithic} approach.
 The services can be fully replaced if their interfaces stay the same and the
 scaling of single services becomes easier since every one of them runs as a single program.
 Moreover, the reusability of services can be improved if each service is properly \textit{abstracted}.
-Furthermore, a \textit{service-oriented} approach even allows for multiple programming languages
+Furthermore, a service-oriented approach even allows for multiple programming languages
 across different services. Although the complexity increases, it becomes possible
 to choose \textit{the best tool for the task}.
 Another advantage is that the single services can be duplicated independently
@@ -2130,7 +2131,51 @@ fleet of vehicles.
 
 \section{Scalability of the application}
 
+Scaling services in a service-oriented architecture is by definition easier
+than doing so with a monolithic application as depicted in subsection
+\ref{para:service-oriented}. Each service can be duplicated independently
+based on its general or even current load. When monitoring the services,
+it even becomes feasible to dynamically scale each individual service based
+on the load it currently experiences; if the load exceeds a preset threshold,
+a new instance of that service is automatically started and vice versa.
 
+The implementation exhibited during this thesis was intentionally built to
+support good scalability. Primarily, two aspects of it improve the
+overall scalability of the whole application.
+
+Firstly, the \textit{Go} programming language is especially suitable to be
+used within a service-oriented architecture. It is not a direct feature of
+the language but due to the fact that a \textit{Go} program can be executed
+without any runtime requirements, the deployment and therefore its
+duplicability are greatly improved. As discussed in section
+\ref{subsect:analysis-construction}, a \textit{Go} program bundles all its
+dependencies into a single, executable file by default.
+Additionally, no runtime environment is needed to execute the compiled program.
+
+Furthermore, the services were built so that they automatically register themselves
+at the \textit{Service Discovery} discussed in subsection
+\ref{subparag:service-discovery}. Consequently, owing to the fact that each
+service, including the \textit{API gateway}, queries the \textit{Service Discovery}
+for the IP addresses of other services that it wants to access, newly registered
+services are automatically included in the list of available ones within the
+\textit{Service Discovery}. Moreover, the tool \textit{Consul}, which is utilized
+as the \textit{Service Discovery}, performs basic load balancing by just
+returning the IP address of a random service instance out of the list of the
+ones that are available for that distinct service.
+If just one instance is running it will always be returned upon a request
+toward \textit{Consul} from another service. Thus, if for example
+three instances of a service were started, \textit{Consul} will on average
+\textit{forward} only every third request to each instance respectively.
+Consequently, each instance experiences only about a third of the original load.
+When scaling by a large margin, it might also be necessary to operate multiple
+instances of a connected database although this consideration
+is not part of this section.
+
+To sum up, creating a new instance of any service is as easy as just
+starting its executable once more. Due to the fact that from thereon the
+integration of that new instance is completely automated,
+no further steps are required. Additionally, there is no definitive
+upper limit to the amount of instances of each service.
 
 
 \section{Extensibility of the application}
@@ -2306,9 +2351,9 @@ but only better and worse.}
 The market for the short-term rental of electric scooters is still relatively
 minuscule but as seen in section \ref{sect:electric-scooter-market} it is
 expected to experience growth in the near future.
-Running such a business is only feasible with as much automation as possible
+Operating such a business is only feasible with as much automation as possible
 to reduce the costs. However, compared to a long-term rental business,
-a \textit{free-floating} model as described in section \ref{sect:electric-scooter-market}
+a \textit{free-floating} model, as described in section \ref{sect:electric-scooter-market},
 is prevalent for short-term rental offers. Thus, the entry into the market
 demands for much higher investment due to increased personnel expenses
 owing to the fact that the \textit{free-floating} model requires
@@ -2317,10 +2362,8 @@ the physical relocation of the vehicles by humans.
 The handling of a short-term rental is suitable for much automation as well.
 Web-based front-end and back-end applications are preferred to leverage
 the power of cloud computing, particularly in terms of scalability.
-Owing to the fact, that the rate of growth is currently unknown, a well-scalable
-solution for the back-end application is favorable.
-For an exemplary implementation during this thesis, a couple of possible
-architectural styles were exhibited in subsection \ref{subsubsect:architectural-styles}.
+For an exemplary implementation during this thesis, a couple of conceivable
+architectural styles were discussed in subsection \ref{subsubsect:architectural-styles}.
 Ultimately, a service-oriented approach was chosen due to the reasons stated
 in chapter \ref{chap:analysis}.
 
@@ -2334,16 +2377,20 @@ the extension of legacy software in general seems to be favorable with
 the chosen approach based on \textit{Protocol Buffers} service definitions.
 Preferably, RPCs should be utilized during the modernization of a
 legacy software solution to slowly reengineer it into a new application.
-A service-oriented architecture seems to be favorable for the reasons stated
+A service-oriented architecture seems to be suitable for the reasons stated
 in subsection \ref{solutions-issues-legacy-software}.
 
-To conclude, the implemented service-oriented application, which was modeled
-after the exhibited \textit{Software Development Process}, is functioning as expected.
-To theoretically test the application in a real-world example mainly the
-deployment of it needs to be determined beforehand.
-Alternatively, a future analysis of the legacy software solution of \textit{e-bility GmbH}
+To theoretically test the application in a real-world example, mainly the
+interfaces toward the components that are not directly part of the architecture
+need to be established.
+Similarly, the deployment of the application needs to be determined beforehand.
+Alternatively, a future analysis of the legacy software solution by \textit{e-bility GmbH}
 can yield results that would enable the implemented application to extend
 and modernize that legacy software solution.
+
+To conclude, the implemented service-oriented application, which was modeled
+after the exhibited \textit{Software Development Process}, is functioning as expected
+and could be presumably utilized after finishing the \textit{\nameref{chap:future-work}}.
 
 
 
