@@ -84,26 +84,26 @@
 \contentsline {section}{\numberline {4.3}Service structure}{55}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Service definition}{56}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Service scaffolding}{57}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Service handlers}{58}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Service consumers}{60}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Scheduled tasks}{62}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.3}Service handlers}{59}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Service consumers}{61}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Scheduled tasks}{63}{subsection.4.3.5}
 \contentsline {subsection}{\numberline {4.3.6}Databases}{63}{subsection.4.3.6}
 \contentsline {section}{\numberline {4.4}API gateway}{64}{section.4.4}
-\contentsline {paragraph}{Scaffolding}{64}{section*.85}
+\contentsline {paragraph}{Scaffolding}{65}{section*.85}
 \contentsline {paragraph}{JSON Web Tokens}{65}{section*.87}
-\contentsline {paragraph}{Authentication middleware}{65}{section*.88}
-\contentsline {paragraph}{Resilience measures}{66}{section*.90}
-\contentsline {section}{\numberline {4.5}Vehicle gateway}{67}{section.4.5}
-\contentsline {chapter}{\numberline {5}Evaluation}{68}{chapter.5}
-\contentsline {section}{\numberline {5.1}Completeness of the application}{68}{section.5.1}
-\contentsline {section}{\numberline {5.2}Scalability of the application}{68}{section.5.2}
-\contentsline {section}{\numberline {5.3}Extensibility of the application}{68}{section.5.3}
-\contentsline {section}{\numberline {5.4}Extension of existing legacy software}{69}{section.5.4}
-\contentsline {paragraph}{Foundation}{69}{section*.92}
-\contentsline {paragraph}{Implementation}{70}{section*.93}
-\contentsline {chapter}{\numberline {6}Future Work}{72}{chapter.6}
-\contentsline {section}{\numberline {6.1}Finishing the development}{72}{section.6.1}
-\contentsline {section}{\numberline {6.2}Deployment}{72}{section.6.2}
-\contentsline {section}{\numberline {6.3}Connecting a front-end}{73}{section.6.3}
-\contentsline {section}{\numberline {6.4}Extending actual legacy software}{73}{section.6.4}
-\contentsline {chapter}{\numberline {7}Conclusion}{74}{chapter.7}
+\contentsline {paragraph}{Authentication middleware}{66}{section*.88}
+\contentsline {paragraph}{Resilience measures}{67}{section*.90}
+\contentsline {section}{\numberline {4.5}Vehicle gateway}{68}{section.4.5}
+\contentsline {chapter}{\numberline {5}Evaluation}{69}{chapter.5}
+\contentsline {section}{\numberline {5.1}Completeness of the application}{69}{section.5.1}
+\contentsline {section}{\numberline {5.2}Scalability of the application}{69}{section.5.2}
+\contentsline {section}{\numberline {5.3}Extensibility of the application}{69}{section.5.3}
+\contentsline {section}{\numberline {5.4}Extension of existing legacy software}{70}{section.5.4}
+\contentsline {paragraph}{Foundation}{70}{section*.92}
+\contentsline {paragraph}{Implementation}{71}{section*.93}
+\contentsline {chapter}{\numberline {6}Future Work}{73}{chapter.6}
+\contentsline {section}{\numberline {6.1}Finishing the development}{73}{section.6.1}
+\contentsline {section}{\numberline {6.2}Deployment}{73}{section.6.2}
+\contentsline {section}{\numberline {6.3}Connecting a front-end}{74}{section.6.3}
+\contentsline {section}{\numberline {6.4}Extending actual legacy software}{74}{section.6.4}
+\contentsline {chapter}{\numberline {7}Conclusion}{75}{chapter.7}

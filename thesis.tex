@@ -52,16 +52,14 @@ There are less moving parts which makes for less errors.
 On the downside, the replacement of the fuel causes the most problems with electric engines.
 Of course they utilize batteries instead of fossil fuels as their impetus.
 Although the invention of the battery is older than that of the
-internal combustion engine\cn, the technology is still not perfected and sees new
+internal combustion engine~\cite{battery, combustion-engine}, the technology is still not perfected and sees new
 advancements every year. Alas, it also combats many challenges in terms of
 safety, cost, capacity, weight, recycling, speed of recharging and longevity.
 
 For the provider, the handling of a short-term rental service
 only becomes feasible with the automation of as many processes as possible.
 This requires a back-end application ideally paired with a front-end.
-Most of the time, ongoing human resource costs make up the biggest percentage
-in the expenses of any business.\cn Thus, this demands for less human workforce
-as part of the processes of a rental service.
+Preferably, it should be attempted to keep running costs low.
 Meanwhile, the upfront expenditures for the software development of
 an application are still vast but in the long run, the running expenses are less.
 The only cost driver afterwards is the maintenance of the created software.
@@ -147,8 +145,8 @@ meaning that each customer can drop off the scooters wherever they want, regardl
 of their current location as long as it is within the available area of the offering operator.
 However, this system also implies that the operating organization needs personnel
 and equipment to relocate scooters that were discarded in areas with low demand.
-Finally, three main models exist for billing the customers~\cn.
-Namely, these are billing per minute, billing per kilometer, or a fixed rate for a whole ride.
+Finally, three main models exist for billing the customers:
+Billing per minute, billing per kilometer, or a fixed rate for a whole ride~\cite{scootersharing-report}.
 
 
 \paragraph{German electric scooter manufacturer \textit{e-bility GmbH}} \label{sect:e-bility GmbH}
@@ -188,7 +186,7 @@ want to be able to ride one on demand by simply pushing a button.
 The ease of use for the customers and their satisfaction are the main facets
 to be considered by the provider of such a service.
 
-Oftentimes, this involves two foundational web-based components --- a front-end and a back-end\cn.
+Oftentimes, this involves two foundational web-based components --- a front-end and a back-end.
 On the one hand, the front-end provides the user interface of the product, the façade of the whole.
 It is the component the customer interacts with but more importantly it is
 what the users identify the product with.
@@ -452,7 +450,8 @@ any modifications to it.
 \paragraph{Coupling and Cohesion}
 These two terms are describing how a component behaves in regard to the whole application.
 \textit{Cohesion} is a measure of the interdependence of a component whereas
-\textit{Coupling} describes how closely associated the elements of the components are~\cite{swebok}.
+\textit{Coupling} describes how closely associated the elements of the
+components are~\cite{mcconnell-code-complete, swebok}.
 Consequently, this concept is therefore close to the aforementioned \textit{Abstraction}
 since high \textit{Coupling} lowers the abstraction of a system and vice versa.
 
@@ -507,7 +506,7 @@ A \textit{Layered} style divides the whole software into distinct layers that
 all handle a different task. A famous example is to use a presentation,
 business logic, and database layer. However, an application can have completely different
 layers. This concept most likely demands a \textit{monolithic} deployment approach;
-that means an interwoven application running as a single program~\cn.
+that means an interwoven application running as a single program~\cite{monolith}.
 In theory, this approach is fairly testable and maintainable
 as the layers can be seen and extended separately. Additionally, this approach demands
 for no middleware as described in subsection \ref{subsect:construction} which
@@ -572,7 +571,7 @@ which is getting popular in recent years. The main distinction is that
 is rather ambiguous depending on the source.
 The single services call each other via
 \textit{remote procedure calls (RPC)} or even over the internet utilizing HTTP
-and a data exchange format such as JSON~\cn.
+and a data exchange format such as JSON.
 The advantages are clear compared to a \textit{monolithic} approach.
 The services can be fully replaced if their interfaces stay the same and the
 scaling of single services becomes easier since every one of them runs as a single program.
@@ -589,8 +588,8 @@ Additionally, the performance of the application is oftentimes worse compared to
 a \textit{monolith} one since the interface interactions are conducted across multiple
 executed programs~\cite{richards-sa-patterns}.
 Finally, compared to e.g. a layered approach there is much more setup needed.
-The orchestration of the services requires middleware (see \ref{subsect:construction})
-to ensure the flawless execution of the application~\cn.
+The orchestration of the services might require middleware (see \ref{subsect:construction})
+to ensure the flawless execution of the application.
 
 The most important middleware is a \textit{Service Discovery} which keeps track
 of the addresses of all the available services so the integration of them into
@@ -641,7 +640,7 @@ Finally, testing and integration are another set of considerations.
 \textit{Unit testing} is an important tool to continuously test the developed components;
 it describes the procedure of testing singular \textit{units}, respectively components
 of the codebase, by comparing a known set of correctly corresponding input and output
-with the actual output and the given input~\cn.
+with the actual output and the given input~\cite{testing}.
 Moreover, after finishing the construction of the software or even during that stage,
 an integration strategy has to be deployed. Namely, these are either a
 \textit{phased} or an \textit{incremental} approach. A \textit{phased} integration
@@ -745,7 +744,7 @@ will meet the expectations. Nevertheless, the tipping point can occur when the h
 of the legacy software are tremendous when compared to development teams of similar size and complexity.
 
 Furthermore, required constant availability or faultlessness of a system might make it
-difficult or impossible to implement a new software solution for its purpose~\cn ---
+difficult or impossible to implement a new software solution for its purpose ---
 software that controls a nuclear power plant comes to mind, for instance.
 Economic considerations offer an additional point of view:
 \begin{displayquote}
@@ -764,7 +763,7 @@ they are familiar with the legacy system~\cite{bennett-coping-legacy} which woul
 retraining a significant cost driver.
 
 Lastly, a big concern that the company's management cannot even control is
-poor or missing documentation.~\cn This circumstance is the most difficult one
+poor or missing documentation. This circumstance is the most difficult one
 as it makes the redevelopment or the extension of the legacy software very intricate.
 Consequently, this can go as far to leave the organization unable to completely apprehend
 every detail of its legacy software.
@@ -806,9 +805,9 @@ The developers that once created the legacy software might not be part of the
 organization anymore. If this fact is paired with poor documentation and/or
 an inferior software architecture, extending such a legacy solution is once again
 very time-consuming. For example, if a legacy software features
-low cohesion but high coupling, the converse way of how it should be~\cn,
-extending it might introduce unwanted side-effects which increase debugging
-time by a large margin.
+low cohesion but high coupling, the converse way of how it
+should be~\cite{mcconnell-code-complete}, extending it might introduce
+unwanted side-effects which increase debugging time by a large margin.
 
 
 \subsection{Solutions to legacy software issues} \label{solutions-issues-legacy-software}
@@ -1268,7 +1267,7 @@ theoretically multiple programming languages across services could be utilized.
 For this architecture however, the programming language \textit{Go} has been chosen.
 The main rationales for that choice are the following.
 
-The language is among the fastest regarding its execution performance~\cn.
+The language is among the fastest regarding its execution performance~\cite{golang-fast}.
 Furthermore, \textit{Go} is a compiled language running directly as an executable
 without a virtual machine. Additionally, all the imports are statically linked.
 Thereby, the resulting executable is a single file with all the requirements
@@ -1309,12 +1308,10 @@ this subsection.
 
 \subparagraph{Service Discovery} \label{subparag:service-discovery}
 For the \textit{Service Discovery} middleware, an existing solution is
-utilized since it is generally not part of a service-oriented architecture
-to developed the \textit{Service Discovery} by oneself~\cn.
-For this purpose, the freeware tool \textit{Consul} developed by \textit{HashiCorp}
-was chosen to serve as the \textit{Service Discovery} middleware~\cite{consul}.
-The core functionality of \textit{Consul} is similar to the mode of operation
-of every \textit{Service Discovery} middleware.\\
+utilized. For this purpose, the freeware tool \textit{Consul} developed
+by \textit{HashiCorp} was chosen to serve as the \textit{Service Discovery}
+middleware~\cite{consul}. The core functionality of \textit{Consul} is similar
+to the mode of operation of every \textit{Service Discovery} middleware.\\
 The main functionality is that \textit{Consul} provides a DNS server which is
 made available on the network. It can even work beyond multiple data centers
 but since scaling is not directly part of this thesis, this feature is not utilized.
@@ -1485,9 +1482,10 @@ that elegantly eliminate organizational friction […]}
 
 
 The name of the project is \textit{Toranos} which is the name of the
-Celtic god of thunder and the wheel~\cn --- a fitting name in regard of the purpose
-of the application. The implementation features all the requirements while
-implementing some requirements that involve third-party servers or real-world data
+Celtic god of thunder and the wheel~\cite{celtic-mythology} ---
+a fitting name in regard of the purpose of the application.
+The implementation features all the requirements while implementing
+some requirements that involve third-party servers or real-world data
 as placeholders.
 The project is licensed as \textit{Open Source} software under the
 \textit{Apache 2.0} license. The source code is freely available on GitHub at:\\
@@ -1543,11 +1541,12 @@ conf = common.InitConfig()
 common.GetConfigStringByPath(conf, "service-names", "billing")
 \end{lstlisting}
 
-The \code{conf} object is initialized only once during the startup of each service
+As example \code{services/billing/main.go} shows, The \code{conf} object
+is initialized only once during the startup of each service
 to avoid the aforementioned inconsistencies and to reduce the load
 toward \textit{Consul}. The helper function \code{InitConfig()} retrieves
 the whole configuration from \textit{Consul} in a format that allows for the
-path-based querying seen in the last source code snippet.
+path-based querying seen in the source code snippet \code{services/billing/main.go}.
 
 \begin{lstlisting}[title=common/config.go, float, floatplacement=H]
 func InitConfig() config.Config {
@@ -1606,7 +1605,8 @@ message AvailableVehiclesResponse {
 }
 \end{lstlisting}
 
-This is an example of a \textit{Protocol Buffers service definition}.
+Figure \code{services/fleet-monitor/proto/fleet-monitor.proto} is an example of
+a \textit{Protocol Buffers service definition}.
 At the top, the version of \textit{Protocol Buffers} has to be set.
 Secondly, the service is assigned a name and its RPC endpoints are described.
 Within the first set of parentheses, the structure of the request has to be
@@ -1655,7 +1655,8 @@ func main() {
 }
 \end{lstlisting}
 
-Every \code{main()} function inside of each service looks roughly similar.
+Every \code{main()} function inside of each service looks roughly similar,
+as seen in figure \code{services/fleet-monitor/main.go}.
 Firstly, a new service is created via \textit{Go Micro};
 \code{micro.NewService()} expects a name as the identifier.
 This name is used to register the service toward the \textit{Service Discovery}.
@@ -1680,7 +1681,9 @@ the server component of the service that handles incoming requests,
 the program will \code{panic} which means that it crashes properly.
 
 Depending on the service, sometimes other components are initialized additionally.
-A common example are connections toward a database or caching system.
+A common example are connections toward a database or caching system,
+as shown in figures \code{services/fleet-controller/main.go}
+and \code{services/fleet-monitor/main.go}.
 
 \begin{lstlisting}[title=services/fleet-controller/main.go, float, floatplacement=H]
 const DatabaseDriver = "postgres"
@@ -1731,9 +1734,10 @@ func (fm *FleetMonitor) AvailableVehicles(
 }
 \end{lstlisting}
 
-This example is taken out of the \code{fleet-monitor} service which has
-exactly one RPC endpoint to retrieve all vehicles that are currently available
-to rent. This is another point where the \textit{Protocol Buffers service definitions}
+Example \code{services/fleet-monitor/main.go} is taken out of the
+\code{fleet-monitor} service which has exactly one RPC endpoint to retrieve
+all vehicles that are currently available to rent.
+This is another point where the \textit{Protocol Buffers service definitions}
 become useful. The request and response objects are input arguments to that
 handler function. It gets called by the handler that \textit{Go Micro} established via\\
 \code{RegisterFleetMonitorHandler()}.
@@ -1763,11 +1767,11 @@ type AvailableVehiclesResponse_Vehicle struct {
 }
 \end{lstlisting}
 
-In this exact case, the \code{repeated} directive exhibited in subsection
+In the exact case of figure \code{services/fleet-monitor/proto/fleet-monitor.pb.go},
+the \code{repeated} directive exhibited in subsection
 \ref{subsect:service-definition} can be seen in action;
 \code{AvailableVehiclesResponse} just has a reference to a \code{slice} of
-% The second code snippet actually has to be \code{AvailableVehiclesResponse_Vehicle}
-\code{AvailableVehiclesResponse} which corresponds to a list in \textit{Go}.
+\code{AvailableVehiclesResponse\_Vehicle} which corresponds to a list in \textit{Go}.
 
 Using these \code{structs}, the request as well as the response of each RPC
 are strictly defined which makes incorrect usage by a developer nearly impossible
@@ -1824,7 +1828,8 @@ fleetMonitorService = fleet_monitor.NewFleetControllerService(
 for performing the actual RPC toward the obtained IP address and port number
 of the desired service.
 This is achieved by passing the name of the service into the helper function
-as well as the client component of the service that performs the calls.
+as well as the client component of the service that performs the calls, as depicted
+in figure \code{services/statistics/main.go}.
 
 Moreover, during the setup of each service the client can be optionally equipped
 with certain settings. As discussed in section \ref{subsect:analysis-construction},
@@ -1832,7 +1837,8 @@ a service utilizes a circuit breaker together with a retry mechanism to
 avoid large-scale failures; this is accomplished with
 the lines \textit{9} and \textit{15}.
 
-The actual RPC is performed with a helper function again.
+The actual RPC is performed with a helper function again, as seen
+in figure \code{services/statistics/bookings.go}.
 
 \begin{lstlisting}[title=services/statistics/bookings.go, float, floatplacement=H]
 func retrieveAllBookingsOfCustomer(customer string) (
@@ -1893,7 +1899,8 @@ scheduler.AddFunc(
 scheduler.Start()
 \end{lstlisting}
 
-The interval for this exemplary task is retrieved from the configuration.
+The interval for the exemplary task of figure \code{services/fleet-monitor/bookings.go}
+is retrieved from the configuration.
 During the runtime of the service, the tasks will automatically be executed
 according to the configured interval.
 For instance, as seen in the source code snippet, this is used by the
@@ -1961,8 +1968,8 @@ func initRoutes(router *mux.Router) {
 }
 \end{lstlisting}
 
-For example, the endpoint at \code{/available-vehicles} calls the function
-\code{availableVehicles()} upon an incoming \code{GET-request}.
+As seen in example \code{api-gateway/main.go}, the endpoint at \code{/available-vehicles}
+calls the function \code{availableVehicles()} upon an incoming \code{GET-request}.
 Those handler functions perform regular RPCs toward the desired services just
 as any other service of the application. In that sense, the \textit{API gateway}
 is a service itself in a way.
@@ -2019,7 +2026,8 @@ func authenticationMiddleware(next http.Handler) http.Handler {
 
 Any user can login with their credentials to receive a new, valid JWT.
 With every subsequent request toward the public API, the JWT is part of the
-HTTP request as the \code{Authorization} header.
+HTTP request as the \code{Authorization} header, as depicted
+in figure \code{api-gateway/middlewares.go}.
 In the case of the \code{authenticationMiddleware()}, the middleware performs
 a regular RPC toward the \code{user-management} service to check if the
 token of the requesting user is valid. The \code{user-management} service also
@@ -2048,7 +2056,7 @@ It acts similar to a middleware by wrapping every RPC of the
 \textit{API gateway} toward another service.
 In fact, \textit{Go Micro} even offers a method to directly do so with
 supported wrappers by calling \code{micro.WrapClient()} during the startup
-of the \textit{API gateway}.
+of the \textit{API gateway}, as shown in figure \code{api-gateway/main.go}.
 
 \begin{lstlisting}[title=api-gateway/main.go, float, floatplacement=H]
 // Create the service
@@ -2297,8 +2305,7 @@ A service-oriented architecture seems to be favorable for the reasons stated
 in subsection \ref{solutions-issues-legacy-software}.
 
 To conclude, the implemented service-oriented application, which was modeled
-after the exhibited \textit{Software Development Process}, is working well
-according to the depicted requirements.
+after the exhibited \textit{Software Development Process}, is functioning as expected.
 To theoretically test the application in a real-world example mainly the
 deployment of it needs to be determined beforehand.
 Alternatively, a future analysis of the legacy software solution of \textit{e-bility GmbH}
