@@ -23,7 +23,35 @@ Exhibition of an Exemplarily Implemented Back-end Application
 
 \begin{abstract}
 
-The abstract will be added at this place toward the end of the thesis.
+The market for the short-term rental of electric scooters is currently rapidly
+growing in many parts of the world.
+As other short-term rental markets, mainly in form of the concept of car sharing,
+and modern services in general have already shown, a mobile or web-based
+application is the absolute tool for the functioning of such a service.
+
+The main aspect of success for such a system is the \textit{magic} behind the scenes
+that no customer sees. The users just see the electric scooter as the product and
+want to be able to ride one on demand by the push of a button.
+The ease of use for the customers and their satisfaction are the main facets
+to be considered by the provider of such a service.
+
+Oftentimes, this involves two foundational web-based components: A front-end and a back-end.
+On the one hand, the front-end provides the user interface of
+the product --- the façade of the whole.
+It is the component the customer interacts with but more importantly it is
+what the users identify the product with.
+On the other hand, the back-end is the brain of the software product,
+it dictates what the front-end should do.
+Meanwhile, it does not determine what it looks like.
+If the front-end is unusable, the back-end will never be able to fix that as the
+front-end becomes the mental representation of the whole product for the customers.
+If the back-end behaves sluggish or is prone to errors, the front-end will not
+be able to save much by the same token. In the end, both form a synergy with each other.
+
+This thesis exhibits the back-end of such an application while focussing
+on the system and software architecture of it.
+This includes the functionalities that are mandatory and the question on
+how the product will come together --- from ideas and drafts to written source code.
 
 \end{abstract}
 
@@ -176,32 +204,6 @@ is already set and can be seen as a necessity regardless of the final implementa
 A back-end application as well as its infrastructure.
 The manufacturer \textit{e-bility GmbH} acquired an existing software solution
 to achieve this although they currently are not in possession of it yet.
-
-
-\section{Components of a modern software product} \label{sect:frontend/backend}
-
-The main aspect of success for such a system is the \textit{magic} behind the scenes
-that no customer sees. People just see the electric scooter as the product and
-want to be able to ride one on demand by simply pushing a button.
-The ease of use for the customers and their satisfaction are the main facets
-to be considered by the provider of such a service.
-
-Oftentimes, this involves two foundational web-based components --- a front-end and a back-end.
-On the one hand, the front-end provides the user interface of the product, the façade of the whole.
-It is the component the customer interacts with but more importantly it is
-what the users identify the product with.
-On the other hand, the back-end is the brain of the software product.
-It provides endpoints for the front-end to use and consume. The back-end dictates
-what the front-end does. Meanwhile, it does not determine what it looks like.
-If the front-end is unusable, the back-end will never be able to fix that as the
-front-end becomes the mental representation of the whole product for the customers.
-If the back-end behaves sluggish or is prone to errors, the front-end will not
-be able to save much by the same token. In the end, both form a synergy with each other.
-
-This thesis sheds light on the back-end of such an application.
-It focuses on the system and software architecture of it.
-This includes the functionalities that are mandatory and the question on
-how the product might come together --- from ideas and drafts to written source code.
 
 
 \section{Approaching the development of software} \label{sect:software-development-process}
@@ -498,8 +500,8 @@ explain when it may be used, and discuss its advantages and disadvantages."}~\ci
 Due to the large amount of such patterns, not every single one can be discussed
 in this subsection. Consequently, three patterns were chosen to be discussed
 in greater detail in the following paragraphs. Owing to the fact, that this
-thesis is focused on web-based client-server systems, as depicted in
-section \ref{sect:frontend/backend}, only solutions geared toward a back-end are exhibited.
+thesis is focused on web-based client-server systems, as depicted in the abstract,
+only solutions geared toward a back-end are exhibited.
 
 \paragraph{Layered}
 A \textit{Layered} style divides the whole software into distinct layers that
@@ -2285,6 +2287,7 @@ are both feasible.
 
 As discussed earlier, the corporate partner of this thesis acquired a
 software solution for the purpose of the short-term rental of electric scooters.
+Unfortunately, it was not possible to get access to that solution.
 Consequently, the next step would be to evaluate which components of that
 legacy software solution are possibly outdated and would therefore benefit
 from an incremental modernization via a service-oriented architecture.

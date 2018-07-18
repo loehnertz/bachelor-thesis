@@ -1,16 +1,16 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces The essential stages of the waterfall model\relax }}{10}{figure.caption.4}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces A revised, iterative version of the waterfall model i.e. IID\relax }}{12}{figure.caption.5}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Four approaches to cope with legacy software systems~\cite {bisbal-legacy-issues}\relax }}{29}{figure.caption.36}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces The essential stages of the waterfall model\relax }}{9}{figure.caption.4}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces A revised, iterative version of the waterfall model i.e. IID\relax }}{11}{figure.caption.5}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Four approaches to cope with legacy software systems~\cite {bisbal-legacy-issues}\relax }}{28}{figure.caption.36}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces UML use case diagram based on the requirements\relax }}{39}{figure.caption.52}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces The services and their intercommunication\relax }}{43}{figure.caption.58}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Swimlane diagram portraying the rental process\relax }}{45}{figure.caption.59}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Exemplary functional interaction of API Gateway, Service Discovery, and two services\relax }}{50}{figure.caption.67}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces UML use case diagram based on the requirements\relax }}{38}{figure.caption.52}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The services and their intercommunication\relax }}{42}{figure.caption.58}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Swimlane diagram portraying the rental process\relax }}{44}{figure.caption.59}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Exemplary functional interaction of API Gateway, Service Discovery, and two services\relax }}{49}{figure.caption.67}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces The web interface of the key-value store of \textit {Consul}\relax }}{54}{figure.caption.73}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The web interface of the key-value store of \textit {Consul}\relax }}{53}{figure.caption.73}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
