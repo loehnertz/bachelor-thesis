@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper, twoside]{report}
+\documentclass[12pt,a4paper,twoside]{report}
 
 \include{settings}
 
@@ -23,7 +23,7 @@ Exhibition of an Exemplarily Implemented Back-end Application
 
 \begin{abstract}
 
-The abstract will be added at this place towards the end of the thesis.
+The abstract will be added at this place toward the end of the thesis.
 
 \end{abstract}
 
@@ -42,14 +42,14 @@ in technology because software is so complicated. Beauty is the ultimate defense
 
 The definition of the word \emph{scooter} is fairly vague.
 Some describe it as a small vehicle with a handlebar and a platform to stand on,
-the kind traditionally children were riding.
+the kind traditionally used by children.
 However, this paper looks at the \emph{motorcycle-esque type} of a scooter, and in
 particular the electric version of it.
 
 Many pain points of internal combustion engines vanish with the switch to their electric
 counterparts. The maintenance of the mechanical system of the whole vehicle becomes easier.
 There are less moving parts which makes for less errors.
-On the downside, the exchange of the fuel causes the most problems with electric engines.
+On the downside, the replacement of the fuel causes the most problems with electric engines.
 Of course they utilize batteries instead of fossil fuels as their impetus.
 Although the invention of the battery is older than that of the
 internal combustion engine\cn, the technology is still not perfected and sees new
@@ -78,16 +78,18 @@ said approach in great detail.
 Furthermore, the fact that the scooters are always connected to the internet
 as well as the nature of current batteries desire a reactive and faultless application.
 
-Finally, the corporate partner of this thesis, which is discussed in detail
-in section \ref{sect:e-bility}, is already in possession of a solution.
+Moreover, he corporate partner of this thesis, which is discussed in detail
+in section \ref{sect:e-bility GmbH}, is already in possession of a solution.
 Therefore, the subject of extending an existing back-end application
 with missing features is also targeted.
 
+Finally, chapter \ref{chap:analysis} discusses the design of such an application,
+while chapter \ref{chap:implementation} elucidates the exemplary implementation of it.
+
 In conclusion, this leads into the research question of this bachelor thesis:\\
-\emph{What does the system and software architecture of a back-end application
-for the short-term rental of electric scooters look like and which considerations
-need to be made to integrate additional functionality into an
-existing legacy software solution for that purpose?}
+\emph{What should the system and software architecture of a back-end application
+for the short-term rental of electric scooters look like that features
+good scalability?}
 
 
 
@@ -145,13 +147,13 @@ meaning that each customer can drop off the scooters wherever they want, regardl
 of their current location as long as it is within the available area of the offering operator.
 However, this system also implies that the operating organization needs personnel
 and equipment to relocate scooters that were discarded in areas with low demand.
-Finally, three main models do exist for billing the customers~\cn.
+Finally, three main models exist for billing the customers~\cn.
 Namely, these are billing per minute, billing per kilometer, or a fixed rate for a whole ride.
 
 
-\paragraph{German electric scooter manufacturer \textit{e-bility}} \label{sect:e-bility}
+\paragraph{German electric scooter manufacturer \textit{e-bility GmbH}} \label{sect:e-bility GmbH}
 
-The thesis loosely focuses on the business of German electric scooter manufacturer \textit{e-bility}.
+The thesis loosely focuses on the business of German electric scooter manufacturer \textit{e-bility GmbH}.
 The company was established in 2009. For their product, they concentrated on three main aspects:
 an exterior design ready for the European market, build quality and sufficient cruising radius.
 They finished building their first electric scooter in 2010 and are thriving for good products ever since.
@@ -164,9 +166,9 @@ short-term rental service for their scooters. And from many angles it makes sens
 As seen in the last section, the market for the short-term rental of electric scooters
 especially in Germany is still minuscule compared to e.g. car or bike sharing.
 Meanwhile, the costs for buying an electric scooter are still relatively high.
-Additionally, many people will not need such a vehicle for the whole day and would benefit
+Additionally, many people do not need such a vehicle for the whole day and would benefit
 from more flexibility. Lastly, parking spots are also a scarcity in inner cities.
-Therefore, \textit{e-bility} plans to enter the market of short-term electric scooter rentals
+Therefore, \textit{e-bility GmbH} plans to enter the market of short-term electric scooter rentals
 in the near future. The company plans to sell the scooters as well as a license
 to operate a short-term rental service which includes front-end and back-end applications
 to interested operators such as municipal works.
@@ -174,7 +176,7 @@ to interested operators such as municipal works.
 There are still many aspects to be discussed and determined but one of them
 is already set and can be seen as a necessity regardless of the final implementation:
 A back-end application as well as its infrastructure.
-The manufacturer \textit{e-bility} acquired an existing software solution
+The manufacturer \textit{e-bility GmbH} acquired an existing software solution
 to achieve this although they currently are not in possession of it yet.
 
 
@@ -182,25 +184,24 @@ to achieve this although they currently are not in possession of it yet.
 
 The main aspect of success for such a system is the \textit{magic} behind the scenes
 that no customer sees. People just see the electric scooter as the product and
-want to be able to ride one on demand by just pushing a button.
+want to be able to ride one on demand by simply pushing a button.
 The ease of use for the customers and their satisfaction are the main facets
 to be considered by the provider of such a service.
 
-Oftentimes this, as virtually all the short-rental services on the market~\cn,
-involves two foundational web-based components --- a front-end and a back-end\cn.
+Oftentimes, this involves two foundational web-based components --- a front-end and a back-end\cn.
 On the one hand, the front-end provides the user interface of the product, the façade of the whole.
-It is the component the customer interacts with but more importantly it will be
+It is the component the customer interacts with but more importantly it is
 what the users identify the product with.
 On the other hand, the back-end is the brain of the software product.
 It provides endpoints for the front-end to use and consume. The back-end dictates
-what the front-end will do. Meanwhile, it does not determine what it will look like.
-If the front-end is unusable the back-end will never be able to fix that as the
+what the front-end does. Meanwhile, it does not determine what it looks like.
+If the front-end is unusable, the back-end will never be able to fix that as the
 front-end becomes the mental representation of the whole product for the customers.
 If the back-end behaves sluggish or is prone to errors, the front-end will not
 be able to save much by the same token. In the end, both form a synergy with each other.
 
-This thesis will shed light on the back-end of such an application.
-It will focus on the system and software architecture of it.
+This thesis sheds light on the back-end of such an application.
+It focuses on the system and software architecture of it.
 This includes the functionalities that are mandatory and the question on
 how the product might come together --- from ideas and drafts to written source code.
 
@@ -225,13 +226,13 @@ the stages shown in figure \ref{fig:waterfall-model}.
 \end{figure}
 The main point of it is that the steps are conducted sequentially;
 no step should begin before the current one has been finished~\cite{boehm-spiral}.
-This idea has one big flaw: the \textit{Verification} phase being nearly at the end.
+This idea has one big flaw: The \textit{Verification} phase being nearly at the end.
 Only after the whole software product is finished, an evaluation by
 internal testing personnel or the client can be carried out~\cite{royce-large-systems}.
 It is likely that at least some changes to the implementation will be necessary after the \textit{Verification}.
 Additionally, clients may not know the exact requirements at the very beginning
 of the software development process~\cite{parnas-rational-design-process}.
-It is also possible that a major fault is only discovered in that second last stage ---
+It is also possible that a major fault is only discovered in that second to last stage ---
 the negative repercussions could be massive.
 \begin{displayquote}
 \emph{"Either the requirements must be modified, or a substantial change
@@ -246,7 +247,7 @@ many newer concepts of a software development process.
 
 Nowadays, software developers and project managers are mostly utilizing any model that
 can be subsumed under the loose term \textit{agile}.
-In summary, as the term already depicts, this theory is geared towards
+In summary, as the term already depicts, this theory is geared toward
 the idea that the software development process should not be as rigid and constrained.
 Therefore, it stands in stark contrast to the demonstrated waterfall model.
 The term does not describe an explicit concept but rather an idea ---
@@ -278,7 +279,7 @@ This fact is corroborated by the IEEE's
 which is also recognized by the ISO~\cite{swebok}.
 This document defines \textit{"knowledge areas"} which match the depicted stages.\\
 Consequently, the portrayed stages are discussed in greater detail in the following subsections,
-while excluding the last two ones as they will not be part of the
+while excluding the last two ones as they are not part of the
 \textit{\nameref{chap:analysis}} chapter.
 Moreover, these explanations do not follow an incremental approach
 or a sequential one --- the point of view is generalized.
@@ -293,7 +294,7 @@ the elicitation, analysis, specification, and validation of software requirement
 as well as the management of requirements during the whole
 life cycle of the software product."}~\cite{swebok}
 \end{displayquote}
-Generally speaking, two types of requirements do exist --- functional and non-functional ones.
+Generally speaking, two types of requirements exist --- functional and non-functional ones.
 Functional requirements are definitive features of the software whereas non-functional
 requirements are describing aspects of the software like performance, security,
 user-friendliness and so forth~\cite{sommerville-se}.\\
@@ -332,7 +333,7 @@ is expected due to the new software, this affair should be discussed with the
 employees of the organization.
 
 \subparagraph{Operational environment}
-The environment where the software will run later is also important for the
+The environment where the software will later run is also important for the
 aggregation of requirements. If a certain performance is mandatory for the use case
 of the software, this should be formed into a concrete requirement.
 
@@ -401,9 +402,9 @@ However, software architecture has two layers: the high-level design as well as
 the low-level design which is about the more detailed
 construction of single components~\cite{iso-sdlc}.
 Usually, the functional requirements mentioned in the previous subsection dictate
-what the low-level architecture will look like. In contrast, non-functional
+what the low-level architecture looks like. In contrast, non-functional
 requirements often determine the high-level architectural design of an application~\cite{bosch-sa}.
-However, oftentimes a mixture of both will determine both aspects of the final software architecture.
+However, oftentimes a mixture of both determine both aspects of the final software architecture.
 
 
 \subsubsection{Design decisions}
@@ -414,7 +415,7 @@ the answer to each question, the software architecture increasingly emerges.
 Additionally, if every decision is made, the architecture automatically gains
 sophistication. Ian Sommerville states nine \textit{Design decisions} in his
 standard work \textit{Software Engineering}~\cite{sommerville-se}.
-For this thesis, four of them were picked to be substantive:
+For this thesis, four of them were picked to be substantial:
 \begin{enumerate}
 \item What architectural patterns or styles might be used?
 \item What architectural organization is best for delivering the non-functional requirements of the system?
@@ -451,7 +452,7 @@ any modifications to it.
 \paragraph{Coupling and Cohesion}
 These two terms are describing how a component behaves in regard to the whole application.
 \textit{Cohesion} is a measure of the interdependence of a component whereas
-\textit{Coupling} describes how associated the elements of the components are~\cite{swebok}.
+\textit{Coupling} describes how closely associated the elements of the components are~\cite{swebok}.
 Consequently, this concept is therefore close to the aforementioned \textit{Abstraction}
 since high \textit{Coupling} lowers the abstraction of a system and vice versa.
 
@@ -499,7 +500,7 @@ Due to the large amount of such patterns, not every single one can be discussed
 in this subsection. Consequently, three patterns were chosen to be discussed
 in greater detail in the following paragraphs. Owing to the fact, that this
 thesis is focused on web-based client-server systems, as depicted in
-section \ref{sect:frontend/backend}, only solutions geared towards a back-end are exhibited.
+section \ref{sect:frontend/backend}, only solutions geared toward a back-end are exhibited.
 
 \paragraph{Layered}
 A \textit{Layered} style divides the whole software into distinct layers that
@@ -513,12 +514,12 @@ for no middleware as described in subsection \ref{subsect:construction} which
 makes it easy to get started with for many different types of software solutions.
 
 Nevertheless, this concept has some severe shortcomings.
-A developer typically needs to grasp all the layers to understand the whole application.
-Moreover, it a difficult task to draw a clear line where one layer ends and the
+A developer typically needs to comprehend all the layers to understand the whole application.
+Moreover, it is a difficult task to draw a clear line where one layer ends and the
 next one begins.
 Furthermore, even if the engineers clearly stated that border,
 it is very easy to skip over certain layers by e.g. implementing some logic
-in the interfaces towards the presentational layer whereas logic should only occur
+in the interfaces toward the presentational layer whereas logic should only occur
 inside of the business logic layer; this increases the \textit{Coupling} of the application.
 Finally, the application unavoidably becomes larger and slower to a point
 where it starts not to perform ideally anymore.
@@ -546,7 +547,7 @@ can be achieved more easily. Therefore, the maintainability as well as the exten
 of the application are significantly better; publishing components can easily be replaced
 as long as the published events stay the same.
 
-A downside is the fact that opposed to traditional call-based architectures,
+A downside is the fact that, opposed to traditional call-based architectures,
 the components of an \textit{Event-driven} architecture receive no feedback regarding
 their published events. Especially if a subscribing component publishes a new event
 in response to the received one; the component of the originally published
@@ -562,7 +563,7 @@ triggered the published event. A rollback strategy has to be conceptualized to
 achieve appropriate error handling~\cite{richards-sa-patterns}.
 
 \paragraph{Service-oriented}
-A \textit{Service-oriented} approach divides the whole application into distinct
+A \textit{service-oriented} approach divides the whole application into distinct
 services that all run as separate programs. Thus, this style is the
 polar opposite of the aforementioned \textit{monolith}.
 This architectural style includes the \textit{Microservice} architecture
@@ -575,9 +576,9 @@ and a data exchange format such as JSON~\cn.
 The advantages are clear compared to a \textit{monolithic} approach.
 The services can be fully replaced if their interfaces stay the same and the
 scaling of single services becomes easier since every one of them runs as a single program.
-Moreover, the reusability of services can be better if each service is properly \textit{abstracted}.
-Furthermore, a \textit{Service-oriented} approach even allows for multiple programming languages
-across different services. Albeit the complexity increases, it becomes possible
+Moreover, the reusability of services can be improved if each service is properly \textit{abstracted}.
+Furthermore, a \textit{service-oriented} approach even allows for multiple programming languages
+across different services. Although the complexity increases, it becomes possible
 to choose \textit{the best tool for the task}.
 Another advantage is that the single services can be duplicated independently
 in case some of them experience more load than others.
@@ -637,10 +638,10 @@ Furthermore, the development team should agree upon a set of standards.
 This starts with obvious choices like the programming languages of the software
 and continues with coding standards and tooling~\cite{mcconnell-code-complete}.
 Finally, testing and integration are another set of considerations.
-Unit testing is an important tool to continuously test the developed components;
-it describes the procedure of testing single \textit{units} respectively components
-of the codebase with comparing a known set of correctly corresponding input and output
-with the actual output with the given input~\cn.
+\textit{Unit testing} is an important tool to continuously test the developed components;
+it describes the procedure of testing singular \textit{units}, respectively components
+of the codebase, by comparing a known set of correctly corresponding input and output
+with the actual output and the given input~\cn.
 Moreover, after finishing the construction of the software or even during that stage,
 an integration strategy has to be deployed. Namely, these are either a
 \textit{phased} or an \textit{incremental} approach. A \textit{phased} integration
@@ -712,12 +713,12 @@ The term \textit{legacy software} describes a software product that was created
 some time in the past and thus became outdated in terms of the utilized technology
 stack, its performance and security or its software architecture~\cite{seacord-modernizing-legacy}.
 All of the above can occur at once or emerge partially.\\
-The term often bears a pejorative association with it although legacy software
+The term often bears a pejorative association, although legacy software
 is indispensable for the organization that makes use of it. Most of the time, it
 still fulfills the needs of its users and is therefore still profitable~\cite{bennett-coping-legacy}.
 Moreover, the source code sometimes comprises the knowledge of the organization while
 the software itself is archaic. Owing to that fact, discontinuing legacy software can be difficult.
-In the end, there are two general options: a complete replacement of the legacy system or
+In the end, there are two general options: A complete replacement of the legacy system or
 a partial extension of it.
 
 
@@ -725,7 +726,7 @@ a partial extension of it.
 
 Formerly, a main reason to keep a software solution running was tied to its
 hardware requirements. Legacy software that is many decades old might still
-run on mainframe computers opposed to contemporary server systems~\cite{schneidewind-preserve-or-redesign}
+run on mainframe computers as opposed to contemporary server systems~\cite{schneidewind-preserve-or-redesign}
 or even cloud computing. However, these considerations are not part of this thesis
 since the analyzed software solution was built as a common client-server application
 meant to run on prevailing server infrastructure.
@@ -735,10 +736,10 @@ Often times, the expected benefits of redeveloping a software cannot justify the
 Additionally, it is difficult to measure the advantages beforehand. The management
 of a company needs to ponder the proposal of redeveloping the current software.
 Particularly, if the legacy software still seems to be running as expected when observed
-from the outside, is becomes harder for the developers and engineers to vindicate
-their proposal towards the management --- raw characteristics such as performance,
-security, maintainability and eventually the development time can just be roughly estimated and
-are bound to the experience of the developers and engineers in charge.
+from the outside, it becomes harder for the developers and engineers to vindicate
+their proposal toward the management --- raw characteristics such as performance,
+security, maintainability and eventually the development time can only be estimated
+roughly and are bound to the experience of the developers and engineers in charge.
 Moreover, even if the analysis does sound promising there is no guarantee that the new system
 will meet the expectations. Nevertheless, the tipping point can occur when the human costs for the maintenance
 of the legacy software are tremendous when compared to development teams of similar size and complexity.
@@ -760,7 +761,7 @@ in the same expected and quantifiable manner as its legacy counterpart.
 In addition, it is also possible that the users of the legacy software do not want
 to switch to a new solution due to third-party vendor lock-in or the fact that
 they are familiar with the legacy system~\cite{bennett-coping-legacy} which would make
-retraining a vast cost driver.
+retraining a significant cost driver.
 
 Lastly, a big concern that the company's management cannot even control is
 poor or missing documentation.~\cn This circumstance is the most difficult one
@@ -837,7 +838,7 @@ Some parts of a legacy system might be wrapped while others need to be redevelop
 To start from the far right, \textit{Redevelopment} is the most disruptive approach;
 it implicates the discontinuation of the currently used software.
 While having the huge disadvantage of being immensely cost-intensive, it indisputably
-yields the best results opposed to the issues with legacy software presented in
+yields the best results as opposed to the issues with legacy software presented in
 subsection \ref{issues-legacy-software}.
 Nevertheless, the second big risk apart from economic concerns is
 the risk of failure.
@@ -873,7 +874,7 @@ Nevertheless, \textit{Reengineering} is a type of \textit{Migration} and
 therefore conducted similarly.\\
 Concretely, there are four major approaches to a \textit{Migration}
 process~\cite{malinova-legacy-techniques, seacord-modernizing-legacy},
-ranging from a moderate one to the just mentioned \textit{Reengineering}
+ranging from a moderate one to the just mentioned \textit{Reengineering},
 which is oftentimes a larger proposition.
 
 \paragraph{Retargeting}
@@ -903,7 +904,7 @@ legacy software with a current COTS \textit{customer relationship management (CR
 As already mentioned, this last approach is the most labor-intensive yet most promising one.
 During this procedure, the codebase gets refactored or reengineered
 into completely new components which then replace outdated ones.
-However, this process happens over time opposed to a \textit{Redevelopment} approach.\\
+However, this process happens over time as opposed to a \textit{Redevelopment} approach.\\
 \textit{Example}: Transfer an increasing amount of distinct components
 of the legacy application into web services.
 
@@ -917,7 +918,7 @@ This concept involves wrapping the existing codebase into an isolated package
 which is then just accessed via a newly created interface e.g. an API.
 The existing legacy software receives input parameters and returns an output.
 The substantial problem with this whole concept is that the legacy software does get
-extended only unidirectionally. It cannot invoke calls towards the newly added components.
+extended only unidirectionally. It cannot invoke calls toward the newly added components.
 Therefore, this solution is rather short-term in nature.
 This concept can be divided into four disparate levels~\cite{sneed-encapsulating-legacy}.
 
@@ -930,7 +931,7 @@ is available for external programs.
 
 \paragraph{Service}
 The \textit{service wrapper} encapsulates distinct services from the legacy software
-into callable entities which can thus be invoked from an external system.\\
+into callable entities which can then be invoked from an external system.\\
 \textit{Example}: The entire reservation system of an existing legacy software
 can be called via an API by an external system.
 
@@ -983,7 +984,7 @@ in section \ref{sect:software-development-process} are being exhibited.
 As stated in subsection \ref{subsect:requirements}, the first step of
 requirements engineering is the \textit{Elicitation}.
 For that purpose, three executive stakeholders
-at \textit{e-bility}, the corporate partner of this thesis, were interviewed
+at \textit{e-bility GmbH}, the corporate partner of this thesis, were interviewed
 to obtain the requirements for an ideal back-end application for the
 short-term rental of electric scooters.\\
 The discussed software solution is meant for being licensed to
@@ -1004,7 +1005,7 @@ web browser. Therefore, the interfaces of the software should be usable by
 a web-based front-end solution.
 
 \paragraph{Business}
-The whole business model will be based around paying users. Consequently,
+The whole business model is based around paying users. Consequently,
 a working automated billing process as well as arrears billing is absolutely
 crucial. It is expected to leverage the services of a third-party payment
 provider owing to the fact that the operating organizations do not want to
@@ -1013,7 +1014,7 @@ handle private credit card information and the likes.
 
 \subsubsection{Use Case}
 
-The interview with the stakeholders quickly resolved around the use case
+The interview with the stakeholders quickly revolved around the use case
 of such an application which yielded many requirements:\\
 
 The user will have to download a mobile application or use the web app
@@ -1036,10 +1037,10 @@ an arbitrary time that the operator should be able to change application-wide.\\
 Consequently, during the reservation time and the actual rental period,
 the scooter should not appear on the map anymore for other users.\\\\
 Next, the user is granted the set timeframe to get to the chosen scooter.
-If the user arrives to late, the scooter should re-appear on the map,
+If the user arrives too late, the scooter should re-appear on the map,
 available to every customer.\\\\
 Once he or she arrived, the scooter as well as its ignition can be remotely
-unlocked by the press of a button inside of the mobile app.
+unlocked by the push of a button inside of the mobile app.
 The back-end application however actually sends the signal to the scooter to
 unlock itself.\\\\
 Afterwards, the user can begin the ride for a previously chosen timeframe
@@ -1050,7 +1051,7 @@ charge or availability, mainly to plan out the relocation of certain ones.\\\\
 Finally, the scooter is getting locked again and will re-appear on the map for the other users.\\\\
 Moreover, during the ride, the scooter constantly sends its location as well
 as other information about the current speed and battery statistics.
-These information will be sent to a separate server which just persists them
+This information will be sent to a separate server which just persists them
 without processing them any further.
 Consequently, the back-end application will regularly fetch the information data
 from said external server to monitor every ongoing ride of all the customers.\\\\
@@ -1092,8 +1093,8 @@ The fundamentals of the software design are determined by answering the four
 
 \paragraph{What architectural patterns or styles might be used?}
 A layered, monolithic approach poses the problem that it is too difficult
-to integrate into an existing solution. In the end the old and the new
-application would feasibly just communicate via API calls which would result
+to integrate into an existing solution. In the end, the old and the new
+applications would only feasibly communicate via API calls which would result
 in two completely separate solutions. Furthermore, it is tedious to discern
 which tasks get fulfilled by the old solution and which ones by the new one.
 As a result, a vast interface in front of them both would be needed;
@@ -1112,8 +1113,8 @@ to subscribe to events involves tremendous refactoring activities.
 
 In contrast, the system could be structured in a service-oriented matter with
 every larger component being a separate one. Other ones can be combined into
-one service; however such decisions have to be made much more fine-grained.
-The main advantage of the such an approach would be that it is easier to
+one service; however, such decisions have to be made much more fine-grained.
+The main advantage of such an approach would be that it is easier to
 integrate into an existing system compared to the other two approaches.
 The modernization and extension of the legacy solution can be started with
 re-developing a small component of the existing solution as a service.
@@ -1157,8 +1158,8 @@ easy to achieve in a service-oriented architecture --- the single services
 are a direct application of \textit{Decomposition}.
 Moreover, \textit{Information Hiding} is also a given fact when using a
 service-oriented architecture.
-Additionally, owing to the fact that a separate front-end will utilize the API
-of the back-end, the interface and the implementation will be completely separated.
+Additionally, owing to the fact that a separate front-end should utilize the API
+of the back-end, the interface and the implementation are completely separated.
 This statement is even corroborated by the fact that there will be three front-ends,
 a mobile app as well as a web-based one for the customers additionally to the
 web-based front-end for the service workers of the operating organization.
@@ -1183,8 +1184,8 @@ The arrows in between them denote the directions of HTTP requests as well
 as the allowed HTTP methods for each request.
 This can be an important indicator to conceive which services
 will only be hit by \textit{GET requests} which are by definition \textit{safe},
-in the way that they will never mutate any data~\cite{http-rfc}.
-For example, the \textit{Telemetry Data Retrieval} service will never modify
+in the way that they never mutate any data~\cite{http-rfc}.
+For example, the \textit{Telemetry Data Retrieval} service never modifies
 its underlying data upon requests from other services.
 
 Each of them implements their own API that provides the functionalities that
@@ -1194,17 +1195,17 @@ The \textit{API Gateway} as well as the \textit{Scooter Gateway} are described
 in greater detail in subsection \ref{subsect:analysis-construction}.
 
 As already portrayed in the use case diagram (figure \ref{fig:use-case-diagram}),
-the users of the back-end application will consist of service workers employed
+the users of the back-end application consist of service workers employed
 by the operating organization as well as the customers.
-The authorization towards the \textit{API Gateway} will determine which
+The authorization toward the \textit{API Gateway} determines which
 API endpoints customers can access and which ones are just available to
 service workers. For instance, the locations and information of all the scooters
-of the fleet will just be available to authorized service workers via the
+of the fleet are just be available to authorized service workers via the
 \textit{Fleet Monitor} service.
 
 The \textit{Telemetry Data Retrieval} service fetches current data from the
 off-site \textit{Telemetry Server} in periodical intervals.
-Consequently, there will be a firewall in between these components.
+Consequently, there is a firewall in between these components.
 This data consists of information such as the locations of all the scooters
 of the fleet, their remaining battery power, as well as other information.
 These information are crucial for the whole application.
@@ -1213,7 +1214,7 @@ periodically as well.
 
 There should be two caches in the architecture to take away load from the
 adjacent services. First, the aforementioned \textit{Telemetry Data Retrieval}
-service will save new data into the cache which will automatically clear old
+service saves new data into the cache which automatically clears old
 data after a preset amount of time. Thereby, nearly all of the requests from
 other services apart from the \textit{Statistics Retrieval} one will hit the
 \textit{Telemetry Data Cache} as those are only working with current data due
@@ -1226,13 +1227,13 @@ from the \textit{Fleet Monitor} service which is already the one with
 presumably the heaviest load.
 
 The \textit{Driver's license check-up} as well as the \textit{Billing} service
-will be closely related to third-party providers of such tasks.\\
+are closely related to third-party providers of such tasks.\\
 
 Additionally to the use case diagram, a swimlane diagram
 (figure \ref{fig:swimlane-rental-process}) has been created to depict
 the flow of information between the customer, the scooter and the
 involved services during the process of successfully renting a scooter.
-This use case is by far the most important one which distinguishes itself
+This use case is by far the most important one which distinguishes it
 from other common use cases e.g. registering an account.
 The two gateways were purposely omitted from the diagram as their tasks would
 be the same ones over and over again.
@@ -1254,10 +1255,10 @@ which can take an indeterminate amount of time while no information is flowing.
 \section{Construction} \label{subsect:analysis-construction}
 
 \paragraph{COTS components}
-As recently mentioned, the \textit{Driver's license check-up} and \textit{Billing}
+As previously mentioned, the \textit{Driver's license check-up} and \textit{Billing}
 services will leverage COTS software to verify uploaded driver's license scans
 and to handle the billing of customers that successfully rented a scooter.
-Consequently, said services will implement just the interfaces towards these
+Consequently, said services implement just the interfaces toward these
 third-party solution. Additionally, the \textit{Billing} service might have
 to implement some data persistence logic for accounting reasons.
 
@@ -1278,9 +1279,9 @@ Finally, \textit{Go} offers a built-in HTTP server which can directly be used
 for the intercommunication of the services.
 
 \paragraph{Utilized libraries}
-Albeit the HTTP server of the \textit{Go} language being very powerful,
-the library \textit{Go Micro} was chosen for scaffolding the services.
-It immensely foreshortens the time it takes to setup a service.
+Although the HTTP server of the \textit{Go} programming language is very powerful,
+the library \textit{Go Micro} was chosen for offering a more streamlined
+scaffolding of the services. It immensely foreshortens the time it takes to setup a service.
 Thereby, the developers can focus just on implementing the business logic
 of each service while not tinkering around with the scaffold of the service.
 \textit{Go Micro} offers methods to quickly generate said scaffold on top
@@ -1307,7 +1308,7 @@ how many users such an application would have, this middleware is not part of
 this subsection.
 
 \subparagraph{Service Discovery} \label{subparag:service-discovery}
-For the \textit{Service Discovery} middleware, an existing solution will be
+For the \textit{Service Discovery} middleware, an existing solution is
 utilized since it is generally not part of a service-oriented architecture
 to developed the \textit{Service Discovery} by oneself~\cn.
 For this purpose, the freeware tool \textit{Consul} developed by \textit{HashiCorp}
@@ -1317,7 +1318,7 @@ of every \textit{Service Discovery} middleware.\\
 The main functionality is that \textit{Consul} provides a DNS server which is
 made available on the network. It can even work beyond multiple data centers
 but since scaling is not directly part of this thesis, this feature is not utilized.
-Every service in the architecture can now make a DNS lookup towards the so-called
+Every service in the architecture can now make a DNS lookup toward the so-called
 \textit{Consul agent} which is the main server process of the tool.
 This \textit{Consul agent} then returns an IP address and a
 port number of the requested service. Additionally, it offers simple
@@ -1325,14 +1326,14 @@ load balancing by randomizing which instance of the requested service
 i.e. which combination of IP address and port number is getting returned.
 An example lookup is structured like this: \textit{servicename.service.consul};
 thereby a service can just lookup this address and will receive an IP address
-and a port number for dispatching the actual HTTP request towards the service.
-Optionally, DNS caching can be enabled so that the result of a lookup will be
+and a port number for dispatching the actual HTTP request toward the service.
+Optionally, DNS caching can be enabled so that the result of a lookup is
 cached by a requesting service for a set amount of seconds.
 Consequently, the software developers or network administrators have to
 create a configuration file for every service in the architecture to specify
 their IP address and port number next to other information which are optional.
-However, in reality the services will register themselves with their configuration
-towards \textit{Consul} if correctly implemented;
+However, in reality the services register themselves with their configuration
+toward \textit{Consul}, if correctly implemented;
 \textit{Consul} offers endpoints to let services register themselves.
 Moreover, health checks are a native and important feature of \textit{Consul}
 as well. For each service a custom health check can be provided that
@@ -1345,10 +1346,10 @@ not be hit by even more unsuccessful requests by other services which would just
 prolong the downtime. Instead, the DNS lookup returns an error and the
 requesting service can handle that case accordingly~\cite{consul}.\\
 In summary, with a \textit{Service Discovery} each service just has to
-make requests towards a never changing address which will be resolved by
-\textit{Consul} automatically. Thus, the implementation inside of a service is
+make requests toward a never changing address which gets automatically resolved by
+\textit{Consul}. Thus, the implementation inside of a service is
 are a lot more concise since no knowledge about the structure of the network
-is needed at no point during its runtime.
+is needed at any point during its runtime.
 
 \subparagraph{API Gateway and Scooter Gateway}
 The \textit{API Gateway} has two tasks in this architecture.
@@ -1363,11 +1364,11 @@ for further handling.\\
 Secondly, it provides the API endpoints that are actually available from the
 outside as each service has their own host address and port number.
 Thus, without the \textit{API Gateway} these information would need to be
-directly exposed towards the front-end applications. Moreover, with cloud-based
+directly exposed toward the front-end applications. Moreover, with cloud-based
 deployments they might change in the future which would make the information
 outdated on the client side.
 
-Similarly, the \textit{Scooter Gateway} fulfills the same task towards the
+Similarly, the \textit{Scooter Gateway} fulfills the same task toward the
 fleet of scooters. The other services can just pass the
 information they want to dispatch to a certain scooter to the
 \textit{Scooter Gateway} which then sends the actual request to the scooter.
@@ -1375,7 +1376,7 @@ In this way, the services do not need to hold information on the host addresses
 and port numbers of each scooter which makes the handling of them through
 a shared gateway tremendously easier. Otherwise, the information would need
 to exist redundantly as well since currently two different services are
-dispatching requests towards scooters.\\
+dispatching requests toward scooters.\\
 
 In summary, figure \ref{fig:service-interaction} portrays an exemplary interaction of the
 \textit{API Gateway}, the \textit{Service Discovery} and two services themselves.
@@ -1393,7 +1394,7 @@ to other ones. The most basic one is indeed a normal HTTP API preferably with
 JSON as the data exchange format; this is sometimes also called \textit{JSON over HTTP}.
 \textit{JSON over HTTP} is both easy to setup as well as easy to use;
 nevertheless, the handling is not very native to any programming language as one
-has to dispatch a HTTP request for every function call towards another service.
+has to dispatch a HTTP request for every function call toward another service.
 A developer could hide that functionality behind an API wrapper so within the
 source code the developers can access the other services API just like a normal
 function call. However, this necessitates an API wrapper for every single service.
@@ -1409,7 +1410,7 @@ It lets the developers use the API of another service just like a procedure with
 its own but remotely. Yet, RPC always needs a codec which is essentially the
 data exchange format of the calls. The preferred one of \textit{Go Micro}
 is \textit{Protocol Buffers}, an open format developed and maintained by Google.
-It it also especially well suited for this thesis at it not only offers a
+It it also especially well suited for this thesis as it not only offers a
 data exchange format but also an \textit{Interface Description Language (IDL)}
 to model the API of a service. Google additionally offers \textit{protoc},
 a tool to automatically generate the API out of a \textit{Protocol Buffers}
@@ -1422,7 +1423,7 @@ of the designed application, there are a couple of requirements that
 mandate an application-wide mechanism to configure certain values e.g.
 the amount of time a reservation of a scooter stays valid for.
 For that purpose, a configuration server as a central source for all the
-configuration data is contrived. That server will broadcast a configuration file
+configuration data is contrived. That server broadcasts a configuration file
 upon a request by a service. The services should implement that they request
 the current configuration from said server upon their startup. Consequently,
 a change to the configuration will not be adopted until the affected services
@@ -1433,7 +1434,7 @@ necessary anyways to avert inconsistently configured services.
 
 \paragraph{Concurrency}
 The term \textit{Concurrency} describes the way of running multiple function
-calls simultaneously opposed to a sequential approach that many programming languages
+calls simultaneously as opposed to a sequential approach that many programming languages
 pursue; this concept is also called \textit{asynchronous execution}.
 While the \textit{Go} programming language is also executed synchronously,
 it offers built-in concurrency support as well~\cite{golang-concurrency}.
@@ -1460,7 +1461,7 @@ that they will wait for the responses of the broken service.
 As a consequence, this can lead to a cascade of breakdowns of services that wait for
 already broken ones to handle their requests. To mitigate that problem,
 the aforementioned \textit{Circuit Breaker} pattern can be utilized.
-Critical requests towards other services are getting invoked through
+Critical requests toward other services are getting invoked through
 a \textit{Circuit Breaker} which will prevent subsequent requests to
 a service that recently was not able to respond within a set timeout.
 In that way, the broken service can recover from the high load
@@ -1468,7 +1469,7 @@ while the one where the \textit{Circuit Breaker} tripped will not
 break down itself~\cite{fowler-circuit-breaker}.
 
 \paragraph{Error handling}
-\textit{Go Micro} offers built-in methods to retry calls towards
+\textit{Go Micro} offers built-in methods to retry calls toward
 other services in case of a failure~\cite{go-micro}. If all of them still fail,
 an error is logged to investigate the malfunction later on.
 
@@ -1483,6 +1484,16 @@ that elegantly eliminate organizational friction […]}
 {\textit{Peter Bourgon}}}
 
 
+The name of the project is \textit{Toranos} which is the name of the
+Celtic god of thunder and the wheel~\cn --- a fitting name in regard of the purpose
+of the application. The implementation features all the requirements while
+implementing some requirements that involve third-party servers or real-world data
+as placeholders.
+The project is licensed as \textit{Open Source} software under the
+\textit{Apache 2.0} license. The source code is freely available on GitHub at:\\
+\code{\url{https://github.com/loehnertz/Toranos}}
+
+
 \section{Project structure}
 
 The source code of the project consist of four directories:
@@ -1493,15 +1504,9 @@ The source code of the project consist of four directories:
 \item \code{vehicle-gateway}
 \end{itemize}
 The \code{common} directory contains singular functions that are general
-enough to be shared by multiple services. Owning to the fact that directly in the
+enough to be shared by multiple services. Owing to the fact that directly in the
 \code{services} directory each service has its own directory, this structure
 to share source code is the most consistent one.
-
-The name of the project is \textit{Toranos} which is the name of the
-Celtic god of thunder and the wheel --- a fitting name for the purpose of the application.
-The project is licensed as \textit{Open Source} software under the
-\textit{Apache 2.0} license. The source code is freely available on GitHub at:\\
-\code{\url{https://github.com/loehnertz/Toranos}}
 
 
 \section{Runtime configuration}
@@ -1528,7 +1533,7 @@ since many changed settings alter processes so much that a restart might
 have been necessary anyways to avoid data inconsistencies.
 Some helper functions were created to use the configuration during runtime.
 
-\begin{lstlisting}[title=services/billing/main.go]
+\begin{lstlisting}[title=services/billing/main.go, float, floatplacement=H]
 var conf config.Config
 
 // Initialize the configuration
@@ -1540,11 +1545,11 @@ common.GetConfigStringByPath(conf, "service-names", "billing")
 
 The \code{conf} object is initialized only once during the startup of each service
 to avoid the aforementioned inconsistencies and to reduce the load
-towards \textit{Consul}. The helper function \code{InitConfig()} retrieves
+toward \textit{Consul}. The helper function \code{InitConfig()} retrieves
 the whole configuration from \textit{Consul} in a format that allows for the
 path-based querying seen in the last source code snippet.
 
-\begin{lstlisting}[title=common/config.go]
+\begin{lstlisting}[title=common/config.go, float, floatplacement=H]
 func InitConfig() config.Config {
 	// Initialize Consul as a source
 	consulSource := consul.NewSource(consul.WithPrefix("/"))
@@ -1566,7 +1571,7 @@ for that purpose in the same manner due to the versatile nature of \textit{Go Mi
 
 \section{Service structure}
 
-The source code structure of each is service is very similar.
+The source code structure of each service is very similar.
 Inside of its directory there is always a \code{main.go} file and a \code{proto}
 directory.
 
@@ -1582,7 +1587,7 @@ One contains the \textit{service definition} of that service and the other
 two are \code{.go} files which are generated via the \textit{Protocol Buffers}
 definition as stated in subsection \ref{construction-api_design}.
 
-\begin{lstlisting}[title=services/fleet-monitor/proto/fleet-monitor.proto, language=protobuf3]
+\begin{lstlisting}[title=services/fleet-monitor/proto/fleet-monitor.proto, language=protobuf3, float, floatplacement=H]
 syntax = "proto3";
 
 service FleetMonitor {
@@ -1610,7 +1615,7 @@ empty one.
 
 However, the response of this RPC comprises the currently available vehicles,
 so the response just consists of a list of the \code{Message} of a \code{Vehicle}.
-Using the directive \code{repeated}, an existing message is defined to be
+Using the directive \code{repeated}, an existing \code{Message} is defined to be
 handled as a list of indefinite length.
 Finally, each \code{Message} consists of a number of fields. Those each have
 a data type as well as an unique integer which is just used internally for
@@ -1625,7 +1630,7 @@ This is then done from within the \code{main()} function of each service.
 
 \subsection{Service scaffolding}
 
-\begin{lstlisting}[title=services/fleet-monitor/main.go]
+\begin{lstlisting}[title=services/fleet-monitor/main.go, float, floatplacement=H]
 var service micro.Service
 
 func main() {
@@ -1675,9 +1680,9 @@ the server component of the service that handles incoming requests,
 the program will \code{panic} which means that it crashes properly.
 
 Depending on the service, sometimes other components are initialized additionally.
-A common example are connections towards a database or caching system.
+A common example are connections toward a database or caching system.
 
-\begin{lstlisting}[title=services/fleet-controller/main.go]
+\begin{lstlisting}[title=services/fleet-controller/main.go, float, floatplacement=H]
 const DatabaseDriver = "postgres"
 const DataSource = "user=jloehnertz dbname=toranos_fleet sslmode=disable"
 
@@ -1691,7 +1696,7 @@ if databaseError != nil {
 }
 \end{lstlisting}
 
-\begin{lstlisting}[title=services/fleet-monitor/main.go]
+\begin{lstlisting}[title=services/fleet-monitor/main.go, float, floatplacement=H]
 var redisClient *redis.Client
 
 // Initialize a Redis client for caching purposes
@@ -1706,11 +1711,11 @@ redisClient = commons.InitRedisClient(
 
 As already depicted, each service leverages a helper function to initialize
 its handler that processes each RPC. Effectively, the handler routes incoming
-RPCs towards the corresponding functions that are assigned to handle it.
+RPCs toward the corresponding functions that are assigned to handle it.
 These functions oftentimes call another function that performs the actual work
 which is located in another distinct file according to its purpose.
 
-\begin{lstlisting}[title=services/fleet-monitor/main.go]
+\begin{lstlisting}[title=services/fleet-monitor/main.go, float, floatplacement=H]
 type FleetMonitor struct{}
 
 func (fm *FleetMonitor) AvailableVehicles(
@@ -1744,9 +1749,9 @@ the handler to call each handler function upon an incoming RPC.
 The \code{context} argument is used for additional meta-information about the RPC.
 
 The most important aspect to take note of are the arguments of the handler function.
-There types are taken out of the generated helper files based on the service definition.
+Their types are taken out of the generated helper files based on the service definition.
 
-\begin{lstlisting}[title=services/fleet-monitor/proto/fleet-monitor.pb.go]
+\begin{lstlisting}[title=services/fleet-monitor/proto/fleet-monitor.pb.go, float, floatplacement=H]
 type AvailableVehiclesResponse struct {
 	Vehicles []*AvailableVehiclesResponse_Vehicle
 }
@@ -1764,14 +1769,14 @@ In this exact case, the \code{repeated} directive exhibited in subsection
 % The second code snippet actually has to be \code{AvailableVehiclesResponse_Vehicle}
 \code{AvailableVehiclesResponse} which corresponds to a list in \textit{Go}.
 
-Using these structs, the request as well as the response of each RPC
+Using these \code{structs}, the request as well as the response of each RPC
 are strictly defined which makes incorrect usage by a developer nearly impossible
 as the compiler of \textit{Go} would directly halt with an error during the
 compilation process.
 The important detail to note is that this would prevent the service from
 even being deployed and executed on a server; the error is detected during
 the development which reduces errors during runtime by a large margin.
-Thus, the types of every field of the request and the response will be checked
+Thus, the types of every field of the request and the response are checked
 during the compilation. Moreover, the names of the fields get restricted
 to the defined ones.
 However, at this point the exact implementation of the function
@@ -1782,15 +1787,15 @@ passed into the response of the RPC via \code{res.Vehicles} is conducted as well
 \subsection{Service consumers}
 
 Furthermore, the \code{main()} function of each service also sets up
-the connection towards other services that need to be called by that service.
+the connection toward other services that need to be called by that service.
 During the generation of the helper functions a function for that exact purpose
 is created for each distinct service.
 For example, the function \code{NewFleetMonitorService()} can be executed by
 other services to connect to the \code{fleet-monitor} service. After that
 connection is established, RPC endpoints can be called freely.
 
-\begin{lstlisting}[title=services/statistics/main.go]
-// The variables that will hold the references
+\begin{lstlisting}[title=services/statistics/main.go, float, floatplacement=H]
+// The variables that hold the references
 var service micro.Service
 var fleetControllerService fleet_monitor.FleetControllerService
 
@@ -1807,29 +1812,29 @@ service.Init()
 serviceClient := service.Client()
 serviceClient.Init(client.Retries(3))
 
-// Initialize the connection towards another service
+// Initialize the connection toward another service
 fleetMonitorService = fleet_monitor.NewFleetControllerService(
                           config.FleetControllerName,
                           *serviceClient,
                       )
 \end{lstlisting}
 
-\textit{Go Micro} handles the first connection towards the
+\textit{Go Micro} handles the first connection toward the
 \textit{Service Discovery} that conducts a DNS lookup which is mandatory
-for performing the actual RPC towards the obtained IP address and port number
+for performing the actual RPC toward the obtained IP address and port number
 of the desired service.
 This is achieved by passing the name of the service into the helper function
 as well as the client component of the service that performs the calls.
 
 Moreover, during the setup of each service the client can be optionally equipped
 with certain settings. As discussed in section \ref{subsect:analysis-construction},
-a service will utilize a circuit breaker together with a retry mechanism to
+a service utilizes a circuit breaker together with a retry mechanism to
 avoid large-scale failures; this is accomplished with
 the lines \textit{9} and \textit{15}.
 
 The actual RPC is performed with a helper function again.
 
-\begin{lstlisting}[title=services/statistics/bookings.go]
+\begin{lstlisting}[title=services/statistics/bookings.go, float, floatplacement=H]
 func retrieveAllBookingsOfCustomer(customer string) (
     bookings []*statistics.RetrieveBookingsResponse_Booking,
     err error
@@ -1852,7 +1857,7 @@ func retrieveAllBookingsOfCustomer(customer string) (
 \end{lstlisting}
 
 Once again, the \textit{Protocol Buffers} definition is leveraged to prepare
-a request to perform the RPC towards the \code{fleet-controller} service.
+a request to perform the RPC toward the \code{fleet-controller} service.
 Of course, the variable \code{resBookings}, which contains the response of the RPC,
 is constructed according to the service definition.
 
@@ -1870,12 +1875,12 @@ of the request is correct considering the keys and value types.
 Apart from RPCs that are indirectly initiated by users of the application,
 some tasks are executed automatically in an asynchronous and scheduled manner.
 Consequently, a task runner is necessary to do so.
-For the application, normal \textit{cron jobs} are utilized.
+For the application, standard \textit{cron jobs} are utilized.
 The software utility \textit{cron} is originally derived from UNIX and can be
 used to schedule and run recurring tasks~\cite{crontab}.
 An implementation written in \textit{Go} is used within the application.
 
-\begin{lstlisting}[title=services/fleet-monitor/bookings.go]
+\begin{lstlisting}[title=services/fleet-monitor/bookings.go, float, floatplacement=H]
 // Initialize all the tasks
 scheduler := cron.New()
 
@@ -1889,8 +1894,8 @@ scheduler.Start()
 \end{lstlisting}
 
 The interval for this exemplary task is retrieved from the configuration.
-During the runtime of the service, the tasks will automatically executed according
-to the configured interval.
+During the runtime of the service, the tasks will automatically be executed
+according to the configured interval.
 For instance, as seen in the source code snippet, this is used by the
 \code{fleet-monitor} service to cancel active bookings which are expired.
 
@@ -1905,10 +1910,10 @@ dependencies between services. For example, if the database of one service gets
 corrupted others might still be able to continue their work.
 Similarly, every cache is separated from others.
 
-Although it might seem counterintuitive to let a service execute RPCs towards
+Although it might seem counterintuitive to let a service execute RPCs toward
 other services for every piece of data that is not existent in its own database,
 this approach actively prevents conditions where two services mutate the same
-data entity and thus create a state of inconsistency.
+data entity and thus engender a state of inconsistency.
 Instead, only legitimate data ever hits a service by leveraging the service definitions.
 
 Furthermore, database queries are decoupled from other simultaneously running tasks;
@@ -1916,7 +1921,7 @@ owing to the fact, that the database management system (DBMS) prevents
 simultaneous mutations of the same data entity, it would be feasible
 to run multiple instances of a service that sees many RPCs that just
 retrieve or persist data from or to its connected database.
-Thus, the load of a large amount of RPCs towards such a service could be balanced.
+Thus, the load of a large amount of RPCs toward such a service could be balanced.
 
 Finally, the use case of the application is not dependent on much
 shared data which makes such an approach all the more reasonable.
@@ -1930,12 +1935,12 @@ The \textit{API gateway} accomplishes two aims:
 It shields the services from the outside so that no client on the world wide web
 can directly access any of the services; this mechanism is in place mainly for
 security reasons.
-Thus, a firewall blocks every request towards all the services and just allows
+Thus, a firewall blocks every request toward all the services and just allows
 the \textit{API gateway} to do so.
 
 Similarly, the second aim is to provide user authentication
 at a central point without the need for every service to implement it as well.
-As a consequence, the services can be sure that no request towards them is unauthorized.
+As a consequence, the services can be sure that no request toward them is unauthorized.
 To achieve this, the \textit{API gateway} implements endpoints that are either
 accessible by the public or only by registered and authorized users.
 
@@ -1943,7 +1948,7 @@ accessible by the public or only by registered and authorized users.
 Generally, the \textit{API gateway} just offers normal HTTP endpoints that accept
 JSON. Upon starting it, the endpoints are initialized.
 
-\begin{lstlisting}[title=api-gateway/main.go]
+\begin{lstlisting}[title=api-gateway/main.go, float, floatplacement=H]
 func initRoutes(router *mux.Router) {
 	// Public route
 	router.Handle("/login", http.HandlerFunc(getAuthToken)).Methods("POST")
@@ -1958,7 +1963,7 @@ func initRoutes(router *mux.Router) {
 
 For example, the endpoint at \code{/available-vehicles} calls the function
 \code{availableVehicles()} upon an incoming \code{GET-request}.
-Those handler functions perform regular RPCs towards the desired services just
+Those handler functions perform regular RPCs toward the desired services just
 as any other service of the application. In that sense, the \textit{API gateway}
 is a service itself in a way.
 The allowed HTTP methods are set by arguments of the \code{Methods()} method.
@@ -1986,7 +1991,7 @@ before the function that implements the business logic.
 It can execute any code and either pass the request to the function that should
 handle the request or directly return a response.
 
-\begin{lstlisting}[title=api-gateway/middlewares.go]
+\begin{lstlisting}[title=api-gateway/middlewares.go, float, floatplacement=H]
 func authenticationMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		token := strings.Split(r.Header.Get("Authorization"), " ")
@@ -2013,20 +2018,20 @@ func authenticationMiddleware(next http.Handler) http.Handler {
 \end{lstlisting}
 
 Any user can login with their credentials to receive a new, valid JWT.
-With every subsequent request towards the public API, the JWT is part of the
+With every subsequent request toward the public API, the JWT is part of the
 HTTP request as the \code{Authorization} header.
 In the case of the \code{authenticationMiddleware()}, the middleware performs
-a regular RPC towards the \code{user-management} service to check if the
+a regular RPC toward the \code{user-management} service to check if the
 token of the requesting user is valid. The \code{user-management} service also
 implements an endpoint to issue new tokens among others which is used for logging
 a user in.
-If the service confirms the validity of the token the current request is passed
+If the service confirms the validity of the token, the current request is passed
 to the handler function. If the token is invalid, the middleware directly responds
 with an error.
 The handler functions then call other RPC endpoints according to their functionality
 and return adjusted responses to the requesting users.
 
-Due to the fact, that the JWT includes the username and even the role of the
+Due to the fact that the JWT includes the username and even the role of the
 requesting user, it is not even mandatory anymore to include the username with
 each request as all this information is an integral part of the JWT.
 Moreover, to check if a user is authorized to request certain endpoints no
@@ -2040,12 +2045,12 @@ According to the paradigm of \textit{Defensive Programming} which was introduced
 in subsection \ref{subsect:construction}, the gateway leverages a library
 developed by \textit{Netflix Inc.} called \textit{Hystrix}~\cite{hystrix}.
 It acts similar to a middleware by wrapping every RPC of the
-\textit{API gateway} towards another service.
+\textit{API gateway} toward another service.
 In fact, \textit{Go Micro} even offers a method to directly do so with
 supported wrappers by calling \code{micro.WrapClient()} during the startup
 of the \textit{API gateway}.
 
-\begin{lstlisting}[title=api-gateway/main.go]
+\begin{lstlisting}[title=api-gateway/main.go, float, floatplacement=H]
 // Create the service
 service = micro.NewService(
 	micro.Name(config.ApiGatewayName),
@@ -2056,7 +2061,7 @@ service = micro.NewService(
 \end{lstlisting}
 
 \textit{Hystrix} offers three distinct features:
-a custom timeout for every RPC, a capped pool of concurrent connections towards
+a custom timeout for every RPC, a capped pool of concurrent connections toward
 a service as well as a \textit{circuit breaker}.
 All of these measures improve the overall resilience of the application
 as well as its average response times by not overloading any service with incoming
@@ -2067,16 +2072,31 @@ requests.
 
 The \textit{Vehicle gateway} fulfills a similar task as the \textit{API gateway}.
 Whenever a service needs to communicate with a vehicle of the fleet, a RPC
-is conducted towards the \textit{Vehicle gateway}. The gateway then sends a request
+is conducted toward the \textit{Vehicle gateway}. The gateway then sends a request
 to the selected vehicle by using its host address that has been saved to the
 database of the gateway beforehand.
-However, this component of the application is only implemented as a stub
+However, this component of the application is only implemented as a placeholder,
 as the technical specifications of an actual fleet of vehicles is not part
 of this thesis which would make a proper implementation not feasible.
 
 
 
 \chapter{Evaluation} \label{chap:evaluation}
+
+\section{Completeness of the application}
+
+Overall, the application is working as expected according to the requirements
+stated of section \ref{subsect:app-requirements}.
+The interfaces to the COTS as well as the vehicle fleet are not yet established
+as those can only be determined when actually applying the concept to a real-world
+operation.
+
+Moreover, the functionalities for the service workers are not yet part
+of the developed application albeit their addition does not pose a problem.
+Finally, the \textit{notifications} service was not implemented owing to the
+fact that it is also closely related to the not yet determined structure of the
+fleet of vehicles.
+
 
 \section{Scalability of the application}
 
@@ -2087,11 +2107,11 @@ of this thesis which would make a proper implementation not feasible.
 
 Due to the architecture of the application, extending the existing solution
 with new features is simple.
-If the desired functionality is large enough a completely new service might
+If the desired functionality is large enough, a completely new service might
 be suitable if the existing landscape facilitates its addition.
 In that case, the service first needs to be designed just as any other as well.
 In the second step, a \textit{Protocol Buffers} service definition needs to be
-created according to the resulted design.
+created according to the resulting design.
 Afterwards, the construction of the actual business logic of the service is
 conducted just as it would be with any other software architecture.
 The main difference is that each RPC endpoint needs to be created and connected
@@ -2137,7 +2157,7 @@ economic nature as depicted in subsection \ref{sub-sect:continue-legacy}.
 
 The hypothetical integration in this section focuses on an incremental transition
 from the legacy solution to a service-oriented architecture.
-Although, the application developed during the course of this thesis is nearly
+Although the application developed during the course of this thesis is nearly
 fully-featured, oftentimes an incremental integration is more feasible due to
 the just mentioned economic difficulties of subsection \ref{sub-sect:continue-legacy}.
 
@@ -2162,7 +2182,7 @@ be generated for many programming languages. Those can be integrated into any
 software solution, they are not limited to a service-oriented architecture.
 The legacy software solution could then utilize the RPCs just as the other
 services do as well. Although this approach is the more cleaner one of the two,
-since it will be guaranteed that the RPCs are well-formed, it can either be
+since it guarantees that the RPCs are well-formed, it can either be
 that no RPC connectors can be generated for the programming language the
 legacy solution uses or that an integration is too difficult due to its
 architecture. For example, if the \textit{Protocol Buffers} service definitions
@@ -2178,14 +2198,14 @@ web-based application --- ordinary HTTP requests.
 setup. The \code{api} module is started via a command-line with
 \code{micro api --address localhost:8123} which binds it to a certain port number.
 Afterwards, any client with access to that port can invoke fake RPC via a regular
-HTTP request towards the \textit{Go Micro} API via the endpoint \code{/rpc}.
+HTTP request toward the \textit{Go Micro} API via the endpoint \code{/rpc}.
 Consequently, a firewall is mandatory to shield off unwanted access which
 would completely remove the protection the \textit{API gateway} introduced.
 Internally, the \textit{Go Micro} API dispatches a real RPC and returns the
 result to the requesting client. The format of such a request is JSON with
 a certain format.
 
-\begin{lstlisting}[title=\textit{Go Micro} API request]
+\begin{lstlisting}[title=\textit{Go Micro} API request, float, floatplacement=H]
 {
 	"service": "fleet-controller",
 	"method": "FleetController.Book",
@@ -2199,6 +2219,13 @@ a certain format.
 
 
 \chapter{Future Work} \label{chap:future-work}
+
+\section{Finishing the development}
+
+Some aspects of the developed application are not yet fully finished.
+This mainly encompasses the interfaces toward the projected COTS,
+the fleet of vehicles, and the external telemetry server.
+
 
 \section{Deployment}
 
@@ -2215,7 +2242,7 @@ service-oriented application as well.
 \section{Connecting a front-end}
 
 The application as a whole is not really usable without a connected front-end.
-Owing to the fact, that the solution is geared towards regular customers
+Owing to the fact, that the solution is geared toward regular customers
 and no enterprise personnel, the API by itself will not be used by any customer.
 Since the API works with JSON, a mobile application as well as a web-based one
 are both feasible.
@@ -2248,7 +2275,7 @@ the physical relocation of the vehicles by humans.
 
 The handling of a short-term rental is suitable for much automation as well.
 Web-based front-end and back-end applications are preferred to leverage
-the power of cloud computing particularly in terms of scalability.
+the power of cloud computing, particularly in terms of scalability.
 Owing to the fact, that the rate of growth is currently unknown, a well-scalable
 solution for the back-end application is favorable.
 For an exemplary implementation during this thesis, a couple of possible
@@ -2261,7 +2288,7 @@ the designed application was implemented using the \textit{Go} programming langu
 The \textit{\nameref{chap:evaluation}} of that implementation revealed that
 the expected scalability was achievable.
 
-With regard to the existing legacy software solution by \textit{e-bility},
+With regard to the existing legacy software solution by \textit{e-bility GmbH},
 the extension of legacy software in general seems to be favorable with
 the chosen approach based on \textit{Protocol Buffers} service definitions.
 Preferably, RPCs should be utilized during the modernization of a
@@ -2269,12 +2296,12 @@ legacy software solution to slowly reengineer it into a new application.
 A service-oriented architecture seems to be favorable for the reasons stated
 in subsection \ref{solutions-issues-legacy-software}.
 
-To conclude, the implemented service-oriented application which was modeled
-after the exhibited \textit{Software Development Process} is working well
+To conclude, the implemented service-oriented application, which was modeled
+after the exhibited \textit{Software Development Process}, is working well
 according to the depicted requirements.
 To theoretically test the application in a real-world example mainly the
 deployment of it needs to be determined beforehand.
-Alternatively, a future analysis of the legacy software solution of \textit{e-bility}
+Alternatively, a future analysis of the legacy software solution of \textit{e-bility GmbH}
 can yield results that would enable the implemented application to extend
 and modernize that legacy software solution.
 
@@ -2284,17 +2311,15 @@ and modernize that legacy software solution.
 
 % Source lists
 \listoffigures
-% \listoftables
 \newpage
-
 % Separate the sources with 'bibtopic'
 \bibliographystyle{plain}
 \begin{btSect}{references}
-\section*{References}
+\section*{\huge{References}}
 \btPrintCited
 \end{btSect}
 \begin{btSect}{online}
-\section*{Online Sources}
+\section*{\huge{Online Sources}}
 \btPrintCited
 \end{btSect}
 
