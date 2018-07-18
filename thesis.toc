@@ -74,7 +74,7 @@
 \contentsline {subparagraph}{API Gateway and Vehicle Gateway}{48}{section*.66}
 \contentsline {paragraph}{API design}{49}{section*.68}
 \contentsline {paragraph}{Runtime configuration}{50}{section*.69}
-\contentsline {paragraph}{Concurrency}{50}{section*.70}
+\contentsline {paragraph}{Concurrency}{51}{section*.70}
 \contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{51}{section*.71}
 \contentsline {paragraph}{Error handling}{52}{section*.72}
 \contentsline {chapter}{\numberline {4}Implementation}{53}{chapter.4}
@@ -83,16 +83,16 @@
 \contentsline {section}{\numberline {4.3}Service structure}{55}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Service definition}{56}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Service scaffolding}{57}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Service handlers}{58}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.3}Service handlers}{59}{subsection.4.3.3}
 \contentsline {subsection}{\numberline {4.3.4}Service consumers}{61}{subsection.4.3.4}
 \contentsline {subsection}{\numberline {4.3.5}Scheduled tasks}{63}{subsection.4.3.5}
-\contentsline {subsection}{\numberline {4.3.6}Databases}{63}{subsection.4.3.6}
-\contentsline {section}{\numberline {4.4}API gateway}{64}{section.4.4}
+\contentsline {subsection}{\numberline {4.3.6}Databases}{64}{subsection.4.3.6}
+\contentsline {section}{\numberline {4.4}API Gateway}{65}{section.4.4}
 \contentsline {paragraph}{Scaffolding}{65}{section*.85}
-\contentsline {paragraph}{JSON Web Tokens}{65}{section*.87}
+\contentsline {paragraph}{JSON Web Tokens}{66}{section*.87}
 \contentsline {paragraph}{Authentication middleware}{66}{section*.88}
 \contentsline {paragraph}{Resilience measures}{67}{section*.90}
-\contentsline {section}{\numberline {4.5}Vehicle gateway}{68}{section.4.5}
+\contentsline {section}{\numberline {4.5}Vehicle Gateway}{68}{section.4.5}
 \contentsline {chapter}{\numberline {5}Evaluation}{69}{chapter.5}
 \contentsline {section}{\numberline {5.1}Completeness of the application}{69}{section.5.1}
 \contentsline {section}{\numberline {5.2}Scalability of the application}{69}{section.5.2}

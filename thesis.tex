@@ -219,12 +219,14 @@ of the \textit{waterfall model} whereas Royce indeed starts his paper with such 
 depicts the shortcomings of that model~\cite{royce-large-systems, larman-iid-history}.
 The waterfall model describes the idea that a software development process should consist of
 the stages shown in figure \ref{fig:waterfall-model}.
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.60\textwidth]{waterfall-model}
 \caption{The essential stages of the waterfall model}
 \label{fig:waterfall-model}
 \end{figure}
+
 The main point of it is that the steps are conducted sequentially;
 no step should begin before the current one has been finished~\cite{boehm-spiral}.
 This idea has one big flaw: The \textit{Verification} phase being nearly at the end.
@@ -265,6 +267,7 @@ of the waterfall model, the product is being developed in increments.
 Following some initial analyzing and planning, the first iteration begins.
 After the end of one iteration of all the steps shown, apart from the \textit{Maintenance},
 the next increment is getting projected and eventually executed as shown in figure \ref{fig:idd-model}.
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.60\textwidth]{iterative-and-incremental-model}
@@ -827,6 +830,7 @@ The axis depicts the amount of changes each approach entails.
 However, it is important to discern that it is likely that a combination of
 the explained concepts is utilized~\cite{bisbal-legacy-issues}.
 Some parts of a legacy system might be wrapped while others need to be redeveloped.
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.80\textwidth]{coping-with-legacy-systems}
@@ -1201,7 +1205,9 @@ the users of the back-end application consist of service workers employed
 by the operating organization as well as the customers.
 The authorization toward the \textit{API Gateway} determines which
 API endpoints customers can access and which ones are just available to
-service workers. For instance, the locations and meta data of all the scooters
+service workers. To do so, the \textit{API Gateway} verifies every single user
+as well as its role via the \textit{User Management} service.
+For instance, the locations and meta data of all the scooters
 of the fleet are just available to authorized service workers via the
 \textit{Fleet Monitor} service.
 
@@ -1377,14 +1383,14 @@ to exist redundantly as well since currently two different services are
 dispatching requests toward scooters.\\
 
 In summary, figure \ref{fig:service-interaction} portrays an exemplary interaction of the
-\textit{API Gateway}, the \textit{Service Discovery} and two services themselves.
+\textit{API Gateway}, the \textit{Service Discovery} and three services themselves.
 The figure shows the flow of information in the event that a customer tries to
 book a scooter they selected.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=.55\textwidth]{service-interaction}
-\caption{Exemplary functional interaction of API Gateway, Service Discovery, and two services}
+\includegraphics[width=.70\textwidth]{service-interaction}
+\caption{Exemplary functional interaction of API Gateway, Service Discovery, and three services}
 \label{fig:service-interaction}
 \end{figure}
 
@@ -1521,12 +1527,14 @@ The utilized \textit{Service Discovery} tool \textit{Consul} additionally offers
 such a key-value store. Thus, the configuration is directly set within the
 web interface of \textit{Consul}. Alternatively, the API of \textit{Consul}
 can be used via HTTP or the command-line to do the same.
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1\textwidth]{consul-kv-store}
 \caption{The web interface of the key-value store of \textit{Consul}}
 \label{fig:consul-kv-store}
 \end{figure}
+
 Upon the startup of each service, \textit{Consul} is queried to retrieve the
 configuration. Thus, a change within the configuration only takes effect
 after the affected services are restarted. This should not be a problem however
@@ -1750,7 +1758,7 @@ func (fm *FleetMonitor) AvailableVehicles(
 \end{lstlisting}
 
 Example \code{services/fleet-monitor/main.go} is taken out of the\\
-\code{fleet-monitor} service which has exactly one RPC endpoint to retrieve
+\textit{Fleet Monitor} service which has exactly one RPC endpoint to retrieve
 all vehicles that are currently available to rent.
 This is another point where the \textit{Protocol Buffers service definitions}
 become useful. The request and response objects are input arguments to that
@@ -1810,7 +1818,7 @@ the connection toward other services that need to be called by that service.
 During the generation of the helper functions a function for that exact purpose
 is created for each distinct service.
 For example, the function \code{NewFleetMonitorService()} can be executed by
-other services to connect to the \code{fleet-monitor} service. After that
+other services to connect to the \textit{Fleet Monitor} service. After that
 connection is established, RPC endpoints can be called freely.
 
 \begin{lstlisting}[title=services/statistics/main.go, float, floatplacement=H]
@@ -1878,7 +1886,7 @@ func retrieveAllBookingsOfCustomer(customer string) (
 \end{lstlisting}
 
 Once again, the \textit{Protocol Buffers} definition is leveraged to prepare
-a request to perform the RPC toward the \code{fleet-controller} service.
+a request to perform the RPC toward the \textit{Fleet Controller} service.
 Of course, the variable \code{resBookings}, which contains the response of the RPC,
 is constructed according to the service definition.
 
@@ -1919,7 +1927,7 @@ The interval for the exemplary task of figure\\
 During the runtime of the service, the tasks will automatically be executed
 according to the configured interval.
 For instance, as seen in the source code snippet, this is used by the
-\code{fleet-monitor} service to cancel active bookings which are expired.
+\textit{Fleet Monitor} service to cancel active bookings which are expired.
 
 \subsection{Databases} \label{subsect:databases}
 
@@ -1951,23 +1959,23 @@ In other scenarios, a synchronization of data between databases might be useful
 to minimize the amount of RPC overhead.
 
 
-\section{API gateway} \label{sect:api-gateway}
+\section{API Gateway} \label{sect:api-gateway}
 
-The \textit{API gateway} accomplishes two aims:
+The \textit{API Gateway} accomplishes two aims:
 It shields the services from the outside so that no client on the world wide web
 can directly access any of the services; this mechanism is in place mainly for
 security reasons.
 Thus, a firewall blocks every request toward all the services and just allows
-the \textit{API gateway} to do so.
+the \textit{API Gateway} to do so.
 
 Similarly, the second aim is to provide user authentication
 at a central point without the need for every service to implement it as well.
 As a consequence, the services can be sure that no request toward them is unauthorized.
-To achieve this, the \textit{API gateway} implements endpoints that are either
+To achieve this, the \textit{API Gateway} implements endpoints that are either
 accessible by the public or only by registered and authorized users.
 
 \paragraph{Scaffolding}
-Generally, the \textit{API gateway} just offers normal HTTP endpoints that accept
+Generally, the \textit{API Gateway} just offers normal HTTP endpoints that accept
 JSON. Upon starting it, the endpoints are initialized.
 
 \begin{lstlisting}[title=api-gateway/main.go, float, floatplacement=H]
@@ -1987,7 +1995,7 @@ As seen in example \code{api-gateway/main.go}, the endpoint at\\
 \code{/available-vehicles} calls the function \code{availableVehicles()}
 upon an incoming \code{GET-request}.
 Those handler functions perform regular RPCs toward the desired services just
-as any other service of the application. In that sense, the \textit{API gateway}
+as any other service of the application. In that sense, the \textit{API Gateway}
 is a service itself in a way.
 The allowed HTTP methods are set by arguments of the \code{Methods()} method.
 To control which endpoints are public and which are not, a middleware, as described
@@ -2064,16 +2072,16 @@ database has to be queried; the role of the user is encoded in the JWT and
 by signing the token all its information are tamper-proof.
 
 \paragraph{Resilience measures}
-Finally, the \textit{API gateway} implements certain measures to enhance
+Finally, the \textit{API Gateway} implements certain measures to enhance
 the resilience of the whole application.
 According to the paradigm of \textit{Defensive Programming} which was introduced
 in subsection \ref{subsect:construction}, the gateway leverages a library
 developed by \textit{Netflix Inc.} called \textit{Hystrix}~\cite{hystrix}.
 It acts similar to a middleware by wrapping every RPC of the
-\textit{API gateway} toward another service.
+\textit{API Gateway} toward another service.
 In fact, \textit{Go Micro} even offers a method to directly do so with
 supported wrappers by calling \code{micro.WrapClient()} during the startup
-of the \textit{API gateway}, as shown in figure \code{api-gateway/main.go}.
+of the \textit{API Gateway}, as shown in figure \code{api-gateway/main.go}.
 
 \begin{lstlisting}[title=api-gateway/main.go, float, floatplacement=H]
 // Create the service
@@ -2092,11 +2100,11 @@ All of these measures improve the resilience of the application
 as well as its average response times by not overloading the services with requests.
 
 
-\section{Vehicle gateway}
+\section{Vehicle Gateway}
 
-The \textit{Vehicle gateway} fulfills a similar task as the \textit{API gateway}.
+The \textit{Vehicle Gateway} fulfills a similar task as the \textit{API Gateway}.
 Whenever a service needs to communicate with a vehicle of the fleet, a RPC
-is conducted toward the \textit{Vehicle gateway}. The gateway then sends a request
+is conducted toward the \textit{Vehicle Gateway}. The gateway then sends a request
 to the selected vehicle by using its host address that has been saved to the
 database of the gateway beforehand.
 However, this component of the application is only implemented as a placeholder,
@@ -2124,7 +2132,7 @@ operation.
 
 Moreover, the functionalities for the service workers are not yet part
 of the developed application albeit their addition does not pose a problem.
-Finally, the \textit{notifications} service was not implemented owing to the
+Finally, the \textit{Notifications} service was not implemented owing to the
 fact that it is also closely related to the not yet determined structure of the
 fleet of vehicles.
 
@@ -2155,7 +2163,7 @@ Additionally, no runtime environment is needed to execute the compiled program.
 Furthermore, the services were built so that they automatically register themselves
 at the \textit{Service Discovery} discussed in subsection
 \ref{subparag:service-discovery}. Consequently, owing to the fact that each
-service, including the \textit{API gateway}, queries the \textit{Service Discovery}
+service, including the \textit{API Gateway}, queries the \textit{Service Discovery}
 for the IP addresses of other services that it wants to access, newly registered
 services are automatically included in the list of available ones within the
 \textit{Service Discovery}. Moreover, the tool \textit{Consul}, which is utilized
@@ -2207,7 +2215,7 @@ Finally, the service needs to be added to the configuration and its RPC endpoint
 to other services that should consume the new one.
 Alternatively, if RPC endpoints of the service should be directly usable
 by the users of the application, they have to be connected to the
-\textit{API gateway} which is exhibited in great detail in section \ref{sect:api-gateway}.
+\textit{API Gateway} which is exhibited in great detail in section \ref{sect:api-gateway}.
 
 On the other hand, any service can be extended of course.
 Interestingly, the procedure would be very similar to adding a completely new service.
@@ -2275,7 +2283,7 @@ setup. The \code{api} module is started via a command-line with
 Afterwards, any client with access to that port can invoke fake RPC via a regular
 HTTP request toward the \textit{Go Micro} API via the endpoint \code{/rpc}.
 Consequently, a firewall is mandatory to shield off unwanted access which
-would completely remove the protection the \textit{API gateway} introduced.
+would completely remove the protection the \textit{API Gateway} introduced.
 Internally, the \textit{Go Micro} API dispatches a real RPC and returns the
 result to the requesting client. The format of such a request is JSON,
 as highlighted in figure \textit{Go Micro API request}.
