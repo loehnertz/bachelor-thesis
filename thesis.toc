@@ -1,108 +1,108 @@
 \select@language {english}
-\contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}
-\contentsline {chapter}{\numberline {2}Fundamentals}{7}{chapter.2}
-\contentsline {section}{\numberline {2.1}The market for the rental of electric scooters}{7}{section.2.1}
-\contentsline {paragraph}{German electric scooter manufacturer \textit {e-bility GmbH}}{9}{section*.3}
-\contentsline {section}{\numberline {2.2}Approaching the development of software}{10}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Requirements}{12}{subsection.2.2.1}
-\contentsline {subsubsection}{Elicitation}{13}{section*.6}
-\contentsline {paragraph}{Sources}{13}{section*.7}
-\contentsline {subparagraph}{Organizational environment}{14}{section*.8}
-\contentsline {subparagraph}{Operational environment}{14}{section*.9}
-\contentsline {subparagraph}{Business environment}{14}{section*.10}
-\contentsline {paragraph}{Techniques}{14}{section*.11}
-\contentsline {subsubsection}{Analysis}{15}{section*.12}
-\contentsline {paragraph}{Classification}{15}{section*.13}
-\contentsline {paragraph}{Specification}{16}{section*.14}
-\contentsline {subsection}{\numberline {2.2.2}Design}{16}{subsection.2.2.2}
-\contentsline {subsubsection}{Design decisions}{16}{section*.15}
-\contentsline {subsubsection}{Principles}{17}{section*.16}
-\contentsline {paragraph}{Abstraction}{18}{section*.17}
-\contentsline {paragraph}{Coupling and Cohesion}{18}{section*.18}
-\contentsline {paragraph}{Decomposition and Modularization}{18}{section*.19}
-\contentsline {paragraph}{Information Hiding}{18}{section*.20}
-\contentsline {paragraph}{Separation of Interface and Implementation}{18}{section*.21}
-\contentsline {paragraph}{Sufficiency and Completeness}{19}{section*.22}
-\contentsline {paragraph}{Separation of Concerns}{19}{section*.23}
-\contentsline {subsubsection}{Architectural styles}{19}{section*.24}
-\contentsline {paragraph}{Layered}{20}{section*.25}
-\contentsline {paragraph}{Event-driven}{20}{section*.26}
-\contentsline {paragraph}{Service-oriented}{22}{section*.27}
-\contentsline {subsubsection}{Visualization}{23}{section*.28}
-\contentsline {subsection}{\numberline {2.2.3}Construction}{24}{subsection.2.2.3}
-\contentsline {subsubsection}{Considerations}{24}{section*.29}
-\contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{25}{section*.30}
-\contentsline {paragraph}{Error handling}{25}{section*.31}
-\contentsline {paragraph}{API design}{25}{section*.32}
-\contentsline {paragraph}{Runtime configuration}{26}{section*.33}
-\contentsline {paragraph}{Concurrency}{26}{section*.34}
-\contentsline {paragraph}{Middleware}{26}{section*.35}
-\contentsline {section}{\numberline {2.3}Legacy software}{26}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Reasons to continue legacy software}{27}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Issues with legacy software}{29}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Solutions to legacy software issues}{30}{subsection.2.3.3}
-\contentsline {subsubsection}{Redevelopment}{30}{section*.37}
-\contentsline {subsubsection}{Migration}{31}{section*.38}
-\contentsline {paragraph}{Retargeting}{32}{section*.39}
-\contentsline {paragraph}{Conversion}{32}{section*.40}
-\contentsline {paragraph}{COTS components}{32}{section*.41}
-\contentsline {paragraph}{Reengineering}{33}{section*.42}
-\contentsline {subsubsection}{Wrapping}{33}{section*.43}
-\contentsline {paragraph}{Database}{33}{section*.44}
-\contentsline {paragraph}{Service}{34}{section*.45}
-\contentsline {paragraph}{Application}{34}{section*.46}
-\contentsline {paragraph}{Function}{34}{section*.47}
-\contentsline {chapter}{\numberline {3}Analysis}{36}{chapter.3}
-\contentsline {section}{\numberline {3.1}Requirements}{36}{section.3.1}
-\contentsline {paragraph}{Organizational}{37}{section*.48}
-\contentsline {paragraph}{Operational}{37}{section*.49}
-\contentsline {paragraph}{Business}{37}{section*.50}
-\contentsline {subsubsection}{Use Case}{37}{section*.51}
-\contentsline {section}{\numberline {3.2}Design}{40}{section.3.2}
-\contentsline {paragraph}{What architectural patterns or styles might be used?}{40}{section*.53}
-\contentsline {paragraph}{What architectural organization is best for delivering the non-functional requirements of the system?}{42}{section*.54}
-\contentsline {paragraph}{What will be the fundamental approach used to structure the system?}{43}{section*.55}
-\contentsline {paragraph}{What strategy will be used to control the operation of the components in the system?}{43}{section*.56}
-\contentsline {subsubsection}{Architecture}{43}{section*.57}
-\contentsline {section}{\numberline {3.3}Construction}{47}{section.3.3}
-\contentsline {paragraph}{COTS components}{47}{section*.60}
-\contentsline {paragraph}{Utilized programming languages}{47}{section*.61}
-\contentsline {paragraph}{Utilized libraries}{49}{section*.62}
-\contentsline {subsubsection}{Considerations}{49}{section*.63}
-\contentsline {paragraph}{Middleware}{49}{section*.64}
-\contentsline {subparagraph}{Service Discovery}{50}{section*.65}
-\contentsline {subparagraph}{API Gateway and Vehicle Gateway}{51}{section*.66}
-\contentsline {paragraph}{API design}{52}{section*.68}
-\contentsline {paragraph}{Runtime configuration}{54}{section*.69}
-\contentsline {paragraph}{Concurrency}{54}{section*.70}
-\contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{55}{section*.71}
-\contentsline {paragraph}{Error handling}{55}{section*.72}
-\contentsline {chapter}{\numberline {4}Implementation}{56}{chapter.4}
-\contentsline {section}{\numberline {4.1}Project structure}{56}{section.4.1}
-\contentsline {section}{\numberline {4.2}Runtime configuration}{57}{section.4.2}
-\contentsline {section}{\numberline {4.3}Service structure}{58}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Service definition}{59}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Service scaffolding}{60}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Service handlers}{61}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Service consumers}{64}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Scheduled tasks}{66}{subsection.4.3.5}
-\contentsline {subsection}{\numberline {4.3.6}Databases}{67}{subsection.4.3.6}
-\contentsline {section}{\numberline {4.4}API Gateway}{68}{section.4.4}
-\contentsline {paragraph}{Scaffolding}{68}{section*.85}
-\contentsline {paragraph}{JSON Web Tokens}{69}{section*.87}
-\contentsline {paragraph}{Authentication middleware}{69}{section*.88}
-\contentsline {paragraph}{Resilience measures}{71}{section*.90}
-\contentsline {section}{\numberline {4.5}Vehicle Gateway}{71}{section.4.5}
-\contentsline {chapter}{\numberline {5}Evaluation}{73}{chapter.5}
-\contentsline {section}{\numberline {5.1}Completeness of the application}{73}{section.5.1}
-\contentsline {section}{\numberline {5.2}Scalability of the application}{73}{section.5.2}
-\contentsline {section}{\numberline {5.3}Extensibility of the application}{75}{section.5.3}
-\contentsline {section}{\numberline {5.4}Extension of existing legacy software}{76}{section.5.4}
-\contentsline {paragraph}{Foundation}{76}{section*.92}
-\contentsline {paragraph}{Implementation}{77}{section*.93}
-\contentsline {chapter}{\numberline {6}Future Work}{79}{chapter.6}
-\contentsline {section}{\numberline {6.1}Finishing the development}{79}{section.6.1}
-\contentsline {section}{\numberline {6.2}Deployment}{79}{section.6.2}
-\contentsline {section}{\numberline {6.3}Connecting a front-end}{80}{section.6.3}
-\contentsline {section}{\numberline {6.4}Extending actual legacy software}{80}{section.6.4}
-\contentsline {chapter}{\numberline {7}Conclusion}{81}{chapter.7}
+\contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}
+\contentsline {chapter}{\numberline {2}Fundamentals}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}The market for the rental of electric scooters}{6}{section.2.1}
+\contentsline {paragraph}{German electric scooter manufacturer \textit {e-bility GmbH}}{7}{section*.3}
+\contentsline {section}{\numberline {2.2}Approaching the development of software}{8}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Requirements}{11}{subsection.2.2.1}
+\contentsline {subsubsection}{Elicitation}{12}{section*.6}
+\contentsline {paragraph}{Sources}{12}{section*.7}
+\contentsline {subparagraph}{Organizational environment}{12}{section*.8}
+\contentsline {subparagraph}{Operational environment}{13}{section*.9}
+\contentsline {subparagraph}{Business environment}{13}{section*.10}
+\contentsline {paragraph}{Techniques}{13}{section*.11}
+\contentsline {subsubsection}{Analysis}{14}{section*.12}
+\contentsline {paragraph}{Classification}{14}{section*.13}
+\contentsline {paragraph}{Specification}{14}{section*.14}
+\contentsline {subsection}{\numberline {2.2.2}Design}{15}{subsection.2.2.2}
+\contentsline {subsubsection}{Design decisions}{15}{section*.15}
+\contentsline {subsubsection}{Principles}{16}{section*.16}
+\contentsline {paragraph}{Abstraction}{16}{section*.17}
+\contentsline {paragraph}{Coupling and Cohesion}{16}{section*.18}
+\contentsline {paragraph}{Decomposition and Modularization}{17}{section*.19}
+\contentsline {paragraph}{Information Hiding}{17}{section*.20}
+\contentsline {paragraph}{Separation of Interface and Implementation}{17}{section*.21}
+\contentsline {paragraph}{Sufficiency and Completeness}{17}{section*.22}
+\contentsline {paragraph}{Separation of Concerns}{17}{section*.23}
+\contentsline {subsubsection}{Architectural styles}{18}{section*.24}
+\contentsline {paragraph}{Layered}{18}{section*.25}
+\contentsline {paragraph}{Event-driven}{19}{section*.26}
+\contentsline {paragraph}{Service-oriented}{20}{section*.27}
+\contentsline {subsubsection}{Visualization}{21}{section*.28}
+\contentsline {subsection}{\numberline {2.2.3}Construction}{22}{subsection.2.2.3}
+\contentsline {subsubsection}{Considerations}{23}{section*.29}
+\contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{23}{section*.30}
+\contentsline {paragraph}{Error handling}{23}{section*.31}
+\contentsline {paragraph}{API design}{23}{section*.32}
+\contentsline {paragraph}{Runtime configuration}{24}{section*.33}
+\contentsline {paragraph}{Concurrency}{24}{section*.34}
+\contentsline {paragraph}{Middleware}{24}{section*.35}
+\contentsline {section}{\numberline {2.3}Legacy software}{24}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Reasons to continue legacy software}{25}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Issues with legacy software}{27}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Solutions to legacy software issues}{28}{subsection.2.3.3}
+\contentsline {subsubsection}{Redevelopment}{28}{section*.37}
+\contentsline {subsubsection}{Migration}{29}{section*.38}
+\contentsline {paragraph}{Retargeting}{30}{section*.39}
+\contentsline {paragraph}{Conversion}{30}{section*.40}
+\contentsline {paragraph}{COTS components}{30}{section*.41}
+\contentsline {paragraph}{Reengineering}{30}{section*.42}
+\contentsline {subsubsection}{Wrapping}{31}{section*.43}
+\contentsline {paragraph}{Database}{31}{section*.44}
+\contentsline {paragraph}{Service}{31}{section*.45}
+\contentsline {paragraph}{Application}{31}{section*.46}
+\contentsline {paragraph}{Function}{32}{section*.47}
+\contentsline {chapter}{\numberline {3}Analysis}{33}{chapter.3}
+\contentsline {section}{\numberline {3.1}Requirements}{33}{section.3.1}
+\contentsline {paragraph}{Organizational}{33}{section*.48}
+\contentsline {paragraph}{Operational}{34}{section*.49}
+\contentsline {paragraph}{Business}{34}{section*.50}
+\contentsline {subsubsection}{Use Case}{34}{section*.51}
+\contentsline {section}{\numberline {3.2}Design}{37}{section.3.2}
+\contentsline {paragraph}{What architectural patterns or styles might be used?}{37}{section*.53}
+\contentsline {paragraph}{What architectural organization is best for delivering the non-functional requirements of the system?}{39}{section*.54}
+\contentsline {paragraph}{What will be the fundamental approach used to structure the system?}{40}{section*.55}
+\contentsline {paragraph}{What strategy will be used to control the operation of the components in the system?}{40}{section*.56}
+\contentsline {subsubsection}{Architecture}{40}{section*.57}
+\contentsline {section}{\numberline {3.3}Construction}{45}{section.3.3}
+\contentsline {paragraph}{COTS components}{45}{section*.60}
+\contentsline {paragraph}{Utilized programming languages}{45}{section*.61}
+\contentsline {paragraph}{Utilized libraries}{45}{section*.62}
+\contentsline {subsubsection}{Considerations}{46}{section*.63}
+\contentsline {paragraph}{Middleware}{46}{section*.64}
+\contentsline {subparagraph}{Service Discovery}{46}{section*.65}
+\contentsline {subparagraph}{API Gateway and Vehicle Gateway}{48}{section*.66}
+\contentsline {paragraph}{API design}{49}{section*.68}
+\contentsline {paragraph}{Runtime configuration}{50}{section*.69}
+\contentsline {paragraph}{Concurrency}{51}{section*.70}
+\contentsline {paragraph}{Assertions and \textit {Defensive Programming}}{51}{section*.71}
+\contentsline {paragraph}{Error handling}{52}{section*.72}
+\contentsline {chapter}{\numberline {4}Implementation}{53}{chapter.4}
+\contentsline {section}{\numberline {4.1}Project structure}{53}{section.4.1}
+\contentsline {section}{\numberline {4.2}Runtime configuration}{54}{section.4.2}
+\contentsline {section}{\numberline {4.3}Service structure}{55}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Service definition}{56}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Service scaffolding}{57}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Service handlers}{59}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Service consumers}{61}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Scheduled tasks}{63}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Databases}{64}{subsection.4.3.6}
+\contentsline {section}{\numberline {4.4}API Gateway}{65}{section.4.4}
+\contentsline {paragraph}{Scaffolding}{65}{section*.85}
+\contentsline {paragraph}{JSON Web Tokens}{66}{section*.87}
+\contentsline {paragraph}{Authentication middleware}{66}{section*.88}
+\contentsline {paragraph}{Resilience measures}{67}{section*.90}
+\contentsline {section}{\numberline {4.5}Vehicle Gateway}{68}{section.4.5}
+\contentsline {chapter}{\numberline {5}Evaluation}{69}{chapter.5}
+\contentsline {section}{\numberline {5.1}Completeness of the application}{69}{section.5.1}
+\contentsline {section}{\numberline {5.2}Scalability of the application}{69}{section.5.2}
+\contentsline {section}{\numberline {5.3}Extensibility of the application}{71}{section.5.3}
+\contentsline {section}{\numberline {5.4}Extension of existing legacy software}{72}{section.5.4}
+\contentsline {paragraph}{Foundation}{72}{section*.92}
+\contentsline {paragraph}{Implementation}{73}{section*.93}
+\contentsline {chapter}{\numberline {6}Future Work}{75}{chapter.6}
+\contentsline {section}{\numberline {6.1}Finishing the development}{75}{section.6.1}
+\contentsline {section}{\numberline {6.2}Deployment}{75}{section.6.2}
+\contentsline {section}{\numberline {6.3}Connecting a front-end}{76}{section.6.3}
+\contentsline {section}{\numberline {6.4}Extending actual legacy software}{76}{section.6.4}
+\contentsline {chapter}{\numberline {7}Conclusion}{77}{chapter.7}
