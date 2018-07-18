@@ -274,7 +274,7 @@ the next increment is getting projected and eventually executed as shown in figu
 
 To conclude, the stages Royce exhibited in 1970 are still applicable nowadays.
 In some form or another, those are mandatory for implementing any software
-and became therefore known as the \textit{software development life cycle}.~\cite{se-ieee}
+and became therefore known as the \textit{software development life cycle}~\cite{se-ieee}.
 This fact is corroborated by the IEEE's
 \textit{Guide to the Software Engineering Body of Knowledge (SWEBOK)}
 which is also recognized by the ISO~\cite{swebok}.
@@ -1182,18 +1182,18 @@ designed application (figure \ref{fig:service-architecture}).\\
 \end{figure}
 
 The diagram depicts the single services of the designed software architecture.
-The arrows in between them denote the directions of HTTP requests as well
+The arrows in between denote the directions of requests as well
 as the allowed HTTP methods for each request.
 This can be an important indicator to conceive which services
 will only be hit by \textit{GET requests} which are by definition \textit{safe},
 in the way that they never mutate any data~\cite{http-rfc}.
-For example, the \textit{Telemetry Data Retrieval} service never modifies
+For example, the \textit{Telemetry} service never modifies
 its underlying data upon requests from other services.
 
 Each of them implements their own API that provides the functionalities that
 should be available for the other services.
 
-The \textit{API Gateway} as well as the \textit{Scooter Gateway} are described
+The \textit{API Gateway} as well as the \textit{Vehicle Gateway} are described
 in greater detail in subsection \ref{subsect:analysis-construction}.
 
 As already portrayed in the use case diagram (figure \ref{fig:use-case-diagram}),
@@ -1201,27 +1201,26 @@ the users of the back-end application consist of service workers employed
 by the operating organization as well as the customers.
 The authorization toward the \textit{API Gateway} determines which
 API endpoints customers can access and which ones are just available to
-service workers. For instance, the locations and information of all the scooters
-of the fleet are just be available to authorized service workers via the
+service workers. For instance, the locations and meta data of all the scooters
+of the fleet are just available to authorized service workers via the
 \textit{Fleet Monitor} service.
 
-The \textit{Telemetry Data Retrieval} service fetches current data from the
+The \textit{Telemetry} service fetches current data from the
 off-site \textit{Telemetry Server} in periodical intervals.
 Consequently, there is a firewall in between these components.
 This data consists of information such as the locations of all the scooters
-of the fleet, their remaining battery power, as well as other information.
+of the fleet, their remaining battery power, as well as other meta data.
 These information are crucial for the whole application.
 Every scooter sends said information to the \textit{Telemetry Server}
 periodically as well.
 
 There should be two caches in the architecture to take away load from the
-adjacent services. First, the aforementioned \textit{Telemetry Data Retrieval}
+adjacent services. First, the aforementioned \textit{Telemetry}
 service saves new data into the cache which automatically clears old
 data after a preset amount of time. Thereby, nearly all of the requests from
-other services apart from the \textit{Statistics Retrieval} one will hit the
-\textit{Telemetry Data Cache} as those are only working with current data due
-to their monitoring nature.\\
-Second, the \textit{Available Scooter Cache} exists which provides the locations
+other services apart from the \textit{Statistics} service will hit the
+\textit{Telemetry Data Cache} since the statistics need to be exact.\\
+Second, the \textit{Available Scooter Cache} exists and provides the locations
 of all the currently available scooters to customers that are currently looking
 for a scooter to rent. Owing to the fact that this data will be requested by
 many users very often, a cache is a good way to take away that potential load
@@ -1240,18 +1239,17 @@ from other common use cases e.g. registering an account.
 The two gateways were purposely omitted from the diagram as their tasks would
 be the same ones over and over again.
 
+The oval shapes represent user interactions whereas the square shapes represent
+machine actions.
+The solid horizontal line in the middle depicts the customer riding the scooter
+which can take an indeterminate amount of time while no information is flowing.
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1\textwidth]{swimlane-rental-process}
 \caption{Swimlane diagram portraying the rental process}
 \label{fig:swimlane-rental-process}
 \end{figure}
-
-The oval shapes represent user interactions whereas the square shapes represent
-machine actions.
-
-The solid horizontal line in the middle depicts the customer riding the scooter
-which can take an indeterminate amount of time while no information is flowing.
 
 
 \section{Construction} \label{subsect:analysis-construction}
@@ -1351,7 +1349,7 @@ make requests toward a never changing address which gets automatically resolved 
 are a lot more concise since no knowledge about the structure of the network
 is needed at any point during its runtime.
 
-\subparagraph{API Gateway and Scooter Gateway}
+\subparagraph{API Gateway and Vehicle Gateway}
 The \textit{API Gateway} has two tasks in this architecture.
 Firstly, it serves as a literal gateway to shield all the services from
 the outside and especially from the HTTP requests of the users.
@@ -1368,10 +1366,10 @@ directly exposed toward the front-end applications. Moreover, with cloud-based
 deployments they might change in the future which would make the information
 outdated on the client side.
 
-Similarly, the \textit{Scooter Gateway} fulfills the same task toward the
+Similarly, the \textit{Vehicle Gateway} fulfills the same task toward the
 fleet of scooters. The other services can just pass the
 information they want to dispatch to a certain scooter to the
-\textit{Scooter Gateway} which then sends the actual request to the scooter.
+\textit{Vehicle Gateway} which then sends the actual request to the scooter.
 In this way, the services do not need to hold information on the host addresses
 and port numbers of each scooter which makes the handling of them through
 a shared gateway tremendously easier. Otherwise, the information would need
@@ -1380,6 +1378,8 @@ dispatching requests toward scooters.\\
 
 In summary, figure \ref{fig:service-interaction} portrays an exemplary interaction of the
 \textit{API Gateway}, the \textit{Service Discovery} and two services themselves.
+The figure shows the flow of information in the event that a customer tries to
+book a scooter they selected.
 
 \begin{figure}[htb]
 \centering
@@ -2297,7 +2297,7 @@ as highlighted in figure \textit{Go Micro API request}.
 
 \epigraphhead[55]{\epigraph{If debugging is the process of removing bugs,
 then programming must be the process of putting them in.}
-{\textit{Edsger Dijkstra}}}
+{\textit{Edsger W. Dijkstra}}}
 
 
 \section{Finishing the development}
