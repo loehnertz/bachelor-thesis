@@ -105,3 +105,5 @@
 \contentsline {section}{\numberline {6.3}Connecting a front-end}{76}{section.6.3}
 \contentsline {section}{\numberline {6.4}Extending actual legacy software}{76}{section.6.4}
 \contentsline {chapter}{\numberline {7}Conclusion}{77}{chapter.7}
+\contentsline {chapter}{List of Figures}{79}{chapter.7}
+\contentsline {chapter}{Bibliography}{80}{chapter*.95}
