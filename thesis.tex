@@ -11,7 +11,7 @@ The System and Software Architecture of Back-end Applications for the Short-term
 Exhibition of an Exemplarily Implemented Back-End Application
 }
 \newcommand{\thesisauthor}{Jakob Löhnertz}
-\newcommand{\thesisdate}{23. Juli 2018}
+\newcommand{\thesisdate}{20. Juli 2018}
 \newcommand{\thesislocation}{Wiesbaden}
 \newcommand{\firstmarker}{Prof.\ Dr.\ Johannes Luderschmidt}
 \newcommand{\secondmarker}{Merle Hiort}
@@ -81,7 +81,7 @@ On the downside, the replacement of the fuel causes the most problems with elect
 Of course they utilize batteries instead of fossil fuels as their impetus.
 Although the invention of the battery is older than that of the
 internal combustion engine~\cite{battery, combustion-engine}, the technology is still not perfected and sees new
-advancements every year. Alas, it also combats many challenges in terms of
+advancements every year. Thus, it also combats many challenges in terms of
 safety, cost, capacity, weight, recycling, speed of recharging and longevity.
 
 For the provider, the handling of a short-term rental service
@@ -133,7 +133,7 @@ and exceeds our human intellectual capabilities for management and control.}
 The market for the short-term rental of motor vehicles in Germany
 is currently growing rapidly~\cite{bundesverband-carsharing-statistics}.
 The situation on the market is no different for medium and long-term rentals~\cite{sparkasse-kfz-vermietung}.
-However, this sector is dominated by cutthroat competition.
+However, this sector is dominated by fierce competition.
 It has been dictated by large corporations such as \textit{Sixt}, \textit{Hertz},
 \textit{Avis} and \textit{Europcar} for years~\cite{sparkasse-kfz-vermietung}.
 Although smaller providers exist, this market has become an oligopoly and
@@ -143,11 +143,11 @@ In contrast, the market for short-term rental, also known as \textit{car sharing
 is a comparatively young market. It has only existed in Europe in its breadth
 since the late 1980s~\cite{history-of-carsharing} and in its current form
 only since the advent of the smartphone, since many offers require the use of a mobile app.
-For this reason the market for short-term rentals and thus its saturation is significantly lower.
+For this reason, the market for short-term rentals and thus its saturation is significantly lower.
 According to the \textit{Bundesverband CarSharing e.V.}, the current total number of cars
 in the car sharing sector in Germany is about 17,200. In contrast, almost 10\% of all
 new vehicle registrations in Germany in 2015 were attributable to traditional
-car rental companies such as the above~\cite{sparkasse-kfz-vermietung}.
+car rental companies such as the abovementioned~\cite{sparkasse-kfz-vermietung}.
 This represents an increase of 339,000 vehicles, in similar fashion every year.
 By contrast, the share of vehicles with electric drive is again lower at
 just under 10\% of the total number of car sharing vehicles.
@@ -168,10 +168,10 @@ Nevertheless, there are already working business models in European cities
 which can yield additional information.
 According to the \textit{Global Scootersharing Market Report 2017} by the
 \textit{Innovation Centre for Mobility and Societal Change (InnoZ) GmbH},
-the short-term rental of scooters in general consist 92\% of scooters with
+the short-term rental of scooters in general consist of 92\% scooters with
 electric drive. Additionally, 95\% are so-called \textit{free-floating systems},
 meaning that each customer can drop off the scooters wherever they want, regardless
-of their current location as long as it is within the available area of the offering operator.
+of their current location as long as it is within the available area of the provider.
 However, this system also implies that the operating organization needs personnel
 and equipment to relocate scooters that were discarded in areas with low demand.
 Finally, three main models exist for billing the customers:
@@ -198,7 +198,7 @@ from more flexibility. Lastly, parking spots are also a scarcity in inner cities
 Therefore, \textit{e-bility GmbH} plans to enter the market of short-term electric scooter rentals
 in the near future. The company plans to sell the scooters as well as a license
 to operate a short-term rental service which includes front-end and back-end applications
-to interested operators such as municipal works.
+to interested providers such as municipal works.
 
 There are still many aspects to be discussed and determined but one of them
 is already set and can be seen as a necessity regardless of the final implementation:
@@ -215,10 +215,10 @@ Upon further investigation, there are more steps before, in between and after th
 In his influential 1970 paper \textit{"Managing the Development of Large Software Systems"},
 American computer scientist Winston W. Royce discusses his idea of a satisfactory
 software development process. His paper is often mistakenly cited as the starting point
-of the \textit{waterfall model} whereas Royce indeed starts his paper with such an approach but quickly
+of the \textit{waterfall model}, whereas Royce indeed starts his paper with such an approach but quickly
 depicts the shortcomings of that model~\cite{royce-large-systems, larman-iid-history}.
 The waterfall model describes the idea that a software development process should consist of
-the stages shown in figure \ref{fig:waterfall-model}.
+the stages shown in figure \ref{fig:waterfall-model}.\\
 
 \begin{figure}[htbp]
 \centering
@@ -236,7 +236,7 @@ It is likely that at least some changes to the implementation will be necessary 
 Additionally, clients may not know the exact requirements at the very beginning
 of the software development process~\cite{parnas-rational-design-process}.
 It is also possible that a major fault is only discovered in that second to last stage ---
-the negative repercussions could be massive.
+the negative repercussions could be massive.\\
 \begin{displayquote}
 \emph{"Either the requirements must be modified, or a substantial change
 in the design is required. In effect the development process has returned to
@@ -299,12 +299,12 @@ as well as the management of requirements during the whole
 life cycle of the software product."}~\cite{swebok}
 \end{displayquote}
 Generally speaking, two types of requirements exist --- functional and non-functional ones.
-Functional requirements are definitive features of the software whereas non-functional
+Functional requirements are definitive features of the software, whereas non-functional
 requirements are describing aspects of the software like performance, security,
 user-friendliness and so forth~\cite{sommerville-se}.\\
 Furthermore, requirements should be quantifiable; specific key figures should be established
 rather than broad statements like \textit{"overall great performance"}.\\
-Finally, after specifying the gathered requirements a validation of them should be conducted.
+Finally, gathered requirements should be validated.
 This validation process is not part of this subsection though.
 
 
@@ -319,7 +319,7 @@ requirements that is still extensible later on~\cite{swebok}.
 
 \paragraph{Sources}
 The goal or objective of the software should be known and can be used to
-shape the overall requirements of the finished product.
+shape the overall requirements of the final product.
 Moreover, the engineers and developers should utilize their knowledge especially
 toward the customer who usually does not know much about software development.
 Doing this, many early requirements by the customer can be rationalized to allow
@@ -358,7 +358,7 @@ different knowledge into the meeting which allows for better discussions.
 Furthermore, prototypes can be created to collect requirements early on while already
 receiving feedback for existing ones. Moreover, scenarios and observations can be
 conducted. A scenario looks at the use case of the software from the standpoint
-of the software engineers while an observation focuses on the perspective of the
+of the software engineers, while an observation focuses on the perspective of the
 users. With the latter technique, it is often possible to discover requirements
 that were to minuscule to be mentioned by the other stakeholders or even by the users themselves.
 
@@ -400,9 +400,9 @@ are still the most widely used form of requirements specification since they are
 Software design is defined as: \textit{"the process of defining
 the architecture, components, interfaces, and other characteristics
 of a system or component"}~\cite{iso-se}.
-The result of said process is the software architecture which describes the
+The result of this process is the software architecture which describes the
 components of the software as well as their interfaces~\cite{swebok}.
-However, software architecture has two layers: the high-level design as well as
+However, software architecture has two layers: The high-level design as well as
 the low-level design which is about the more detailed
 construction of single components~\cite{iso-sdlc}.
 Usually, the functional requirements mentioned in the previous subsection dictate
@@ -448,14 +448,14 @@ software design principles are discussed briefly in the following paragraphs.
 \paragraph{Abstraction}
 \textit{Abstraction} is about perspective; it tries to achieve that an object or
 function only focuses on the information that is mandatory for the execution of
-their task while not taking account of the full set of information.
+their task, while not taking account of the full set of information.
 For instance, a function that is used in two locations of an application
 should be abstract enough to be used in a third one later on without
 any modifications to it.
 
 \paragraph{Coupling and Cohesion}
 These two terms are describing how a component behaves in regard to the whole application.
-\textit{Cohesion} is a measure of the interdependence of a component whereas
+\textit{Cohesion} is a measure of the interdependence of a component, whereas
 \textit{Coupling} describes how closely associated the elements of the
 components are~\cite{mcconnell-code-complete, swebok}.
 Consequently, this concept is therefore close to the aforementioned \textit{Abstraction}
@@ -480,7 +480,7 @@ of it to the implementation.
 
 \paragraph{Sufficiency and Completeness}
 These terms describe the goal of achieving components that implemented their
-planned requirements in an abstract way while not implementing anything else
+planned requirements in an abstract way, while not implementing anything else
 which is not directly congruent with their purpose.
 
 \paragraph{Separation of Concerns}
@@ -524,7 +524,7 @@ Moreover, it is a difficult task to draw a clear line where one layer ends and t
 next one begins.
 Furthermore, even if the engineers clearly stated that border,
 it is very easy to skip over certain layers by e.g. implementing some logic
-in the interfaces toward the presentational layer whereas logic should only occur
+in the interfaces toward the presentational layer, whereas logic should only occur
 inside of the business logic layer; this increases the \textit{Coupling} of the application.
 Finally, the application unavoidably becomes larger and slower to a point
 where it starts not to perform ideally anymore.
@@ -662,7 +662,7 @@ The most important ones for this thesis are discussed in the following paragraph
 
 \paragraph{Assertions and \textit{Defensive Programming}}
 The input parameters of a function can be checked to ensure that their types
-or general format are correct. This can eliminate many runtime issues while not
+or general format are correct. This can eliminate many runtime issues, while not
 being overly difficult to employ. Similarly, the term \textit{Defensive Programming}
 refers to the procedure of meticulously checking every input value of a function
 to prevent its breakup. Additionally, a strategy needs to be deployed on how to
@@ -737,7 +737,7 @@ since the analyzed software solution was built as a common client-server applica
 meant to run on prevailing server infrastructure.
 
 Apart from this initial reason, the most common one is of economic nature~\cite{schneidewind-preserve-or-redesign}.
-Often times, the expected benefits of redeveloping a software cannot justify the expenditures.
+Oftentimes, the expected benefits of redeveloping a software cannot justify the expenditures.
 Additionally, it is difficult to measure the advantages beforehand. The management
 of a company needs to ponder the proposal of redeveloping the current software.
 Particularly, if the legacy software still seems to be running as expected when observed
@@ -996,7 +996,7 @@ short-term rental of electric scooters.\\
 The discussed software solution is meant for being licensed to
 the actual operators of such a rental business. Therefore, an operator
 is expected to maintain the application. Additionally, according to the
-mentioned \textit{Environments}, three first requirements emerge:
+mentioned \textit{Environments}, three initial requirements emerge:
 
 \paragraph{Organizational}
 The operating organization will employ service workers who
@@ -1045,7 +1045,7 @@ the scooter should not appear on the map anymore for other users.\\\\
 Next, the user is granted the set timeframe to get to the chosen scooter.
 If the user arrives too late, the scooter should re-appear on the map,
 available to every customer.\\\\
-Once he or she arrived, the scooter as well as its ignition can be remotely
+Once the user arrived, the scooter as well as its ignition can be remotely
 unlocked by the push of a button inside of the mobile app.
 The back-end application however actually sends the signal to the scooter to
 unlock itself.\\\\
@@ -1064,7 +1064,7 @@ from said external server to monitor every ongoing ride of all the customers.\\\
 If a user drives out of the allowed operating range, a notification will be sent
 to the scooter of that user.\\\\
 If the battery gets low on charge, the user will be warned as well to finish the ride.\\\\
-Additionally, after said ride has ended the scooter should also not re-appear
+Additionally, after the ride has ended the scooter should also not re-appear
 on the map of available ones.\\\\
 The threshold for the low battery condition should also be changeable
 application-wide by the operator.\\\\
@@ -1135,7 +1135,7 @@ an existing legacy software solution with newly developed services.
 Scaling is especially easy with a service-oriented approach. The single services
 can be scaled up and down individually instead of scaling the whole application.
 Some services will probably never see much load as they are not correlating with
-increasing user counts whereas other services perform computation-intensive
+increasing user counts, whereas other services perform computation-intensive
 actions as the monitoring of the scooter fleet; with a service-oriented approach,
 the services in high demand can be scaled and even duplicated while others
 remain as a single instance.
@@ -1245,7 +1245,7 @@ from other common use cases e.g. registering an account.
 The two gateways were purposely omitted from the diagram as their tasks would
 be the same ones over and over again.
 
-The oval shapes represent user interactions whereas the square shapes represent
+The oval shapes represent user interactions, whereas the square shapes represent
 machine actions.
 The solid horizontal line in the middle depicts the customer riding the scooter
 which can take an indeterminate amount of time while no information is flowing.
@@ -1498,11 +1498,7 @@ some requirements that involve third-party servers or real-world data
 as placeholders.
 The project is licensed as \textit{Open Source} software under the
 \textit{Apache 2.0} license. The source code is freely available on \textit{GitHub} at:
-\code{\url{https://github.com/loehnertz/Toranos}}
-
-
-\section{Project structure}
-
+\code{\url{https://github.com/loehnertz/Toranos}}\\\\
 The source code of the project consist of four directories:
 \begin{itemize}[noitemsep]
 \item \code{api-gateway}
@@ -1510,6 +1506,8 @@ The source code of the project consist of four directories:
 \item \code{services}
 \item \code{vehicle-gateway}
 \end{itemize}
+The \code{api-gateway} and \code{vehicle-gateway} are explained later on
+in this chapter.
 The \code{common} directory contains singular functions that are general
 enough to be shared by multiple services. Owing to the fact that directly in the
 \code{services} directory each service has its own directory, this structure
@@ -1552,7 +1550,7 @@ conf = common.InitConfig()
 common.GetConfigStringByPath(conf, "service-names", "billing")
 \end{lstlisting}
 
-As example \code{services/billing/main.go} shows, The \code{conf} object
+As example \code{services/billing/main.go} shows, the \code{conf} object
 is initialized only once during the startup of each service
 to avoid the aforementioned inconsistencies and to reduce the load
 toward \textit{Consul}. The helper function \code{InitConfig()} retrieves
@@ -1616,7 +1614,7 @@ message AvailableVehiclesResponse {
 }
 \end{lstlisting}
 
-Figure \code{services/fleet-monitor/proto/fleet-monitor.proto} is an example of
+Snippet \code{services/fleet-monitor/proto/fleet-monitor.proto} is an example of
 a \textit{Protocol Buffers service definition}.
 At the top, the version of \textit{Protocol Buffers} has to be set.
 Secondly, the service is assigned a name and its RPC endpoints are described.
@@ -1667,7 +1665,7 @@ func main() {
 \end{lstlisting}
 
 Every \code{main()} function inside of each service looks roughly similar,
-as seen in figure \code{services/fleet-monitor/main.go}.
+as seen in snippet \code{services/fleet-monitor/main.go}.
 Firstly, a new service is created via \textit{Go Micro};
 \code{micro.NewService()} expects a name as the identifier.
 This name is used to register the service toward the \textit{Service Discovery}.
@@ -1693,7 +1691,7 @@ the program will \code{panic} which means that it crashes properly.
 
 Depending on the service, sometimes other components are initialized additionally.
 A common example are connections toward a database or caching system,
-as shown in figures \code{services/fleet-controller/main.go}
+as shown in snippets \code{services/fleet-controller/main.go}
 and \code{services/fleet-monitor/main.go}.
 
 \begin{lstlisting}[title=services/fleet-controller/main.go, float, floatplacement=H]
@@ -1790,7 +1788,7 @@ type AvailableVehiclesResponse_Vehicle struct {
 }
 \end{lstlisting}
 
-In the exact case of figure \code{services/fleet-monitor/proto/fleet-monitor.pb.go},
+In the exact case of snippet \code{services/fleet-monitor/proto/fleet-monitor.pb.go},
 the \code{repeated} directive exhibited in subsection
 \ref{subsect:service-definition} can be seen in action;
 \code{AvailableVehiclesResponse} just has a reference to a \code{slice} of
@@ -1852,16 +1850,16 @@ for performing the actual RPC toward the obtained IP address and port number
 of the desired service.
 This is achieved by passing the name of the service into the helper function
 as well as the client component of the service that performs the calls, as depicted
-in figure \code{services/statistics/main.go}.
+in snippet \code{services/statistics/main.go}.
 
 Moreover, during the setup of each service the client can be optionally equipped
 with certain settings. As discussed in section \ref{subsect:analysis-construction},
 a service utilizes a circuit breaker together with a retry mechanism to
 avoid large-scale failures; this is accomplished with
-the lines \textit{9} and \textit{15}.
+the lines \textit{10} and \textit{16}.
 
 The actual RPC is performed with a helper function again, as seen
-in figure \code{services/statistics/bookings.go}.
+in snippet \code{services/statistics/bookings.go}.
 
 \begin{lstlisting}[title=services/statistics/bookings.go, float, floatplacement=H]
 func retrieveAllBookingsOfCustomer(customer string) (
@@ -2014,7 +2012,7 @@ Upon issuing a new JWT, a JSON object is created that includes information
 like the username of the user, its role (e.g. customer, administrator), an
 expiration date and even completely arbitrary data.
 The resulting JSON object gets serialized and signed with an asymmetric
-private key. Consequently, the client can verify the authenticity of the token
+private key. Consequently, the client can verify the authenticity of the token,
 while any tampering of the token can be directly revealed since the signature becomes
 invalid. Furthermore, the expiration date of the token is automatically checked
 when checking its validity. Thus, no expiration dates have to be saved to
@@ -2056,7 +2054,7 @@ func authenticationMiddleware(next http.Handler) http.Handler {
 Any user can login with their credentials to receive a new, valid JWT.
 With every subsequent request toward the public API, the JWT is part of the
 HTTP request as the \code{Authorization} header, as depicted
-in figure \code{api-gateway/middlewares.go}.
+in snippet \code{api-gateway/middlewares.go}.
 In the case of the \code{authenticationMiddleware()}, the middleware performs
 a regular RPC toward the \code{user-management} service to check if the
 token of the requesting user is valid. The \code{user-management} service also
@@ -2085,7 +2083,7 @@ It acts similar to a middleware by wrapping every RPC of the
 \textit{API Gateway} toward another service.
 In fact, \textit{Go Micro} even offers a method to directly do so with
 supported wrappers by calling \code{micro.WrapClient()} during the startup
-of the \textit{API Gateway}, as shown in figure \code{api-gateway/main.go}.
+of the \textit{API Gateway}, as shown in snippet \code{api-gateway/main.go}.
 
 \begin{lstlisting}[title=api-gateway/main.go, float, floatplacement=H]
 // Create the service
@@ -2211,7 +2209,7 @@ Using \textit{protoc} helper functions can be created not only for the
 \textit{Go} programming language but many others like \textit{C++}, \textit{C\#},
 \textit{Java}, or \textit{Python}~\cite{protobuf}.
 Similarly, the database does not have to be SQL-based for every service;
-if a NoSQL database, a key–value store or even a completely different
+if a NoSQL database, a key-value store or even a completely different
 database design are more suitable for the new service, they can be easily
 used as described in subsection \ref{subsect:databases}.
 
@@ -2239,7 +2237,7 @@ completely lack an externally accessible API.
 
 Nevertheless, this fact is not a problem in itself.
 As exhibited in subsection \ref{issues-legacy-software}, legacy software generally
-engenders many problems while the main reasons to continue using it are of
+engenders many problems, while the main reasons to continue using it are of
 economic nature as depicted in subsection \ref{sub-sect:continue-legacy}.
 
 The hypothetical integration in this section focuses on an incremental transition
@@ -2290,7 +2288,7 @@ Consequently, a firewall is mandatory to shield off unwanted access which
 would completely remove the protection the \textit{API Gateway} introduced.
 Internally, the \textit{Go Micro} API dispatches a real RPC and returns the
 result to the requesting client. The format of such a request is JSON,
-as highlighted in figure \textit{Go Micro API request}.
+as highlighted in snippet \textit{Go Micro API request}.
 
 \begin{lstlisting}[title=\textit{Go Micro} API request, float, floatplacement=H]
 {
